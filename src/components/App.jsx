@@ -4,6 +4,7 @@ import Container from '../helpers/Container';
 import NotFoundPage from '../pages/NotFoundPage';
 
 const FirstPage = lazy(() => import('../components/FirstPage/FirstPage'));
+const Library = lazy(() => import('./library/Library/Library'));
 
 export const App = () => {
   return (
@@ -15,7 +16,8 @@ export const App = () => {
             <Route path="/" element={<FirstPage />} />
             {/* <Login/>*/}
             {/* <Registration/>*/}
-            {/* <Library/>*/}
+            <Route path="library" element={<Library />} />
+            {/* <Library /> */}
             {/* <Training/>*/}
             {/* <Statistics/>*/}
             <Route path="*" element={<NotFoundPage />} />
