@@ -7,6 +7,7 @@ import NotFoundPage from '../pages/NotFoundPage';
 const FirstPage = lazy(() => import('../components/FirstPage/FirstPage'));
 const Register = lazy(() => import('../pages/Register'));
 const Login = lazy(() => import('../pages/Login'));
+const Library = lazy(() => import('../components/library/library'));
 
 export const App = () => {
   return (
@@ -18,7 +19,7 @@ export const App = () => {
             <Route path="/" element={<FirstPage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            {/* <Library/>*/}
+            <Route path="/library" element={<Library />} />
             {/* <Training/>*/}
             {/* <Statistics/>*/}
             <Route path="*" element={<NotFoundPage />} />
