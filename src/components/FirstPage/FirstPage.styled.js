@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 import vector from '../../images/firstpagevector.svg';
+import { theme } from '../../helpers/theme';
 
 export const Section = styled.div`
-  max-width: 320px;
+  /* max-width: 320px; */
   padding: 32px 20px 40px 20px;
 
   @media screen and (min-width: 768px) {
-    max-width: 768px;
+    /* max-width: 768px; */
     padding: 64px 159px 88px 159px;
   }
 
   @media screen and (min-width: 1280px) {
-    max-width: 1280px;
+    /* max-width: 1280px; */
     padding: 179px 154px 239px 127px;
   }
 `;
@@ -22,7 +23,8 @@ export const Title = styled.h1`
   font-weight: 400;
   font-size: 34px;
   line-height: 1.12;
-  color: #242a37;
+  /* color: #242a37; */
+  color: ${theme.colors.titleColor};
   text-align: center;
 
   @media screen and (min-width: 768px) {
@@ -40,7 +42,8 @@ export const Subtitle = styled.h2`
   font-weight: 500;
   font-size: 20px;
   line-height: 1.9;
-  color: #242a37;
+  /* color: #242a37; */
+  color: ${theme.colors.titleColor};
 `;
 
 export const MainListItem = styled.li`
@@ -72,7 +75,8 @@ export const ListItem = styled.li`
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    color: #ff6b08;
+    /* color: #ff6b08; */
+    color: ${theme.colors.focusColor};
   }
 
   :not(:last-child) {
@@ -110,7 +114,8 @@ export const LoginButton = styled.button`
   font-size: 14px;
   line-height: 2.71;
   text-align: center;
-  color: #242a37;
+  /* color: #242a37; */
+  color: ${theme.colors.titleColor};
   border: 1px solid #000000;
   &:hover,
   &:focus {
@@ -125,7 +130,8 @@ export const RegisterButton = styled.button`
   font-size: 14px;
   line-height: 2.71;
   text-align: center;
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: ${theme.colors.backColor};
   background: #ff6b08;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border: 1px solid #ff6b08;

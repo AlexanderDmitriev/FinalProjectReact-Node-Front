@@ -1,18 +1,27 @@
-import FirstPage from '../components/FirstPage/FirstPage';
+import { Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import Container from '../helpers/Container';
+import NotFoundPage from '../pages/NotFoundPage';
+
+const FirstPage = lazy(() => import('../components/FirstPage/FirstPage'));
 
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      <FirstPage />
-    </div>
+    <>
+      <Container>
+        <Suspense fallback={<div>Loading...</div>}>
+          {/* <Navigation/> он же Header*/}
+          <Routes>
+            <Route path="/" element={<FirstPage />} />
+            {/* <Login/>*/}
+            {/* <Registration/>*/}
+            {/* <Library/>*/}
+            {/* <Training/>*/}
+            {/* <Statistics/>*/}
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+      </Container>
+    </>
   );
 };
