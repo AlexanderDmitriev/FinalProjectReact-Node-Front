@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
+// import FirstPage from './FirstPage/FirstPage';
 
 import Container from './Container';
 
@@ -9,10 +10,14 @@ const Login = lazy(() => import('../pages/Login'));
 export default function App() {
   return (
     <Container>
-      <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      <Suspense>
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      {/* <FirstPage /> */}
+        
+      </Suspense>
     </Container>
   );
 }
