@@ -50,7 +50,6 @@ export const MainListItem = styled.li`
   :first-child {
     margin-bottom: 24px;
   }
-
   @media screen and (min-width: 768px) {
     :first-child {
       margin-bottom: 32px;
@@ -64,7 +63,6 @@ export const ListItem = styled.li`
   font-size: 14px;
   line-height: 1.21;
   color: #898f9f;
-
   ::before {
     content: '';
     margin-right: 12px;
@@ -92,7 +90,6 @@ export const ButtonList = styled.ul`
   justify-content: center;
   list-style: none;
   column-gap: 20px;
-
   @media screen and (min-width: 768px) {
     position: absolute;
     width: 1px;
