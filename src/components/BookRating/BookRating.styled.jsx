@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {theme} from '../../helpers/theme';
 
 export const Container = styled.div`
+    
     box-sizing: border-box;
     width: 280px;
     height: auto;
@@ -10,6 +11,12 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     padding: 20px;
+
+    @media screen and (max-width: 767px) {
+        position:absolute;
+        left: 50%;
+        transform: translateX(-52.4%);
+    };
 
     @media screen and (min-width: 768px) {
         width: 608px;
