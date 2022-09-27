@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Container from '../helpers/Container';
 import NotFoundPage from '../pages/NotFoundPage';
+import Header from './Header/Header';
 /* import Container from './Container'; */
 
 const FirstPage = lazy(() => import('../components/FirstPage/FirstPage'));
@@ -14,7 +15,7 @@ export const App = () => {
     <>
       <Container>
         <Suspense fallback={<div>Loading...</div>}>
-          {/* <Navigation/> он же Header*/}
+          <Header/>
           <Routes>
             <Route path="/" element={<FirstPage />} />
             <Route path="/register" element={<Register />} />
