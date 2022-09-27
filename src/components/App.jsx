@@ -8,7 +8,7 @@ import Header from './Header/Header';
 const FirstPage = lazy(() => import('../components/FirstPage/FirstPage'));
 const Register = lazy(() => import('../pages/Register'));
 const Login = lazy(() => import('../pages/Login'));
-const Library = lazy(() => import('../components/library/library'));
+const Library = lazy(() => import('../components/library/Library/Library'));
 
 export const App = () => {
   return (
