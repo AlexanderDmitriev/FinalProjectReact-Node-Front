@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 // import { theme } from '../../../helpers/theme';
-import backArrow from '../../../images/back.png';
+import backArrow from '../../images/back.png';
 
 const BackArrow = styled.button`
   background-image: url(${backArrow});
