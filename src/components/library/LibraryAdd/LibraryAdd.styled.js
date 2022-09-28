@@ -70,3 +70,19 @@ export const BoxText = styled.div`
     display: block;
     margin-top: 40px;
 `;
+export const EErrorMessage = styled.p`
+  width: 320px;
+  height: 648px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #f6f7fb;
+  // margin-top: 60px;
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    height: 1025px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    height: 850px;
+`;

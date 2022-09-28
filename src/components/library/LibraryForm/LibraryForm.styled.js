@@ -116,7 +116,7 @@ export const InputItemAuthor = styled.div`
 `;
 
 export const Label = styled.label`
-  width: 135px;
+  width: 152px;
   left: 17px;
   top: 128px;
   margin-bottom: 8px;
@@ -126,6 +126,9 @@ export const Label = styled.label`
   font-size: 14px;
   line-height: 17px;
   color: #898f9f;
+  // @media screen and (min-width: 768px) {
+  //   width: 152px;
+  // }
 `;
 
 export const FieldInput = styled(Field)`
