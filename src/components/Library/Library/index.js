@@ -1,1 +1,1 @@
-export { default } from './Library.jsx';
+export { default } from './Library';
