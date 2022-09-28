@@ -17,7 +17,7 @@ export const Box = styled.div`
   }
   @media screen and (min-width: 1280px) {
     width: 1280px;
-    height: 850px;
+    height: 850px;}
 `;
 
 export const FormInput = styled.div`
