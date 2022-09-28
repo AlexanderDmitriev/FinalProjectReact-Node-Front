@@ -1,8 +1,8 @@
 import { SpinnerCircular } from 'spinners-react';
-import styled from 'styled-components';
+/* import styled from 'styled-components'; */
 
 export const Spinner = () => {
-  <SpinnerContainer>
+  <>
     <SpinnerCircular
       size={100}
       thickness={100}
@@ -10,9 +10,9 @@ export const Spinner = () => {
       color="#36ad47"
       secondaryColor="rgba(0, 0, 0, 0.44)"
     />
-  </SpinnerContainer>;
+  </>;
 };
 
-const SpinnerContainer = styled.div`
+/* const SpinnerContainer = styled.div`
   margin: 0 auto;
-`;
+`; */
