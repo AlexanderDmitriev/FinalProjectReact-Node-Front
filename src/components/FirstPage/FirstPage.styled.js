@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import vector from '../../images/firstpagevector.svg';
 import { theme } from '../../helpers/theme';
 
 export const Section = styled.div`
@@ -8,7 +7,7 @@ export const Section = styled.div`
 
   @media screen and (min-width: 768px) {
     /* max-width: 768px; */
-    padding: 64px 159px 88px 159px;
+    padding: 64px 145px 88px 145px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -23,7 +22,6 @@ export const Title = styled.h1`
   font-weight: 400;
   font-size: 34px;
   line-height: 1.12;
-  /* color: #242a37; */
   color: ${theme.colors.titleColor};
   text-align: center;
 
@@ -38,11 +36,9 @@ export const List = styled.ul`
 
 export const Subtitle = styled.h2`
   margin-bottom: 14px;
-  //   font-family: 'Montserrat';
   font-weight: 500;
   font-size: 20px;
   line-height: 1.9;
-  /* color: #242a37; */
   color: ${theme.colors.titleColor};
 `;
 
@@ -58,28 +54,30 @@ export const MainListItem = styled.li`
 `;
 
 export const ListItem = styled.li`
-  //   font-family: 'Montserrat';
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.21;
-  color: #898f9f;
-  ::before {
-    content: '';
-    margin-right: 12px;
-    padding-top: 1px;
-    padding-left: 2px;
-    padding-right: 2px;
-    background-image: url(${vector});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    /* color: #ff6b08; */
-    color: ${theme.colors.focusColor};
-  }
+  display: flex;
 
   :not(:last-child) {
     margin-bottom: 12px;
   }
+`;
+
+export const Text = styled.p`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #898f9f;
+`;
+
+export const IconWrapper = styled.div`
+  margin-right: 12px;
+  padding-top: 4px;
+  width: 4px;
+  height: 8px;
+`;
+
+export const Icon = styled.svg`
+  vertical-align: top;
+  color: ${theme.colors.focusColor};
 `;
 
 export const ButtonList = styled.ul`
@@ -106,12 +104,11 @@ export const ButtonList = styled.ul`
 
 export const LoginButton = styled.button`
   min-width: 130px;
-  //   font-family: 'Montserrat';
+  font-family: inherit;
   font-weight: 500;
   font-size: 14px;
   line-height: 2.71;
   text-align: center;
-  /* color: #242a37; */
   color: ${theme.colors.titleColor};
   border: 1px solid #000000;
   &:hover,
@@ -122,12 +119,11 @@ export const LoginButton = styled.button`
 
 export const RegisterButton = styled.button`
   min-width: 130px;
-  //   font-family: 'Montserrat';
+  font-family: inherit;
   font-weight: 500;
   font-size: 14px;
   line-height: 2.71;
   text-align: center;
-  /* color: #ffffff; */
   color: ${theme.colors.backColor};
   background: #ff6b08;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);

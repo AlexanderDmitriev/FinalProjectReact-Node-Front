@@ -1,4 +1,5 @@
 import React from 'react';
+import LibraryModal from '../LibraryModal/LibraryModal';
 import LibraryForm from '../LibraryForm/LibraryForm';
 import { BackArrow } from './Library.styled';
 
@@ -21,6 +22,7 @@ export default function Library() {
         </NavLink>
 
         <LibraryForm />
+<LibraryModal />
       </Container>
     </>
   );
