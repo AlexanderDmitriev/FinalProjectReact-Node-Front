@@ -39,7 +39,7 @@ export const Box = styled.div`
   }
   @media screen and (min-width: 1280px) {
     width: 1280px;
-    height: 850px;
+    height: 850px;}
 `;
 export const BoxText = styled.div`
   width: 608px;
@@ -68,7 +68,7 @@ export const BoxText = styled.div`
     height: 272px;
     margin: 0 auto;
     display: block;
-    margin-top: 40px;
+    margin-top: 40px;}
 `;
 export const EErrorMessage = styled.p`
   width: 320px;
@@ -84,5 +84,5 @@ export const EErrorMessage = styled.p`
   }
   @media screen and (min-width: 1280px) {
     width: 1280px;
-    height: 850px;
+    height: 850px;}
 `;
