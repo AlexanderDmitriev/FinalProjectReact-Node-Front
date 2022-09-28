@@ -3,7 +3,6 @@ import {
     TrainingSection,
     Input,
     TrainingBtn,
-    BackArrow,
     Select,
     Option,
     AddBtn,
@@ -14,6 +13,7 @@ import {
 } from "./AddTraining.styled";
 import { useState } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
+import { ReactComponent as IconBack} from '../../../images/iconback.svg'
 
 const books = [
     {
@@ -96,11 +96,11 @@ export default function AddTraining() {
     }
 
     return (
-        <Section>
+        <Section> 
         <TrainingSection>
             <SvgContainer>
                 <NavLink to={path} exact="true">
-                    <BackArrow />
+                    <IconBack fill="#FF6B08" width="24" height="12" />
                 </NavLink>
             </SvgContainer> 
             <Svg>
