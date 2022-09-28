@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-import { AddButton } from './LibraryForm.styled';
+import { AddButton, Wrapper } from './LibraryForm.styled';
 import { NavLink } from 'react-router-dom';
 
 export default function LibraryForm() {
@@ -24,7 +24,7 @@ export default function LibraryForm() {
   });
 
   return (
-    <>
+    <Wrapper>
       <Formik
         initialValues={{
           title: '',
@@ -120,6 +120,6 @@ export default function LibraryForm() {
           </div>
         )}
       </Formik>
-    </>
+    </Wrapper>
   );
 }
