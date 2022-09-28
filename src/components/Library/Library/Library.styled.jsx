@@ -2,7 +2,7 @@ import styled from 'styled-components';
 // import { theme } from '../../../helpers/theme';
 import backArrow from '../../../images/back.png';
 
-export const BackArrow = styled.button`
+const BackArrow = styled.button`
   background-image: url(${backArrow});
   height: 12px;
   width: 24px;
@@ -17,3 +17,5 @@ export const BackArrow = styled.button`
 
   //   transform: rotate(180deg);
 `;
+
+export default BackArrow;

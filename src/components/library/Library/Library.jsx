@@ -4,7 +4,7 @@ import LibraryModal from '../LibraryModal/LibraryModal';
 import AlreadyRead from '../AlreadyRead/AlreadyRead';
 import ReadingNow from '../ReadingNow/ReadingNow';
 import GoingToRead from'../GoingToRead/GoingToRead'
-import { BackArrow } from './Library.styled';
+import  BackArrow  from './Library.styled';
 
 import Container from 'helpers/Container';
 import { NavLink, /* useNavigate, */ useLocation } from 'react-router-dom';
