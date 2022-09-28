@@ -2,6 +2,14 @@ import styled from 'styled-components';
 import { theme } from '../../../helpers/theme';
 // import backArrow from '../../../images/back.png';
 
+export const Wrapper = styled.div`
+  position: absolute;
+
+  @media screen and (min-width: 768px) {
+    position: static;
+  }
+`;
+
 export const AddButton = styled.button`
   min-width: 171px;
   //   font-family: 'Montserrat';
@@ -17,3 +25,4 @@ export const AddButton = styled.button`
     border: 1px solid #f25137;
   }
 `;
+
