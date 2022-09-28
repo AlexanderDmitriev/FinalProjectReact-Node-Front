@@ -1,9 +1,9 @@
 import React from 'react';
-import LibraryForm from '../library/LibraryForm/LibraryForm';
-import LibraryModal from '../library/LibraryModal/LibraryModal';
-import AlreadyRead from '../library/AlreadyRead/AlreadyRead';
-import ReadingNow from '../library/ReadingNow/ReadingNow';
-import GoingToRead from'../library/GoingToRead/GoingToRead'
+import LibraryForm from './LibraryForm/LibraryForm';
+import LibraryModal from './LibraryModal/LibraryModal';
+import AlreadyRead from './AlreadyRead/AlreadyRead';
+import ReadingNow from './ReadingNow/ReadingNow';
+import GoingToRead from'./GoingToRead/GoingToRead'
 import  BackArrow  from './Library.styled';
 
 import Container from 'helpers/Container';
