@@ -5,7 +5,8 @@ export const theme = {
     inputColor: '#F5F7FA',
     darkButtonColor: '#6D7A8D',
     tableColor: '#B1B5C2',
-    backColor: '#FFFFFF'
+    backColor: '#FFFFFF',
+    bookDescriptionColor: '#898F9F',
   },
   spacing: value => `${4 * value}px`,
 };
