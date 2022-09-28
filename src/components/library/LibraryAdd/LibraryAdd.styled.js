@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 // import { theme } from '../../../helpers/theme';
-import backArrow from '../../images/back.png';
+import backArrow from '../../../images/back.png';
 
 export const BackArrow = styled.button`
   background-image: url(${backArrow});
@@ -15,12 +15,14 @@ export const BackArrow = styled.button`
   margin-bottom: 32px;
   margin-left: 20px;
   border: none;
+
   @media screen and (min-width: 768px) {
     display: none;
   }
   @media screen and (min-width: 1280px) {
     display: none;
   }
+
   //   transform: rotate(180deg);
 `;
 export const Box = styled.div`
@@ -37,8 +39,7 @@ export const Box = styled.div`
   }
   @media screen and (min-width: 1280px) {
     width: 1280px;
-    height: 850px;
-  }
+    height: 850px;}
 `;
 export const BoxText = styled.div`
   width: 608px;
@@ -47,24 +48,27 @@ export const BoxText = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: #ffffff;
-
+  
+   
   @media screen and (max-width: 767px) {
     display: none;
   }
   @media screen and (min-width: 768px) {
+   
     width: 608px;
     height: 272px;
     margin: 0 auto;
     display: block;
-    margin-top: 40px;
+     margin-top: 40px;
+    
   }
   @media screen and (min-width: 1280px) {
+ 
     width: 608px;
     height: 272px;
     margin: 0 auto;
     display: block;
-    margin-top: 40px;
-  }
+    margin-top: 40px;}
 `;
 export const EErrorMessage = styled.p`
   width: 320px;
@@ -80,6 +84,5 @@ export const EErrorMessage = styled.p`
   }
   @media screen and (min-width: 1280px) {
     width: 1280px;
-    height: 850px;
-  }
+    height: 850px;}
 `;

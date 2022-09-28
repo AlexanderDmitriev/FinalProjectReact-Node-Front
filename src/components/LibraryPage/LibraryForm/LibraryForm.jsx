@@ -1,9 +1,19 @@
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
 import { AddButton, Wrapper } from './LibraryForm.styled';
 import { NavLink } from 'react-router-dom';
+
+import {
+  FormInput,
+  Input,
+  InputItem,
+  InputItemTitle,
+  InputItemAuthor,
+  Label,
+  FieldInput,
+} from './LibraryForm.styled';
 
 export default function LibraryForm() {
   const validateSchema = yup.object().shape({
@@ -12,15 +22,15 @@ export default function LibraryForm() {
       .min(2, 'Дуже коротко!')
       .max(50, 'Надто довге!')
       .typeError('Назва книги?')
-      .required('Обовязково'),
+      .required("Поле обов'язкове"),
     author: yup
       .string()
       .min(2, 'Дуже коротко!')
       .max(50, 'Надто довге!')
       .typeError('Імя автора?')
-      .required('Обовязково'),
-    year: yup.string().typeError('Вкажіть рік').required('Обовязково'),
-    pages: yup.number().typeError('Потрібно число').required('Обовязково'),
+      .required("Поле обов'язкове"),
+    year: yup.string().typeError('Вкажіть рік').required("Oбов'язкове"),
+    pages: yup.number().typeError('Потрібно число').required("Oбов'язкове"),
   });
 
   return (
@@ -33,7 +43,11 @@ export default function LibraryForm() {
           pages: '',
         }}
         validateOnBlur
-        onSubmit={value => console.log(value)}
+        onSubmit={(values, { resetForm }) => {
+          // do your stuff
+          console.log(values);
+          resetForm();
+        }}
         validationSchema={validateSchema}
       >
         {({
@@ -46,78 +60,83 @@ export default function LibraryForm() {
           handleSubmit,
           dirty,
         }) => (
-          <div className="form">
-            <label htmlFor="title">Назва книги </label>
-            <br />
-            <input
-              className="title"
-              style={{ width: 300, height: 40 }}
-              value={values.title}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              type="text"
-              name="title"
-            />
-            {touched.title && errors.title && (
-              <p className={'error'}>{errors.title}</p>
-            )}
-            <br />
-            <label htmlFor="author">Автор </label>
-            <br />
-            <input
-              className="author"
-              style={{ width: 300, height: 40 }}
-              value={values.author}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              type="text"
-              name="author"
-            />
-            {touched.author && errors.author && (
-              <p className={'error'}>{errors.author}</p>
-            )}
-            <br />
-            <label htmlFor="year">Рік випуску </label>
-            <br />
-            <input
-              className="year"
-              style={{ width: 300, height: 40 }}
-              value={values.year}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              type="text"
-              name="year"
-            />
-            {touched.year && errors.year && (
-              <p className={'error'}>{errors.year}</p>
-            )}
-            <br />
-            <label htmlFor="pages">Кількість сторінок </label>
-            <br />
-            <input
-              className="pages"
-              style={{ width: 300, height: 40 }}
-              value={values.pages}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              type="text"
-              name="pages"
-            />
-            {touched.pages && errors.pages && (
-              <p className={'error'}>{errors.pages}</p>
-            )}
-            <br />
+          <Form>
+            <FormInput>
+              <Input>
+                <InputItemTitle>
+                  <Label htmlFor="title">Назва книги</Label>
+                  <FieldInput
+                    className="title"
+                    value={values.title}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="text"
+                    name="title"
+                    placeholder="..."
+                  />
 
-            <NavLink to="/" exact="true">
-              <AddButton
-                disabled={!isValid && !dirty}
-                onClick={handleSubmit}
-                type="submit"
-              >
-                Додати
-              </AddButton>
-            </NavLink>
-          </div>
+                  {touched.title && errors.title && (
+                    <ErrorMessage name="title" />
+                  )}
+                </InputItemTitle>
+
+                <InputItemAuthor>
+                  <Label htmlFor="author">Автор</Label>
+                  <FieldInput
+                    className="author"
+                    value={values.author}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="text"
+                    name="author"
+                    placeholder="..."
+                  />
+                  {touched.author && errors.author && (
+                    <ErrorMessage name="author" />
+                  )}
+                </InputItemAuthor>
+                <InputItem>
+                  <Label htmlFor="author">Рік випуску</Label>
+                  <FieldInput
+                    className="year"
+                    value={values.year}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="text"
+                    name="year"
+                    placeholder="..."
+                  />
+                  {touched.year && errors.year && <ErrorMessage name="year" />}
+                </InputItem>
+                <InputItem>
+                  <Label htmlFor="author">Кількість сторінок </Label>
+                  <FieldInput
+                    className="pages"
+                    value={values.pages}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="text"
+                    name="pages"
+                    placeholder="..."
+                  />
+                  {touched.pages && errors.pages && (
+                    // <p className={'error'}>{errors.pages}</p>
+                    <ErrorMessage name="pages" />
+                  )}
+                </InputItem>
+              </Input>
+
+              <NavLink to="/" exact="true">
+                <AddButton
+                  disabled={!isValid && !dirty}
+                  onClick={handleSubmit}
+                  type="submit"
+                >
+                  Додати
+                </AddButton>
+              </NavLink>
+            </FormInput>
+          </Form>
         )}
       </Formik>
     </Wrapper>

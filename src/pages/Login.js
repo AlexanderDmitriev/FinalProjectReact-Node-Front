@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import {
   Box,
@@ -17,7 +17,7 @@ import {
   NavRegister,
   TextBox,
   Mark,
-  Border,
+  Border,LibraryForm,
 } from './styled/Login.styled';
 
 // import { useState } from 'react';
@@ -43,7 +43,7 @@ export default function Login() {
           }, 400);
         }}
       >
-        <Form>
+        <LibraryForm>
           <FormInput>
             <Input>
               <GoogleButton type="submit">
@@ -69,7 +69,7 @@ export default function Login() {
 
             <NavRegister to="/register">Реєстрація</NavRegister>
           </FormInput>
-        </Form>
+        </LibraryForm>
       </Formik>
 
       <TextBox>
