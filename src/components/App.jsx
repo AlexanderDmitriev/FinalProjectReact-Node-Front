@@ -4,7 +4,8 @@ import Container from '../helpers/Container';
 import NotFoundPage from '../pages/NotFoundPage';
 /* import Container from './Container'; */
 
-const FirstPage = lazy(() => import('../components/FirstPage/FirstPage'));
+const Home = lazy(() => import('../pages/Home'));
+// const FirstPage = lazy(() => import('../components/FirstPage/FirstPage'));
 /* const Library = lazy(() => import('../components/library/Library')); */
 const Register = lazy(() => import('../pages/Register'));
 const Login = lazy(() => import('../pages/Login'));
@@ -16,7 +17,7 @@ export const App = () => {
         <Suspense fallback={<div>Loading...</div>}>
           {/* <Navigation/> он же Header*/}
           <Routes>
-            <Route path="/" element={<FirstPage />} />
+            <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             {/* <Route path="/library" element={<Library />} /> */}

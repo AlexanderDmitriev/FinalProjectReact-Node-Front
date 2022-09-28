@@ -23,7 +23,39 @@ import {
   // ListItem,
 } from './styled/Register.styled';
 
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import authOperations from '../redux/authAPI/auth-operation';
+
 export default function Register() {
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        return setName(value);
+      case 'email':
+        return setEmail(value);
+      case 'password':
+        return setPassword(value);
+      case 'repeatPassword':
+        return setRepeatPassword(value);
+      default:
+        return;
+    }
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(
+      authOperations.register({ name, email, password, repeatPassword })
+    );
+  };
+
   return (
     <Box>
       <Formik
@@ -54,7 +86,7 @@ export default function Register() {
           }, 400);
         }}
       >
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <FormInput>
             <Input>
               <GoogleButton type="submit">
@@ -62,7 +94,12 @@ export default function Register() {
               </GoogleButton>
               <InputField>
                 <Label htmlFor="name">Ім'я</Label>
-                <FieldInput name="name" type="text" placeholder="..." />
+                <FieldInput
+                  name="name"
+                  type="text"
+                  placeholder="..."
+                  onChange={handleChange}
+                />
                 <ErrorMessage name="name" />
               </InputField>
               <InputField>
@@ -71,16 +108,27 @@ export default function Register() {
                   name="email"
                   type="email"
                   placeholder="your@email.com"
+                  onChange={handleChange}
                 />
                 <ErrorMessage name="email" />
               </InputField>
               <InputField>
                 <Label htmlFor="password">Пароль</Label>
-                <FieldInput name="password" type="text" placeholder="..." />
+                <FieldInput
+                  name="password"
+                  type="text"
+                  placeholder="..."
+                  onChange={handleChange}
+                />
                 <ErrorMessage name="password" />
               </InputField>
               <Label htmlFor="repeatPassword">Підтвердіть пароль</Label>
-              <FieldInput name="repeatPassword" type="text" placeholder="..." />
+              <FieldInput
+                name="repeatPassword"
+                type="text"
+                placeholder="..."
+                onChange={handleChange}
+              />
               <ErrorMessage name="repeatPassword" />
             </Input>
             <Button type="submit">
