@@ -28,7 +28,6 @@ export const List = styled.ul`
   list-style: none;
   margin-bottom: 40px;
   text-align: start;
-
   @media screen and (min-width: 768px) {
     margin-bottom: 0;
   }
@@ -38,7 +37,6 @@ export const ListItem = styled.li`
   :not(:last-child) {
     margin-bottom: 20px;
   }
-
   @media screen and (min-width: 768px) {
     :not(:last-child) {
       margin-bottom: 24px;
@@ -52,7 +50,6 @@ export const Title = styled.h2`
   font-size: 18px;
   line-height: 1.22;
   color: ${theme.colors.titleColor};
-
   @media screen and (min-width: 768px) {
     margin-bottom: 16px;
     font-size: 19px;
@@ -75,7 +72,6 @@ export const Subtitle = styled.h3`
   font-size: 14px;
   line-height: 1.21;
   color: ${theme.colors.titleColor};
-
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.25;
@@ -112,12 +108,10 @@ export const Button = styled.button`
   background-color: #ff6b08;
   border: 1px solid #ff6b08;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-
   &:hover,
   &:focus {
     background-color: #d15807;
   }
-
   @media screen and (min-width: 768px) {
     position: absolute;
     width: 1px;
