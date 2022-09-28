@@ -102,7 +102,7 @@ export const InputItemAuthor = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: auto;
-  margin-right: 32px;
+  margin-right: auto;
 
   @media screen and (min-width: 768px) {
     width: 336px;
