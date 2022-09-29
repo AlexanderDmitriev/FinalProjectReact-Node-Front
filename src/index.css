@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Abril+Fatface',
+  font-family: 'Montserrat', 'Abril+Fatface', -apple-system, BlinkMacSystemFont,
     sans-serif;
   padding: 0;
   box-sizing: border-box;

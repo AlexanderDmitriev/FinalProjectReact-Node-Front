@@ -5,7 +5,7 @@ import mobile from '../../img/mobile.jpg';
 import marks from '../../img/marks.svg';
 import google from '../../img/googleicon.svg';
 
-import { Field } from 'formik';
+import { Form, Field } from 'formik';
 import { NavLink } from 'react-router-dom';
 
 export const Box = styled.div`
@@ -42,16 +42,29 @@ export const Box = styled.div`
   background-size: cover;
 `;
 
+export const LibraryForm = styled(Form)`
+  @media screen and (min-width: 768px) {
+    padding-top: 124px;
+    padding-bottom: 124px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-top: 245px;
+    padding-bottom: 245px;
+  }
+`;
+
 export const FormInput = styled.div`
   height: 450px;
   left: 75px;
   top: 245px;
 
   @media screen and (min-width: 768px) {
-    position: absolute;
+    //position: absolute;
+    margin: 0 auto;
     width: 400px;
-    left: 185px;
-    top: 124px;
+    /* left: 185px;
+    top: 124px; */
     background: #ffffff;
   }
 
@@ -223,6 +236,7 @@ export const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 124px;
 `;
 
 export const Mark = styled.div`
@@ -230,17 +244,17 @@ export const Mark = styled.div`
   height: 70px;
 
   @media screen and (min-width: 768px) {
-    position: absolute;
+   /*  position: absolute; */
     width: 31px;
     height: 93px;
-    left: 369px;
-    top: 683px;
+    /* left: 369px;
+    top: 683px; */
   }
 
-  @media screen and (min-width: 1280px) {
+  /* @media screen and (min-width: 1280px) {
     left: 898px;
     top: 266px;
-  }
+  } */
 
   background-image: url(${marks});
   background-repeat: no-repeat;
@@ -260,11 +274,11 @@ export const Text = styled.p`
   margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
-    position: absolute;
+    /* position: absolute; */
     width: 526px;
     height: 152px;
-    left: 121px;
-    top: 745px;
+    /* left: 121px;
+    top: 745px; */
     line-height: 38px;
     font-size: 24px;
     line-height: 40px;
@@ -275,8 +289,8 @@ export const Text = styled.p`
   @media screen and (min-width: 1280px) {
     width: 397px;
     height: 200px;
-    left: 716px;
-    top: 328px;
+    /* left: 716px;
+    top: 328px; */
   }
 
   font-style: normal;
@@ -295,18 +309,18 @@ export const Border = styled.div`
   margin-bottom: 12px;
 
   @media screen and (min-width: 768px) {
-    position: absolute;
+    /* position: absolute; */
 
     width: 150px;
     height: 0px;
-    left: 309px;
-    top: 917px;
+    /* left: 309px;
+    top: 917px; */
   }
 
-  @media screen and (min-width: 1280px) {
+  /* @media screen and (min-width: 1280px) {
     left: 840px;
     top: 548px;
-  }
+  } */
 
   border-bottom: 1px solid rgba(36, 42, 55, 0.5);
 `;
@@ -320,17 +334,17 @@ export const Author = styled.p`
   font-size: 14px;
   line-height: 17px;
 
-  @media screen and (min-width: 768px) {
+ /*  @media screen and (min-width: 768px) {
     position: absolute;
     left: 358px;
     top: 929px;
-  }
+  } */
 
   @media screen and (min-width: 1280px) {
     width: 92px;
     height: 24px;
-    left: 868px;
-    top: 560px;
+    /* left: 868px;
+    top: 560px; */
     font-size: 20px;
     line-height: 24px;
   }
