@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 
 import {
   Box,
@@ -66,20 +66,20 @@ export default function Register() {
         //   repeatPassword: '',
         // }}
 
-        validationSchema={Yup.object({
-          name: Yup.string()
-            .max(15, 'Максимум 15 символів')
-            .required("Поле обов'язкове"),
-          email: Yup.string()
-            .email('Невірна адреса')
-            .required("Поле обов'язкове"),
-          password: Yup.string()
-            .min(6, 'Мінімум 6 символів')
-            .required("Поле обов'язкове"),
-          repeatPassword: Yup.string()
-            .min(6, 'Мінімум 6 символів')
-            .required("Поле обов'язкове"),
-        })}
+        // validationSchema={Yup.object({
+        //   name: Yup.string()
+        //     .max(15, 'Максимум 15 символів')
+        //     .required("Поле обов'язкове"),
+        //   email: Yup.string()
+        //     .email('Невірна адреса')
+        //     .required("Поле обов'язкове"),
+        //   password: Yup.string()
+        //     .min(6, 'Мінімум 6 символів')
+        //     .required("Поле обов'язкове"),
+        //   repeatPassword: Yup.string()
+        //     .min(6, 'Мінімум 6 символів')
+        //     .required("Поле обов'язкове"),
+        // })}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
