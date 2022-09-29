@@ -18,11 +18,7 @@ export const App = () => {
   return (
     <>
       <Container>
-        <Suspense
-          fallback={<Spinner/>
-            
-          }
-        >
+        <Suspense fallback={<Spinner />}>
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />

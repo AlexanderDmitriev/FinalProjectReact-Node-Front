@@ -5,7 +5,7 @@ import AlreadyRead from './AlreadyRead/AlreadyRead';
 import ReadingNow from './ReadingNow/ReadingNow';
 import GoingToRead from './GoingToRead/GoingToRead';
 import WellDoneModal from './WellDoneModal/WellDoneModal';
-import { Box, BoxText, BackArrow, TrainingButton } from './Library.styled';
+import { Box, /* BoxText, */ BackArrow, TrainingButton } from './Library.styled';
 import Container from 'helpers/Container';
 import { NavLink, /* useNavigate, */ useLocation } from 'react-router-dom';
 import books from 'book.json';

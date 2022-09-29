@@ -73,10 +73,10 @@ const logIn = createAsyncThunk(
 //   }
 // );
 
-const operations = {
+const authOperations = {
   register,
   logIn,
   //   logOut,
   //   fetchCurrentUser,
 };
-export default operations;
+export default authOperations;

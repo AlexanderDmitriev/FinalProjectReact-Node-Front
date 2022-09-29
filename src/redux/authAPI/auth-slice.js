@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operation';
 
+
 const initialState = {
   user: { name: null, email: null },
   token: null,
@@ -41,4 +42,4 @@ const authSlice = createSlice({
   },
 });
 
-export default authSlice.reducer;
+export default authSlice;
