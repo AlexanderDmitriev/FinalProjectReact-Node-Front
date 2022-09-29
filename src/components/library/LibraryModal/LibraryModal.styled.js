@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+
   @media screen and (min-width: 768px) {
     position: static;
   }

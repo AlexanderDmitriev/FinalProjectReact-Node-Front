@@ -11,9 +11,6 @@ import { NavLink } from 'react-router-dom';
 export const Box = styled.div`
   width: 320px;
   height: 458px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   background-image: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
     url(${mobile});
   margin-top: 60px;
