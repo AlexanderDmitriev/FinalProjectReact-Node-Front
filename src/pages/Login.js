@@ -20,14 +20,35 @@ import {
   Border,
 } from './styled/Login.styled';
 
-// import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import authOperations from '../redux/authAPI/auth-operation';
 
 export default function Login() {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'email':
+        return setEmail(value);
+      case 'password':
+        return setPassword(value);
+      default:
+        return;
+    }
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(authOperations.logIn({ email, password }));
+  };
+
   return (
     <Box>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        // initialValues={{ email: '', password: '' }}
         validationSchema={Yup.object({
           email: Yup.string()
             .email('Невірна адреса')
@@ -43,7 +64,7 @@ export default function Login() {
           }, 400);
         }}
       >
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <FormInput>
             <Input>
               <GoogleButton type="submit">
@@ -55,11 +76,17 @@ export default function Login() {
                   name="email"
                   type="email"
                   placeholder="your@email.com"
+                  onChange={handleChange}
                 />
                 <ErrorMessage name="email" />
               </InputEmail>
               <Label htmlFor="password">Пароль</Label>
-              <FieldInput name="password" type="text" placeholder="Пароль" />
+              <FieldInput
+                name="password"
+                type="text"
+                placeholder="Пароль"
+                onChange={handleChange}
+              />
               <ErrorMessage name="password" />
             </Input>
 

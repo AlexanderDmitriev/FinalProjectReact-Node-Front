@@ -59,12 +59,13 @@ export default function Register() {
   return (
     <Box>
       <Formik
-        initialValues={{
-          name: '',
-          email: '',
-          password: '',
-          repeatPassword: '',
-        }}
+        // initialValues={{
+        //   name: '',
+        //   email: '',
+        //   password: '',
+        //   repeatPassword: '',
+        // }}
+
         validationSchema={Yup.object({
           name: Yup.string()
             .max(15, 'Максимум 15 символів')
