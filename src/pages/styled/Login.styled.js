@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-import desktop from '../../img/desktop.jpg';
-import tablet from '../../img/tablet.jpg';
-import mobile from '../../img/mobile.jpg';
+import mobile from '../../images/login + register img/mobile/mobile.jpg';
+import mobile2x from '../../images/login + register img/mobile/mobile@2x.jpg';
+import tablet from '../../images/login + register img/tablet/tablet.jpg';
+import tablet2x from '../../images/login + register img/tablet/tablet@2x.jpg';
+import desktop from '../../images/login + register img/desktop/desktop.jpg';
+import desktop2x from '../../images/login + register img/desktop/desktop@2x.jpg';
+
 import marks from '../../img/marks.svg';
 import google from '../../img/googleicon.svg';
 
@@ -13,6 +17,17 @@ export const Box = styled.div`
   height: 458px;
   background-image: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
     url(${mobile});
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)
+      ),
+      url(${mobile2x});
+  }
+
   margin-top: 60px;
 
   @media screen and (min-width: 768px) {
@@ -23,6 +38,16 @@ export const Box = styled.div`
         rgba(9, 30, 63, 0.8)
       ),
       url(${tablet});
+
+    @media screen and (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(9, 30, 63, 0.8),
+          rgba(9, 30, 63, 0.8)
+        ),
+        url(${tablet2x});
+    }
   }
 
   @media screen and (min-width: 1280px) {
@@ -33,6 +58,16 @@ export const Box = styled.div`
         rgba(9, 30, 63, 0.8)
       ),
       url(${desktop});
+
+    @media screen and (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(9, 30, 63, 0.8),
+          rgba(9, 30, 63, 0.8)
+        ),
+        url(${desktop2x});
+    }
   }
 
   background-repeat: no-repeat;
@@ -241,7 +276,7 @@ export const Mark = styled.div`
   height: 70px;
 
   @media screen and (min-width: 768px) {
-   /*  position: absolute; */
+    /*  position: absolute; */
     width: 31px;
     height: 93px;
     /* left: 369px;
@@ -331,7 +366,7 @@ export const Author = styled.p`
   font-size: 14px;
   line-height: 17px;
 
- /*  @media screen and (min-width: 768px) {
+  /*  @media screen and (min-width: 768px) {
     position: absolute;
     left: 358px;
     top: 929px;
