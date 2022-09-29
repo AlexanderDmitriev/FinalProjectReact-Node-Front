@@ -13,11 +13,11 @@ export const Wrapper = styled.div`
 
 export const Section = styled.div`
   width: 280px;
-  padding: 43px 55px 36px 20px;
+  padding: 43px 20px 36px 20px;
   text-align: center;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   background-color: #ffffff;
-
+  
   @media screen and (min-width: 768px) {
     width: 608px;
     padding: 40px;
@@ -67,12 +67,14 @@ export const Icon = styled.svg`
 `;
 
 export const Subtitle = styled.h3`
+  width: 180px;
   margin-bottom: 8px;
   font-weight: 600;
   font-size: 14px;
   line-height: 1.21;
   color: ${theme.colors.titleColor};
   @media screen and (min-width: 768px) {
+    min-width: 350px;
     font-size: 16px;
     line-height: 1.25;
   }
@@ -83,17 +85,26 @@ export const TextBox = styled.div`
   display: flex;
 `;
 
-export const TextIcon = styled.svg`
-  display: block;
+export const TextIconWrapper = styled.div`
   margin-right: 8px;
+  width: 10px;
+  height: 12px;
+`;
+
+export const TextIcon = styled.svg`
+  vertical-align: top;
   fill: #ff6b08;
 `;
 
 export const Text = styled.p`
+  width: 190px;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.21;
   color: #898f9f;
+  @media screen and (min-width: 768px) {
+    min-width: 450px;
+  }
 `;
 
 export const Button = styled.button`
