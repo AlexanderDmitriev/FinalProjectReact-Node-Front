@@ -64,7 +64,7 @@ export default function Login() {
           }, 400);
         }}
       >
-        <LibraryForm>
+        <LibraryForm onSubmit={handleSubmit}>
           <FormInput>
             <Input>
               <GoogleButton type="submit">
