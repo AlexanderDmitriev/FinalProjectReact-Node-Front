@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import {
   Box,
+  FormBox,
   FormInput,
   GoogleButton,
   TextGoogleButton,
@@ -17,7 +18,7 @@ import {
   NavRegister,
   TextBox,
   Mark,
-  Border,LibraryForm,
+  Border,
 } from './styled/Login.styled';
 
 import { useState } from 'react';
@@ -46,68 +47,74 @@ export default function Login() {
   };
 
   return (
-    <Box>
-      <Formik
-        // initialValues={{ email: '', password: '' }}
-        validationSchema={Yup.object({
-          email: Yup.string()
-            .email('Невірна адреса')
-            .required("Поле обов'язкове"),
-          password: Yup.string()
-            .min(6, 'Мінімум 6 символів')
-            .required("Поле обов'язкове"),
-        })}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
-      >
-        <LibraryForm onSubmit={handleSubmit}>
-          <FormInput>
-            <Input>
-              <GoogleButton type="submit">
-                <TextGoogleButton>Google</TextGoogleButton>
-              </GoogleButton>
-              <InputEmail>
-                <Label htmlFor="email">Електронна адреса</Label>
-                <FieldInput
-                  name="email"
-                  type="email"
-                  placeholder="your@email.com"
-                  onChange={handleChange}
-                />
-                <ErrorMessage name="email" />
-              </InputEmail>
-              <Label htmlFor="password">Пароль</Label>
-              <FieldInput
-                name="password"
-                type="text"
-                placeholder="Пароль"
-                onChange={handleChange}
-              />
-              <ErrorMessage name="password" />
-            </Input>
+    <>
+      <Box>
+        <FormBox>
+          <Formik
+            initialValues={{ email: '', password: '' }}
+            validationSchema={Yup.object({
+              email: Yup.string()
+                .email('Невірна адреса')
+                .required("Поле обов'язкове"),
+              password: Yup.string()
+                .min(6, 'Мінімум 6 символів')
+                .required("Поле обов'язкове"),
+            })}
+            onSubmit={(values, { setSubmitting }) => {
+              setTimeout(() => {
+                alert(JSON.stringify(values, null, 2));
+                setSubmitting(false);
+              }, 400);
+            }}
+          >
+            <Form onSubmit={handleSubmit}>
+              <FormInput>
+                <Input>
+                  <GoogleButton type="submit">
+                    <TextGoogleButton>Google</TextGoogleButton>
+                  </GoogleButton>
+                  <InputEmail>
+                    <Label htmlFor="email">Електронна адреса</Label>
+                    <FieldInput
+                      name="email"
+                      type="email"
+                      placeholder="your@email.com"
+                      value={email}
+                      onChange={handleChange}
+                    />
+                    <ErrorMessage name="email" />
+                  </InputEmail>
+                  <Label htmlFor="password">Пароль</Label>
+                  <FieldInput
+                    name="password"
+                    type="text"
+                    placeholder="Пароль"
+                    value={password}
+                    onChange={handleChange}
+                  />
+                  <ErrorMessage name="password" />
+                </Input>
 
-            <Button type="submit">
-              <TextButton>Увійти</TextButton>
-            </Button>
+                <Button type="submit">
+                  <TextButton>Увійти</TextButton>
+                </Button>
 
-            <NavRegister to="/register">Реєстрація</NavRegister>
-          </FormInput>
-        </LibraryForm>
-      </Formik>
+                <NavRegister to="/register">Реєстрація</NavRegister>
+              </FormInput>
+            </Form>
+          </Formik>
+        </FormBox>
 
-      <TextBox>
-        <Mark />
-        <Text>
-          Книги — это корабли мысли, странствующие по волнам времени и бережно
-          несущие свой драгоценный груз от поколения к поколению.
-        </Text>
-        <Border />
-        <Author>Бэкон Ф.</Author>
-      </TextBox>
-    </Box>
+        <TextBox>
+          <Mark />
+          <Text>
+            Книги — это корабли мысли, странствующие по волнам времени и бережно
+            несущие свой драгоценный груз от поколения к поколению.
+          </Text>
+          <Border />
+          <Author>Бэкон Ф.</Author>
+        </TextBox>
+      </Box>
+    </>
   );
 }
