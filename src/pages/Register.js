@@ -96,7 +96,6 @@ export default function Register() {
             // }}
             onSubmit={handleSubmit}
           >
-            
             <Form onSubmit={handleSubmit}>
               <FormInput>
                 <Input>
