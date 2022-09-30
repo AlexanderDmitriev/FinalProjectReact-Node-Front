@@ -16,7 +16,7 @@ const register = createAsyncThunk(
   '/auth/register',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/users/signup', credentials);
+      const { data } = await axios.post('/api/users/signup', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -73,10 +73,10 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-const operations = {
+const authOperations = {
   register,
   logIn,
   //   logOut,
     fetchCurrentUser,
 };
-export default operations;
+export default authOperations;

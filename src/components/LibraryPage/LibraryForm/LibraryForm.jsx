@@ -2,9 +2,9 @@ import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
-import { AddButton, Wrapper } from './LibraryForm.styled';
+import { AddButton, /* Wrapper */ } from './LibraryForm.styled';
 import { NavLink } from 'react-router-dom';
-
+import books from 'book.json';
 import {
   FormInput,
   Input,
@@ -13,6 +13,7 @@ import {
   InputItemAuthor,
   Label,
   FieldInput,
+  Error,
 } from './LibraryForm.styled';
 
 export default function LibraryForm() {
@@ -29,12 +30,15 @@ export default function LibraryForm() {
       .max(50, 'Надто довге!')
       .typeError('Імя автора?')
       .required("Поле обов'язкове"),
-    year: yup.string().typeError('Вкажіть рік').required("Oбов'язкове"),
-    pages: yup.number().typeError('Потрібно число').required("Oбов'язкове"),
+    year: yup.string().typeError('Вкажіть рік').required("Поле обов'язкове"),
+    pages: yup
+      .number()
+      .typeError('Потрібно число')
+      .required("Поле обов'язкове"),
   });
 
   return (
-    <Wrapper>
+    <>
       <Formik
         initialValues={{
           title: '',
@@ -45,7 +49,17 @@ export default function LibraryForm() {
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
           // do your stuff
-          console.log(values);
+
+          books.push({
+            id: '10',
+            bookName: 'Scrum. A revolutionary method of project management',
+            author: 'Jeff Sutherland',
+            year: '2014',
+            pages: '324',
+            rating: '4',
+          });
+          console.log(books);
+
           resetForm();
         }}
         validationSchema={validateSchema}
@@ -76,7 +90,9 @@ export default function LibraryForm() {
                   />
 
                   {touched.title && errors.title && (
-                    <ErrorMessage name="title" />
+                    <ErrorMessage name="title">
+                      {msg => <Error>{msg}</Error>}
+                    </ErrorMessage>
                   )}
                 </InputItemTitle>
 
@@ -92,7 +108,9 @@ export default function LibraryForm() {
                     placeholder="..."
                   />
                   {touched.author && errors.author && (
-                    <ErrorMessage name="author" />
+                    <ErrorMessage name="author">
+                      {msg => <Error>{msg}</Error>}
+                    </ErrorMessage>
                   )}
                 </InputItemAuthor>
                 <InputItem>
@@ -106,7 +124,11 @@ export default function LibraryForm() {
                     name="year"
                     placeholder="..."
                   />
-                  {touched.year && errors.year && <ErrorMessage name="year" />}
+                  {touched.year && errors.year && (
+                    <ErrorMessage name="year">
+                      {msg => <Error>{msg}</Error>}
+                    </ErrorMessage>
+                  )}
                 </InputItem>
                 <InputItem>
                   <Label htmlFor="author">Кількість сторінок </Label>
@@ -121,7 +143,9 @@ export default function LibraryForm() {
                   />
                   {touched.pages && errors.pages && (
                     // <p className={'error'}>{errors.pages}</p>
-                    <ErrorMessage name="pages" />
+                    <ErrorMessage name="pages">
+                      {msg => <Error>{msg}</Error>}
+                    </ErrorMessage>
                   )}
                 </InputItem>
               </Input>
@@ -139,6 +163,151 @@ export default function LibraryForm() {
           </Form>
         )}
       </Formik>
-    </Wrapper>
+    </>
   );
 }
+
+// import React from 'react';
+// import { Formik, Form, ErrorMessage } from 'formik';
+// import * as yup from 'yup';
+
+// import { AddButton, Wrapper } from './LibraryForm.styled';
+// import { NavLink } from 'react-router-dom';
+
+// import {
+//   FormInput,
+//   Input,
+//   InputItem,
+//   InputItemTitle,
+//   InputItemAuthor,
+//   Label,
+//   FieldInput,
+// } from './LibraryForm.styled';
+
+// export default function LibraryForm() {
+//   const validateSchema = yup.object().shape({
+//     title: yup
+//       .string()
+//       .min(2, 'Дуже коротко!')
+//       .max(50, 'Надто довге!')
+//       .typeError('Назва книги?')
+//       .required("Поле обов'язкове"),
+//     author: yup
+//       .string()
+//       .min(2, 'Дуже коротко!')
+//       .max(50, 'Надто довге!')
+//       .typeError('Імя автора?')
+//       .required("Поле обов'язкове"),
+//     year: yup.string().typeError('Вкажіть рік').required("Oбов'язкове"),
+//     pages: yup.number().typeError('Потрібно число').required("Oбов'язкове"),
+//   });
+
+//   return (
+//     <Wrapper>
+//       <Formik
+//         initialValues={{
+//           title: '',
+//           author: '',
+//           year: '',
+//           pages: '',
+//         }}
+//         validateOnBlur
+//         onSubmit={(values, { resetForm }) => {
+//           // do your stuff
+//           console.log(values);
+//           resetForm();
+//         }}
+//         validationSchema={validateSchema}
+//       >
+//         {({
+//           values,
+//           errors,
+//           touched,
+//           handleChange,
+//           handleBlur,
+//           isValid,
+//           handleSubmit,
+//           dirty,
+//         }) => (
+//           <Form>
+//             <FormInput>
+//               <Input>
+//                 <InputItemTitle>
+//                   <Label htmlFor="title">Назва книги</Label>
+//                   <FieldInput
+//                     className="title"
+//                     value={values.title}
+//                     onChange={handleChange}
+//                     onBlur={handleBlur}
+//                     type="text"
+//                     name="title"
+//                     placeholder="..."
+//                   />
+
+//                   {touched.title && errors.title && (
+//                     <ErrorMessage name="title" />
+//                   )}
+//                 </InputItemTitle>
+
+//                 <InputItemAuthor>
+//                   <Label htmlFor="author">Автор</Label>
+//                   <FieldInput
+//                     className="author"
+//                     value={values.author}
+//                     onChange={handleChange}
+//                     onBlur={handleBlur}
+//                     type="text"
+//                     name="author"
+//                     placeholder="..."
+//                   />
+//                   {touched.author && errors.author && (
+//                     <ErrorMessage name="author" />
+//                   )}
+//                 </InputItemAuthor>
+//                 <InputItem>
+//                   <Label htmlFor="author">Рік випуску</Label>
+//                   <FieldInput
+//                     className="year"
+//                     value={values.year}
+//                     onChange={handleChange}
+//                     onBlur={handleBlur}
+//                     type="text"
+//                     name="year"
+//                     placeholder="..."
+//                   />
+//                   {touched.year && errors.year && <ErrorMessage name="year" />}
+//                 </InputItem>
+//                 <InputItem>
+//                   <Label htmlFor="author">Кількість сторінок </Label>
+//                   <FieldInput
+//                     className="pages"
+//                     value={values.pages}
+//                     onChange={handleChange}
+//                     onBlur={handleBlur}
+//                     type="text"
+//                     name="pages"
+//                     placeholder="..."
+//                   />
+//                   {touched.pages && errors.pages && (
+//                     // <p className={'error'}>{errors.pages}</p>
+//                     <ErrorMessage name="pages" />
+//                   )}
+//                 </InputItem>
+//               </Input>
+
+//               <NavLink to="/" exact="true">
+//                 <AddButton
+//                   disabled={!isValid && !dirty}
+//                   onClick={handleSubmit}
+//                   type="submit"
+//                 >
+//                   Додати
+//                 </AddButton>
+//               </NavLink>
+//             </FormInput>
+//           </Form>
+//         )}
+//       </Formik>
+//     </Wrapper>
+//   );
+// }

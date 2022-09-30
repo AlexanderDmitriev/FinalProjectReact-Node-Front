@@ -16,6 +16,10 @@ const Register = lazy(() => import('../pages/Register'));
 const Login = lazy(() => import('../pages/Login'));
 const Library = lazy(() => import('./LibraryPage/Library'));
 
+/* import Container from './Container'; */
+const Training = lazy(() => import('../pages/Training'));
+
+
 export const App = () => {
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
   const dispatch = useDispatch();
@@ -59,7 +63,8 @@ export const App = () => {
               ></Route>
 
               <Route path="/library" element={<Library />} />
-              {/* <Route path="/training" element={< />} /> */}
+              <Route path="/training" element={<Training />} />
+
               {/* <Statistics/>*/}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

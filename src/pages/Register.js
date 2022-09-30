@@ -35,7 +35,7 @@ export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [repeat_password, setRepeatPassword] = useState('');
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -45,7 +45,7 @@ export default function Register() {
         return setEmail(value);
       case 'password':
         return setPassword(value);
-      case 'repeatPassword':
+      case 'repeat_password':
         return setRepeatPassword(value);
       default:
         return;
@@ -55,7 +55,7 @@ export default function Register() {
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(
-      authOperations.register({ name, email, password, repeatPassword })
+      authOperations.register({ name, email, password, repeat_password })
     );
   };
 
@@ -72,7 +72,7 @@ export default function Register() {
               name: '',
               email: '',
               password: '',
-              repeatPassword: '',
+              repeat_password: '',
             }}
             // validationSchema={Yup.object({
             //   name: Yup.string()
@@ -94,6 +94,7 @@ export default function Register() {
             //     setSubmitting(false);
             //   }, 400);
             // }}
+            onSubmit={handleSubmit}
           >
             <Form onSubmit={handleSubmit}>
               <FormInput>
@@ -136,10 +137,10 @@ export default function Register() {
                   </InputField>
                   <Label htmlFor="repeatPassword">Підтвердіть пароль</Label>
                   <FieldInput
-                    name="repeatPassword"
+                    name="repeat_password"
                     type="text"
                     placeholder="..."
-                    value={repeatPassword}
+                    value={repeat_password}
                     onChange={handleChange}
                   />
                   <ErrorMessage name="repeatPassword" />
