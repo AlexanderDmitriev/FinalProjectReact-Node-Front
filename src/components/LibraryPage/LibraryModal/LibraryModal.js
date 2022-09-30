@@ -12,8 +12,11 @@ import {
   Icon,
   TextBox,
   TextIcon,
+  TextIconWrapper,
 } from './LibraryModal.styled';
 import sprite from '../../../images/icons.svg';
+import Media from 'react-media';
+import LibraryModalBox from './LibraryModalBox';
 
 export default function LibraryModal() {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -37,9 +40,11 @@ export default function LibraryModal() {
                 <Subtitle>Створіть особисту бібліотеку</Subtitle>
               </SubtitleBox>
               <TextBox>
-                <TextIcon width="20" height="12">
-                  <use href={sprite + '#icon-arrow'}></use>
-                </TextIcon>
+                <TextIconWrapper>
+                  <TextIcon width="10" height="12">
+                    <use href={sprite + '#icon-arrow'}></use>
+                  </TextIcon>
+                </TextIconWrapper>
                 <Text>Додайте до неї книжки, які маєте намір прочитати.</Text>
               </TextBox>
             </ListItem>
@@ -53,9 +58,11 @@ export default function LibraryModal() {
                 <Subtitle>Сформуйте своє перше тренування</Subtitle>
               </SubtitleBox>
               <TextBox>
-                <TextIcon width="20" height="12">
-                  <use href={sprite + '#icon-arrow'}></use>
-                </TextIcon>
+                <TextIconWrapper>
+                  <TextIcon width="10" height="12">
+                    <use href={sprite + '#icon-arrow'}></use>
+                  </TextIcon>
+                </TextIconWrapper>
                 <Text>
                   Визначте ціль, оберіть період, розпочинайте тренування.
                 </Text>
@@ -67,6 +74,12 @@ export default function LibraryModal() {
           </Button>
         </Section>
       )}
+      <Media query="(max-width: 767px)">
+        {isModalOpen && <LibraryModalBox onClose={onClose} />}
+      </Media>
+      <Media query="(min-width: 768px)">
+        <LibraryModalBox />
+      </Media>
     </Wrapper>
   );
 }

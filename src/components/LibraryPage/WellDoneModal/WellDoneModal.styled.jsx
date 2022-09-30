@@ -1,0 +1,116 @@
+import styled from 'styled-components';
+import { theme } from '../../../helpers/theme';
+
+export const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: 768px) {
+    position: static;
+  }
+`;
+
+export const Section = styled.div`
+  width: 280px;
+  height: 358px;
+  //   padding: 43px 20px 36px 20px;
+  text-align: center;
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  background-color: #ffffff;
+  //   display: flex;
+  //   flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    width: 394px;
+    height: 286px;
+  }
+`;
+
+export const Icon = styled.svg`
+  margin-top: 44px;
+  fill: #a6abb9;
+  margin-right: 12px;
+`;
+export const TextBox = styled.div`
+  width: 237px;
+  height: 88px;
+
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 24px;
+`;
+export const Text = styled.p`
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0em;
+
+  //   text-align: center;
+  color: #242a37;
+`;
+
+export const Button = styled.button`
+  width: 152px;
+  height: 40px;
+
+  margin: 0 auto;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+  background-color: #ff6b08;
+  border: 1px solid #ff6b08;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  &:hover,
+  &:focus {
+    background-color: #d15807;
+  }
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+`;
+export const BackButton = styled.button`
+  width: 152px;
+  height: 40px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  text-align: center;
+  /* color: #242a37; */
+  color: ${theme.colors.titleColor};
+  border: 1px solid #000000;
+
+  margin: 0 auto;
+
+  display: block;
+  d &:hover,
+  &:focus {
+    border: 1px solid #f25137;
+    cursor: pointer;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 48px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 181px;
+    height: 42px;
+
+    margin-top: 0px;
+    margin-bottom: 20px;
+    margin-left: 48px;
+  }
+`;
