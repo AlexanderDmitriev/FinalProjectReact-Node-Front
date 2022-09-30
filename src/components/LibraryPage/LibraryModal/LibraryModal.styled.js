@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Section = styled.div`
+export const Section = styled.section`
   width: 280px;
   padding: 43px 20px 36px 20px;
   text-align: center;

@@ -11,8 +11,8 @@ const Register = lazy(() => import('../pages/Register'));
 const Login = lazy(() => import('../pages/Login'));
 const Library = lazy(() => import('./LibraryPage/Library'));
 /* import Container from './Container'; */
-
 const Home = lazy(() => import('../pages/Home'));
+const Training = lazy(() => import('../pages/Training'));
 
 export const App = () => {
   return (
@@ -25,7 +25,7 @@ export const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/library" element={<Library />} />
-            {/* <Route path="/training" element={< />} /> */}
+            <Route path="/training" element={<Training />} />
             {/* <Statistics/>*/}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

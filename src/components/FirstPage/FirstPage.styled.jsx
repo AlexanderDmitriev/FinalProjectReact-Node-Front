@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { theme } from '../../helpers/theme';
 
-export const Section = styled.div`
+export const Section = styled.section`
   /* max-width: 320px; */
   padding: 32px 20px 40px 20px;
 
