@@ -32,7 +32,7 @@ export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [repeat_password, setRepeatPassword] = useState('');
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -42,7 +42,7 @@ export default function Register() {
         return setEmail(value);
       case 'password':
         return setPassword(value);
-      case 'repeatPassword':
+      case 'repeat_password':
         return setRepeatPassword(value);
       default:
         return;
@@ -52,19 +52,19 @@ export default function Register() {
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(
-      authOperations.register({ name, email, password, repeatPassword })
+      authOperations.register({ name, email, password, repeat_password })
     );
   };
 
   return (
     <Box>
       <Formik
-        // initialValues={{
-        //   name: '',
-        //   email: '',
-        //   password: '',
-        //   repeatPassword: '',
-        // }}
+         initialValues={{
+           name: '',
+           email: '',
+           password: '',
+           repeat_password: '',
+         }}
 
         // validationSchema={Yup.object({
         //   name: Yup.string()
@@ -80,13 +80,15 @@ export default function Register() {
         //     .min(6, 'Мінімум 6 символів')
         //     .required("Поле обов'язкове"),
         // })}
-        onSubmit={(values, { setSubmitting }) => {
+        /* onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
-        }}
+        }} */
+        onSubmit={handleSubmit}
       >
+       
         <Form onSubmit={handleSubmit}>
           <FormInput>
             <Input>
@@ -97,6 +99,7 @@ export default function Register() {
                 <Label htmlFor="name">Ім'я</Label>
                 <FieldInput
                   name="name"
+                  value={name}
                   type="text"
                   placeholder="..."
                   onChange={handleChange}
@@ -108,6 +111,7 @@ export default function Register() {
                 <FieldInput
                   name="email"
                   type="email"
+                  value={email}
                   placeholder="your@email.com"
                   onChange={handleChange}
                 />
@@ -118,6 +122,7 @@ export default function Register() {
                 <FieldInput
                   name="password"
                   type="text"
+                  value={password}
                   placeholder="..."
                   onChange={handleChange}
                 />
@@ -125,8 +130,9 @@ export default function Register() {
               </InputField>
               <Label htmlFor="repeatPassword">Підтвердіть пароль</Label>
               <FieldInput
-                name="repeatPassword"
+                name="repeat_password"
                 type="text"
+                value={repeat_password}
                 placeholder="..."
                 onChange={handleChange}
               />
