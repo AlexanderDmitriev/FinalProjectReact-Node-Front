@@ -4,6 +4,7 @@ import { Formik, Form, ErrorMessage } from 'formik';
 
 import {
   Box,
+  FormBox,
   FormInput,
   GoogleButton,
   TextGoogleButton,
@@ -16,16 +17,18 @@ import {
   NavLogin,
   NavText,
   NavBox,
-  //  Title,
-  // List,
-  // MainListItem,
-  // Subtitle,
-  // ListItem,
+  TextBox,
+  Title,
+  List,
+  MainListItem,
+  Subtitle,
+  ListItem,
 } from './styled/Register.styled';
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from '../redux/authAPI/auth-operation';
+import { useMediaQuery } from 'react-responsive';
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -56,114 +59,138 @@ export default function Register() {
     );
   };
 
-  return (
-    <Box>
-      <Formik
-        // initialValues={{
-        //   name: '',
-        //   email: '',
-        //   password: '',
-        //   repeatPassword: '',
-        // }}
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
 
-        // validationSchema={Yup.object({
-        //   name: Yup.string()
-        //     .max(15, 'Максимум 15 символів')
-        //     .required("Поле обов'язкове"),
-        //   email: Yup.string()
-        //     .email('Невірна адреса')
-        //     .required("Поле обов'язкове"),
-        //   password: Yup.string()
-        //     .min(6, 'Мінімум 6 символів')
-        //     .required("Поле обов'язкове"),
-        //   repeatPassword: Yup.string()
-        //     .min(6, 'Мінімум 6 символів')
-        //     .required("Поле обов'язкове"),
-        // })}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
-      >
-        <Form onSubmit={handleSubmit}>
-          <FormInput>
-            <Input>
-              <GoogleButton type="submit">
-                <TextGoogleButton>Google</TextGoogleButton>
-              </GoogleButton>
-              <InputField>
-                <Label htmlFor="name">Ім'я</Label>
-                <FieldInput
-                  name="name"
-                  type="text"
-                  placeholder="..."
-                  onChange={handleChange}
-                />
-                <ErrorMessage name="name" />
-              </InputField>
-              <InputField>
-                <Label htmlFor="email">Електронна адреса</Label>
-                <FieldInput
-                  name="email"
-                  type="email"
-                  placeholder="your@email.com"
-                  onChange={handleChange}
-                />
-                <ErrorMessage name="email" />
-              </InputField>
-              <InputField>
-                <Label htmlFor="password">Пароль</Label>
-                <FieldInput
-                  name="password"
-                  type="text"
-                  placeholder="..."
-                  onChange={handleChange}
-                />
-                <ErrorMessage name="password" />
-              </InputField>
-              <Label htmlFor="repeatPassword">Підтвердіть пароль</Label>
-              <FieldInput
-                name="repeatPassword"
-                type="text"
-                placeholder="..."
-                onChange={handleChange}
-              />
-              <ErrorMessage name="repeatPassword" />
-            </Input>
-            <Button type="submit">
-              <TextButton>Зареєструватися</TextButton>
-            </Button>
-            <NavBox>
-              <NavText>
-                Вже з нами? <NavLogin to="/login">Увійти</NavLogin>
-              </NavText>
-            </NavBox>
-          </FormInput>
-        </Form>
-      </Formik>
-      {/* <Title>Books Reading</Title>
-      <List>
-        <MainListItem>
-          <Subtitle>Will help you to</Subtitle>
-          <List>
-            <ListItem>Create your goal faster and proceed to read</ListItem>
-            <ListItem>Divide process proportionally for each day</ListItem>
-            <ListItem>Track your success</ListItem>
-          </List>
-        </MainListItem>
-        <MainListItem>
-          <Subtitle>You may also</Subtitle>
-          <List>
-            <ListItem>Pose your own independent point of view</ListItem>
-            <ListItem>
-              Improve your professional skills according to new knowledge
-            </ListItem>
-            <ListItem>Become an interesting interlocutor</ListItem>
-          </List>
-        </MainListItem>
-      </List> */}
-    </Box>
+  return (
+    <>
+      <Box>
+        <FormBox>
+          <Formik
+            initialValues={{
+              name: '',
+              email: '',
+              password: '',
+              repeatPassword: '',
+            }}
+            // validationSchema={Yup.object({
+            //   name: Yup.string()
+            //     .max(15, 'Максимум 15 символів')
+            //     .required("Поле обов'язкове"),
+            //   email: Yup.string()
+            //     .email('Невірна адреса')
+            //     .required("Поле обов'язкове"),
+            //   password: Yup.string()
+            //     .min(6, 'Мінімум 6 символів')
+            //     .required("Поле обов'язкове"),
+            //   repeatPassword: Yup.string()
+            //     .min(6, 'Мінімум 6 символів')
+            //     .required("Поле обов'язкове"),
+            // })}
+            // onSubmit={(values, { setSubmitting }) => {
+            //   setTimeout(() => {
+            //     alert(JSON.stringify(values, null, 2));
+            //     setSubmitting(false);
+            //   }, 400);
+            // }}
+          >
+            <Form onSubmit={handleSubmit}>
+              <FormInput>
+                <Input>
+                  <GoogleButton type="submit">
+                    <TextGoogleButton>Google</TextGoogleButton>
+                  </GoogleButton>
+                  <InputField>
+                    <Label htmlFor="name">Ім'я</Label>
+                    <FieldInput
+                      name="name"
+                      type="text"
+                      placeholder="..."
+                      value={name}
+                      onChange={handleChange}
+                    />
+                    <ErrorMessage name="name" />
+                  </InputField>
+                  <InputField>
+                    <Label htmlFor="email">Електронна адреса</Label>
+                    <FieldInput
+                      name="email"
+                      type="email"
+                      placeholder="your@email.com"
+                      value={email}
+                      onChange={handleChange}
+                    />
+                    <ErrorMessage name="email" />
+                  </InputField>
+                  <InputField>
+                    <Label htmlFor="password">Пароль</Label>
+                    <FieldInput
+                      name="password"
+                      type="text"
+                      placeholder="..."
+                      value={password}
+                      onChange={handleChange}
+                    />
+                    <ErrorMessage name="password" />
+                  </InputField>
+                  <Label htmlFor="repeatPassword">Підтвердіть пароль</Label>
+                  <FieldInput
+                    name="repeatPassword"
+                    type="text"
+                    placeholder="..."
+                    value={repeatPassword}
+                    onChange={handleChange}
+                  />
+                  <ErrorMessage name="repeatPassword" />
+                </Input>
+
+                <Button type="submit">
+                  <TextButton>Зареєструватися</TextButton>
+                </Button>
+
+                <NavBox>
+                  <NavText>
+                    Вже з нами? <NavLogin to="/login">Увійти</NavLogin>
+                  </NavText>
+                </NavBox>
+              </FormInput>
+            </Form>
+          </Formik>
+        </FormBox>
+
+        {isTablet && (
+          <TextBox>
+            <Title>Books Reading</Title>
+            <List>
+              <MainListItem>
+                <Subtitle>Допоможе вам</Subtitle>
+                <List>
+                  <ListItem>
+                    Швидше сформулювати свою ціль і розпочати читати
+                  </ListItem>
+                  <ListItem>
+                    Пропорційно розподілити навантаження на кожний день
+                  </ListItem>
+                  <ListItem>Відстежувати особистий успіх</ListItem>
+                </List>
+              </MainListItem>
+              <MainListItem>
+                <Subtitle>Також ви зможете </Subtitle>
+                <List>
+                  <ListItem>
+                    Формувати особисту думку незалежну від інших
+                  </ListItem>
+                  <ListItem>
+                    Підвищити свої професійні якості опираючись на нові знання
+                  </ListItem>
+                  <ListItem>Стати цікавим співрозмовником</ListItem>
+                </List>
+              </MainListItem>
+            </List>
+          </TextBox>
+        )}
+      </Box>
+    </>
   );
 }

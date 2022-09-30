@@ -30,7 +30,6 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    // authSlice,
     auth: persistReducer(authPersistConfig, authSlice),
   },
   middleware,
