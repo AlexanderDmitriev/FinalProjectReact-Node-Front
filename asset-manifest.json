@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/FinalProjectReact-Node-Front/static/css/main.e6694c62.css",
-    "main.js": "/FinalProjectReact-Node-Front/static/js/main.9e788ef8.js",
+    "main.js": "/FinalProjectReact-Node-Front/static/js/main.74d91ad0.js",
     "static/js/9.a81bba9c.chunk.js": "/FinalProjectReact-Node-Front/static/js/9.a81bba9c.chunk.js",
     "static/js/455.a496bd74.chunk.js": "/FinalProjectReact-Node-Front/static/js/455.a496bd74.chunk.js",
     "static/js/758.67557b13.chunk.js": "/FinalProjectReact-Node-Front/static/js/758.67557b13.chunk.js",
@@ -25,7 +25,7 @@
     "static/media/orangebookicon.svg": "/FinalProjectReact-Node-Front/static/media/orangebookicon.3b2150cd5a25089da375f70950f1d646.svg",
     "static/media/iconhome.svg": "/FinalProjectReact-Node-Front/static/media/iconhome.b3cc0a6a4d8a1f2461a5a0058dafff68.svg",
     "main.e6694c62.css.map": "/FinalProjectReact-Node-Front/static/css/main.e6694c62.css.map",
-    "main.9e788ef8.js.map": "/FinalProjectReact-Node-Front/static/js/main.9e788ef8.js.map",
+    "main.74d91ad0.js.map": "/FinalProjectReact-Node-Front/static/js/main.74d91ad0.js.map",
     "9.a81bba9c.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/9.a81bba9c.chunk.js.map",
     "455.a496bd74.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/455.a496bd74.chunk.js.map",
     "758.67557b13.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/758.67557b13.chunk.js.map",
@@ -37,6 +37,6 @@
   },
   "entrypoints": [
     "static/css/main.e6694c62.css",
-    "static/js/main.9e788ef8.js"
+    "static/js/main.74d91ad0.js"
   ]
 }
