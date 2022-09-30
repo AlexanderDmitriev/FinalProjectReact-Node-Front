@@ -1,35 +1,75 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import Container from '../helpers/Container';
 import NotFoundPage from '../pages/NotFoundPage';
 import Header from './Header/Header';
 import { Spinner } from './Spinner';
-/* import Container from './Container'; */
+import authOperations from '../redux/authAPI/auth-operation';
+import authSelectors from '../redux/authAPI/auth-selectors';
+// import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
-/* const FirstPage = lazy(() => import('../components/FirstPage/FirstPage')); */
+const Home = lazy(() => import('../pages/Home'));
 const Register = lazy(() => import('../pages/Register'));
 const Login = lazy(() => import('../pages/Login'));
 const Library = lazy(() => import('./LibraryPage/Library'));
-/* import Container from './Container'; */
 
-const Home = lazy(() => import('../pages/Home'));
+/* import Container from './Container'; */
+const Training = lazy(() => import('../pages/Training'));
+
 
 export const App = () => {
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser);
+  }, [dispatch]);
+
   return (
     <>
       <Container>
-        <Suspense fallback={<Spinner />}>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/library" element={<Library />} />
-            {/* <Route path="/training" element={< />} /> */}
-            {/* <Statistics/>*/}
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
+        {isFetchingCurrentUser ? (
+          <Spinner />
+        ) : (
+          <Suspense fallback={<Spinner />}>
+            <Header />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <PublicRoute path="/">
+                    <Home />
+                  </PublicRoute>
+                }
+              ></Route>
+              <Route
+                path="/register"
+                element={
+                  <PublicRoute path="/register" redirectTo="/" restricted>
+                    <Register />
+                  </PublicRoute>
+                }
+              ></Route>
+              <Route
+                path="/login"
+                element={
+                  <PublicRoute path="/login" redirectTo="/library" restricted>
+                    <Login />
+                  </PublicRoute>
+                }
+              ></Route>
+
+              <Route path="/library" element={<Library />} />
+              <Route path="/training" element={<Training />} />
+
+              {/* <Statistics/>*/}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
+        )}
       </Container>
     </>
   );

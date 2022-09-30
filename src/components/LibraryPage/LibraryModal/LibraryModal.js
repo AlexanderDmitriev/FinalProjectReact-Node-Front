@@ -15,6 +15,8 @@ import {
   TextIconWrapper,
 } from './LibraryModal.styled';
 import sprite from '../../../images/icons.svg';
+import Media from 'react-media';
+import LibraryModalBox from './LibraryModalBox';
 
 export default function LibraryModal() {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -72,6 +74,12 @@ export default function LibraryModal() {
           </Button>
         </Section>
       )}
+      <Media query="(max-width: 767px)">
+        {isModalOpen && <LibraryModalBox onClose={onClose} />}
+      </Media>
+      <Media query="(min-width: 768px)">
+        <LibraryModalBox />
+      </Media>
     </Wrapper>
   );
 }
