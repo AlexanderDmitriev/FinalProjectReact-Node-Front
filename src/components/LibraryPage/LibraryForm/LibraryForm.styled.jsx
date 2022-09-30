@@ -17,7 +17,7 @@ export const Box = styled.div`
   }
   @media screen and (min-width: 1280px) {
     width: 1280px;
-    height: 850px;}
+    height: 850px;
 `;
 
 export const FormInput = styled.div`
@@ -47,6 +47,7 @@ export const Input = styled.div`
     // flex-direction: row;
     flex-flow: row wrap;
   }
+
   @media screen and (min-width: 1280px) {
     width: 1000px;
     height: 67px;
@@ -59,6 +60,7 @@ export const Input = styled.div`
 
 export const InputItem = styled.div`
   width: 280px;
+  // margin-top: 24px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -80,7 +82,7 @@ export const InputItem = styled.div`
 `;
 export const InputItemTitle = styled.div`
   width: 280px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   margin-left: auto;
@@ -155,14 +157,6 @@ export const FieldInput = styled(Field)`
   }
 `;
 
-export const Wrapper = styled.div`
-  position: absolute;
-
-  @media screen and (min-width: 768px) {
-    position: static;
-  }
-`;
-
 export const AddButton = styled.button`
   min-width: 171px;
 
@@ -182,6 +176,9 @@ export const AddButton = styled.button`
     border: 1px solid #f25137;
     cursor: pointer;
   }
+  @media screen and (min-width: 768px) {
+    margin-top: 48px;
+  }
 
   @media screen and (min-width: 1280px) {
     width: 181px;
@@ -193,3 +190,15 @@ export const AddButton = styled.button`
   }
 `;
 
+export const Error = styled.p`
+  font-family: 'Abril Fatface';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.12;
+  color: red;
+  // color: ${theme.colors.titleColor};
+  text-align: center;
+  // @media screen and (min-width: 768px) {
+  //   margin-bottom: 48px;
+  // }
+`;
