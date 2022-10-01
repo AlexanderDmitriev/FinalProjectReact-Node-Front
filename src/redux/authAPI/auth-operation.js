@@ -40,18 +40,18 @@ const logIn = createAsyncThunk(
   }
 );
 
-// const logOut = createAsyncThunk(
-//   'auth/logout',
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       await axios.post('/users/logout');
-//       token.unset();
-//     } catch (error) {
-//       alert(error.message);
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
+const logOut = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post('/users/logout');
+      token.unset();
+    } catch (error) {
+      alert(error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
@@ -76,7 +76,7 @@ const fetchCurrentUser = createAsyncThunk(
 const authOperations = {
   register,
   logIn,
-  //   logOut,
+    logOut,
     fetchCurrentUser,
 };
 export default authOperations;
