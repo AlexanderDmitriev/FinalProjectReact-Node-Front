@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import authSlice from 'redux/authAPI/auth-slice';
 import { resultsApi } from './results/rtkQuery/resultsSlice';
+import { ratingApi } from './rating/ratingSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -22,6 +23,7 @@ const middleware = [
     
   }),
   resultsApi.middleware,
+  ratingApi.middleware,
 ];
 
 const authPersistConfig = {
@@ -35,6 +37,7 @@ export const store = configureStore({
     // authSlice,
     [authSlice.name]: persistReducer(authPersistConfig, authSlice.reducer),
     [resultsApi.reducerPath]: resultsApi.reducer,
+    [ratingApi.reducerPath]: ratingApi.reducer,
   },
   middleware,
 });
