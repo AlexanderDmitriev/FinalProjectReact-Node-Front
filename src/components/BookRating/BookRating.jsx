@@ -9,13 +9,11 @@ export default function BookRating({onClose, bookId}) {
     const [updateRating] = useUpdateRatingMutation();
         
     const handleSaveComment = async () => {
-        // todo логика отправки комментария на бек
-
         try {
             const value = {
-                id: "6338600730759772a28fc984",
-                comment: 'rrgrgrgr',
-                rating: '4',
+                id: bookId,
+                comment: comment,
+                rating: starsRating.toString(),
             }
             console.log(value)
             console.log(typeof bookId)
@@ -23,9 +21,8 @@ export default function BookRating({onClose, bookId}) {
         } catch (err) {
             console.log(err);
        }
-        
         reset();
-        // onClose();
+        onClose();
     }
     const reset = () => {
         setComment("")

@@ -29,7 +29,7 @@ export const ratingApi = createApi({
       query: value => ({
         url: `books/${value.id}`,
         method: 'PATCH',
-            body: {
+            data: {
             comment: value.comment,
             rating: value.rating
         },
