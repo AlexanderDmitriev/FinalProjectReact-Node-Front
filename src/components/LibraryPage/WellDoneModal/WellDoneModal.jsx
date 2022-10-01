@@ -4,6 +4,7 @@ import {
   Section,
   TextBox,
   Text,
+  ButtonBox,
   Button,
   BackButton,
   Icon,
@@ -31,12 +32,14 @@ export default function WellDoneModal() {
               вдасться
             </Text>
           </TextBox>
-          <Button type="button" onClick={onClose}>
-            Нове тренування
-          </Button>
-          <BackButton type="button" onClick={onClose}>
-            Назад
-          </BackButton>
+          <ButtonBox>
+            <Button type="button" onClick={onClose}>
+              Нове тренування
+            </Button>
+            <BackButton type="button" onClick={onClose}>
+              Назад
+            </BackButton>
+          </ButtonBox>
         </Section>
       )}
     </Wrapper>

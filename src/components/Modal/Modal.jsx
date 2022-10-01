@@ -5,17 +5,20 @@ const modalRoot = document.querySelector('#modal-root');
 
 // Вставить в компоненте в котором отрисовывается модалка
 
-// const [isModalOpen, setModalOpen] = useState(false);
+//   const [id, setId] = useState('');
+
+//   const [isModalOpen, setModalOpen] = useState(false);
 //   const handleCloseModal = () => {
 //     setModalOpen(false);
 //   }
 //   const onclick = () => {
+//     setId("6338600730759772a28fc984")
 //     setModalOpen(true)
 // }
-  
-// <Modal isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}>
-//     <BookRating onClose={handleCloseModal} />
-// </Modal>
+    //   <button onClick={onclick}>on</button> как пример открытия модалки
+    //   <Modal isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}>
+    //     <BookRating onClose={handleCloseModal} bookId={id} />
+    //   </Modal>
 
 export default function Modal({ isModalOpen, handleCloseModal, children }) {
 

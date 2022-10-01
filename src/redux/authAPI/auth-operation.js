@@ -2,7 +2,6 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://book-reader-43-back.herokuapp.com';
-
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -16,7 +15,7 @@ const register = createAsyncThunk(
   '/auth/register',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/api/users/signup', credentials);
+      const { data } = await axios.post('/users/signup', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -30,7 +29,7 @@ const logIn = createAsyncThunk(
   '/auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/users/login', credentials);
+      const { data } = await axios.post('/api/users/login', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -40,18 +39,18 @@ const logIn = createAsyncThunk(
   }
 );
 
-// const logOut = createAsyncThunk(
-//   'auth/logout',
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       await axios.post('/users/logout');
-//       token.unset();
-//     } catch (error) {
-//       alert(error.message);
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
+const logOut = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post('/users/logout');
+      token.unset();
+    } catch (error) {
+      alert(error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
@@ -76,7 +75,7 @@ const fetchCurrentUser = createAsyncThunk(
 const authOperations = {
   register,
   logIn,
-  //   logOut,
+    logOut,
     fetchCurrentUser,
 };
 export default authOperations;

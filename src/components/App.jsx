@@ -19,7 +19,6 @@ const Library = lazy(() => import('./LibraryPage/Library'));
 /* import Container from './Container'; */
 const Training = lazy(() => import('../pages/Training'));
 
-
 export const App = () => {
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
   const dispatch = useDispatch();

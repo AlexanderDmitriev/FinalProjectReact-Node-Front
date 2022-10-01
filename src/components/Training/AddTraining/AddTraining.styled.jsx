@@ -8,7 +8,6 @@ export const TrainingSection = styled.div`
     display: flex;
     flex-direction: column;
     padding: 24px 20px 0 20px;
-    height: 648px;
 
     @media screen and (min-width: 1280px) {
         max-width: 928px;

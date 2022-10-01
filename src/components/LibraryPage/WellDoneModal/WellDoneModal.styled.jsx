@@ -13,12 +13,10 @@ export const Wrapper = styled.div`
 export const Section = styled.div`
   width: 280px;
   height: 358px;
-  //   padding: 43px 20px 36px 20px;
+
   text-align: center;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   background-color: #ffffff;
-  //   display: flex;
-  //   flex-direction: column;
 
   @media screen and (min-width: 768px) {
     width: 394px;
@@ -39,6 +37,10 @@ export const TextBox = styled.div`
   margin: 0 auto;
   display: block;
   margin-bottom: 24px;
+  @media screen and (min-width: 768px) {
+    width: 296px;
+    height: 66px;
+  }
 `;
 export const Text = styled.p`
   font-size: 16px;
@@ -48,6 +50,14 @@ export const Text = styled.p`
 
   //   text-align: center;
   color: #242a37;
+`;
+export const ButtonBox = styled.div`
+  display: flex;
+  justify-content: end;
+  @media screen and (min-width: 768px) {
+    // width: 394px;
+    // height: 286px;
+  }
 `;
 
 export const Button = styled.button`
@@ -69,16 +79,6 @@ export const Button = styled.button`
     background-color: #d15807;
   }
   @media screen and (min-width: 768px) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
   }
 `;
 export const BackButton = styled.button`
@@ -102,15 +102,12 @@ export const BackButton = styled.button`
     cursor: pointer;
   }
   @media screen and (min-width: 768px) {
-    margin-top: 48px;
+    // width: 152px;
+    // height: 40px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 181px;
-    height: 42px;
-
-    margin-top: 0px;
-    margin-bottom: 20px;
-    margin-left: 48px;
+    // width: 181px;
+    // height: 42px;
   }
 `;

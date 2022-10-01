@@ -1,10 +1,12 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+// import 'react-toastify/dist/ReactToastify.css';
 
-import { AddButton, /* Wrapper */ } from './LibraryForm.styled';
+import { AddButton /* Wrapper */ } from './LibraryForm.styled';
 import { NavLink } from 'react-router-dom';
-import books from 'book.json';
+/* import books from 'book.json'; */
 import {
   FormInput,
   Input,
@@ -16,7 +18,16 @@ import {
   Error,
 } from './LibraryForm.styled';
 
+import {
+  /* useGetBooksQuery, */
+  useAddBooksMutation,
+} from '../../../redux/booksApi/booksSlice';
+
 export default function LibraryForm() {
+  const [AddBooks, /* { error, isLoading } */] = useAddBooksMutation();
+  /* const { data } = useGetBooksQuery();
+  const booksArray = data;
+ */
   const validateSchema = yup.object().shape({
     title: yup
       .string()
@@ -30,9 +41,9 @@ export default function LibraryForm() {
       .max(50, 'Надто довге!')
       .typeError('Імя автора?')
       .required("Поле обов'язкове"),
-    year: yup.string().typeError('Вкажіть рік').required("Поле обов'язкове"),
+    year: yup.string().typeError('Вкажіть рік'),
     pages: yup
-      .number()
+      .string()
       .typeError('Потрібно число')
       .required("Поле обов'язкове"),
   });
@@ -50,16 +61,45 @@ export default function LibraryForm() {
         onSubmit={(values, { resetForm }) => {
           // do your stuff
 
-          books.push({
-            id: '10',
-            bookName: 'Scrum. A revolutionary method of project management',
-            author: 'Jeff Sutherland',
-            year: '2014',
-            pages: '324',
-            rating: '4',
-          });
-          console.log(books);
+          // console.log(data);
+          // console.log(booksArray);
+          // console.log(error);
+          // console.log(isLoading);
 
+          const handleSub = () => {
+            console.log(values.title);
+          };
+
+          const item = {
+            id: nanoid(),
+            title: values.title,
+            author: values.author,
+            year: values.year,
+            pages: values.pages,
+            // status: 'plan',
+            // resume: {
+            //   rating: 1,
+            //   comment: 'bad bad',
+            // },
+          };
+          // console.log(item);
+          // const filterBook = item.title.toLocaleLowerCase();
+          // const booksForFind = booksArray.find(
+          //   i => i.name.toLocaleLowerCase() === filterBook
+          // );
+          // if (booksForFind) {
+          //   // window.alert(`${title} is already in books`);
+          //   resetForm();
+          //   return;
+          // }
+          const handleAddContact = async () => {
+            await AddBooks(item);
+            // .unwrap();
+            // toast.info(`Books  ${title} added`);
+          };
+
+          handleAddContact();
+          handleSub();
           resetForm();
         }}
         validationSchema={validateSchema}
@@ -161,153 +201,9 @@ export default function LibraryForm() {
               </NavLink>
             </FormInput>
           </Form>
+          // {isLoading ? <Loader /> : 'Add contact'}
         )}
       </Formik>
     </>
   );
 }
-
-// import React from 'react';
-// import { Formik, Form, ErrorMessage } from 'formik';
-// import * as yup from 'yup';
-
-// import { AddButton, Wrapper } from './LibraryForm.styled';
-// import { NavLink } from 'react-router-dom';
-
-// import {
-//   FormInput,
-//   Input,
-//   InputItem,
-//   InputItemTitle,
-//   InputItemAuthor,
-//   Label,
-//   FieldInput,
-// } from './LibraryForm.styled';
-
-// export default function LibraryForm() {
-//   const validateSchema = yup.object().shape({
-//     title: yup
-//       .string()
-//       .min(2, 'Дуже коротко!')
-//       .max(50, 'Надто довге!')
-//       .typeError('Назва книги?')
-//       .required("Поле обов'язкове"),
-//     author: yup
-//       .string()
-//       .min(2, 'Дуже коротко!')
-//       .max(50, 'Надто довге!')
-//       .typeError('Імя автора?')
-//       .required("Поле обов'язкове"),
-//     year: yup.string().typeError('Вкажіть рік').required("Oбов'язкове"),
-//     pages: yup.number().typeError('Потрібно число').required("Oбов'язкове"),
-//   });
-
-//   return (
-//     <Wrapper>
-//       <Formik
-//         initialValues={{
-//           title: '',
-//           author: '',
-//           year: '',
-//           pages: '',
-//         }}
-//         validateOnBlur
-//         onSubmit={(values, { resetForm }) => {
-//           // do your stuff
-//           console.log(values);
-//           resetForm();
-//         }}
-//         validationSchema={validateSchema}
-//       >
-//         {({
-//           values,
-//           errors,
-//           touched,
-//           handleChange,
-//           handleBlur,
-//           isValid,
-//           handleSubmit,
-//           dirty,
-//         }) => (
-//           <Form>
-//             <FormInput>
-//               <Input>
-//                 <InputItemTitle>
-//                   <Label htmlFor="title">Назва книги</Label>
-//                   <FieldInput
-//                     className="title"
-//                     value={values.title}
-//                     onChange={handleChange}
-//                     onBlur={handleBlur}
-//                     type="text"
-//                     name="title"
-//                     placeholder="..."
-//                   />
-
-//                   {touched.title && errors.title && (
-//                     <ErrorMessage name="title" />
-//                   )}
-//                 </InputItemTitle>
-
-//                 <InputItemAuthor>
-//                   <Label htmlFor="author">Автор</Label>
-//                   <FieldInput
-//                     className="author"
-//                     value={values.author}
-//                     onChange={handleChange}
-//                     onBlur={handleBlur}
-//                     type="text"
-//                     name="author"
-//                     placeholder="..."
-//                   />
-//                   {touched.author && errors.author && (
-//                     <ErrorMessage name="author" />
-//                   )}
-//                 </InputItemAuthor>
-//                 <InputItem>
-//                   <Label htmlFor="author">Рік випуску</Label>
-//                   <FieldInput
-//                     className="year"
-//                     value={values.year}
-//                     onChange={handleChange}
-//                     onBlur={handleBlur}
-//                     type="text"
-//                     name="year"
-//                     placeholder="..."
-//                   />
-//                   {touched.year && errors.year && <ErrorMessage name="year" />}
-//                 </InputItem>
-//                 <InputItem>
-//                   <Label htmlFor="author">Кількість сторінок </Label>
-//                   <FieldInput
-//                     className="pages"
-//                     value={values.pages}
-//                     onChange={handleChange}
-//                     onBlur={handleBlur}
-//                     type="text"
-//                     name="pages"
-//                     placeholder="..."
-//                   />
-//                   {touched.pages && errors.pages && (
-//                     // <p className={'error'}>{errors.pages}</p>
-//                     <ErrorMessage name="pages" />
-//                   )}
-//                 </InputItem>
-//               </Input>
-
-//               <NavLink to="/" exact="true">
-//                 <AddButton
-//                   disabled={!isValid && !dirty}
-//                   onClick={handleSubmit}
-//                   type="submit"
-//                 >
-//                   Додати
-//                 </AddButton>
-//               </NavLink>
-//             </FormInput>
-//           </Form>
-//         )}
-//       </Formik>
-//     </Wrapper>
-//   );
-// }

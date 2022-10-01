@@ -18,32 +18,25 @@ const axiosBaseQuery =
     }
   };
 
-export const resultsApi = createApi({
-  reducerPath: 'resultsApi',
+export const ratingApi = createApi({
+  reducerPath: 'ratingApi',
   baseQuery: axiosBaseQuery({
     baseUrl: 'https://book-reader-43-back.herokuapp.com/api/',
   }),
-  tagTypes: ['Result'],
+  tagTypes: ['Rating'],
   endpoints: builder => ({
-    fetchResults: builder.query({
-      query: () => ({
-        url: 'training/stats',
-      }),
-      providesTags: ['Result'],
-    }),
-    createResult: builder.mutation({
-      query: result => ({
-        url: 'training/stats',
-        method: 'POST',
-        data: {
-          date: result.date,
-          // time: result.time,
-          pages: result.pages,
+    updateRating: builder.mutation({
+      query: value => ({
+        url: `books/${value.id}`,
+        method: 'PATCH',
+            data: {
+            comment: value.comment,
+            rating: value.rating
         },
       }),
-      invalidatesTags: ['Result'],
+      invalidatesTags: ['Rating'],
     }),
   }),
 });
 
-export const { useFetchResultsQuery, useCreateResultMutation } = resultsApi;
+export const { useUpdateRatingMutation } = ratingApi;

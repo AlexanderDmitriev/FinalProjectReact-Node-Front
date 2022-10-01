@@ -29,10 +29,10 @@ export default function Library() {
           <BackArrow />
         </NavLink>
         <LibraryForm />
-        <LibraryModal />
+        {/* <LibraryModal />
         <AlreadyRead books={books} />
         <ReadingNow books={books} />
-        <GoingToRead books={books} />
+        <GoingToRead books={books} /> */}
       </Container>
     </>
   );

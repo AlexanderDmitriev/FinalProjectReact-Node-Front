@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 // import '../../css/react-datepicker.css';
 import moment from 'moment';
 import {
@@ -25,25 +25,25 @@ export default function Results() {
 
   console.log(data);
   console.log(error);
+
   console.log(isLoading);
 
   const [createResult] = useCreateResultMutation();
 
   const handleSubmit = e => {
     e.preventDefault();
-
     const date = e.target.date.value;
     const time = moment().format('h:mm:ss');
     const pages = e.target.pages.value;
     const result = {
-      id: nanoid(),
+      // id: nanoid(),
       date,
-      time,
+      // time,
       pages,
     };
 
     createResult(result);
-    console.log(result);
+    console.log(time);
     reset();
   };
 
