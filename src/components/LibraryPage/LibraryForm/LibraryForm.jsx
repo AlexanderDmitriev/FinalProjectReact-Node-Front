@@ -29,8 +29,8 @@ export default function LibraryForm() {
   const booksArray = data;
 
   console.log(data);
-  console.log(error);
-  console.log(isLoading);
+  // console.log(error);
+  // console.log(isLoading);
   const validateSchema = yup.object().shape({
     title: yup
       .string()
