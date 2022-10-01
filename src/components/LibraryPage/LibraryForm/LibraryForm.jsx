@@ -6,7 +6,7 @@ import * as yup from 'yup';
 
 import { AddButton /* Wrapper */ } from './LibraryForm.styled';
 import { NavLink } from 'react-router-dom';
-import books from 'book.json';
+/* import books from 'book.json'; */
 import {
   FormInput,
   Input,
@@ -19,18 +19,15 @@ import {
 } from './LibraryForm.styled';
 
 import {
-  useGetBooksQuery,
+  /* useGetBooksQuery, */
   useAddBooksMutation,
 } from '../../../redux/booksApi/booksSlice';
 
 export default function LibraryForm() {
-  const [AddBooks, { error, isLoading }] = useAddBooksMutation();
-  const { data } = useGetBooksQuery();
+  const [AddBooks, /* { error, isLoading } */] = useAddBooksMutation();
+  /* const { data } = useGetBooksQuery();
   const booksArray = data;
-
-  console.log(data);
-  // console.log(error);
-  // console.log(isLoading);
+ */
   const validateSchema = yup.object().shape({
     title: yup
       .string()
