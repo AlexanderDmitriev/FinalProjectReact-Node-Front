@@ -1,18 +1,26 @@
 import { useState } from "react";
 import { Container, RatingCaption, StarsContainer, Form, FormCaption, FormText, Btn, BtnContainer, StarsField } from './BookRating.styled';
 import StarRating from "../RatingStars/StarRating";
+import { useUpdateRatingMutation } from "redux/rating/ratingSlice";
 
-export default function BookRating({onClose}) {
+export default function BookRating({onClose, bookId}) {
     const [comment, setComment] = useState("");
-    const [starsRating, setStarsRating] = useState(0);
-    
-    const handleComment = e => {
-        setComment(e.currentTarget.value);
-    }
-    
-    const handleSaveComment = () => {
-        // todo логика отправки комментария на бек
-        console.log(starsRating, comment)
+    const [starsRating, setStarsRating] = useState(1);
+    const [updateRating] = useUpdateRatingMutation();
+        
+    const handleSaveComment = async () => {
+        try {
+            const value = {
+                id: bookId,
+                comment: comment,
+                rating: starsRating.toString(),
+            }
+            console.log(value)
+            console.log(typeof bookId)
+           await updateRating(value)
+        } catch (err) {
+            console.log(err);
+       }
         reset();
         onClose();
     }
@@ -22,6 +30,10 @@ export default function BookRating({onClose}) {
 
     const handleStarsRating = numberOfStar => {
         setStarsRating(numberOfStar)
+    }
+
+    const handleComment = e => {
+        setComment(e.currentTarget.value);
     }
 
     return (
