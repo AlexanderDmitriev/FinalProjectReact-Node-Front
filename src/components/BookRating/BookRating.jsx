@@ -5,7 +5,7 @@ import { useUpdateRatingMutation } from "redux/rating/ratingSlice";
 
 export default function BookRating({onClose, bookId}) {
     const [comment, setComment] = useState("");
-    const [starsRating, setStarsRating] = useState(0);
+    const [starsRating, setStarsRating] = useState(1);
     const [updateRating] = useUpdateRatingMutation();
         
     const handleSaveComment = async () => {
@@ -13,11 +13,12 @@ export default function BookRating({onClose, bookId}) {
 
         try {
             const value = {
-                id: bookId,
-                rating: starsRating,
-                comment: comment,
+                id: "6338600730759772a28fc984",
+                comment: 'rrgrgrgr',
+                rating: '4',
             }
             console.log(value)
+            console.log(typeof bookId)
            await updateRating(value)
         } catch (err) {
             console.log(err);

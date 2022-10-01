@@ -29,9 +29,9 @@ export const ratingApi = createApi({
       query: value => ({
         url: `books/${value.id}`,
         method: 'PATCH',
-        data: {
-            rating: value.rating,
+            body: {
             comment: value.comment,
+            rating: value.rating
         },
       }),
       invalidatesTags: ['Rating'],
