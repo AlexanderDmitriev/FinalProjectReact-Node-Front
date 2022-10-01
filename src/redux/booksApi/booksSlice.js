@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const booksApi = createApi({
   reducerPath: 'booksApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://book-reader-43-back.herokuapp.com/',
+    baseUrl: 'https://book-reader-43-back.herokuapp.com/api/',
 
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
