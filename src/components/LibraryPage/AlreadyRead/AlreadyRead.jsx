@@ -18,19 +18,19 @@ export default function AlreadyRead({ books }) {
   console.log(books)
   return (
     <Section>
-      <Title>Already Read</Title>
+      <Title>Вже прочитано</Title>
       <Wrapper>
         <>
           {books.map(book=>( <BookCard><List key={book.id}>
             <ListItem> <IconBook/><BookName>{book.bookName}</BookName></ListItem>
-            <ListItem><BookDescription>Author:<Value>{ book.author}</Value></BookDescription></ListItem>
-            <ListItem><BookDescription>Year:<Value>{ book.year}</Value></BookDescription></ListItem>
-            <ListItem><BookDescription>Pages:<Value>{ book.pages}</Value></BookDescription></ListItem>
-            <ListItem><BookDescription>Rating:<Value>{ book.rating}</Value></BookDescription></ListItem>
+            <ListItem><BookDescription>Автор:<Value>{ book.author}</Value></BookDescription></ListItem>
+            <ListItem><BookDescription>Рік:<Value>{ book.year}</Value></BookDescription></ListItem>
+            <ListItem><BookDescription>Кількість сторінок:<Value>{ book.pages}</Value></BookDescription></ListItem>
+            <ListItem><BookDescription>Рейтинг:<Value>{ book.rating}</Value></BookDescription></ListItem>
         </List></BookCard>))}
          
         </>
-        <ResumeButton>Resume</ResumeButton>
+        <ResumeButton>Далі</ResumeButton>
       </Wrapper>
          
      
