@@ -8,7 +8,7 @@ import Header from './Header/Header';
 import { Spinner } from './Spinner';
 import authOperations from '../redux/authAPI/auth-operation';
 import authSelectors from '../redux/authAPI/auth-selectors';
-// import PrivateRoute from './PrivateRoute';
+import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
 const Home = lazy(() => import('../pages/Home'));
@@ -18,7 +18,6 @@ const Library = lazy(() => import('./LibraryPage/Library'));
 
 /* import Container from './Container'; */
 const Training = lazy(() => import('../pages/Training'));
-
 
 export const App = () => {
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
@@ -45,14 +44,16 @@ export const App = () => {
                   </PublicRoute>
                 }
               ></Route>
+
               <Route
                 path="/register"
                 element={
-                  <PublicRoute path="/register" redirectTo="/" restricted>
+                  <PublicRoute path="/register" redirectTo="/library" restricted>
                     <Register />
                   </PublicRoute>
                 }
               ></Route>
+
               <Route
                 path="/login"
                 element={
@@ -62,8 +63,22 @@ export const App = () => {
                 }
               ></Route>
 
-              <Route path="/library" element={<Library />} />
-              <Route path="/training" element={<Training />} />
+              <Route
+                path="/library"
+                element={
+                  <PrivateRoute path="/library" redirectTo="/login">
+                    <Library />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/training"
+                element={
+                  <PrivateRoute path="/training" redirectTo="/login">
+                    <Training />
+                  </PrivateRoute>
+                }
+              />
 
               {/* <Statistics/>*/}
               <Route path="*" element={<NotFoundPage />} />

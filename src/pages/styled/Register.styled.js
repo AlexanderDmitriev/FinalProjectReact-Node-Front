@@ -6,8 +6,8 @@ import tablet2x from '../../images/login + register img/tablet/tablet@2x.jpg';
 import desktop from '../../images/login + register img/desktop/desktop.jpg';
 import desktop2x from '../../images/login + register img/desktop/desktop@2x.jpg';
 
-import google from '../../img/googleicon.svg';
-import vector from '../../img/firstpagevector.svg';
+import google from '../../images/login + register img/googleicon.svg';
+import vector from '../../images/login + register img/firstpagevector.svg';
 
 import { Field } from 'formik';
 import { NavLink } from 'react-router-dom';
@@ -198,6 +198,11 @@ export const Label = styled.label`
   }
 `;
 
+export const Star = styled.span`
+  color: #ff6b08;
+  margin-left: 3px;
+`;
+
 export const FieldInput = styled(Field)`
   width: 280px;
   height: 42px;
@@ -281,6 +286,14 @@ export const NavLogin = styled(NavLink)`
   text-align: center;
 
   color: #ff6b08;
+`;
+
+export const Error = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.12;
+  color: red;
+  text-align: center;
 `;
 
 export const TextBox = styled.div`

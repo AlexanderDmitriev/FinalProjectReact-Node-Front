@@ -6,8 +6,9 @@ import tablet2x from '../../images/login + register img/tablet/tablet@2x.jpg';
 import desktop from '../../images/login + register img/desktop/desktop.jpg';
 import desktop2x from '../../images/login + register img/desktop/desktop@2x.jpg';
 
-import marks from '../../img/marks.svg';
-import google from '../../img/googleicon.svg';
+import google from '../../images/login + register img/googleicon.svg';
+
+import marks from '../../images/login + register img/marks.svg';
 
 import { Field } from 'formik';
 import { NavLink } from 'react-router-dom';
@@ -135,18 +136,29 @@ export const TextGoogleButton = styled.p`
 
   color: #707375;
 
-  /* ::before {
+  ::before {
     content: '';
-    margin-right: 14px;
-    padding-top: 11px;
+    margin-right: 12px;
+    padding-top: 1px;
     padding-left: 2px;
     padding-right: 2px;
     background-image: url(${google});
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-  } */
+  }
 `;
+
+// export const IconWrapper = styled.div`
+//   /* margin-right: 12px; */
+//   /* padding-top: 4px; */
+//   /* width: 4px; */
+//   /* height: 8px; */
+// `;
+
+// export const Icon = styled.svg`
+//   /* vertical-align: top; */
+// `;
 
 export const Input = styled.div`
   margin-bottom: 20px;
@@ -189,6 +201,11 @@ export const Label = styled.label`
 
     color: #898f9f;
   }
+`;
+
+export const Star = styled.span`
+  color: #ff6b08;
+  margin-left: 3px;
 `;
 
 export const FieldInput = styled(Field)`
@@ -254,6 +271,14 @@ export const NavRegister = styled(NavLink)`
   text-align: center;
 
   color: #ff6b08;
+`;
+
+export const Error = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.12;
+  color: red;
+  text-align: center;
 `;
 
 export const TextBox = styled.div`

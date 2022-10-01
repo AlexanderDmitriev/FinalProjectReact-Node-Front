@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://book-reader-43-back.herokuapp.com';
+axios.defaults.baseURL = 'https://book-reader-43-back.herokuapp.com/api';
 
 const token = {
   set(token) {
@@ -16,7 +16,7 @@ const register = createAsyncThunk(
   '/auth/register',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/api/users/signup', credentials);
+      const { data } = await axios.post('/users/signup', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -54,7 +54,7 @@ const logIn = createAsyncThunk(
 // );
 
 const fetchCurrentUser = createAsyncThunk(
-  'auth/refresh',
+  '/auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -77,6 +77,6 @@ const authOperations = {
   register,
   logIn,
   //   logOut,
-    fetchCurrentUser,
+  fetchCurrentUser,
 };
 export default authOperations;
