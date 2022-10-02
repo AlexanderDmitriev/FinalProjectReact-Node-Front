@@ -14,6 +14,7 @@ import {
 import { useState } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as IconBack} from '../../../images/iconback.svg'
+import MyGoals from "components/Training/MyGoals/MyGoals";
 
 const books = [
     {
@@ -96,6 +97,10 @@ export default function AddTraining() {
     }
 
     return (
+
+        <>
+            <MyGoals />
+            
         <Section> 
         <TrainingSection>
             <SvgContainer>
@@ -141,6 +146,6 @@ export default function AddTraining() {
                 <AddBtn type="submit" onClick={handleAddTraining}>Додати</AddBtn>
             </SelectContainer>    
             </TrainingSection>
-        </Section>
+        </Section></>
     )
 }

@@ -12,6 +12,9 @@ import storage from 'redux-persist/lib/storage';
 
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import authSlice from 'redux/authAPI/auth-slice';
+import { booksApi } from './booksApi/booksSlice';
+import { resultsApi } from './results/rtkQuery/resultsSlice';
+import { ratingApi } from './rating/ratingSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -19,7 +22,9 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-
+  resultsApi.middleware,
+  booksApi.middleware,
+  ratingApi.middleware,
 ];
 
 const authPersistConfig = {
@@ -31,7 +36,11 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     // authSlice,
+
     [authSlice.name]: persistReducer(authPersistConfig, authSlice.reducer),
+    [resultsApi.reducerPath]: resultsApi.reducer,
+    [booksApi.reducerPath]: booksApi.reducer,
+    [ratingApi.reducerPath]: ratingApi.reducer,
   },
   middleware,
 });
