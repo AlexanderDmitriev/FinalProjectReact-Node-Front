@@ -2,7 +2,7 @@ import {
     Section,
     TrainingSection,
     Input,
-    TrainingBtn,
+    TrainingTitle,
     Select,
     Option,
     AddBtn,
@@ -13,63 +13,21 @@ import {
 } from "./AddTraining.styled";
 import { useState } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
-import { ReactComponent as IconBack} from '../../../images/iconback.svg'
-
-const books = [
-    {
-        id: '1',
-        title: 'book 1',
-        author: 'auth1or 1',
-        year: '2001',
-        pages: '101',
-        status: 'plan',
-        resume: {
-            comment: 'fine',
-            rating: '5',
-        },
-        owner: '111',
-    },
-    {
-        id: '2',
-        title: 'book 2',
-        author: 'author 2',
-        year: '2002',
-        pages: '102',
-        status: 'plan',
-        resume: {
-            comment: 'fine',
-            rating: '5',
-        },
-        owner: '222',
-    },
-    {
-        id: '3',
-        title: 'book 3',
-        author: 'author 3',
-        year: '2003',
-        pages: '103',
-        status: 'plan',
-        resume: {
-            comment: 'fine',
-            rating: '5',
-        },
-        owner: '333',
-    },
-]
+import { ReactComponent as IconBack } from '../../../images/iconback.svg'
+import { useGetBooksQuery } from "redux/booksApi/booksSlice";
 
 
 export default function AddTraining() {
     const location = useLocation();
     const path = location?.state?.from ?? '/';
+    const { data, error, isLoading } = useGetBooksQuery();
   
-    
     const [startTime, setStartTime] = useState('');
     const [finishTime, setFinishTime] = useState('');
-    // const [selectedBookArr, setSelectedBookArr] = useState('');
+    const [selectedBookArr, setSelectedBookArr] = useState('');
     const [selectedBook, setSelectedBook] = useState('')
 
     const handleSelectChange = event => {
-        // setSelectedBookArr([...selectedBookArr, event.target.value]);
         setSelectedBook(event.target.value);
     }
 
@@ -81,12 +39,9 @@ export default function AddTraining() {
         setFinishTime(e.target.value)
     }
 
-    const handleAddTraining = () => {
-        console.log('start training date:', startTime)
-        console.log('finish training date:', finishTime)
-        console.log('book id:', selectedBook)
-        // todo логика отправки вібранной книги на бек
-        reset()
+    const handleAddBook = () => {
+        setSelectedBookArr([...selectedBookArr, selectedBook]);  
+        // reset()
     }
 
     const reset = () => {
@@ -106,7 +61,7 @@ export default function AddTraining() {
             <Svg>
                 <use href='../../../images/icons.svg#icon-calendar-1'/>
             </Svg>
-            <TrainingBtn>Моє тренування</TrainingBtn>
+            <TrainingTitle>Моє тренування</TrainingTitle>
             <InputContainer>
                 <Input
                     type="text"
@@ -126,20 +81,30 @@ export default function AddTraining() {
                     onFocus={(e) => (e.target.type = "date")}
                     onBlur={(e) => (e.target.type = "text")}
                 />
-            </InputContainer>
-            <SelectContainer>
-                <Select value={selectedBook} onChange={handleSelectChange}>
-                    <Option disabled={true} value="">
-                    Обрати книги з бібліотеки
-                    </Option>
-                    {books.map((book, index) => {
-                        return (
-                            <Option value={book.id} key={index}>{book.title}</Option>  
-                        )
-                    })}
-                </Select>
-                <AddBtn type="submit" onClick={handleAddTraining}>Додати</AddBtn>
-            </SelectContainer>    
+                </InputContainer>
+                
+                {isLoading
+                    ?
+                    <h2>loading</h2>
+                    :
+                        <SelectContainer>
+                            <Select value={selectedBook} onChange={handleSelectChange}>
+                                <Option disabled={true} value="">
+                                Обрати книги з бібліотеки
+                                </Option>
+                                {data.map((book) => {
+                                    return (
+                                        <Option value={book._id} key={book._id}>{book.title}</Option>  
+                                    )
+                                })}
+                            </Select>
+                        <AddBtn type="submit" onClick={handleAddBook}>Додати</AddBtn>
+                        </SelectContainer>
+
+                    }
+                    
+                
+                
             </TrainingSection>
         </Section>
     )

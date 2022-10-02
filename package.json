@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://AlexanderDmitriev.github.io/FinalProjectReact-Node-Front/",
   "dependencies": {
+    "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.7",
     "@mui/styled-engine": "^5.10.7",
@@ -69,5 +70,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AlexanderDmitriev/FinalProjectReact-Node-Front/issues"
-  }
+  },
+  "devDependencies": {}
 }

@@ -14,8 +14,11 @@ export const TrainingSection = styled.div`
     }
 `
 
-export const TrainingBtn = styled.button`
+export const TrainingTitle = styled.div`
     height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
