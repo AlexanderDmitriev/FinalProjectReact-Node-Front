@@ -22,7 +22,7 @@ import { bookList } from "redux/trainingBookList/trainingBooksListAction";
 export default function AddTraining() {
     const location = useLocation();
     const path = location?.state?.from ?? '/';
-    const { data, error, isLoading } = useGetBooksQuery();
+    const { data, /* error, */ isLoading } = useGetBooksQuery();
     const dispatch = useDispatch();
 
     const [startTime, setStartTime] = useState('');
@@ -41,6 +41,7 @@ export default function AddTraining() {
      
     const handleSelectChange = event => {
         setSelectedBook(event.target.value);
+        console.log(books);
     }
 
     const handleChangeStartTime = e => {

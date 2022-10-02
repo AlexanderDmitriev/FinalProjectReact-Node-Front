@@ -12,7 +12,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { Wrapper, TitleWrapper, CounterTitle, Counter } from './Chart.styled';
-import { useFetchResultsQuery } from 'redux/results/rtkQuery/resultsSlice';
+import { useFetchResultsQuery } from 'redux/results/resultsSlice';
 import { useState, useEffect } from 'react';
 
 ChartJS.register(
@@ -55,19 +55,19 @@ export default function Chart({ books }) {
     height = 215;
   }
 
-  const { data, error, isLoading } = useFetchResultsQuery();
+  const { data, error/* , isLoading */ } = useFetchResultsQuery();
   const [pages, setPages] = useState(0);
   console.log(error);
   useEffect(() => {
     if (error) { return }
     const activeBooksArr = data.training.active;
     const booksArr = books.filter(({ _id }) => activeBooksArr.includes(_id))
-    const totalPages = 0;
+    let totalPages = 0;
     booksArr.map(item => {
       return totalPages += Number(item.pages);
     })
     setPages(totalPages);
-  }, [books, error]);
+  }, [books, data.training.active, error]);
   // const startDay = new Date(data.training.start);
   // const finishDay = new Date(data.training.end); 
   const startDay = new Date("2022-10-02");
