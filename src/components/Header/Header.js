@@ -47,12 +47,12 @@ const Header = () => {
   
           {isLoggedIn && (
             <div className={s.blok}>
-              {/* <div className={s.blok_user}>
+              <div className={s.blok_user}>
                 <button className={s.btn_desktop} type="button">
                   {userLogo}
                 </button>
-                <p className={s.user_name}>{user}</p>
-              </div> */}
+                <p className={s.user_name}>User</p>
+              </div>
   
               {/* {statistic && ( */}
                 <nav className={s.nav}>
