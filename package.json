@@ -71,5 +71,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AlexanderDmitriev/FinalProjectReact-Node-Front/issues"
-  }
+  },
+  "devDependencies": {}
 }
