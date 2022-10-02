@@ -15,6 +15,7 @@ import authSlice from 'redux/authAPI/auth-slice';
 import { booksApi } from './booksApi/booksSlice';
 import { resultsApi } from './results/rtkQuery/resultsSlice';
 import { ratingApi } from './rating/ratingSlice';
+import { trainingBooksListReducer } from './trainingBookList/trainingBookListReducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -41,6 +42,7 @@ export const store = configureStore({
     [resultsApi.reducerPath]: resultsApi.reducer,
     [booksApi.reducerPath]: booksApi.reducer,
     [ratingApi.reducerPath]: ratingApi.reducer,
+    bookList: trainingBooksListReducer,
   },
   middleware,
 });

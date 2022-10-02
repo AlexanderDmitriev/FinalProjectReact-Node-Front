@@ -11,22 +11,34 @@ import {
     Svg,
     SvgContainer,
 } from "./AddTraining.styled";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux/es/exports";
 import { ReactComponent as IconBack } from '../../../images/iconback.svg'
 import { useGetBooksQuery } from "redux/booksApi/booksSlice";
+import { bookList } from "redux/trainingBookList/trainingBooksListAction";
 
 
 export default function AddTraining() {
     const location = useLocation();
     const path = location?.state?.from ?? '/';
     const { data, error, isLoading } = useGetBooksQuery();
-  
+    const dispatch = useDispatch();
+
     const [startTime, setStartTime] = useState('');
     const [finishTime, setFinishTime] = useState('');
     const [selectedBookArr, setSelectedBookArr] = useState('');
     const [selectedBook, setSelectedBook] = useState('')
+    const [books, setBooks] = useState([]);
 
+    useEffect(() => {
+        if (!isLoading) {
+            const booksArr = data.filter(({ _id }) => selectedBookArr.includes(_id))
+            setBooks(booksArr);
+            dispatch(bookList(booksArr))
+    }
+    }, [data, dispatch, isLoading, selectedBookArr])
+     
     const handleSelectChange = event => {
         setSelectedBook(event.target.value);
     }
@@ -82,7 +94,7 @@ export default function AddTraining() {
                     onBlur={(e) => (e.target.type = "text")}
                 />
                 </InputContainer>
-                
+
                 {isLoading
                     ?
                     <h2>loading</h2>
@@ -100,11 +112,7 @@ export default function AddTraining() {
                             </Select>
                         <AddBtn type="submit" onClick={handleAddBook}>Додати</AddBtn>
                         </SelectContainer>
-
                     }
-                    
-                
-                
             </TrainingSection>
         </Section>
     )

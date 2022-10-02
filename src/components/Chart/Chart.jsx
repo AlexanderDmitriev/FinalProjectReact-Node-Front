@@ -13,6 +13,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import { Wrapper, TitleWrapper, CounterTitle, Counter } from './Chart.styled';
 import { useFetchResultsQuery } from 'redux/results/rtkQuery/resultsSlice';
+import { useState, useEffect } from 'react';
 
 ChartJS.register(
   CategoryScale,
@@ -55,12 +56,18 @@ export default function Chart({ books }) {
   }
 
   const { data, error, isLoading } = useFetchResultsQuery();
-  let pages = 0;
-  const activeBooksArr = data.training.active;
-  const booksArr = books.filter(({ _id }) => activeBooksArr.includes(_id))
-  booksArr.map(item => {
-    return pages += Number(item.pages);
-  })
+  const [pages, setPages] = useState(0);
+  console.log(error);
+  useEffect(() => {
+    if (error) { return }
+    const activeBooksArr = data.training.active;
+    const booksArr = books.filter(({ _id }) => activeBooksArr.includes(_id))
+    const totalPages = 0;
+    booksArr.map(item => {
+      return totalPages += Number(item.pages);
+    })
+    setPages(totalPages);
+  }, [books, error]);
   // const startDay = new Date(data.training.start);
   // const finishDay = new Date(data.training.end); 
   const startDay = new Date("2022-10-02");
