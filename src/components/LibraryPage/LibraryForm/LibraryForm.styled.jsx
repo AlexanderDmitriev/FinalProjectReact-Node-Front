@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import { theme } from '../../../helpers/theme';
 import { Field } from 'formik';
 
+export const Wrapper = styled.div`
+  position: relative;
+`;
+
 export const Box = styled.div`
   width: 320px;
   height: 648px;
@@ -9,6 +13,7 @@ export const Box = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: #f6f7fb;
+ 
 
   @media screen and (min-width: 768px) {
     width: 768px;

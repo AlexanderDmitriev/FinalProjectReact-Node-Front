@@ -13,7 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import authSlice from 'redux/authAPI/auth-slice';
 import { booksApi } from './booksApi/booksSlice';
-import { resultsApi } from './results/rtkQuery/resultsSlice';
+import { resultsApi } from './results/resultsSlice';
 import { ratingApi } from './rating/ratingSlice';
 
 const middleware = [

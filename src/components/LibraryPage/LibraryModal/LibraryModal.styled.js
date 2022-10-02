@@ -2,12 +2,15 @@ import styled from 'styled-components';
 import { theme } from '../../../helpers/theme';
 
 export const Wrapper = styled.div`
-  position: relative;
+  position: absolute;
   display: flex;
   justify-content: center;
+  margin-top: 40px;
+  top: 157px;
 
   @media screen and (min-width: 768px) {
     position: static;
+    margin-top: 40px;
   }
 `;
 
@@ -17,7 +20,7 @@ export const Section = styled.section`
   text-align: center;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   background-color: #ffffff;
-  
+
   @media screen and (min-width: 768px) {
     width: 608px;
     padding: 40px;
