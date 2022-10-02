@@ -24,10 +24,10 @@ export default function Results() {
 
   const { data, error, isLoading } = useFetchResultsQuery();
 
-  console.log(data);
-  console.log(error);
+  // console.log(data);
+  // console.log(error);
 
-  console.log(isLoading);
+  // console.log(isLoading);
 
   const [createResult] = useCreateResultMutation();
 
