@@ -16,6 +16,7 @@ import {
   Label,
   FieldInput,
   Error,
+  Wrapper,
 } from './LibraryForm.styled';
 
 import {
@@ -24,7 +25,7 @@ import {
 } from '../../../redux/booksApi/booksSlice';
 
 export default function LibraryForm() {
-  const [AddBooks, /* { error, isLoading } */] = useAddBooksMutation();
+  const [AddBooks /* { error, isLoading } */] = useAddBooksMutation();
   /* const { data } = useGetBooksQuery();
   const booksArray = data;
  */
@@ -49,7 +50,7 @@ export default function LibraryForm() {
   });
 
   return (
-    <>
+    <Wrapper>
       <Formik
         initialValues={{
           title: '',
@@ -204,6 +205,6 @@ export default function LibraryForm() {
           // {isLoading ? <Loader /> : 'Add contact'}
         )}
       </Formik>
-    </>
+    </Wrapper>
   );
 }

@@ -17,7 +17,14 @@ export default function Library() {
 
   return (
     <>
-      <Container>
+      <Container
+        style={{
+          width: 'auto',
+          height: 60,
+          border: '1px solid black',
+          position: 'absolute',
+        }}
+      >
         <div
           style={{
             width: 'auto',
@@ -29,8 +36,8 @@ export default function Library() {
           <BackArrow />
         </NavLink>
         <LibraryForm />
-        {/* <LibraryModal />
-        <AlreadyRead books={books} />
+        {/* <LibraryModal /> */}
+        {/* <AlreadyRead books={books} />
         <ReadingNow books={books} />
         <GoingToRead books={books} /> */}
       </Container>
