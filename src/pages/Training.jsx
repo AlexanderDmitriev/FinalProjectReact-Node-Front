@@ -8,7 +8,7 @@ import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
 
 export default function Training() {
 
-  const { data, error, isLoading } = useGetBooksQuery();
+  const { data, /* error, */ isLoading } = useGetBooksQuery();
  
   return (
     <Container>

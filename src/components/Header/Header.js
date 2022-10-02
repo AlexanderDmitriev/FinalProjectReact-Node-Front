@@ -1,6 +1,6 @@
 import React/* , { useEffect, useState }  */from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink/* , useLocation */ } from 'react-router-dom';
+import { Link, NavLink, useNavigate /* , useLocation */ } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import s from './Header.module.css';
@@ -8,7 +8,6 @@ import home from '../../images/iconhome.svg';
 import library from '../../images/Group.svg';
 import  authSelectors from "../../redux/authAPI/auth-selectors";
 import authOperations from "../../redux/authAPI/auth-operation";
-
 
 const style = {
     position: 'absolute',
@@ -26,6 +25,7 @@ const Header = () => {
     const user = authSelectors.getUsername;
     const userLogo = user[0];
     const dispatch = useDispatch();
+    const navigate = useNavigate();
   
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -33,6 +33,7 @@ const Header = () => {
     const handleExit = () => {
       dispatch(authOperations.logOut())
       setOpen(false);
+      navigate("/", { replace: true });
     };
   
     
@@ -46,12 +47,12 @@ const Header = () => {
   
           {isLoggedIn && (
             <div className={s.blok}>
-              <div className={s.blok_user}>
+              {/* <div className={s.blok_user}>
                 <button className={s.btn_desktop} type="button">
                   {userLogo}
                 </button>
                 <p className={s.user_name}>{user}</p>
-              </div>
+              </div> */}
   
               {/* {statistic && ( */}
                 <nav className={s.nav}>

@@ -12,7 +12,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { Wrapper, TitleWrapper, CounterTitle, Counter } from './Chart.styled';
-import { useFetchResultsQuery } from 'redux/results/rtkQuery/resultsSlice';
+import { useFetchResultsQuery } from 'redux/results/resultsSlice';
 
 ChartJS.register(
   CategoryScale,
@@ -54,7 +54,7 @@ export default function Chart({ books }) {
     height = 215;
   }
 
-  const { data, error, isLoading } = useFetchResultsQuery();
+  const { data/* , error, isLoading */ } = useFetchResultsQuery();
   let pages = 0;
   const activeBooksArr = data.training.active;
   const booksArr = books.filter(({ _id }) => activeBooksArr.includes(_id))

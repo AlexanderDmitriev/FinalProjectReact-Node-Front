@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Container from '../helpers/Container';
 import NotFoundPage from '../pages/NotFoundPage';
 import Header from './Header/Header';
+/* import HeaderPage  from './Header/HeaderPage'; */
 import { Spinner } from './Spinner';
 import authOperations from '../redux/authAPI/auth-operation';
 import authSelectors from '../redux/authAPI/auth-selectors';
@@ -35,6 +36,7 @@ export const App = () => {
         ) : (
           <Suspense fallback={<Spinner />}>
             <Header />
+            {/* <HeaderPage/> */}
             <Routes>
               <Route
                 path="/"

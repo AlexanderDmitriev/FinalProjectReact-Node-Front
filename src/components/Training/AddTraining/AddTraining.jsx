@@ -20,7 +20,7 @@ import { useGetBooksQuery } from "redux/booksApi/booksSlice";
 export default function AddTraining() {
     const location = useLocation();
     const path = location?.state?.from ?? '/';
-    const { data, error, isLoading } = useGetBooksQuery();
+    const { data, /* error, */ isLoading } = useGetBooksQuery();
   
     const [startTime, setStartTime] = useState('');
     const [finishTime, setFinishTime] = useState('');
@@ -44,11 +44,11 @@ export default function AddTraining() {
         // reset()
     }
 
-    const reset = () => {
+    /* const reset = () => {
         setStartTime('')
         setFinishTime('')
         setSelectedBook('')
-    }
+    } */
 
     return (
         <Section> 

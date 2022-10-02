@@ -14,7 +14,7 @@ import {
   Button,
 } from './Results.styled';
 import {
-  useFetchResultsQuery,
+  /* useFetchResultsQuery, */
   useCreateResultMutation,
 } from 'redux/results/resultsSlice';
 
@@ -22,7 +22,7 @@ export default function Results() {
   const [date, setDate] = useState(null);
   const [pages, setPages] = useState('');
 
-  const { data, error, isLoading } = useFetchResultsQuery();
+  /* const { data, error, isLoading } = useFetchResultsQuery(); */
 
   // console.log(data);
   // console.log(error);
