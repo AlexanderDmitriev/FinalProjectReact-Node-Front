@@ -26,7 +26,8 @@ export const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/library" element={<Library />} />
-            <Route path="/training" element={<Training />} />
+            <Route path="/training" element={< Training/>} />
+
             {/* <Statistics/>*/}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

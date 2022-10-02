@@ -18,14 +18,15 @@ export default function GoingToRead({ books }) {
   console.log(books)
   return (
     <Section>
-      <Title>Going to read</Title>
+      <Title>Хочу прочитати</Title>
       <Wrapper>
         <>
-          {books.map(book=>( <BookCard><List key={book.id}>
+          {books.map(book=>( <BookCard><List key={book.bookName}>
             <ListItem> <IconBook/><BookName>{book.bookName}</BookName></ListItem>
-            <ListItem><BookDescription>Author:<Value>{ book.author}</Value></BookDescription></ListItem>
-            <ListItem><BookDescription>Year:<Value>{ book.year}</Value></BookDescription></ListItem>
-            <ListItem><BookDescription>Pages:<Value>{ book.pages}</Value></BookDescription></ListItem>
+              <ListItem><BookDescription>Автор:<Value>{ book.author}</Value></BookDescription></ListItem>
+            <ListItem><BookDescription>Рік:<Value>{ book.year}</Value></BookDescription></ListItem>
+            <ListItem><BookDescription>Сторінки:<Value>{ book.pages}</Value></BookDescription></ListItem>
+            
         </List></BookCard>))}
          
         </>
