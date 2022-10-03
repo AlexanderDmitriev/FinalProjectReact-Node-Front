@@ -65,7 +65,7 @@ export const Text = styled.p`
   font-weight: 500;
   font-size: 14px;
   line-height: 1.21;
-  color: #898f9f;
+  color: ${theme.colors.bookDescriptionColor};
 `;
 
 export const IconWrapper = styled.div`
@@ -113,7 +113,7 @@ export const LoginButton = styled.button`
   border: 1px solid #000000;
   &:hover,
   &:focus {
-    border: 1px solid #f25137;
+    border: 1px solid ${theme.colors.buttonsBorder};
   }
 `;
 
