@@ -16,7 +16,7 @@ import statLineR from '../../images/stats/statisticliner.jpg';
 import statLineP from '../../images/stats/statisticlineplan.jpg';
 
 export default function ResultsTable() {
-  //   const { data, error, isLoading } = useFetchResultsQuery();
+  // const { data, error, isLoading } = useFetchResultsQuery();
   const { data } = useFetchResultsQuery();
 
   //   console.log(data.statistic);
@@ -63,14 +63,14 @@ export default function ResultsTable() {
         )}
       </Media>
       <List>
-        {/* {data &&
-        data.map(({ id, date, time, pages }) => (
-          <ResultTableRow key={id} date={date} time={time} pages={pages} />
-        ))} */}
         {data &&
+          data.statistic.map(({ id, date, time, pages }) => (
+            <ResultTableRow key={id} date={date} time={time} pages={pages} />
+          ))}
+        {/* {data &&
           data.statistic.map(({ date, pages, _id }) => (
             <ResultTableRow key={_id} date={date} pages={pages} />
-          ))}
+          ))} */}
       </List>
     </TableWrapper>
   );

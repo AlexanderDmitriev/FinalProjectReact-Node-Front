@@ -26,53 +26,53 @@ export default function Results() {
 
     const pickedDate = e.target.date.value;
 
-    // const formattedDate = new Date(pickedDate);
-    // const month = ('0' + (formattedDate.getMonth() + 1)).slice(-2);
-    // const day = ('0' + formattedDate.getDate()).slice(-2);
-    // const year = formattedDate.getFullYear();
-    // const date = year + '-' + month + '-' + day;
-    console.log(pickedDate);
-
-    // const date = '1664631929';
+    const formattedDate = new Date(pickedDate);
+    const month = ('0' + (formattedDate.getMonth() + 1)).slice(-2);
+    const day = ('0' + formattedDate.getDate()).slice(-2);
+    const year = formattedDate.getFullYear();
+    const date = year + '-' + month + '-' + day;
+    // console.log(pickedDate);
 
     const pages = e.target.pages.value;
 
-    const hour =
-      date.getHours().toString().length < 2
-        ? '0' + date.getHours()
-        : date.getHours();
-    const minutes =
-      date.getMinutes().toString().length < 2
-        ? '0' + date.getMinutes()
-        : date.getMinutes();
-    const seconds =
-      date.getSeconds().toString().length < 2
-        ? '0' + date.getSeconds()
-        : date.getSeconds();
-    const enteredTime = hour + ':' + minutes + ':' + seconds;
-    const momentTime = moment().format('h:mm:ss');
+    // const hour =
+    //   pickedDate.getHours().toString().length < 2
+    //     ? '0' + pickedDate.getHours()
+    //     : pickedDate.getHours();
+    // const minutes =
+    //   pickedDate.getMinutes().toString().length < 2
+    //     ? '0' + pickedDate.getMinutes()
+    //     : pickedDate.getMinutes();
+    // const seconds =
+    //   pickedDate.getSeconds().toString().length < 2
+    //     ? '0' + pickedDate.getSeconds()
+    //     : pickedDate.getSeconds();
+    // const enteredTime = hour + ':' + minutes + ':' + seconds;
+    const time = moment().format('hh:mm:ss');
 
     // const time = enteredTime < momentTime ? momentTime : enteredTime;
-    let time = 0;
+    // let time = 0;
 
-    if (enteredTime < momentTime) {
-      time = momentTime;
-    } else if (enteredTime === '00:00:00') {
-      time = momentTime;
-    } else {
-      time = enteredTime;
-    }
+    // if (enteredTime < momentTime) {
+    //   time = momentTime;
+    // } else if (enteredTime === '00:00:00') {
+    //   time = momentTime;
+    // } else {
+    //   time = enteredTime;
+    // }
 
-    console.log(time);
+    console.log(date);
 
     const result = {
       // id: nanoid(),
       date,
-      // time,
+      time,
       pages,
     };
 
     createResult(result);
+
+    console.log(typeof result.time);
 
     reset();
   };
@@ -81,10 +81,6 @@ export default function Results() {
     setDate('');
     setPages('');
   };
-
-  // const [startDate, setStartDate] = useState(new Date());
-
-  // console.log(startDate);
 
   return (
     <>
