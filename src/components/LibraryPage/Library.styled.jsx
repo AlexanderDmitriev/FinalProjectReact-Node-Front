@@ -22,11 +22,8 @@ export const TrainingButton = styled.button`
   line-height: 2.71;
   text-align: center;
   border: none;
-
   color: ${theme.colors.backColor};
-
   background-color: ${theme.colors.focusColor};
-
   margin: 0 auto;
   margin-top: 40px;
   display: block;
@@ -43,7 +40,6 @@ export const TrainingButton = styled.button`
   @media screen and (min-width: 1280px) {
     width: 200px;
     height: 40px;
-
     margin-top: 0px;
     margin-bottom: 20px;
     margin-left: 48px;
@@ -56,7 +52,6 @@ export const Box = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: #f6f7fb;
-  // margin-top: 60px;
   @media screen and (min-width: 768px) {
     width: 768px;
     height: 1025px;
@@ -72,7 +67,7 @@ export const BoxText = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #ffffff;
+  background-color: ${theme.colors.backColor};
 
   @media screen and (max-width: 767px) {
     display: none;

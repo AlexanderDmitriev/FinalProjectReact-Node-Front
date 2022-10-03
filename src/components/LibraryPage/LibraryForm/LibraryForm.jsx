@@ -2,11 +2,9 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-// import 'react-toastify/dist/ReactToastify.css';
 
 import { AddButton /* Wrapper */ } from './LibraryForm.styled';
 import { NavLink } from 'react-router-dom';
-/* import books from 'book.json'; */
 import {
   FormInput,
   Input,
@@ -62,11 +60,6 @@ export default function LibraryForm() {
         onSubmit={(values, { resetForm }) => {
           // do your stuff
 
-          // console.log(data);
-          // console.log(booksArray);
-          // console.log(error);
-          // console.log(isLoading);
-
           const handleSub = () => {
             console.log(values.title);
           };
@@ -83,7 +76,6 @@ export default function LibraryForm() {
             //   comment: 'bad bad',
             // },
           };
-          // console.log(item);
           // const filterBook = item.title.toLocaleLowerCase();
           // const booksForFind = booksArray.find(
           //   i => i.name.toLocaleLowerCase() === filterBook

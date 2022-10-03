@@ -10,9 +10,7 @@ import {
   Wrapper,
   Value,
 } from '../AlreadyRead/AlreadyRead.styled';
-// import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-
 
 export default function ReadingNow({ books }) {
   return (
@@ -22,8 +20,8 @@ export default function ReadingNow({ books }) {
         <>
           {books.map(book => (
             <BookCard key={nanoid()}>
-              <List >
-                <ListItem >
+              <List>
+                <ListItem>
                   {' '}
                   <IconBookOrange />
                   <BookName>{book.bookName}</BookName>

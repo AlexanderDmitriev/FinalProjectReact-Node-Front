@@ -16,7 +16,7 @@ export const Section = styled.div`
 
   text-align: center;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-  background-color: #ffffff;
+  background-color: ${theme.colors.backColor};
 
   @media screen and (min-width: 768px) {
     width: 394px;
@@ -47,16 +47,12 @@ export const Text = styled.p`
   font-weight: 500;
   line-height: 22px;
   letter-spacing: 0em;
-
-  //   text-align: center;
-  color: #242a37;
+  color: ${theme.colors.titleColor};
 `;
 export const ButtonBox = styled.div`
   display: flex;
   justify-content: end;
   @media screen and (min-width: 768px) {
-    // width: 394px;
-    // height: 286px;
   }
 `;
 
@@ -70,10 +66,10 @@ export const Button = styled.button`
   line-height: 1.21;
   text-align: center;
   margin-bottom: 20px;
-  color: #ffffff;
-  background-color: #ff6b08;
-  border: 1px solid #ff6b08;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  color: ${theme.colors.backColor};
+  background-color: ${theme.colors.focusColor};
+  border: 1px solid ${theme.colors.focusColor};
+  box-shadow: 0px 2px 4px ${theme.colors.darkShadowColor};
   &:hover,
   &:focus {
     background-color: #d15807;
@@ -84,30 +80,17 @@ export const Button = styled.button`
 export const BackButton = styled.button`
   width: 152px;
   height: 40px;
-
   font-weight: 500;
   font-size: 14px;
   line-height: 2.71;
   text-align: center;
-  /* color: #242a37; */
   color: ${theme.colors.titleColor};
   border: 1px solid #000000;
-
   margin: 0 auto;
-
   display: block;
   d &:hover,
   &:focus {
-    border: 1px solid #f25137;
+    border: 1px solid ${theme.colors.buttonsBorder};
     cursor: pointer;
-  }
-  @media screen and (min-width: 768px) {
-    // width: 152px;
-    // height: 40px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    // width: 181px;
-    // height: 42px;
   }
 `;
