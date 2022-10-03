@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux/es/exports";
 import { ReactComponent as IconBack } from '../../../images/iconback.svg'
 import { useGetBooksQuery } from "redux/booksApi/booksSlice";
 import { bookList } from "redux/trainingBookList/trainingBooksListAction";
+import MyGoals from "components/Training/MyGoals/MyGoals";
 
 
 export default function AddTraining() {
@@ -64,6 +65,10 @@ export default function AddTraining() {
     } */
 
     return (
+
+        <>
+            <MyGoals />
+            
         <Section> 
         <TrainingSection>
             <SvgContainer>
@@ -115,6 +120,6 @@ export default function AddTraining() {
                         </SelectContainer>
                     }
             </TrainingSection>
-        </Section>
+        </Section></>
     )
 }

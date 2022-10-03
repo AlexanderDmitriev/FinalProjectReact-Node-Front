@@ -6,8 +6,8 @@ import tablet2x from '../../images/login + register img/tablet/tablet@2x.jpg';
 import desktop from '../../images/login + register img/desktop/desktop.jpg';
 import desktop2x from '../../images/login + register img/desktop/desktop@2x.jpg';
 
-import google from '../../img/googleicon.svg';
-import vector from '../../img/firstpagevector.svg';
+import google from '../../images/googleicon.svg';
+import vector from '../../images/firstpagevector.svg';
 
 import { Field } from 'formik';
 import { NavLink } from 'react-router-dom';

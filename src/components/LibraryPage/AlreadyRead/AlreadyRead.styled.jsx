@@ -121,12 +121,16 @@ export const ListItem = styled.li`
   }
 `;
 export const Wrapper = styled.div`
-  
+  position:relative;
     padding-bottom:32px;
   
 `;
 export const AddBookButton = styled.button`
-
+position:absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 52px;
   min-width: 52px;
   min-height:52px;
   font-family: 'Montserrat';

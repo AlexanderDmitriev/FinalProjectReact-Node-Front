@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ResultTable from './ResultTable';
+// import ResultTable from './ResultTable';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 // import { nanoid } from 'nanoid';
@@ -83,7 +83,7 @@ export default function Results() {
           <Button type="submit">Додати результат</Button>
         </form>
       </Section>
-      <ResultTable />
+      {/* <ResultTable /> */}
     </>
   );
 }
