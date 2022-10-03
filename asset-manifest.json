@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/FinalProjectReact-Node-Front/static/css/main.ae0d1077.css",
-    "main.js": "/FinalProjectReact-Node-Front/static/js/main.b1e33bdc.js",
+    "main.js": "/FinalProjectReact-Node-Front/static/js/main.b28f9937.js",
     "static/js/281.f6d2452c.chunk.js": "/FinalProjectReact-Node-Front/static/js/281.f6d2452c.chunk.js",
     "static/js/985.c480edd3.chunk.js": "/FinalProjectReact-Node-Front/static/js/985.c480edd3.chunk.js",
     "static/js/718.a18b6127.chunk.js": "/FinalProjectReact-Node-Front/static/js/718.a18b6127.chunk.js",
     "static/js/492.8fe133b7.chunk.js": "/FinalProjectReact-Node-Front/static/js/492.8fe133b7.chunk.js",
-    "static/js/659.d5b0fdc3.chunk.js": "/FinalProjectReact-Node-Front/static/js/659.d5b0fdc3.chunk.js",
+    "static/js/928.91571d2f.chunk.js": "/FinalProjectReact-Node-Front/static/js/928.91571d2f.chunk.js",
     "static/js/668.a8449048.chunk.js": "/FinalProjectReact-Node-Front/static/js/668.a8449048.chunk.js",
     "static/js/805.2e9192e8.chunk.js": "/FinalProjectReact-Node-Front/static/js/805.2e9192e8.chunk.js",
     "static/css/508.67be91a2.chunk.css": "/FinalProjectReact-Node-Front/static/css/508.67be91a2.chunk.css",
@@ -23,18 +23,20 @@
     "static/media/Group.svg": "/FinalProjectReact-Node-Front/static/media/Group.ed544401f0a12e7921fb02fd86f99d19.svg",
     "index.html": "/FinalProjectReact-Node-Front/index.html",
     "static/media/marks.svg": "/FinalProjectReact-Node-Front/static/media/marks.35ca8804f82dc4106ff0d7dc90ddc131.svg",
+    "static/media/iconflat.svg": "/FinalProjectReact-Node-Front/static/media/iconflat.58ba6638e40c4f60586e16672eb1faa7.svg",
     "static/media/bookIcon.svg": "/FinalProjectReact-Node-Front/static/media/bookIcon.077c5149b83c1bf9553a2a396ed9e56d.svg",
     "static/media/orangebookicon.svg": "/FinalProjectReact-Node-Front/static/media/orangebookicon.3b2150cd5a25089da375f70950f1d646.svg",
     "static/media/iconback.svg": "/FinalProjectReact-Node-Front/static/media/iconback.25d513bb3f515e9e274c42a3cc7caed0.svg",
     "static/media/firstpagevector.svg": "/FinalProjectReact-Node-Front/static/media/firstpagevector.3158c564816e324e859d08b2c56f5594.svg",
     "static/media/iconhome.svg": "/FinalProjectReact-Node-Front/static/media/iconhome.b3cc0a6a4d8a1f2461a5a0058dafff68.svg",
+    "static/media/deletebtn.svg": "/FinalProjectReact-Node-Front/static/media/deletebtn.a3c053f675945235bd996425c1d38d26.svg",
     "main.ae0d1077.css.map": "/FinalProjectReact-Node-Front/static/css/main.ae0d1077.css.map",
-    "main.b1e33bdc.js.map": "/FinalProjectReact-Node-Front/static/js/main.b1e33bdc.js.map",
+    "main.b28f9937.js.map": "/FinalProjectReact-Node-Front/static/js/main.b28f9937.js.map",
     "281.f6d2452c.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/281.f6d2452c.chunk.js.map",
     "985.c480edd3.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/985.c480edd3.chunk.js.map",
     "718.a18b6127.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/718.a18b6127.chunk.js.map",
     "492.8fe133b7.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/492.8fe133b7.chunk.js.map",
-    "659.d5b0fdc3.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/659.d5b0fdc3.chunk.js.map",
+    "928.91571d2f.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/928.91571d2f.chunk.js.map",
     "668.a8449048.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/668.a8449048.chunk.js.map",
     "805.2e9192e8.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/805.2e9192e8.chunk.js.map",
     "508.67be91a2.chunk.css.map": "/FinalProjectReact-Node-Front/static/css/508.67be91a2.chunk.css.map",
@@ -43,6 +45,6 @@
   },
   "entrypoints": [
     "static/css/main.ae0d1077.css",
-    "static/js/main.b1e33bdc.js"
+    "static/js/main.b28f9937.js"
   ]
 }
