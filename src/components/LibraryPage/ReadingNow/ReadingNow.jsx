@@ -13,40 +13,32 @@ import {
 // import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
-
 export default function ReadingNow({ books }) {
+  const filterBook = books.filter(book => book.status === 'in progress');
   return (
     <Section>
       <Title>Читаю зараз</Title>
       <Wrapper>
         <>
-          {books.map(book => (
+          {filterBook.map(book => (
             <BookCard key={nanoid()}>
-              <List >
-                <ListItem >
+              <List>
+                <ListItem>
                   {' '}
                   <IconBookOrange />
-                  <BookName>{book.bookName}</BookName>
+                  <BookName>{book.title}</BookName>
                 </ListItem>
                 <ListItem>
-                  <BookDescription>
-                    Автор:<Value>{book.author}</Value>
-                  </BookDescription>
+                  <BookDescription> Автор:</BookDescription>
+                  <Value>{book.author}</Value>
                 </ListItem>
                 <ListItem>
-                  <BookDescription>
-                    Рік:<Value>{book.year}</Value>
-                  </BookDescription>
+                  <BookDescription> Рік:</BookDescription>
+                  <Value>{book.year}</Value>
                 </ListItem>
                 <ListItem>
-                  <BookDescription>
-                    Кількість сторінок:<Value>{book.pages}</Value>
-                  </BookDescription>
-                </ListItem>
-                <ListItem>
-                  <BookDescription>
-                    Оцінка:<Value>{book.rating}</Value>
-                  </BookDescription>
+                  <BookDescription> Кількість сторінок:</BookDescription>
+                  <Value>{book.pages}</Value>
                 </ListItem>
               </List>
             </BookCard>

@@ -61,12 +61,6 @@ export default function LibraryForm() {
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
           // do your stuff
-
-          // console.log(data);
-          // console.log(booksArray);
-          // console.log(error);
-          // console.log(isLoading);
-
           const handleSub = () => {
             console.log(values.title);
           };
@@ -77,26 +71,10 @@ export default function LibraryForm() {
             author: values.author,
             year: values.year,
             pages: values.pages,
-            // status: 'plan',
-            // resume: {
-            //   rating: 1,
-            //   comment: 'bad bad',
-            // },
           };
-          // console.log(item);
-          // const filterBook = item.title.toLocaleLowerCase();
-          // const booksForFind = booksArray.find(
-          //   i => i.name.toLocaleLowerCase() === filterBook
-          // );
-          // if (booksForFind) {
-          //   // window.alert(`${title} is already in books`);
-          //   resetForm();
-          //   return;
-          // }
+
           const handleAddContact = async () => {
             await AddBooks(item);
-            // .unwrap();
-            // toast.info(`Books  ${title} added`);
           };
 
           handleAddContact();

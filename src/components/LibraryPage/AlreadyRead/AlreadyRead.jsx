@@ -11,47 +11,58 @@ import {
   Wrapper,
   Value,
 } from './AlreadyRead.styled';
-// import { NavLink } from 'react-router-dom';
+import Star from 'components/RatingStars/Star';
+// import StarRating from 'components/RatingStars/StarRating';
 
 export default function AlreadyRead({ books }) {
+  const handleSubmit = () => {
+    console.log('pezume');
+    // setIsModalOpen(true);
+  };
+  const filterBook = books.filter(book => book.status === 'finished');
   return (
     <Section>
       <Title>Вже прочитано</Title>
       <Wrapper>
         <>
-          {books.map(book => (
+          {filterBook.map(book => (
             <BookCard key={book.id}>
               <List>
                 <ListItem>
                   {' '}
                   <IconBook />
-                  <BookName>{book.bookName}</BookName>
+                  <BookName>{book.title}</BookName>
                 </ListItem>
                 <ListItem>
-                  <BookDescription>
-                    Автор:<Value>{book.author}</Value>
-                  </BookDescription>
+                  <BookDescription>Автор:</BookDescription>
+                  <Value>{book.author}</Value>
                 </ListItem>
                 <ListItem>
-                  <BookDescription>
-                    Рік:<Value>{book.year}</Value>
-                  </BookDescription>
+                  <BookDescription>Рік:</BookDescription>
+                  <Value>{book.year}</Value>
                 </ListItem>
                 <ListItem>
-                  <BookDescription>
-                    Кількість сторінок:<Value>{book.pages}</Value>
-                  </BookDescription>
+                  <BookDescription>Кількість сторінок: </BookDescription>
+                  <Value>{book.pages}</Value>
                 </ListItem>
                 <ListItem>
-                  <BookDescription>
-                    Рейтинг:<Value>{book.rating}</Value>
-                  </BookDescription>
+                  <BookDescription>Рейтинг: </BookDescription>
+                  <Value>{book.rating}</Value>
+                  <Star></Star> <Star></Star> <Star></Star> <Star></Star>{' '}
+                  <Star></Star>
+                  {/* <StarRating /> */}
                 </ListItem>
+                <ResumeButton
+                  disabled={false}
+                  onClick={handleSubmit}
+                  type="submit"
+                >
+                  Резюме
+                </ResumeButton>
               </List>
             </BookCard>
           ))}
         </>
-        <ResumeButton>Далі</ResumeButton>
       </Wrapper>
     </Section>
   );
