@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { theme } from '../../../helpers/theme';
-import bookIcon from '../../../images/bookIcon.svg';
-import orangebookicon from '../../../images/orangebookicon.svg'
 import flat from '../../../images/iconflat.svg'
 
 export const Section = styled.div`
@@ -21,7 +19,7 @@ export const Section = styled.div`
     margin-left: 16px;
   }
 `;
-// export const TitleContainer: 
+
 export const TitleWrapper = styled.span`
   margin-left: 34px;
   @media screen and (min-width: 768px) {
@@ -35,20 +33,13 @@ export const Btn = styled.button`
   position: absolute;
   top: 0;
   right: 0;
+
+  @media screen and (min-width: 768px) {
+    top: 18px;
+  }
+  @media screen and (min-width: 1280px) {
+    top: 18px;
 `
-
-// padding: 32px 20px 40px 20px;
-// padding: 64px 159px 88px 159px;
-// padding: 179px 154px 239px 127px;
-
-// export const Title = styled.h2`
-//     font-family: 'Montserrat';
-//     font-style: normal;
-//     font-weight: 600;
-//     font-size: 19px;
-//     line-height: 23px;
-//     color: ${theme.colors.titleColor};
-//     margin-bottom: 20px;`
 
 export const BookCard = styled.div`
     background-color:#F6F7FB;
@@ -57,34 +48,39 @@ export const BookCard = styled.div`
 `;
 
 export const IconBook = styled.i`
-    min-width:22px;
-    height:18px;
-    background-image: url(${flat});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-   margin-right:12px;
-   
+  min-width:22px;
+  height:18px;
+  background-image: url(${flat});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-right:12px;
+
+  @media screen and (min-width: 768px) {
+    margin-right:18px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right:16px;
+  }
    `
 
-export const IconBookOrange = styled.i`
-    min-width:22px;
-    height:18px;
-    background-image: url(${orangebookicon});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-   margin-right:15px;
- `
-
 export const BookName = styled.p`
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    color: ${theme.colors.titleColor};
-    margin-bottom: 14px;`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: ${theme.colors.titleColor};
+
+  @media screen and (min-width: 768px) {
+    margin-right: 66px;
+    width: 180px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 45px;
+    width: 310px;
+  }
+    `
 
 export const BookDescription = styled.p`
     font-family: 'Montserrat';
@@ -102,37 +98,67 @@ export const Value = styled.span`
     line-height: 15px;
     margin-left:20px;
     margin-right:auto;
-    color: ${theme.colors.titleColor};`
-
-    export const ResumeButton = styled.button`
-    min-width: 130px;
-    min-height:40px;
+    color: ${theme.colors.titleColor};
+    
+    @media screen and (min-width: 768px) {
+      margin-left: 0;
+      display: block;
+      margin-right: 63px;
+      width: 140px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 83px;
+    width: 140px;
+  }
+    `
+    export const Year = styled.span`
     font-family: 'Montserrat';
+    font-style: normal;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-    text-align: center;
-    color: #ffffff;
-    display:block;
-    margin-right:auto;
-    margin-left:auto;
-    background-color: ${theme.colors.darkButtonColor};
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    border: 1px solid #000000;
-    &:hover,
-    &:focus {
-      border: 1px solid #f25137;
-    }
-`;
+    font-size: 12px;
+    line-height: 15px;
+    color: ${theme.colors.titleColor};
+    
+    @media screen and (min-width: 768px) {
+      margin-left: 0;
+      display: block;
+      margin-right: 87px;
+      width: 38px;
+  }
+    `
+
+    export const Pages = styled.span`
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: ${theme.colors.titleColor};
+    
+    @media screen and (min-width: 768px) {
+      margin-left: 0;
+      margin-right: 0;
+      display: block; 
+  }
+`
+
 export const List = styled.ul`
   list-style: none;
-`;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+      align-items: center;
+      padding-top: 12px;
+      
+  }
+`
+
 export const ListItem = styled.li`
   font-family: 'Montserrat';
   font-weight: 500;
   font-size: 14px;
   line-height: 1.21;
-  color: #898f9f;
+  color: #242A37;
     color: ${theme.colors.focusColor};
   display:flex;
 
@@ -140,6 +166,7 @@ export const ListItem = styled.li`
     margin-bottom: 14px;
   }
 `;
+
 export const Wrapper = styled.div`
   position:relative;
   padding-bottom:32px;
@@ -160,31 +187,39 @@ export const StartTrainingBtn = styled.button`
   border: none;
   cursor: pointer;
   margin-left: 54px;
+  margin-top: 32px;
+  @media screen and (min-width: 768px) {
+    margin-left: 264px;
+    margin-top: 40px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 380px;
+  }
 
 `
-// export const AddBookButton = styled.button`
-//   position:absolute;
-//     top: 95%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     min-width: 52px;
-//   min-width: 52px;
-//   min-height:52px;
-//   font-family: 'Montserrat';
-//   font-weight: 500;
-//   font-size: 16px;
-//   line-height: 16px;
-//   text-align: center;
-//   color: #ffffff;
-//   display:block;
-//   margin-right:auto;
-//   margin-left:auto;
-//   background-color: ${theme.colors.focusColor};
-//   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-//   border-radius: 50%;
-//   border:none;
-//   &:hover,
-//   &:focus {
-//     border: 1px solid #f25137;
-//   }
-// `;
+export const HeaderWrapper = styled.div`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #898F9F;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
+export const HeaderTitle = styled.span`
+  margin-right: 194px;
+  @media screen and (min-width: 1280px) {
+    margin-right: 300px;
+  }
+`
+export const HeaderAuthor = styled.span`
+  margin-right: 160px;
+  @media screen and (min-width: 1280px) {
+    margin-right: 181px;
+  }
+`
+export const HeaderYear = styled.span`
+  margin-right: 102px;
+`

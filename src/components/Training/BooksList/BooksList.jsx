@@ -1,21 +1,24 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { bookList } from "redux/trainingBookList/trainingBooksListAction";
 import {
-  Section,
-  Title,
-  List,
-  BookCard,
-  ListItem,
-  BookName,
-  BookDescription,
-  Wrapper,
-  Value,
-  IconBook,
-  TitleWrapper,
-  Btn,
-  StartTrainingBtn,
+    Section,
+    List,
+    BookCard,
+    ListItem,
+    BookName,
+    BookDescription,
+    Wrapper,
+    Value,
+    IconBook,
+    TitleWrapper,
+    Btn,
+    StartTrainingBtn,
+    Year,
+    Pages,
+    HeaderWrapper,
+    HeaderTitle,
+    HeaderAuthor,
+    HeaderYear
 } from './BooksList.styled';
-import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
+
 import deletedBtn from '../../../images/deletebtn.svg'
 
 
@@ -24,7 +27,13 @@ export default function BooksList({ books, onDeleteBtnClick, addTrainingClick })
   return (
     <Section>
       <Wrapper>
-        <>
+            <>
+                <HeaderWrapper>
+                  <HeaderTitle>Назва книги</HeaderTitle> 
+                  <HeaderAuthor>Автор</HeaderAuthor> 
+                  <HeaderYear>Рік</HeaderYear> 
+                  <span>Стор.</span> 
+                </HeaderWrapper>
            {books && 
                 books.map(book => (
                     <BookCard key={book._id}>
@@ -44,18 +53,18 @@ export default function BooksList({ books, onDeleteBtnClick, addTrainingClick })
                     </ListItem>
                     <ListItem>
                         <BookDescription>
-                            <TitleWrapper>Рік:</TitleWrapper><Value>{book.year}</Value>
+                            <TitleWrapper>Рік:</TitleWrapper><Year>{book.year}</Year>
                         </BookDescription>
                     </ListItem>
                     <ListItem>
                         <BookDescription>
-                            <TitleWrapper>Стор.:</TitleWrapper><Value>{book.pages}</Value>
+                            <TitleWrapper>Стор.:</TitleWrapper><Pages>{book.pages}</Pages>
                         </BookDescription>
                     </ListItem>
                     <ListItem>
                     </ListItem>
-                </List>
-            </BookCard>
+                    </List>
+                </BookCard>
             ))}    
             {(books.length !== 0) && <StartTrainingBtn onClick={addTrainingClick}>Почати тренування</StartTrainingBtn>}      
         </>

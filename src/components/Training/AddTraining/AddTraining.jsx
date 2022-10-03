@@ -35,12 +35,10 @@ export default function AddTraining() {
     const startBookList = useSelector(bookListSelectors.getBooksList)
     const [selectedBookArr, setSelectedBookArr] = useState([]);
     const [selectedBook, setSelectedBook] = useState('')
-    // const [books, setBooks] = useState([]);
 
     useEffect(() => {
         if (!isLoading) {
             const booksArr = data.filter(({ _id }) => selectedBookArr.includes(_id))
-            // setBooks(booksArr);
             dispatch(bookList(booksArr))
     }
     }, [data, dispatch, isLoading, selectedBookArr])
@@ -63,7 +61,6 @@ export default function AddTraining() {
         const booksArrInfo = data.filter(({ _id }) => selectedBookArr.includes(_id))
         dispatch(bookList(booksArrInfo))
         setSelectedBookArr([selectedBook, ...selectedBookArr]);  
-        // reset()
     }
 
     const onDeleteBtnClick = (e) => {
@@ -76,22 +73,16 @@ export default function AddTraining() {
 
     const addTrainingClick = async () => {
         if (!start.includes("-") || !finish.includes("-")) { alert("Введіть дати") }
-
-        console.log(selectedBookArr)
-        const newArr = [];
-        selectedBookArr.map(i => newArr.push(i))
-
-    try {
-      const value = {
-        start: start,
-        end: finish,
-        book: selectedBookArr,
-        };
-        console.log(value);
-      await updateTraining(value);
-    } catch (err) {
-      console.log(err);
-    }
+        try {
+        const value = {
+            start: start,
+            end: finish,
+            book: selectedBookArr,
+            };
+            await updateTraining(value);
+        } catch (err) {
+        console.log(err);
+        }
     }
 
     return (

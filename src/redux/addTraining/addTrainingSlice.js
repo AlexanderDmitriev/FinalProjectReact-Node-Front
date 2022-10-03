@@ -31,8 +31,8 @@ export const addTrainingApi = createApi({
         method: 'POST',
             data: {
             start: value.start,
-            end: value.finish,
-            book: value.selectedBookArr,
+            end: value.end,
+            book: value.book,
         },
       }),
       invalidatesTags: ['Training'],
