@@ -27,6 +27,8 @@ import {
 import { useDispatch } from 'react-redux';
 import authOperations from '../redux/authAPI/auth-operation';
 
+// import Timers from '../components/Timers/Timers';
+
 export default function Login() {
   const dispatch = useDispatch();
 
@@ -40,6 +42,7 @@ export default function Login() {
 
   return (
     <>
+    {/* <Timers></Timers> */}
       <Box>
         <FormBox>
           <Formik
