@@ -7,7 +7,6 @@ import desktop from '../../images/login + register img/desktop/desktop.jpg';
 import desktop2x from '../../images/login + register img/desktop/desktop@2x.jpg';
 
 import google from '../../images/login + register img/googleicon.svg';
-
 import marks from '../../images/login + register img/marks.svg';
 
 import { Field } from 'formik';
@@ -126,6 +125,10 @@ export const GoogleButton = styled.button`
   }
 `;
 
+export const NavGoogle = styled(NavLink)`
+  text-decoration: none;
+`;
+
 export const TextGoogleButton = styled.p`
   font-style: normal;
   font-weight: 700;
@@ -138,27 +141,15 @@ export const TextGoogleButton = styled.p`
 
   ::before {
     content: '';
-    margin-right: 12px;
-    padding-top: 1px;
-    padding-left: 2px;
-    padding-right: 2px;
+    margin-right: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
     background-image: url(${google});
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
   }
 `;
-
-// export const IconWrapper = styled.div`
-//   /* margin-right: 12px; */
-//   /* padding-top: 4px; */
-//   /* width: 4px; */
-//   /* height: 8px; */
-// `;
-
-// export const Icon = styled.svg`
-//   /* vertical-align: top; */
-// `;
 
 export const Input = styled.div`
   margin-bottom: 20px;

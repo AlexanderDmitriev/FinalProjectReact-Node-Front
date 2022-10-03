@@ -5,6 +5,7 @@ import {
   Box,
   FormBox,
   FormInput,
+  NavGoogle,
   GoogleButton,
   TextGoogleButton,
   Input,
@@ -21,35 +22,13 @@ import {
   Border,
   Error,
   Star,
-  // IconWrapper,
-  // Icon,
 } from './styled/Login.styled';
 
-// import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from '../redux/authAPI/auth-operation';
-// import google from '../images/login + register img/googleicon.svg';
 
 export default function Login() {
   const dispatch = useDispatch();
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-
-  // const handleChange = ({ target: { name, value } }) => {
-  //   switch (name) {
-  //     case 'email':
-  //       return setEmail(value);
-  //     case 'password':
-  //       return setPassword(value);
-  //     default:
-  //       return;
-  //   }
-  // };
-
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   dispatch(authOperations.logIn({ email, password }));
-  // };
 
   const validationSchema = yup.object().shape({
     email: yup.string().email('Невірна адреса').required("Поле обов'язкове"),
@@ -90,13 +69,10 @@ export default function Login() {
               <Form>
                 <FormInput>
                   <Input>
-                    <GoogleButton type="submit">
-                      {/* <IconWrapper>
-                        <Icon width="18" height="18">
-                          <use href={google}></use>
-                        </Icon>
-                      </IconWrapper> */}
-                      <TextGoogleButton>Google</TextGoogleButton>
+                    <GoogleButton type="button">
+                      <NavGoogle to="http://localhost:3001/api/users/google">
+                        <TextGoogleButton>Google</TextGoogleButton>
+                      </NavGoogle>
                     </GoogleButton>
                     <InputEmail>
                       <Label htmlFor="email">
