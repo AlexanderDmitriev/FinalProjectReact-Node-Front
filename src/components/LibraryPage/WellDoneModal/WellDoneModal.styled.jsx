@@ -15,6 +15,7 @@ export const Section = styled.div`
   height: 358px;
 
   text-align: center;
+
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   background-color: ${theme.colors.backColor};
 
@@ -51,8 +52,12 @@ export const Text = styled.p`
 `;
 export const ButtonBox = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: end;
   @media screen and (min-width: 768px) {
+    // width: 394px;
+    // height: 286px;
+    flex-direction: row;
   }
 `;
 

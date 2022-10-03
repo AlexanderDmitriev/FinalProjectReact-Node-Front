@@ -1,37 +1,42 @@
 [
     {"id":"1",
-      "bookName":"Scrum. A revolutionary method of project management",
+      "title":"Scrum. A revolutionary method of project management",
     "author":"Jeff Sutherland",
     "year":"2014",
     "pages":"324",
-    "rating":"4"
+    "rating":"4",
+    "status": "plan"
 },
   {"id":"2",
-    "bookName":"The Jungle Book",
+    "title":"The Jungle Book",
     "author":"Rudyard Kipling",
     "year":"1894",
     "pages":"215",
-    "rating":"3"
+    "rating":"3",
+    "status": "in progress"
 },
   {"id":"3",
-    "bookName":"The Call of the Wild",
+    "title":"The Call of the Wild",
     "author":"Jack London",
     "year":"1903",
     "pages":"222",
-    "rating":"5"
+    "rating":"5",
+    "status": "in progress"
 },
 {"id":"4",
-  "bookName":"The Buried Giant",
+  "title":"The Buried Giant",
     "author":"Kazuo Ishiguro",
     "year":"2015",
     "pages":"402",
-    "rating":"3"
+    "rating":"3",
+    "status": "finished"
 },
 {"id":"5",
-  "bookName":"The terrorist",
+  "title":"The terrorist",
     "author":"Michael Chabon",
     "year":"2022",
     "pages":"502",
-    "rating":"2"
+    "rating":"2",
+     "status": "finished"
 }
 ]
