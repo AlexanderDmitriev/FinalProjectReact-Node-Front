@@ -13,11 +13,14 @@ import {
 } from "./AddTraining.styled";
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 import { ReactComponent as IconBack } from '../../../images/iconback.svg'
 import { useGetBooksQuery } from "redux/booksApi/booksSlice";
-import { bookList } from "redux/trainingBookList/trainingBooksListAction";
+import { useUpdateTrainingMutation } from "redux/addTraining/addTrainingSlice";
+import { bookList, finishDate, startDate } from "redux/trainingBookList/trainingBooksListAction";
+import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
 import MyGoals from "components/Training/MyGoals/MyGoals";
+import BooksList from 'components/Training/BooksList/BooksList';
 
 
 export default function AddTraining() {
@@ -25,44 +28,62 @@ export default function AddTraining() {
     const path = location?.state?.from ?? '/';
     const { data, /* error, */ isLoading } = useGetBooksQuery();
     const dispatch = useDispatch();
+    const [updateTraining] = useUpdateTrainingMutation();
 
-    const [startTime, setStartTime] = useState('');
-    const [finishTime, setFinishTime] = useState('');
-    const [selectedBookArr, setSelectedBookArr] = useState('');
+    const start = useSelector(bookListSelectors.getStartDate)
+    const finish = useSelector(bookListSelectors.getFinishDate)
+    const startBookList = useSelector(bookListSelectors.getBooksList)
+    const [selectedBookArr, setSelectedBookArr] = useState([]);
     const [selectedBook, setSelectedBook] = useState('')
-    const [books, setBooks] = useState([]);
 
     useEffect(() => {
         if (!isLoading) {
             const booksArr = data.filter(({ _id }) => selectedBookArr.includes(_id))
-            setBooks(booksArr);
             dispatch(bookList(booksArr))
     }
     }, [data, dispatch, isLoading, selectedBookArr])
      
     const handleSelectChange = event => {
         setSelectedBook(event.target.value);
-        console.log(books);
     }
 
     const handleChangeStartTime = e => {
-        setStartTime(e.target.value)
+        dispatch(startDate(e.target.value))
     }
 
     const handleChangeFinishTime = e => {
-        setFinishTime(e.target.value)
+        dispatch(finishDate(e.target.value))
     }
 
     const handleAddBook = () => {
-        setSelectedBookArr([...selectedBookArr, selectedBook]);  
-        // reset()
+        const double = selectedBookArr.find(i => i === selectedBook);
+        if (double) { return };
+        const booksArrInfo = data.filter(({ _id }) => selectedBookArr.includes(_id))
+        dispatch(bookList(booksArrInfo))
+        setSelectedBookArr([selectedBook, ...selectedBookArr]);  
     }
 
-    /* const reset = () => {
-        setStartTime('')
-        setFinishTime('')
-        setSelectedBook('')
-    } */
+    const onDeleteBtnClick = (e) => {
+        const bookId = e.currentTarget.value;
+        const filteredBooks = selectedBookArr.filter(i => i !== bookId)
+        setSelectedBookArr(filteredBooks);
+        const bookListSelected = startBookList.filter(i => i._id !== bookId);
+        dispatch(bookList(bookListSelected))
+    }
+
+    const addTrainingClick = async () => {
+        if (!start.includes("-") || !finish.includes("-")) { alert("Введіть дати") }
+        try {
+        const value = {
+            start: start,
+            end: finish,
+            book: selectedBookArr,
+            };
+            await updateTraining(value);
+        } catch (err) {
+        console.log(err);
+        }
+    }
 
     return (
 
@@ -85,7 +106,6 @@ export default function AddTraining() {
                     type="text"
                     placeholder="Початок"
                     name='startTime'
-                    value={startTime}
                     onChange={handleChangeStartTime}
                     onFocus={(e) => (e.target.type = "date")}
                     onBlur={(e) => (e.target.type = "text")}
@@ -94,7 +114,6 @@ export default function AddTraining() {
                     type="text"
                     placeholder="Завершение"
                     name='finishTime'
-                    value={finishTime}
                     onChange={handleChangeFinishTime}
                     onFocus={(e) => (e.target.type = "date")}
                     onBlur={(e) => (e.target.type = "text")}
@@ -119,7 +138,8 @@ export default function AddTraining() {
                         <AddBtn type="submit" onClick={handleAddBook}>Додати</AddBtn>
                         </SelectContainer>
                     }
-            </TrainingSection>
+                </TrainingSection>
+                <BooksList books={startBookList} onDeleteBtnClick={onDeleteBtnClick} addTrainingClick={addTrainingClick} />
         </Section></>
     )
 }
