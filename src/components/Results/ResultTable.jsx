@@ -1,161 +1,77 @@
 import React from 'react';
-import styled from 'styled-components';
-import { useTable } from 'react-table';
+import { useFetchResultsQuery } from 'redux/results/resultsSlice';
+// import { nanoid } from 'nanoid';
+import Media from 'react-media';
+import {
+  StatTitle,
+  List,
+  TableWrapper,
+  TitleWrapper,
+  Image,
+} from './Results.styled';
+import ResultTableRow from './ResultTableRow';
 
-// import makeData from './makeData';
+import statLineL from '../../images/stats/statisticlinel.jpg';
+import statLineR from '../../images/stats/statisticliner.jpg';
+import statLineP from '../../images/stats/statisticlineplan.jpg';
 
-const Styles = styled.div`
-  padding: 1rem;
+export default function ResultsTable() {
+  //   const { data, error, isLoading } = useFetchResultsQuery();
+  const { data } = useFetchResultsQuery();
 
-  table {
-    border-spacing: 0;
-    border: 1px solid black;
+  //   console.log(data.statistic);
+  // const refactorDateToStats = data => {
+  //   return data.split('-').reverse().join('.');
+  // };
 
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
-    }
+  //   console.log(refactorDateToStats(data.date));
+  //   console.log(error);
 
-    th,
-    td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-
-      :last-child {
-        border-right: 0;
-      }
-    }
-  }
-`;
-const IndeterminateCheckbox = React.forwardRef(
-  ({ indeterminate, ...rest }, ref) => {
-    const defaultRef = React.useRef();
-    const resolvedRef = ref || defaultRef;
-
-    React.useEffect(() => {
-      resolvedRef.current.indeterminate = indeterminate;
-    }, [resolvedRef, indeterminate]);
-
-    return <input type="checkbox" ref={resolvedRef} {...rest} />;
-  }
-);
-
-function Table({ columns, data }) {
-  // Use the state and functions returned from useTable to build your UI
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    allColumns,
-    getToggleHideAllColumnsProps,
-    state,
-  } = useTable({
-    columns,
-    data,
-  });
-
+  //   console.log(data.id);
   return (
-    <>
-      <div>
-        <div>
-          <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle
-          All
-        </div>
-        {allColumns.map(column => (
-          <div key={column.id}>
-            <label>
-              <input type="checkbox" {...column.getToggleHiddenProps()} />{' '}
-              {column.id}
-            </label>
-          </div>
-        ))}
-        <br />
-      </div>
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-              ))}
-            </tr>
+    <TableWrapper>
+      <Media
+        queries={{
+          small: '(max-width: 767px)',
+          medium: '(min-width: 768px) and (max-width: 1279px)',
+          large: '(min-width: 1280px)',
+        }}
+      >
+        {matches => (
+          <TitleWrapper>
+            {matches.small && (
+              <>
+                <Image src={statLineL} alt="декоративна лінія" />
+                <StatTitle>СТАТИСТИКА</StatTitle>
+                <Image src={statLineR} alt="декоративна лінія" />
+              </>
+            )}
+            {matches.medium && (
+              <>
+                <StatTitle>СТАТИСТИКА</StatTitle>
+                <Image src={statLineP} alt="декоративна лінія" />
+              </>
+            )}
+            {matches.large && (
+              <>
+                <Image src={statLineL} alt="декоративна лінія" />
+                <StatTitle>СТАТИСТИКА</StatTitle>
+                <Image src={statLineR} alt="декоративна лінія" />
+              </>
+            )}
+          </TitleWrapper>
+        )}
+      </Media>
+      <List>
+        {/* {data &&
+        data.map(({ id, date, time, pages }) => (
+          <ResultTableRow key={id} date={date} time={time} pages={pages} />
+        ))} */}
+        {data &&
+          data.statistic.map(({ date, pages, _id }) => (
+            <ResultTableRow key={_id} date={date} pages={pages} />
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <pre>{JSON.stringify(state, null, 2)}</pre>
-    </>
+      </List>
+    </TableWrapper>
   );
 }
-
-function ResultTable() {
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: 'Name',
-        columns: [
-          {
-            Header: 'First Name',
-            accessor: 'firstName',
-          },
-          {
-            Header: 'Last Name',
-            accessor: 'lastName',
-          },
-        ],
-      },
-      {
-        Header: 'Info',
-        columns: [
-          {
-            Header: 'Age',
-            accessor: 'age',
-          },
-          {
-            Header: 'Visits',
-            accessor: 'visits',
-          },
-          {
-            Header: 'Status',
-            accessor: 'status',
-          },
-          {
-            Header: 'Profile Progress',
-            accessor: 'progress',
-          },
-        ],
-      },
-    ],
-    []
-  );
-
-  const data = React.useMemo(() => new Date(), []);
-
-  return (
-    <Styles>
-      <Table columns={columns} data={data} />
-    </Styles>
-  );
-}
-
-export default ResultTable;
