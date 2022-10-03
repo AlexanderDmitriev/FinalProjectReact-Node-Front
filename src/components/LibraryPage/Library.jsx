@@ -29,8 +29,12 @@ export default function Library() {
               <use href={sprite + '#icon-back'}></use>
             </BackArrow>
           </NavLink>
-
-          <LibraryForm />
+            <LibraryForm />
+  {books && <LibraryModal /> }
+        
+          {books && <GoingToRead books={books} />}
+        
+          {/* <WellDoneModal /> */}
 
           {/* <LibraryModal /> */}
           {books ? <LibraryModal /> : <AlreadyRead books={books} />}
