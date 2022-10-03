@@ -108,6 +108,10 @@ export const FormInput = styled.div`
   flex-direction: column;
 `;
 
+export const NavGoogle = styled(NavLink)`
+  text-decoration: none;
+`;
+
 export const GoogleButton = styled.button`
   margin-top: 32px;
   margin-bottom: 28px;
@@ -142,17 +146,16 @@ export const TextGoogleButton = styled.p`
 
   color: #707375;
 
-  /* ::before {
+  ::before {
     content: '';
-    margin-right: 14px;
-    padding-top: 11px;
-    padding-left: 2px;
-    padding-right: 2px;
+    margin-right: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
     background-image: url(${google});
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-  } */
+  }
 `;
 
 export const Input = styled.div`
@@ -196,6 +199,11 @@ export const Label = styled.label`
 
     color: #898f9f;
   }
+`;
+
+export const Star = styled.span`
+  color: #ff6b08;
+  margin-left: 3px;
 `;
 
 export const FieldInput = styled(Field)`
@@ -281,6 +289,14 @@ export const NavLogin = styled(NavLink)`
   text-align: center;
 
   color: #ff6b08;
+`;
+
+export const Error = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.12;
+  color: red;
+  text-align: center;
 `;
 
 export const TextBox = styled.div`
