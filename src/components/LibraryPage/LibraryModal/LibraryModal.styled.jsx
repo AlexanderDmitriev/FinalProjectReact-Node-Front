@@ -19,7 +19,7 @@ export const Section = styled.section`
   padding: 43px 20px 36px 20px;
   text-align: center;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-  background-color: #ffffff;
+  background-color: ${theme.colors.backColor};
 
   @media screen and (min-width: 768px) {
     width: 608px;
@@ -104,7 +104,7 @@ export const Text = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 1.21;
-  color: #898f9f;
+  color: ${theme.colors.bookDescriptionColor};
   @media screen and (min-width: 768px) {
     min-width: 450px;
   }
@@ -118,10 +118,10 @@ export const Button = styled.button`
   font-size: 14px;
   line-height: 1.21;
   text-align: center;
-  color: #ffffff;
+  color: ${theme.colors.backColor};
   background-color: #ff6b08;
   border: 1px solid #ff6b08;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 4px ${theme.colors.darkShadowColor};;
   &:hover,
   &:focus {
     background-color: #d15807;

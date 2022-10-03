@@ -11,7 +11,6 @@ import {
   Wrapper,
   Value,
 } from '../AlreadyRead/AlreadyRead.styled';
-// import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
 export default function GoingToRead({ books }) {

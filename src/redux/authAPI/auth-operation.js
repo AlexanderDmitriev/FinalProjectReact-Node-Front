@@ -30,7 +30,7 @@ const logIn = createAsyncThunk(
   '/auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/api/users/login', credentials);
+      const { data } = await axios.post('/users/login', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -76,7 +76,7 @@ const fetchCurrentUser = createAsyncThunk(
 const authOperations = {
   register,
   logIn,
-    logOut,
-    fetchCurrentUser,
+  logOut,
+  fetchCurrentUser,
 };
 export default authOperations;

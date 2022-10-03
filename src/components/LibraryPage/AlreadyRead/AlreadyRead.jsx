@@ -11,7 +11,6 @@ import {
   Wrapper,
   Value,
 } from './AlreadyRead.styled';
-// import { NavLink } from 'react-router-dom';
 
 export default function AlreadyRead({ books }) {
   return (

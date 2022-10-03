@@ -20,10 +20,11 @@ const style = {
   
 const Header = () => {
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+    const user = useSelector(authSelectors.getUsername);
   
     // const user = 'Martha Stewart';
-    const user = authSelectors.getUsername;
-    const userLogo = user[0];
+    /* const user = authSelectors.getUsername; */
+    const userLogo = user?user.slice(0, 1).toUpperCase():'';
     const dispatch = useDispatch();
     const navigate = useNavigate();
   
@@ -51,7 +52,7 @@ const Header = () => {
                 <button className={s.btn_desktop} type="button">
                   {userLogo}
                 </button>
-                <p className={s.user_name}>User</p>
+                <p className={s.user_name}>{user}</p>
               </div>
   
               {/* {statistic && ( */}

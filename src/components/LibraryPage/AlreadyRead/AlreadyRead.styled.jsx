@@ -4,18 +4,15 @@ import bookIcon from '../../../images/bookIcon.svg';
 import orangebookicon from '../../../images/orangebookicon.svg'
 
 export const Section = styled.div`
-  /* max-width: 320px; */
   padding: 32px 20px 40px 20px;
   background-color: #F6F7FB;
 
 
   @media screen and (min-width: 768px) {
-    /* max-width: 768px; */
     padding: 64px 159px 88px 159px;
   }
 
   @media screen and (min-width: 1280px) {
-    /* max-width: 1280px; */
     padding: 179px 154px 239px 127px;
   }
 `;
@@ -31,7 +28,7 @@ export const Title = styled.h2`
 
 export const BookCard = styled.div`
     padding:20px;
-    background-color:#ffffff;
+    background-color:${theme.colors.backColor};
     margin-bottom:20px;
    
 `;
@@ -90,16 +87,16 @@ export const Value = styled.span`
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: #ffffff;
+  color: ${theme.colors.backColor};
   display:block;
   margin-right:auto;
   margin-left:auto;
   background-color: ${theme.colors.darkButtonColor};
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  border: 1px solid #000000;
+  box-shadow: 0px 2px 4px ${theme.colors.darkShadowColor};
+  border: 1px solid ${theme.colors.darkShadowColor};;
   &:hover,
   &:focus {
-    border: 1px solid #f25137;
+    border: 1px solid ${theme.colors.buttonsBorder};
   }
 `;
 export const List = styled.ul`
@@ -112,7 +109,7 @@ export const ListItem = styled.li`
   font-weight: 500;
   font-size: 14px;
   line-height: 1.21;
-  color: #898f9f;
+  color: ${theme.colors.bookDescriptionColor};;
     color: ${theme.colors.focusColor};
   display:flex;
 
@@ -138,16 +135,16 @@ position:absolute;
   font-size: 16px;
   line-height: 16px;
   text-align: center;
-  color: #ffffff;
+  color: ${theme.colors.backColor};;
   display:block;
   margin-right:auto;
   margin-left:auto;
   background-color: ${theme.colors.focusColor};
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 4px ${theme.colors.darkShadowColor};
   border-radius: 50%;
   border:none;
   &:hover,
   &:focus {
-    border: 1px solid #f25137;
+    border: 1px solid ${theme.colors.buttonsBorder};;
   }
 `;
