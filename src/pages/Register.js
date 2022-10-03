@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
-// import * as Yup from 'yup';
+import * as yup from 'yup';
 
 import {
   Box,
   FormBox,
   FormInput,
+  NavGoogle,
   GoogleButton,
   TextGoogleButton,
   Input,
@@ -23,44 +24,34 @@ import {
   MainListItem,
   Subtitle,
   ListItem,
+  Error,
+  Star,
 } from './styled/Register.styled';
 
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from '../redux/authAPI/auth-operation';
 import { useMediaQuery } from 'react-responsive';
 
 export default function Register() {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeat_password, setRepeatPassword] = useState('');
-
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'name':
-        return setName(value);
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      case 'repeat_password':
-        return setRepeatPassword(value);
-      default:
-        return;
-    }
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    dispatch(
-      authOperations.register({ name, email, password, repeat_password })
-    );
-  };
 
   const isTablet = useMediaQuery({
     query: '(min-width: 768px)',
+  });
+
+  const validationSchema = yup.object().shape({
+    name: yup
+      .string()
+      .max(15, 'Максимум 15 символів')
+      .required("Поле обов'язкове"),
+    email: yup.string().email('Невірна адреса').required("Поле обов'язкове"),
+    password: yup
+      .string()
+      .min(6, 'Мінімум 6 символів')
+      .required("Поле обов'язкове"),
+    repeat_password: yup
+      .string()
+      .oneOf([yup.ref('password')], 'Паролі не співпадають'),
   });
 
   return (
@@ -74,89 +65,126 @@ export default function Register() {
               password: '',
               repeat_password: '',
             }}
-            // validationSchema={Yup.object({
-            //   name: Yup.string()
-            //     .max(15, 'Максимум 15 символів')
-            //     .required("Поле обов'язкове"),
-            //   email: Yup.string()
-            //     .email('Невірна адреса')
-            //     .required("Поле обов'язкове"),
-            //   password: Yup.string()
-            //     .min(6, 'Мінімум 6 символів')
-            //     .required("Поле обов'язкове"),
-            //   repeatPassword: Yup.string()
-            //     .min(6, 'Мінімум 6 символів')
-            //     .required("Поле обов'язкове"),
-            // })}
-            // onSubmit={(values, { setSubmitting }) => {
-            //   setTimeout(() => {
-            //     alert(JSON.stringify(values, null, 2));
-            //     setSubmitting(false);
-            //   }, 400);
-            // }}
-            onSubmit={handleSubmit}
+            validateOnBlur
+            validationSchema={validationSchema}
+            onSubmit={(values, { resetForm }) => {
+              dispatch(
+                authOperations.register({
+                  name: values.name,
+                  email: values.email,
+                  password: values.password,
+                  repeat_password: values.repeat_password,
+                })
+              );
+              resetForm();
+            }}
           >
-            <Form onSubmit={handleSubmit}>
-              <FormInput>
-                <Input>
-                  <GoogleButton type="submit">
-                    <TextGoogleButton>Google</TextGoogleButton>
-                  </GoogleButton>
-                  <InputField>
-                    <Label htmlFor="name">Ім'я</Label>
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              isValid,
+              handleSubmit,
+              dirty,
+            }) => (
+              <Form>
+                <FormInput>
+                  <Input>
+                    <GoogleButton type="button">
+                      <NavGoogle to="http://localhost:3001/api/users/google">
+                        <TextGoogleButton>Google</TextGoogleButton>
+                      </NavGoogle>
+                    </GoogleButton>
+                    <InputField>
+                      <Label htmlFor="name">
+                        Ім'я<Star>*</Star>
+                      </Label>
+                      <FieldInput
+                        name="name"
+                        type="text"
+                        placeholder="..."
+                        value={values.name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.name && errors.name && (
+                        <ErrorMessage name="name">
+                          {msg => <Error>{msg}</Error>}
+                        </ErrorMessage>
+                      )}
+                    </InputField>
+                    <InputField>
+                      <Label htmlFor="email">
+                        Електронна адреса<Star>*</Star>
+                      </Label>
+                      <FieldInput
+                        name="email"
+                        type="email"
+                        placeholder="your@email.com"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.email && errors.email && (
+                        <ErrorMessage name="email">
+                          {msg => <Error>{msg}</Error>}
+                        </ErrorMessage>
+                      )}
+                    </InputField>
+                    <InputField>
+                      <Label htmlFor="password">
+                        Пароль<Star>*</Star>
+                      </Label>
+                      <FieldInput
+                        name="password"
+                        type="password"
+                        placeholder="..."
+                        value={values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.password && errors.password && (
+                        <ErrorMessage name="password">
+                          {msg => <Error>{msg}</Error>}
+                        </ErrorMessage>
+                      )}
+                    </InputField>
+                    <Label htmlFor="repeat_password">
+                      Підтвердіть пароль<Star>*</Star>
+                    </Label>
                     <FieldInput
-                      name="name"
-                      type="text"
+                      name="repeat_password"
+                      type="password"
                       placeholder="..."
-                      value={name}
+                      value={values.repeat_password}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                     />
-                    <ErrorMessage name="name" />
-                  </InputField>
-                  <InputField>
-                    <Label htmlFor="email">Електронна адреса</Label>
-                    <FieldInput
-                      name="email"
-                      type="email"
-                      placeholder="your@email.com"
-                      value={email}
-                      onChange={handleChange}
-                    />
-                    <ErrorMessage name="email" />
-                  </InputField>
-                  <InputField>
-                    <Label htmlFor="password">Пароль</Label>
-                    <FieldInput
-                      name="password"
-                      type="text"
-                      placeholder="..."
-                      value={password}
-                      onChange={handleChange}
-                    />
-                    <ErrorMessage name="password" />
-                  </InputField>
-                  <Label htmlFor="repeatPassword">Підтвердіть пароль</Label>
-                  <FieldInput
-                    name="repeat_password"
-                    type="text"
-                    placeholder="..."
-                    value={repeat_password}
-                    onChange={handleChange}
-                  />
-                  <ErrorMessage name="repeatPassword" />
-                </Input>
+                    {touched.repeat_password && errors.repeat_password && (
+                      <ErrorMessage name="repeat_password">
+                        {msg => <Error>{msg}</Error>}
+                      </ErrorMessage>
+                    )}
+                  </Input>
 
-                <Button type="submit">
-                  <TextButton>Зареєструватися</TextButton>
-                </Button>
+                  <Button
+                    type="submit"
+                    disabled={!isValid && !dirty}
+                    onClick={handleSubmit}
+                  >
+                    <TextButton>Зареєструватися</TextButton>
+                  </Button>
 
-                <NavBox>
-                  <NavText>
-                    Вже з нами? <NavLogin to="/login">Увійти</NavLogin>
-                  </NavText>
-                </NavBox>
-              </FormInput>
-            </Form>
+                  <NavBox>
+                    <NavText>
+                      Вже з нами? <NavLogin to="/login">Увійти</NavLogin>
+                    </NavText>
+                  </NavBox>
+                </FormInput>
+              </Form>
+            )}
           </Formik>
         </FormBox>
 
