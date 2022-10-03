@@ -55,21 +55,23 @@ export default function Chart({ books }) {
     height = 215;
   }
 
-  const { data, error /* , isLoading */ } = useFetchResultsQuery();
+  const { data, error  , isLoading  } = useFetchResultsQuery();
   const [pages, setPages] = useState(0);
-  console.log(error);
+ 
   useEffect(() => {
     if (error) {
       return;
     }
-    const activeBooksArr = data.training.active;
-    const booksArr = books.filter(({ _id }) => activeBooksArr.includes(_id));
-    let totalPages = 0;
-    booksArr.map(item => {
+    if (!isLoading) {
+      const activeBooksArr = data.training.active;
+      const booksArr = books.filter(({ _id }) => activeBooksArr.includes(_id));
+      let totalPages = 0;
+      booksArr.map(item => {
       return (totalPages += Number(item.pages));
-    });
-    setPages(totalPages);
-  }, [books, data.training.active, error]);
+      });
+      setPages(totalPages);
+    }
+  }, [books, data, error, isLoading]);
   // const startDay = new Date(data.training.start);
   // const finishDay = new Date(data.training.end);
   const startDay = new Date('2022-10-02');
