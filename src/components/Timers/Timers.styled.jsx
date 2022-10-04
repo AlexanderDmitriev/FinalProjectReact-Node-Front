@@ -3,7 +3,7 @@ import { theme } from '../../helpers/theme';
 
 export const Container = styled.div`
   margin: 20px;
-  background: ${theme.colors.inputColor};
+//   background: ${theme.colors.inputColor};
 
   @media screen and (min-width: 768px) {
     margin: 40px 78px 36px 78px;
@@ -102,4 +102,5 @@ export const TimerNumber = styled.span`
   font-size: 25px;
   line-height: 38px;
   color: rgba(9, 30, 63, 1);
+  width: 2ch;
 `;
