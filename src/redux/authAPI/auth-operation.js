@@ -31,7 +31,6 @@ const logIn = createAsyncThunk(
     try {
       const { data } = await axios.post('/api/users/login', credentials);
       token.set(data.token);
-      console.log(data.token);
       return data;
     } catch (error) {
       alert(error.message);
