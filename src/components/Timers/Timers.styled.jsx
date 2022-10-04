@@ -3,7 +3,7 @@ import { theme } from '../../helpers/theme';
 
 export const Container = styled.div`
   margin: 20px;
-//   background: ${theme.colors.inputColor};
+  //   background: ${theme.colors.inputColor};
 
   @media screen and (min-width: 768px) {
     margin: 40px 78px 36px 78px;

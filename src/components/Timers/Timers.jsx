@@ -22,24 +22,32 @@ export default function Timers() {
   const currentTime = Date.now();
   const endTrainingDate = new Date('Oct 08 2022 00:00:00').getTime();
 
-  function padWithZeros (number, minlength) {
+  function padWithZeros(number, minlength) {
     const numberString = number.toString();
     if (numberString.length >= minlength) return numberString;
-    return "0" + numberString;
+    return '0' + numberString;
   }
 
   const startTimer = (startDate, currentTime) => {
     interval = setInterval(() => {
       const distance = startDate - currentTime;
 
-      const days = padWithZeros(Math.floor(distance / (1000 * 60 * 60 * 24)),2);
-      const hours = padWithZeros(Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      ),2);
-      const minutes = padWithZeros(Math.floor(
-        (distance % (1000 * 60 * 60)) / (1000 * 60)
-      ),2);
-      const seconds = padWithZeros(Math.floor((distance % (1000 * 60)) / 1000),2);
+      const days = padWithZeros(
+        Math.floor(distance / (1000 * 60 * 60 * 24)),
+        2
+      );
+      const hours = padWithZeros(
+        Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        2
+      );
+      const minutes = padWithZeros(
+        Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        2
+      );
+      const seconds = padWithZeros(
+        Math.floor((distance % (1000 * 60)) / 1000),
+        2
+      );
 
       if (distance < 0) {
         clearInterval(interval.current);
@@ -56,14 +64,22 @@ export default function Timers() {
     secInterval = setInterval(() => {
       const distance = startDate - currentTime;
 
-      const days = padWithZeros(Math.floor(distance / (1000 * 60 * 60 * 24)),2);
-      const hours = padWithZeros(Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      ),2);
-      const minutes = padWithZeros(Math.floor(
-        (distance % (1000 * 60 * 60)) / (1000 * 60)
-      ),2);
-      const seconds = padWithZeros(Math.floor((distance % (1000 * 60)) / 1000),2);
+      const days = padWithZeros(
+        Math.floor(distance / (1000 * 60 * 60 * 24)),
+        2
+      );
+      const hours = padWithZeros(
+        Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        2
+      );
+      const minutes = padWithZeros(
+        Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        2
+      );
+      const seconds = padWithZeros(
+        Math.floor((distance % (1000 * 60)) / 1000),
+        2
+      );
 
       if (distance < 0) {
         clearInterval(secInterval.current);
@@ -75,7 +91,7 @@ export default function Timers() {
       }
     }, 1000);
   };
-  
+
   useEffect(() => {
     startTimer(newYearDate, currentTime, interval);
     return () => {

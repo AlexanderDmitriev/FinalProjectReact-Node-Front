@@ -41,6 +41,20 @@ const convertPlanTrainingDaysToArr = (days, pages) => {
   return arr;
 };
 
+const convertPagesToArr = (pages) => {
+  const pagesArr = [];
+  for (const page of pages) {
+      pagesArr.push(Number(page.pages));
+  };
+  return pagesArr;
+}
+
+    
+    // const result = data.statistic;
+    // for (const page of result) {
+    //   pagesArr.push(Number(page.pages));
+    // }
+
 export default function Chart({ books }) {
   let width = 236;
   let height = 190;
@@ -57,6 +71,10 @@ export default function Chart({ books }) {
 
   const { data, error, isLoading } = useFetchResultsQuery();
   const [pages, setPages] = useState(0);
+  const [trainingDays, setTrainingDays] = useState();
+  const [trainingDaysArr, setTrainingDaysArr] = useState([1,2,3,4,5,6,7,8,9,10]);
+  const [mediumPagesArr, setMediumPagesArr] = useState([100]);
+  const [pagesArr, setPagesArr] = useState([150]);
 
   useEffect(() => {
     if (error) {
@@ -70,66 +88,31 @@ export default function Chart({ books }) {
         return (totalPages += Number(item.pages));
       });
       setPages(totalPages);
+      
+      const startDay = new Date(data.training.start);
+    const finishDay = new Date(data.training.end);
+    const timeDiff = Math.abs(finishDay.getTime() - startDay.getTime());
+      const trainingD = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      setTrainingDays(trainingD)
+      const trainingDArr = convertTrainingDaysToArr(trainingD);
+      setTrainingDaysArr(trainingDArr);
+    const mediumPages = Math.round(pages / trainingD);
+    const mediumPA = convertPlanTrainingDaysToArr(
+      trainingD,
+      mediumPages
+      );
+      setMediumPagesArr(mediumPA)
+      const pagesA = convertPagesToArr(data.statistic);
+      setPagesArr(pagesA)
     }
-  }, [books, data, error, isLoading]);
-  // const startDay = new Date(data.training.start);
-  // const finishDay = new Date(data.training.end);
-  const startDay = new Date('2022-10-02');
-  const finishDay = new Date('2022-10-10');
-  const timeDiff = Math.abs(finishDay.getTime() - startDay.getTime());
-  const trainingDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-  const trainingDaysArr = convertTrainingDaysToArr(trainingDays);
-  const mediumPages = Math.round(pages / trainingDays);
-  const mediumPagesArr = convertPlanTrainingDaysToArr(
-    trainingDays,
-    mediumPages
-  );
-
-  const response = {
-    activeBooks: ['507f1f77bcf86cd799439011'],
-    start: '01-02-2022 20:19',
-    end: '01-02-2023 20:19',
-    statistic: [
-      {
-        date: '01-02-2023 20:19',
-        pages: '100',
-      },
-      {
-        date: '01-02-2023 20:19',
-        pages: '200',
-      },
-      {
-        date: '01-02-2023 20:19',
-        pages: '150',
-      },
-      {
-        date: '01-02-2023 20:19',
-        pages: '70',
-      },
-      {
-        date: '01-02-2023 20:19',
-        pages: '300',
-      },
-      {
-        date: '01-02-2023 20:19',
-        pages: '50',
-      },
-      {
-        date: '01-02-2023 20:19',
-        pages: '200',
-      },
-      {
-        date: '01-02-2023 20:19',
-        pages: '130',
-      },
-    ],
-  };
-
-  const pagesArr = [];
-  const result = response.statistic;
-  for (const page of result) {
-    pagesArr.push(Number(page.pages));
-  }
+  }, [books, data, error, isLoading, pages]);
+ 
+  
+  // console.log("trainingDays", trainingDays);
+  // console.log("trainingDaysArr", trainingDaysArr);
+  // console.log("mediumPagesArr", mediumPagesArr);
+  // console.log("pagesArr", pagesArr);
+  // console.log("data", data);
 
   const options = {
     responsive: true,
@@ -150,13 +133,19 @@ export default function Chart({ books }) {
         display: true,
         title: {
           display: true,
-          text: 'Час',
+          text: 'Дні',
           position: 'right',
           align: 'end',
         },
       },
       y: {
-        display: false,
+        display: true,
+        title: {
+          display: false,
+          text: 'Сторінки',
+          position: 'right',
+          align: 'right',
+        },
       },
     },
   };
@@ -197,3 +186,37 @@ export default function Chart({ books }) {
     </Wrapper>
   );
 }
+
+// const { data, error, isLoading } = useFetchResultsQuery();
+//   const [pages, setPages] = useState(0);
+
+//   useEffect(() => {
+//     if (error) {
+//       return;
+//     }
+//     if (!isLoading) {
+//       const activeBooksArr = data.training.active;
+//       const booksArr = books.filter(({ _id }) => activeBooksArr.includes(_id));
+//       let totalPages = 0;
+//       booksArr.map(item => {
+//         return (totalPages += Number(item.pages));
+//       });
+//       setPages(totalPages);
+//     }
+//   }, [books, data, error, isLoading]);
+ 
+//     const startDay = new Date(data.training.start);
+//     const finishDay = new Date(data.training.end);
+//     const timeDiff = Math.abs(finishDay.getTime() - startDay.getTime());
+//     const trainingDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+//     const trainingDaysArr = convertTrainingDaysToArr(trainingDays);
+//     const mediumPages = Math.round(pages / trainingDays);
+//     const mediumPagesArr = convertPlanTrainingDaysToArr(
+//       trainingDays,
+//       mediumPages
+//     );
+//     const pagesArr = [];
+//     const result = data.statistic;
+//     for (const page of result) {
+//       pagesArr.push(Number(page.pages));
+//     }

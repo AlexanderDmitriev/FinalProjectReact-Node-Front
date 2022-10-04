@@ -1,19 +1,23 @@
-import { useState, useEffect } from "react";
-import Star from "./Star";
+import { useState, useEffect } from 'react';
+import Star from './Star';
 
-export default function StarRating({ numTotalStars = 5, initialRating = 0, handleStarsRating }) {
+export default function StarRating({
+  numTotalStars = 5,
+  initialRating = 0,
+  handleStarsRating,
+}) {
   const [numSelectedStars, setNumSelectedStars] = useState(initialRating);
   const [numHoveringStars, setNumHoveringStars] = useState(null);
   const [isUserHovering, setIsUserHovering] = useState(false);
 
   function getColor(isUserHovering, i, numSelectedStars, numHoveringStars) {
     const threshold = isUserHovering ? numHoveringStars : numSelectedStars;
-    return i < threshold ? "#FF6B08" : "#A6ABB9";
-    }
-    
-    useEffect(() => {
-      handleStarsRating(numSelectedStars)
-    }, [handleStarsRating, numSelectedStars])
+    return i < threshold ? '#FF6B08' : '#A6ABB9';
+  }
+
+  useEffect(() => {
+    handleStarsRating(numSelectedStars);
+  }, [handleStarsRating, numSelectedStars]);
 
   return (
     <>
