@@ -22,7 +22,7 @@ import {
   Border,
   Error,
   Star,
-} from './styled/Login.styled';
+} from '../components/Login.styled';
 
 import { useDispatch } from 'react-redux';
 import authOperations from '../redux/authAPI/auth-operation';

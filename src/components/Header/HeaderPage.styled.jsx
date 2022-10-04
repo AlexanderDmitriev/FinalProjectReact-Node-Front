@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const Header = styled.header`
+export const HeaderSection = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,6 +26,16 @@ export const Block = styled.div`
 
 export const BlockUser = styled.div`
   display: none;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    justify-content: center;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 587px;
+    justify-content: start;
+  }
 `;
 
 export const NavigationLink = styled(NavLink)`
@@ -80,6 +90,46 @@ export const DesktopButton = styled.button`
   font-size: 14px;
   line-height: 17px;
   color: #242a37;
+`;
+
+export const MobileButton = styled.button`
+  background-color: #f5f7fa;
+  display: block;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  margin-right: 14px;
+  margin-left: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #242a37;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const ExitButton = styled.button`
+  border: none;
+  border-bottom: 1px solid #242a37;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #242a37;
+  @media screen and (min-width: 768px) {
+    margin-left: 8px;
+  }
 `;
 
 export const UserName = styled.p`

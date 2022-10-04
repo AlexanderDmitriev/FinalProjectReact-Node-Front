@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Container from '../helpers/Container';
 import NotFoundPage from '../pages/NotFoundPage';
 import Header from './Header/Header';
-/* import HeaderPage  from './Header/HeaderPage'; */
 import { Spinner } from './Spinner';
 import authOperations from '../redux/authAPI/auth-operation';
 import authSelectors from '../redux/authAPI/auth-selectors';
@@ -15,9 +14,7 @@ import PublicRoute from './PublicRoute';
 const Home = lazy(() => import('../pages/Home'));
 const Register = lazy(() => import('../pages/Register'));
 const Login = lazy(() => import('../pages/Login'));
-const Library = lazy(() => import('./LibraryPage/Library'));
-
-/* import Container from './Container'; */
+const Library = lazy(() => import('../pages/Library'));
 const Training = lazy(() => import('../pages/Training'));
 
 export const App = () => {
@@ -36,7 +33,6 @@ export const App = () => {
         ) : (
           <Suspense fallback={<Spinner />}>
             <Header />
-            {/* <HeaderPage/> */}
             <Routes>
               <Route
                 path="/"
@@ -50,7 +46,11 @@ export const App = () => {
               <Route
                 path="/register"
                 element={
-                  <PublicRoute path="/register" redirectTo="/library" restricted>
+                  <PublicRoute
+                    path="/register"
+                    redirectTo="/library"
+                    restricted
+                  >
                     <Register />
                   </PublicRoute>
                 }
@@ -81,7 +81,6 @@ export const App = () => {
                   </PrivateRoute>
                 }
               />
-
               {/* <Statistics/>*/}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

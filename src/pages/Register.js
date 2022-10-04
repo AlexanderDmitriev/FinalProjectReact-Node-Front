@@ -26,7 +26,7 @@ import {
   ListItem,
   Error,
   Star,
-} from './styled/Register.styled';
+} from '../components/Register.styled';
 
 import { useDispatch } from 'react-redux';
 import authOperations from '../redux/authAPI/auth-operation';
