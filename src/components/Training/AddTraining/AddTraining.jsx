@@ -21,8 +21,6 @@ import { bookList, finishDate, startDate } from "redux/trainingBookList/training
 import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
 import MyGoals from "components/Training/MyGoals/MyGoals";
 import BooksList from 'components/Training/BooksList/BooksList';
-import BookListInTraining from "../BookkListInTraining/BookkListInTraining";
-
 
 export default function AddTraining() {
     const location = useLocation();
@@ -80,8 +78,7 @@ export default function AddTraining() {
             end: finish,
             book: selectedBookArr,
             };
-            const result = await updateTraining(value);
-            // console.log(result.data.status);
+            await updateTraining(value);
         } catch (err) {
             console.log(err);
         }
