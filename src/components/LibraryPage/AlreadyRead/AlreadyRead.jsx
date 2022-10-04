@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Section,
   Title,
@@ -12,12 +13,20 @@ import {
   Value,
 } from './AlreadyRead.styled';
 import Star from 'components/RatingStars/Star';
+import Modal from 'components/Modal/Modal';
+import BookRating from 'components/BookRating/BookRating';
 // import StarRating from 'components/RatingStars/StarRating';
 
 export default function AlreadyRead({ books }) {
-  const handleSubmit = () => {
-    // setIsModalOpen(true);
-  };
+  const [id, setId] = useState('')
+  const [isModalOpen, setModalOpen] = useState(false)
+  const handleSubmit = (e) => {
+    setId(e.currentTarget.value)
+    setModalOpen(true)
+  }
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  }
   const filterBook = books.filter(book => book.status === 'finished');
   return (
     <Section>
@@ -25,7 +34,7 @@ export default function AlreadyRead({ books }) {
       <Wrapper>
         <>
           {filterBook.map(book => (
-            <BookCard key={book.id}>
+            <BookCard key={book._id}>
               <List>
                 <ListItem>
                   {' '}
@@ -52,16 +61,20 @@ export default function AlreadyRead({ books }) {
                   {/* <StarRating /> */}
                 </ListItem>
                 <ResumeButton
+                  value={book._id}
                   disabled={false}
                   onClick={handleSubmit}
-                  type="submit"
+                  type="button"
                 >
                   Резюме
                 </ResumeButton>
               </List>
             </BookCard>
           ))}
-        </>
+        </> 
+       <Modal isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}>
+         <BookRating onClose={handleCloseModal} bookId={id} />
+       </Modal>
       </Wrapper>
     </Section>
   );

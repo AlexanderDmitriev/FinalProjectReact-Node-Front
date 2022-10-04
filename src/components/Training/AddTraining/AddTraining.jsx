@@ -21,6 +21,7 @@ import { bookList, finishDate, startDate } from "redux/trainingBookList/training
 import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
 import MyGoals from "components/Training/MyGoals/MyGoals";
 import BooksList from 'components/Training/BooksList/BooksList';
+import BookListInTraining from "../BookkListInTraining/BookkListInTraining";
 
 
 export default function AddTraining() {
@@ -39,7 +40,7 @@ export default function AddTraining() {
     useEffect(() => {
         if (!isLoading) {
             const booksArr = data.filter(({ _id }) => selectedBookArr.includes(_id))
-            dispatch(bookList(booksArr))
+            dispatch(bookList(booksArr)) 
     }
     }, [data, dispatch, isLoading, selectedBookArr])
      
@@ -79,12 +80,13 @@ export default function AddTraining() {
             end: finish,
             book: selectedBookArr,
             };
-            await updateTraining(value);
+            const result = await updateTraining(value);
+            // console.log(result.data.status);
         } catch (err) {
-        console.log(err);
+            console.log(err);
         }
     }
-
+    
     return (
 
         <>
@@ -140,6 +142,7 @@ export default function AddTraining() {
                     }
                 </TrainingSection>
                 <BooksList books={startBookList} onDeleteBtnClick={onDeleteBtnClick} addTrainingClick={addTrainingClick} />
+                {/* <BookListInTraining /> */}
         </Section></>
     )
 }
