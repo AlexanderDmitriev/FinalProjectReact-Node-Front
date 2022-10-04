@@ -2,17 +2,22 @@ import React from 'react';
 import {
   DataList,
   DataListItem,
-  //   DataListTime,
+  DataListTime,
   DataListPages,
 } from './Results.styled';
 
-export default function ResultsTableRow({ date, pages }) {
+export default function ResultsTableRow({ date, pages, time }) {
+  const refactorDateToStats = date => {
+    return date.split('-').reverse().join('.');
+  };
+
+  const fixedDate = refactorDateToStats(date);
   return (
     <>
       <li>
         <DataList>
-          <DataListItem>{date}</DataListItem>
-          {/* <DataListTime>{time}</DataListTime> */}
+          <DataListItem>{fixedDate}</DataListItem>
+          <DataListTime>{time}</DataListTime>
           <DataListItem>
             {pages} <DataListPages>стор.</DataListPages>
           </DataListItem>

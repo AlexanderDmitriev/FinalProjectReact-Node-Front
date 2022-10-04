@@ -1,6 +1,5 @@
 import React from 'react';
 import { useFetchResultsQuery } from 'redux/results/resultsSlice';
-// import { nanoid } from 'nanoid';
 import Media from 'react-media';
 import {
   StatTitle,
@@ -16,18 +15,8 @@ import statLineR from '../../images/stats/statisticliner.jpg';
 import statLineP from '../../images/stats/statisticlineplan.jpg';
 
 export default function ResultsTable() {
-  // const { data, error, isLoading } = useFetchResultsQuery();
   const { data } = useFetchResultsQuery();
 
-  //   console.log(data.statistic);
-  // const refactorDateToStats = data => {
-  //   return data.split('-').reverse().join('.');
-  // };
-
-  //   console.log(refactorDateToStats(data.date));
-  //   console.log(error);
-
-  //   console.log(data.id);
   return (
     <TableWrapper>
       <Media
@@ -64,13 +53,11 @@ export default function ResultsTable() {
       </Media>
       <List>
         {data &&
-          data.statistic.map(({ id, date, time, pages }) => (
-            <ResultTableRow key={id} date={date} time={time} pages={pages} />
-          ))}
-        {/* {data &&
-          data.statistic.map(({ date, pages, _id }) => (
-            <ResultTableRow key={_id} date={date} pages={pages} />
-          ))} */}
+          data.statistic
+            .map(({ _id, date, time, pages }) => (
+              <ResultTableRow key={_id} date={date} time={time} pages={pages} />
+            ))
+            .slice(data.statistic.length - 6, data.statistic.length)}
       </List>
     </TableWrapper>
   );

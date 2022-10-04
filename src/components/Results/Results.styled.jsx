@@ -44,6 +44,7 @@ export const DateWrapper = styled.div`
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     margin-bottom: 0;
+    margin-right: 32px;
   }
 `;
 
@@ -55,7 +56,7 @@ export const Label = styled.label`
   color: #898f9f;
 
   :first-child {
-    margin-right: 20px;
+    margin-right: 10px;
   }
 `;
 
