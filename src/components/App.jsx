@@ -3,19 +3,19 @@ import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Container from '../helpers/Container';
-import NotFoundPage from '../pages/NotFoundPage';
-import Header from './Header/Header';
 import { Spinner } from './Spinner';
 import authOperations from '../redux/authAPI/auth-operation';
 import authSelectors from '../redux/authAPI/auth-selectors';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
+const Header = lazy(() => import('./Header/Header'));
 const Home = lazy(() => import('../pages/Home'));
 const Register = lazy(() => import('../pages/Register'));
 const Login = lazy(() => import('../pages/Login'));
 const Library = lazy(() => import('../pages/Library'));
 const Training = lazy(() => import('../pages/Training'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App = () => {
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);

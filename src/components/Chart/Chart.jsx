@@ -55,9 +55,9 @@ export default function Chart({ books }) {
     height = 215;
   }
 
-  const { data, error  , isLoading  } = useFetchResultsQuery();
+  const { data, error, isLoading } = useFetchResultsQuery();
   const [pages, setPages] = useState(0);
- 
+
   useEffect(() => {
     if (error) {
       return;
@@ -67,7 +67,7 @@ export default function Chart({ books }) {
       const booksArr = books.filter(({ _id }) => activeBooksArr.includes(_id));
       let totalPages = 0;
       booksArr.map(item => {
-      return (totalPages += Number(item.pages));
+        return (totalPages += Number(item.pages));
       });
       setPages(totalPages);
     }

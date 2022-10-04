@@ -4,7 +4,7 @@ import {theme} from '../../helpers/theme';
 export const Wrapper = styled.div`
   position: relative;
   background: ${theme.colors.backColor};
-  aline-items: center;
+  align-items: center;
   padding: 110px 37px 81px 37px;
 
   @media screen and (min-width: 768px) {

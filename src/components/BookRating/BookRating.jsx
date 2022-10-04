@@ -25,8 +25,6 @@ export default function BookRating({ onClose, bookId }) {
         comment: comment,
         rating: starsRating.toString(),
       };
-      console.log(value);
-      console.log(typeof bookId);
       await updateRating(value);
     } catch (err) {
       console.log(err);

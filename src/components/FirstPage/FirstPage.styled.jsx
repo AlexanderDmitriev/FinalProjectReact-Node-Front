@@ -2,16 +2,13 @@ import styled from 'styled-components';
 import { theme } from '../../helpers/theme';
 
 export const Section = styled.section`
-  /* max-width: 320px; */
   padding: 32px 20px 40px 20px;
 
   @media screen and (min-width: 768px) {
-    /* max-width: 768px; */
     padding: 64px 145px 88px 145px;
   }
 
   @media screen and (min-width: 1280px) {
-    /* max-width: 1280px; */
     padding: 179px 154px 239px 127px;
   }
 `;
@@ -125,13 +122,13 @@ export const RegisterButton = styled.button`
   line-height: 2.71;
   text-align: center;
   color: ${theme.colors.backColor};
-  background: #ff6b08;
+  background: ${theme.colors.focusColor};
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  border: 1px solid #ff6b08;
+  border: 1px solid ${theme.colors.focusColor};
   &:hover,
   &:focus {
     background: #d15807;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px 4px ${theme.colors.darkShadowColor};
     border: 1px solid #d15807;
   }
 `;

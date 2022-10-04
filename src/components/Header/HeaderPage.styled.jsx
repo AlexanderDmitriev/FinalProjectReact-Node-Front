@@ -152,3 +152,16 @@ export const Line = styled.div`
   height: 33px;
   background-color: #e0e5eb;
 `;
+
+export const ModalText = styled.p`
+  @media screen and (min-width: 1280px) {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.38;
+    text-align: center;
+    margin: 0 0 20px 0;
+    color: #242a37;
+  }
+`;

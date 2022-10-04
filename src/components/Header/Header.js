@@ -17,6 +17,7 @@ import {
   MobileButton,
   ExitButton,
   BlockUser,
+  UserName,
 } from './HeaderPage.styled';
 
 const style = {
@@ -53,7 +54,7 @@ const Header = () => {
           <Block>
             <BlockUser>
               <DesktopButton type="button">{userLogo}</DesktopButton>
-              <p className={s.user_name}>{user}</p>
+              <UserName>{user}</UserName>
             </BlockUser>
 
             {/* {statistic && ( */}
