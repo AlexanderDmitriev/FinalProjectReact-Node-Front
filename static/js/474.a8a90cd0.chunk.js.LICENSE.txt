@@ -17,5 +17,3 @@
  * (c) 2022 Chart.js Contributors
  * Released under the MIT License
  */
-
-//! moment.js
