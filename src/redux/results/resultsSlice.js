@@ -37,7 +37,7 @@ export const resultsApi = createApi({
         method: 'POST',
         data: {
           date: result.date,
-          // time: result.time,
+          time: result.time,
           pages: result.pages,
         },
       }),
