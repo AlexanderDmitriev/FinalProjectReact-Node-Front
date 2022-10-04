@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/FinalProjectReact-Node-Front/static/css/main.ae0d1077.css",
-    "main.js": "/FinalProjectReact-Node-Front/static/js/main.b28f9937.js",
-    "static/js/281.f6d2452c.chunk.js": "/FinalProjectReact-Node-Front/static/js/281.f6d2452c.chunk.js",
-    "static/js/985.c480edd3.chunk.js": "/FinalProjectReact-Node-Front/static/js/985.c480edd3.chunk.js",
-    "static/js/718.a18b6127.chunk.js": "/FinalProjectReact-Node-Front/static/js/718.a18b6127.chunk.js",
-    "static/js/492.8fe133b7.chunk.js": "/FinalProjectReact-Node-Front/static/js/492.8fe133b7.chunk.js",
+    "main.js": "/FinalProjectReact-Node-Front/static/js/main.9d8537e8.js",
+    "static/js/281.06ce9777.chunk.js": "/FinalProjectReact-Node-Front/static/js/281.06ce9777.chunk.js",
+    "static/js/919.cf13c996.chunk.js": "/FinalProjectReact-Node-Front/static/js/919.cf13c996.chunk.js",
+    "static/js/892.7a296d67.chunk.js": "/FinalProjectReact-Node-Front/static/js/892.7a296d67.chunk.js",
+    "static/js/691.e41570ee.chunk.js": "/FinalProjectReact-Node-Front/static/js/691.e41570ee.chunk.js",
     "static/js/928.91571d2f.chunk.js": "/FinalProjectReact-Node-Front/static/js/928.91571d2f.chunk.js",
     "static/js/668.a8449048.chunk.js": "/FinalProjectReact-Node-Front/static/js/668.a8449048.chunk.js",
     "static/js/805.2e9192e8.chunk.js": "/FinalProjectReact-Node-Front/static/js/805.2e9192e8.chunk.js",
@@ -31,11 +31,11 @@
     "static/media/iconhome.svg": "/FinalProjectReact-Node-Front/static/media/iconhome.b3cc0a6a4d8a1f2461a5a0058dafff68.svg",
     "static/media/deletebtn.svg": "/FinalProjectReact-Node-Front/static/media/deletebtn.a3c053f675945235bd996425c1d38d26.svg",
     "main.ae0d1077.css.map": "/FinalProjectReact-Node-Front/static/css/main.ae0d1077.css.map",
-    "main.b28f9937.js.map": "/FinalProjectReact-Node-Front/static/js/main.b28f9937.js.map",
-    "281.f6d2452c.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/281.f6d2452c.chunk.js.map",
-    "985.c480edd3.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/985.c480edd3.chunk.js.map",
-    "718.a18b6127.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/718.a18b6127.chunk.js.map",
-    "492.8fe133b7.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/492.8fe133b7.chunk.js.map",
+    "main.9d8537e8.js.map": "/FinalProjectReact-Node-Front/static/js/main.9d8537e8.js.map",
+    "281.06ce9777.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/281.06ce9777.chunk.js.map",
+    "919.cf13c996.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/919.cf13c996.chunk.js.map",
+    "892.7a296d67.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/892.7a296d67.chunk.js.map",
+    "691.e41570ee.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/691.e41570ee.chunk.js.map",
     "928.91571d2f.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/928.91571d2f.chunk.js.map",
     "668.a8449048.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/668.a8449048.chunk.js.map",
     "805.2e9192e8.chunk.js.map": "/FinalProjectReact-Node-Front/static/js/805.2e9192e8.chunk.js.map",
@@ -45,6 +45,6 @@
   },
   "entrypoints": [
     "static/css/main.ae0d1077.css",
-    "static/js/main.b28f9937.js"
+    "static/js/main.9d8537e8.js"
   ]
 }
