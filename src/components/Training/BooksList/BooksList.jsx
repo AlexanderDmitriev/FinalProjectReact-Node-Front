@@ -18,12 +18,10 @@ import {
     HeaderAuthor,
     HeaderYear
 } from './BooksList.styled';
-
 import deletedBtn from '../../../images/deletebtn.svg'
 
 
 export default function BooksList({ books, onDeleteBtnClick, addTrainingClick }) {
-    
   return (
     <Section>
       <Wrapper>
@@ -34,7 +32,7 @@ export default function BooksList({ books, onDeleteBtnClick, addTrainingClick })
                   <HeaderYear>Рік</HeaderYear> 
                   <span>Стор.</span> 
                 </HeaderWrapper>
-           {books && 
+            {books &&
                 books.map(book => (
                     <BookCard key={book._id}>
                         <Btn value={book._id} onClick={onDeleteBtnClick}>
@@ -66,7 +64,7 @@ export default function BooksList({ books, onDeleteBtnClick, addTrainingClick })
                     </List>
                 </BookCard>
             ))}    
-            {(books.length !== 0) && <StartTrainingBtn onClick={addTrainingClick}>Почати тренування</StartTrainingBtn>}      
+         <>{(books.length !== 0) && <StartTrainingBtn onClick={addTrainingClick}>Почати тренування</StartTrainingBtn>}</>       
         </>
       </Wrapper>
     </Section>

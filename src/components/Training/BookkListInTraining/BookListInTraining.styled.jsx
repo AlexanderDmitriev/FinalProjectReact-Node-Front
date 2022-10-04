@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { theme } from '../../../helpers/theme';
-import flat from '../../../images/iconflat.svg'
+import boxchecked from '../../../images/boxchecked.svg'
+import checkbox from '../../../images/checkbox.svg'
+    
 
 export const Section = styled.div`
   /* max-width: 320px; */
@@ -47,10 +49,27 @@ export const BookCard = styled.div`
     position: relative;
 `;
 
-export const IconBook = styled.i`
+export const BoxChecked = styled.i`
   min-width:22px;
   height:18px;
-  background-image: url(${flat});
+  background-image: url(${boxchecked});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-right:12px;
+
+  @media screen and (min-width: 768px) {
+    margin-right:18px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right:16px;
+  }
+   `
+
+   export const CheckBox = styled.i`
+  min-width:22px;
+  height:18px;
+  background-image: url(${checkbox});
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
