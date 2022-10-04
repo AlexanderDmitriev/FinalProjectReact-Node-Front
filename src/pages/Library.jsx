@@ -4,7 +4,7 @@ import LibraryModal from '../components/LibraryPage/LibraryModal/LibraryModal';
 import AlreadyRead from '../components/LibraryPage/AlreadyRead/AlreadyRead';
 import ReadingNow from '../components/LibraryPage/ReadingNow/ReadingNow';
 import GoingToRead from '../components/LibraryPage/GoingToRead/GoingToRead';
-import WellDoneModal from '../components/LibraryPage/WellDoneModal/WellDoneModal';
+// import WellDoneModal from '../components/LibraryPage/WellDoneModal/WellDoneModal';
 import {
   Box,
   /* BoxText, */ BackArrow,
@@ -47,7 +47,7 @@ export default function Library() {
 
           {/* <BoxText /> */}
           {/* <TrainingButton>Моє тренування</TrainingButton> */}
-          <WellDoneModal />
+          {/* <WellDoneModal /> */}
         </Box>
       </Container>
     </>
