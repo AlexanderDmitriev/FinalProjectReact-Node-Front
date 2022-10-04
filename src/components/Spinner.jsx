@@ -7,8 +7,8 @@ export const Spinner = () => {
       size={100}
       thickness={100}
       speed={100}
-      color="#36ad47"
-      secondaryColor="rgba(0, 0, 0, 0.44)"
+      color="#FF6B08"
+      secondaryColor="rgba(0, 0, 0, 0.25)"
     />
   </>;
 };

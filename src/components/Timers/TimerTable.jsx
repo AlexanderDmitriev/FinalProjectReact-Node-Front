@@ -1,6 +1,12 @@
-import { TimerTableContainer, TimeList, TimeWrap, TimerText, TimerNumber } from './Timers.styled';
+import {
+  TimerTableContainer,
+  TimeList,
+  TimeWrap,
+  TimerText,
+  TimerNumber,
+} from './Timers.styled';
 
-export default function Timertable({days, hours, minutes, seconds}) {
+export default function Timertable({ days, hours, minutes, seconds }) {
   return (
     <TimerTableContainer>
       <TimeList>
