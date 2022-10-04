@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import ResultTable from './ResultTable';
+import ResultTable from './ResultTable';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
