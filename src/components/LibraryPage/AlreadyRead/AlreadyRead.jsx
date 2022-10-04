@@ -1,3 +1,5 @@
+import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import {
   Section,
   Title,
@@ -8,22 +10,44 @@ import {
   BookName,
   ResumeButton,
   BookDescription,
+  BookTitleDescription,
   Wrapper,
   Value,
+  TitleBox,
 } from './AlreadyRead.styled';
-import Star from 'components/RatingStars/Star';
-// import StarRating from 'components/RatingStars/StarRating';
+
+import StarRatingBook from './StarRatingBook';
 
 export default function AlreadyRead({ books }) {
-  const handleSubmit = () => {
-    // setIsModalOpen(true);
-  };
+  const handleSubmit = () => {};
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
   const filterBook = books.filter(book => book.status === 'finished');
   return (
     <Section>
       <Title>Вже прочитано</Title>
       <Wrapper>
         <>
+          {isTablet && (
+            <TitleBox>
+              <BookTitleDescription style={{ width: 190 }}>
+                Назва книги:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 100 }}>
+                Автор:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 100 }}>
+                Рік:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 100 }}>
+                Стор:{' '}
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 80 }}>
+                Рейтинг:{' '}
+              </BookTitleDescription>
+            </TitleBox>
+          )}
           {filterBook.map(book => (
             <BookCard key={book.id}>
               <List>
@@ -46,10 +70,9 @@ export default function AlreadyRead({ books }) {
                 </ListItem>
                 <ListItem>
                   <BookDescription>Рейтинг: </BookDescription>
-                  <Value>{book.rating}</Value>
-                  <Star></Star> <Star></Star> <Star></Star> <Star></Star>{' '}
-                  <Star></Star>
-                  {/* <StarRating /> */}
+                  {/* <Value>{book.resume.rating}</Value> */}
+
+                  <StarRatingBook rating={book.resume.rating} />
                 </ListItem>
                 <ResumeButton
                   disabled={false}
