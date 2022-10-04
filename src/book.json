@@ -5,7 +5,11 @@
     "year":"2014",
     "pages":"324",
     "rating":"4",
-    "status": "plan"
+    "status": "plan",
+        "resume": {
+      "rating": "1",
+      "comment": "Bad book"
+    }
 },
   {"id":"2",
     "title":"The Jungle Book",
@@ -13,7 +17,11 @@
     "year":"1894",
     "pages":"215",
     "rating":"3",
-    "status": "in progress"
+    "status": "in progress",
+            "resume": {
+      "rating": "1",
+      "comment": "Bad book"
+    }
 },
   {"id":"3",
     "title":"The Call of the Wild",
@@ -21,7 +29,11 @@
     "year":"1903",
     "pages":"222",
     "rating":"5",
-    "status": "in progress"
+    "status": "in progress",
+            "resume": {
+      "rating": "1",
+      "comment": "Bad book"
+    }
 },
 {"id":"4",
   "title":"The Buried Giant",
@@ -29,7 +41,11 @@
     "year":"2015",
     "pages":"402",
     "rating":"3",
-    "status": "finished"
+    "status": "finished",
+            "resume": {
+      "rating": "1",
+      "comment": "Bad book"
+    }
 },
 {"id":"5",
   "title":"The terrorist",
@@ -37,6 +53,10 @@
     "year":"2022",
     "pages":"502",
     "rating":"2",
-     "status": "finished"
+     "status": "finished",
+             "resume": {
+      "rating": "5",
+      "comment": "Bad book"
+    }
 }
 ]

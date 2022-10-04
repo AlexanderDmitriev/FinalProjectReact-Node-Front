@@ -4,7 +4,7 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 
 import { AddButton /* Wrapper */ } from './LibraryForm.styled';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import {
   FormInput,
   Input,
@@ -166,15 +166,15 @@ export default function LibraryForm() {
                 </InputItem>
               </Input>
 
-              <NavLink to="/" exact="true">
-                <AddButton
-                  disabled={!isValid && !dirty}
-                  onClick={handleSubmit}
-                  type="submit"
-                >
-                  Додати
-                </AddButton>
-              </NavLink>
+       
+              <AddButton
+                disabled={!isValid && !dirty}
+                onClick={handleSubmit}
+                type="submit"
+              >
+                Додати
+              </AddButton>
+      
             </FormInput>
           </Form>
           // {isLoading ? <Loader /> : 'Add contact'}

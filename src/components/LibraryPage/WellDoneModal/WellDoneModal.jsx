@@ -9,6 +9,7 @@ import {
   BackButton,
   Icon,
 } from './WellDoneModal.styled';
+import { NavLink } from 'react-router-dom';
 import sprite from '../../../images/icons.svg';
 
 export default function WellDoneModal() {
@@ -33,9 +34,9 @@ export default function WellDoneModal() {
             </Text>
           </TextBox>
           <ButtonBox>
-            <Button type="button" onClick={onClose}>
-              Нове тренування
-            </Button>
+            <NavLink to="/training">
+              <Button type="button">Нове тренування</Button>
+            </NavLink>
             <BackButton type="button" onClick={onClose}>
               Назад
             </BackButton>

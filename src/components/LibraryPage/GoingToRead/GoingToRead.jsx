@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import {
   Section,
   Title,
@@ -9,18 +10,40 @@ import {
   AddBookButton,
   BookDescription,
   Wrapper,
+  TitleBox,
+  BookTitleDescription,
   Value,
-} from '../AlreadyRead/AlreadyRead.styled';
+} from '../GoingToRead/GoingToRead.styled';
 import { TrainingButton } from '../Library.styled';
 import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
 export default function GoingToRead({ books }) {
+  console.log(books);
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
   const filterBook = books.filter(book => book.status === 'plan');
   return (
     <Section>
       <Title>Буду читати</Title>
       <Wrapper>
+        {isTablet && (
+          <TitleBox>
+            <BookTitleDescription style={{ width: 320 }}>
+              Назва книги:
+            </BookTitleDescription>
+            <BookTitleDescription style={{ width: 170 }}>
+              Автор:
+            </BookTitleDescription>
+            <BookTitleDescription style={{ width: 150 }}>
+              Рік:
+            </BookTitleDescription>
+            <BookTitleDescription style={{ width: 80 }}>
+              Стор:{' '}
+            </BookTitleDescription>
+          </TitleBox>
+        )}
         {filterBook.map(book => (
           <BookCard key={nanoid()}>
             <List>

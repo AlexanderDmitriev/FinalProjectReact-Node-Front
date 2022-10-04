@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import {
   Section,
   Title,
@@ -9,17 +11,20 @@ import {
   BookName,
   ResumeButton,
   BookDescription,
+  BookTitleDescription,
   Wrapper,
   Value,
+  TitleBox,
 } from './AlreadyRead.styled';
-import Star from 'components/RatingStars/Star';
+/* import Star from 'components/RatingStars/Star'; */
 import Modal from 'components/Modal/Modal';
 import BookRating from 'components/BookRating/BookRating';
-// import StarRating from 'components/RatingStars/StarRating';
+import StarRatingBook from './StarRatingBook';
 
 export default function AlreadyRead({ books }) {
   const [id, setId] = useState('')
   const [isModalOpen, setModalOpen] = useState(false)
+
   const handleSubmit = (e) => {
     setId(e.currentTarget.value)
     setModalOpen(true)
@@ -27,12 +32,35 @@ export default function AlreadyRead({ books }) {
   const handleCloseModal = () => {
     setModalOpen(false);
   }
+
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
   const filterBook = books.filter(book => book.status === 'finished');
   return (
     <Section>
       <Title>Вже прочитано</Title>
       <Wrapper>
         <>
+          {isTablet && (
+            <TitleBox>
+              <BookTitleDescription style={{ width: 190 }}>
+                Назва книги:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 100 }}>
+                Автор:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 100 }}>
+                Рік:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 100 }}>
+                Стор:{' '}
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 80 }}>
+                Рейтинг:{' '}
+              </BookTitleDescription>
+            </TitleBox>
+          )}
           {filterBook.map(book => (
             <BookCard key={book._id}>
               <List>
@@ -55,10 +83,9 @@ export default function AlreadyRead({ books }) {
                 </ListItem>
                 <ListItem>
                   <BookDescription>Рейтинг: </BookDescription>
-                  <Value>{book.rating}</Value>
-                  <Star></Star> <Star></Star> <Star></Star> <Star></Star>{' '}
-                  <Star></Star>
-                  {/* <StarRating /> */}
+                  {/* <Value>{book.resume.rating}</Value> */}
+
+                  <StarRatingBook rating={book.resume.rating} />
                 </ListItem>
                 <ResumeButton
                   value={book._id}
