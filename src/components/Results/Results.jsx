@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ResultTable from './ResultTable';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useNavigate /* , useLocation */ } from 'react-router-dom';
 import {
   Section,
   Title,
@@ -11,6 +12,19 @@ import {
   Input,
   Button,
 } from './Results.styled';
+
+import {
+  Wrapper,
+  SectionM,
+  TextBox,
+  Text,
+  ButtonBox,
+  ButtonM,
+  BackButton,
+  Icon,
+} from './Modal.styled';
+import Modal from 'components/Modal/Modal';
+import sprite from '../../images/icons.svg';
 import { useCreateResultMutation } from 'redux/results/resultsSlice';
 
 export default function Results() {
@@ -69,6 +83,22 @@ export default function Results() {
     setPages('');
   };
 
+  const [isModalOpen, setModalOpen] = useState(false);
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
+  const onclick = () => {
+    setModalOpen(true);
+  };
+  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleExit = () => {
+    setModalOpen(false);
+    navigate('/library', { replace: true });
+  };
+
   return (
     <>
       <Section>
@@ -101,9 +131,36 @@ export default function Results() {
               />
             </Label>
           </DateWrapper>
-          <Button type="submit">Додати результат</Button>
+          <Button type="submit" onClick={onclick}>
+            Додати результат
+          </Button>
         </Form>
         <ResultTable />
+        <Modal isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}>
+          <Wrapper>
+            {isModalOpen && (
+              <SectionM>
+                <Icon width="50" height="45">
+                  <use href={sprite + '#icon-vector'}></use>
+                </Icon>
+                <TextBox>
+                  <Text>
+                    Ти молодчина, але потрібно швидше! Наступного разу тобі все
+                    вдасться
+                  </Text>
+                </TextBox>
+                <ButtonBox>
+                  <ButtonM type="button" onClick={handleExit}>
+                    Нове тренування
+                  </ButtonM>
+                  <BackButton type="button" onClick={handleCloseModal}>
+                    Назад
+                  </BackButton>
+                </ButtonBox>
+              </SectionM>
+            )}
+          </Wrapper>
+        </Modal>
       </Section>
     </>
   );

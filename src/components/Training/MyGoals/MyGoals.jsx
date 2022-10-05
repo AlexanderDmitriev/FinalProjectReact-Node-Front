@@ -24,7 +24,7 @@ export default function MyGoals() {
   const booksInProgress = data.filter(
     book => book.status === 'in progress'
   ).length;
-  const trainingStatus = stats.data.status;
+  // const trainingStatus = stats.data.status;
 
   //   console.log(stats.data.status);
 
@@ -42,7 +42,7 @@ export default function MyGoals() {
         <MyGoalsBtn>Моя мета прочитати</MyGoalsBtn>
         <MyGoalsContainer>
           <AmountBooksWrapper>
-            {data && trainingStatus === 'in progress' ? (
+            {data && stats.data && stats.data.status === 'in progress' ? (
               <AmountBooksContainer>{booksInProgress}</AmountBooksContainer>
             ) : (
               <AmountBooksContainer>0</AmountBooksContainer>
@@ -50,7 +50,7 @@ export default function MyGoals() {
             <AmountBooksText>Кількість книжок</AmountBooksText>
           </AmountBooksWrapper>
           <AmountDaysWrapper>
-            {stats.data && trainingStatus === 'in progress' ? (
+            {stats.data && stats.data.status === 'in progress' ? (
               <AmountDaysContainer>
                 {trainingDays(stats.data.training.end)}
               </AmountDaysContainer>
@@ -60,7 +60,7 @@ export default function MyGoals() {
             <AmountDaysText>Кількість днів</AmountDaysText>
           </AmountDaysWrapper>
           <BooksLeftWrapper>
-            {stats.data && trainingStatus === 'in progress' ? (
+            {stats.data && stats.data.status === 'in progress' ? (
               <BooksLeftContainer>
                 {stats.data.training.active.length}
               </BooksLeftContainer>
