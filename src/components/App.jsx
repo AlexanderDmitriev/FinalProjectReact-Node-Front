@@ -2,6 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Container from '../helpers/Container';
 import { Spinner } from './Spinner';
 import authOperations from '../redux/authAPI/auth-operation';
@@ -86,6 +89,7 @@ export const App = () => {
             </Routes>
           </Suspense>
         )}
+        <ToastContainer />
       </Container>
     </>
   );

@@ -77,6 +77,7 @@ export const BookName = styled.p`
   }
 
   @media screen and (min-width: 1280px) {
+    width: 400px;
   }
 `;
 
@@ -126,7 +127,7 @@ export const Value = styled.span`
     }
        @media screen and (min-width: 1280px) {
     // display: block;
-     max-width: 500px;
+     width: 450px;
   }
   }
 `;

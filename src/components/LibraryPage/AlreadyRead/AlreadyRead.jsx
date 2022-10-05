@@ -20,8 +20,10 @@ import StarRatingBook from './StarRatingBook';
 
 export default function AlreadyRead({ books }) {
   const handleSubmit = () => {};
-  const isTablet = useMediaQuery({
-    query: '(min-width: 768px)',
+
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+  const isNotebook = useMediaQuery({
+    query: '(min-width: 1280px)',
   });
   const filterBook = books.filter(book => book.status === 'finished');
   return (
@@ -31,7 +33,7 @@ export default function AlreadyRead({ books }) {
         <>
           {isTablet && (
             <TitleBox>
-              <BookTitleDescription style={{ width: 190 }}>
+              <BookTitleDescription style={{ width: 300 }}>
                 Назва книги:
               </BookTitleDescription>
               <BookTitleDescription style={{ width: 100 }}>
@@ -44,6 +46,25 @@ export default function AlreadyRead({ books }) {
                 Стор:{' '}
               </BookTitleDescription>
               <BookTitleDescription style={{ width: 80 }}>
+                Рейтинг:{' '}
+              </BookTitleDescription>
+            </TitleBox>
+          )}
+          {isNotebook && (
+            <TitleBox>
+              <BookTitleDescription style={{ width: 400 }}>
+                Назва книги:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 210 }}>
+                Автор:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 200 }}>
+                Рік:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 200 }}>
+                Стор:{' '}
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 100 }}>
                 Рейтинг:{' '}
               </BookTitleDescription>
             </TitleBox>
