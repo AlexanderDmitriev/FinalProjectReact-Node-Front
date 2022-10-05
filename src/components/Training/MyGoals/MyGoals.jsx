@@ -1,5 +1,5 @@
-import { useSelector } from 'react-redux';
-import { useQueryState } from '@reduxjs/toolkit/query/react';
+// import { useSelector } from 'react-redux';
+// import { useQueryState } from '@reduxjs/toolkit/query/react';
 import {
   Section,
   MyGoalsSection,
@@ -15,14 +15,14 @@ import {
   AmountDaysWrapper,
   BooksLeftWrapper,
 } from './MyGoals.styled';
-import {
-  useCreateResultMutation,
-  useFetchResultsQuery,
-} from 'redux/results/resultsSlice';
+// import {
+//   useCreateResultMutation,
+//   useFetchResultsQuery,
+// } from 'redux/results/resultsSlice';
 // import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
 import { booksApi } from 'redux/booksApi/booksSlice';
 import { resultsApi } from 'redux/results/resultsSlice';
-import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
+// import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
 
 export default function MyGoals() {
   // const trainingEnd = useSelector(bookListSelectors.getFinishDate);

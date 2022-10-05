@@ -10,19 +10,17 @@ import {
   Flex,
 } from './MetaThree.styled';
 
-import { useFetchResultsQuery } from 'redux/results/resultsSlice';
-import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
+// import { useFetchResultsQuery } from 'redux/results/resultsSlice';
+// import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
+import { booksApi } from 'redux/booksApi/booksSlice';
+import { resultsApi } from 'redux/results/resultsSlice';
 
 const MetaThreePoints = () => {
-  const stats = useFetchResultsQuery();
-  const { data } = useGetBooksQuery();
+  const useQueryStateBooks = booksApi.endpoints.getBooks.useQueryState();
+  const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
 
-  const booksInProgress = data.filter(
-    book => book.status === 'in progress'
-  ).length;
-  const trainingStatus = stats.data.status;
-
-  //   console.log(stats.data.status);
+  console.log(useQueryStateResult.data);
+  // console.log(stats);
 
   const trainingDays = date => {
     const startDay = new Date();
@@ -31,6 +29,7 @@ const MetaThreePoints = () => {
     const trainingDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     return trainingDays;
   };
+
   return (
     <>
       <MetaBody>
@@ -40,8 +39,11 @@ const MetaThreePoints = () => {
         <Flex>
           <div>
             <MetaBlock>
-              {data && trainingStatus === 'in progress' ? (
-                <MetaNumber>{booksInProgress}</MetaNumber>
+              {useQueryStateResult.data &&
+              useQueryStateResult.data.status === 'in progress' ? (
+                <MetaNumber>
+                  {useQueryStateResult.data.training.active.length}
+                </MetaNumber>
               ) : (
                 <MetaNumber>00</MetaNumber>
               )}
@@ -53,8 +55,11 @@ const MetaThreePoints = () => {
 
           <div>
             <MetaBlock>
-              {stats.data && trainingStatus === 'in progress' ? (
-                <MetaNumber>{trainingDays(stats.data.training.end)}</MetaNumber>
+              {useQueryStateResult.data &&
+              useQueryStateResult.data.status === 'in progress' ? (
+                <MetaNumber>
+                  {trainingDays(useQueryStateResult.data.training.end)}
+                </MetaNumber>
               ) : (
                 <MetaNumber>00</MetaNumber>
               )}
@@ -66,9 +71,15 @@ const MetaThreePoints = () => {
 
           <div>
             <MetaBlock>
-              {stats.data && trainingStatus === 'in progress' ? (
+              {useQueryStateBooks.data &&
+              useQueryStateResult.data &&
+              useQueryStateResult.data.status === 'in progress' ? (
                 <MetaNumberColor>
-                  {stats.data.training.active.length}
+                  {
+                    useQueryStateBooks.data.filter(
+                      book => book.status === 'in progress'
+                    ).length
+                  }
                 </MetaNumberColor>
               ) : (
                 <MetaNumberColor>00</MetaNumberColor>
