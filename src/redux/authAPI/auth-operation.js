@@ -74,6 +74,7 @@ const fetchCurrentUser = createAsyncThunk(
       toast.error(`На жаль, не вдалося знайти такого користувача.`);
       return thunkAPI.rejectWithValue(error.message);
     }
+  
   }
 );
 
