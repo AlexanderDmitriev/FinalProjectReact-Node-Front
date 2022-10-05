@@ -22,7 +22,6 @@ export default function GoingToRead({ books }) {
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
   const isNotebook = useMediaQuery({
     query: '(min-width: 1280px)',
-
   });
   const filterBook = books.filter(book => book.status === 'plan');
   return (
@@ -89,17 +88,14 @@ export default function GoingToRead({ books }) {
           <TrainingButton>Моє тренування</TrainingButton>
         </NavLink>
         <AddBookButton
-          onClick={console.log('ggg')}
+          onClick={window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+          })}
           type="submit"
 
           // переместим в начало страницы
-
-          // window.scrollTo({
-          //   top: 0,
-          //   left: 0,
-          //   behavior: 'smooth',
-
-          // })
         >
           +
         </AddBookButton>

@@ -2,7 +2,7 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import toast from 'react-hot-toast'
+import toast from 'react-hot-toast';
 
 import { AddButton /* Wrapper */ } from './LibraryForm.styled';
 // import { NavLink } from 'react-router-dom';
@@ -18,32 +18,33 @@ import {
   Wrapper,
 } from './LibraryForm.styled';
 
-import {
-  /* useGetBooksQuery, */
-  useAddBooksMutation,
-} from '../../../redux/booksApi/booksSlice';
+import { useAddBooksMutation } from '../../../redux/booksApi/booksSlice';
 
 export default function LibraryForm() {
   const [AddBooks /* { error, isLoading } */] = useAddBooksMutation();
-  /* const { data } = useGetBooksQuery();
-  const booksArray = data;
- */
+
   const validateSchema = yup.object().shape({
     title: yup
       .string()
-      .min(2, 'Дуже коротко!')
+      .min(3, 'Дуже коротко!')
       .max(50, 'Надто довге!')
+      .matches(/^[^ -].{1,50}$/, 'Невірний формат')
       .typeError('Назва книги?')
       .required("Поле обов'язкове"),
     author: yup
       .string()
-      .min(2, 'Дуже коротко!')
+      .min(3, 'Дуже коротко!')
       .max(50, 'Надто довге!')
+      .matches(/^[^ -]\D{1,50}$/, 'Невірний формат')
       .typeError('Імя автора?')
       .required("Поле обов'язкове"),
-    year: yup.string().typeError('Вкажіть рік'),
+    year: yup
+      .string()
+      .matches(/^[12]\d{3}$/, 'Невірний формат')
+      .typeError('Вкажіть рік'),
     pages: yup
       .string()
+      .matches(/^\d{1,4}$/, 'Невірний формат')
       .typeError('Потрібно число')
       .required("Поле обов'язкове"),
   });
@@ -60,9 +61,6 @@ export default function LibraryForm() {
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
           // do your stuff
-          // const handleSub = () => {
-          //   console.log(values.title);
-          // };
 
           const item = {
             id: nanoid(),
@@ -77,7 +75,6 @@ export default function LibraryForm() {
           };
 
           handleAddContact();
-          // handleSub();
           resetForm();
         }}
         validationSchema={validateSchema}

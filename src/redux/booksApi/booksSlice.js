@@ -16,7 +16,7 @@ export const booksApi = createApi({
       return headers;
     },
   }),
-  //   refetchOnMountOrArgChange: true,
+  // refetchOnMountOrArgChange: true,
   tagTypes: ['Books'],
 
   endpoints: builder => ({
@@ -37,7 +37,22 @@ export const booksApi = createApi({
       }),
       invalidatesTags: ['Books'],
     }),
+    updateRating: builder.mutation({
+      query: value => ({
+        url: `books/${value.id}`,
+        method: 'PATCH',
+        body: {
+          comment: value.comment,
+          rating: value.rating,
+        },
+      }),
+      invalidatesTags: ['Books'],
+    }),
   }),
 });
 
-export const { useGetBooksQuery, useAddBooksMutation } = booksApi;
+export const {
+  useGetBooksQuery,
+  useAddBooksMutation,
+  useUpdateRatingMutation,
+} = booksApi;
