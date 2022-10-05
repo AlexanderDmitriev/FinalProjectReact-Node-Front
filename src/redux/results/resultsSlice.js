@@ -43,7 +43,19 @@ export const resultsApi = createApi({
       }),
       invalidatesTags: ['Result'],
     }),
+    updateTraining: builder.mutation({
+      query: value => ({
+        url: `training`,
+        method: 'POST',
+            data: {
+            start: value.start,
+            end: value.end,
+            book: value.book,
+        },
+      }),
+      invalidatesTags: ['Result'],
+    }),
   }),
 });
 
-export const { useFetchResultsQuery, useCreateResultMutation } = resultsApi;
+export const { useFetchResultsQuery, useCreateResultMutation, useUpdateTrainingMutation } = resultsApi;
