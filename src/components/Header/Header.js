@@ -9,15 +9,19 @@ import library from '../../images/Group.svg';
 import authSelectors from '../../redux/authAPI/auth-selectors';
 import authOperations from '../../redux/authAPI/auth-operation';
 import {
+  HeaderSection,
   NavigationLink,
+  NavigationLinkLogin,
   Block,
   Navigation,
   Line,
-  DesktopButton,
-  MobileButton,
+  Logo,
+  MobileLogo,
   ExitButton,
   BlockUser,
   UserName,
+  // ModalBox,
+  ModalText,
 } from './HeaderPage.styled';
 
 const style = {
@@ -42,26 +46,29 @@ const Header = () => {
   const handleExit = () => {
     dispatch(authOperations.logOut());
     setOpen(false);
-    navigate('/', { replace: true });
+    navigate('/login', { replace: true });
   };
 
   return (
     <>
-      <header className={isLoggedIn ? s.header : s.header_l}>
-        <NavigationLink to="/">BR</NavigationLink>
+      <HeaderSection>
+        {isLoggedIn ? (
+          <NavigationLink to="/login">BR</NavigationLink>
+        ) : (
+          <NavigationLinkLogin to="/login">BR</NavigationLinkLogin>
+        )}
 
         {isLoggedIn && (
           <Block>
             <BlockUser>
-              <DesktopButton type="button">{userLogo}</DesktopButton>
+              <Logo>{userLogo}</Logo>
               <UserName>{user}</UserName>
             </BlockUser>
 
-            {/* {statistic && ( */}
             <Navigation>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? s.active_link : s.link
+                  isActive ? s.link : s.active_link
                 }
                 to="/library"
               >
@@ -69,46 +76,44 @@ const Header = () => {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? s.active_link : s.link
+                  isActive ? s.link : s.active_link
                 }
                 to="/training"
               >
                 <img src={home} alt="home" />
               </NavLink>
             </Navigation>
-            <Line></Line>
-            <MobileButton type="button">{userLogo}</MobileButton>
+            <Line />
+            <MobileLogo>{userLogo}</MobileLogo>
             <ExitButton type="button" onClick={handleOpen}>
               Вихід
             </ExitButton>
           </Block>
         )}
-      </header>
+      </HeaderSection>
 
-      <div>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style} className={s.modal}>
-            <p className={s.modal_text}>
-              Якщо Ви вийдете з програми незбережені дані будуть втрачені
-            </p>
-            <div className={s.btn_modal}>
-              <button type="button" onClick={handleClose}>
-                Відміна
-              </button>
-              {/* <NavLink to="/login"> */}
-              <button type="button" onClick={handleExit}>
-                Вийти
-              </button>
-              {/* </NavLink> */}
-            </div>
-          </Box>
-        </Modal>
-      </div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        {/* <ModalBox > */}
+        <Box sx={style} className={s.modal}>
+          <ModalText>
+            Якщо Ви вийдете з програми незбережені дані будуть втрачені
+          </ModalText>
+          <div className={s.btn_modal}>
+            <button type="button" onClick={handleClose}>
+              Відміна
+            </button>
+            <button type="button" onClick={handleExit}>
+              Вийти
+            </button>
+          </div>
+        </Box>
+        {/* </ModalBox> */}
+      </Modal>
     </>
   );
 };

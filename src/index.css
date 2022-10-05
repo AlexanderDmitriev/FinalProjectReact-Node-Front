@@ -48,6 +48,10 @@ img {
   max-width: 100%;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 /* React datepicker main styles*/
 
 .react-datepicker-wrapper {

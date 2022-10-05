@@ -119,10 +119,6 @@ export const GoogleButton = styled.button`
   background: #f5f7fa;
   box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
   border: none;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 export const NavGoogle = styled(NavLink)`
@@ -231,10 +227,6 @@ export const Button = styled.button`
     left: 115px;
     top: 539px;
     margin-bottom: 20px;
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 
   background: #ff6b08;

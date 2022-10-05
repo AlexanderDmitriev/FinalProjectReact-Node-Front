@@ -1,12 +1,32 @@
 import { useMediaQuery } from 'react-responsive';
+import authSelectors from 'redux/authAPI/auth-selectors';
+import { useSelector } from 'react-redux';
+// import { NavLink } from 'react-router-dom';
+import { Nav } from 'components/Home.styled';
 
 import FirstPage from 'components/FirstPage/FirstPage';
 import Login from '../pages/Login';
+import Library from './Library';
 
 export default function Home() {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const isTablet = useMediaQuery({
     query: '(min-width: 768px)',
   });
 
-  return <>{isTablet ? <Login /> : <FirstPage />}</>;
+  return (
+    <>
+      {isTablet ? <Login /> : <FirstPage />}
+
+      {isLoggedIn ? (
+        <Nav to="/library">
+          <Library variant="contained" />
+        </Nav>
+      ) : (
+        <Nav to="/login">
+          <Login variant="contained" />
+        </Nav>
+      )}
+    </>
+  );
 }
