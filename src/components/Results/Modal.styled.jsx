@@ -13,13 +13,10 @@ export const Wrapper = styled.div`
 export const SectionM = styled.div`
   width: 280px;
   height: 358px;
-
   text-align: center;
   // juctify-content: center;
-
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   background-color: ${theme.colors.backColor};
-
   @media screen and (min-width: 768px) {
     width: 394px;
     height: 286px;
@@ -31,13 +28,11 @@ export const Icon = styled.svg`
   fill: #a6abb9;
   padding-left: 10px;
   // juctify-content: center;
-  
   // margin-right: 12px;
 `;
 export const TextBox = styled.div`
   width: 237px;
   height: 88px;
-
   text-align: center;
   margin: 0 auto;
   display: block;
@@ -68,7 +63,6 @@ export const ButtonBox = styled.div`
 export const ButtonM = styled.button`
   width: 152px;
   height: 40px;
-
   margin: 0 auto;
   font-weight: 500;
   font-size: 14px;
@@ -83,7 +77,6 @@ export const ButtonM = styled.button`
   &:focus {
     background-color: #ff6b08;
     border: none;
-
   }
   @media screen and (min-width: 768px) {
   }

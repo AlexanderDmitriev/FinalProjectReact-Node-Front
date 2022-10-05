@@ -1,3 +1,5 @@
+// import { useSelector } from 'react-redux';
+// import { useQueryState } from '@reduxjs/toolkit/query/react';
 import {
   Section,
   MyGoalsSection,
@@ -13,20 +15,40 @@ import {
   AmountDaysWrapper,
   BooksLeftWrapper,
 } from './MyGoals.styled';
-
-import { useFetchResultsQuery } from 'redux/results/resultsSlice';
-import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
+// import {
+//   useCreateResultMutation,
+//   useFetchResultsQuery,
+// } from 'redux/results/resultsSlice';
+// import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
+import { booksApi } from 'redux/booksApi/booksSlice';
+import { resultsApi } from 'redux/results/resultsSlice';
+// import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
 
 export default function MyGoals() {
-  const stats = useFetchResultsQuery();
-  const { data } = useGetBooksQuery();
+  // const trainingEnd = useSelector(bookListSelectors.getFinishDate);
+  // const addTrainingsBooks = useSelector(bookListSelectors.getBooksList);
+  // const stats = useCreateResultMutation();
+  // console.log(addTrainingsBooks);
+  // const stats = useFetchResultsQuery();
+  // const { data } = useGetBooksQuery();
+  // // const trainingStatus = stats.data.status;
+  // console.log(stats.data.status);
 
-  const booksInProgress = data.filter(
-    book => book.status === 'in progress'
-  ).length;
-  const trainingStatus = stats.data.status;
+  const useQueryStateBooks = booksApi.endpoints.getBooks.useQueryState();
+  const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
 
-  //   console.log(stats.data.status);
+  // const trainingEnd = useQueryStateResult.data.training.end;
+  // const trainingStatus = useQueryStateResult.data.status;
+
+  // if (useQueryStateBooks.data) {
+  //   const booksInProgress = useQueryStateBooks.data.filter(
+  //     book => book.status === 'in progress'
+  //   ).length;
+  // }
+
+  // console.log(trainingStatus);
+  console.log(useQueryStateResult.data);
+  // console.log(stats);
 
   const trainingDays = date => {
     const startDay = new Date();
@@ -42,17 +64,21 @@ export default function MyGoals() {
         <MyGoalsBtn>Моя мета прочитати</MyGoalsBtn>
         <MyGoalsContainer>
           <AmountBooksWrapper>
-            {data && trainingStatus === 'in progress' ? (
-              <AmountBooksContainer>{booksInProgress}</AmountBooksContainer>
+            {useQueryStateResult.data &&
+            useQueryStateResult.data.status === 'in progress' ? (
+              <AmountBooksContainer>
+                {useQueryStateResult.data.training.active.length}
+              </AmountBooksContainer>
             ) : (
               <AmountBooksContainer>0</AmountBooksContainer>
             )}
             <AmountBooksText>Кількість книжок</AmountBooksText>
           </AmountBooksWrapper>
           <AmountDaysWrapper>
-            {stats.data && trainingStatus === 'in progress' ? (
+            {useQueryStateResult.data &&
+            useQueryStateResult.data.status === 'in progress' ? (
               <AmountDaysContainer>
-                {trainingDays(stats.data.training.end)}
+                {trainingDays(useQueryStateResult.data.training.end)}
               </AmountDaysContainer>
             ) : (
               <AmountDaysContainer>0</AmountDaysContainer>
@@ -60,9 +86,15 @@ export default function MyGoals() {
             <AmountDaysText>Кількість днів</AmountDaysText>
           </AmountDaysWrapper>
           <BooksLeftWrapper>
-            {stats.data && trainingStatus === 'in progress' ? (
+            {useQueryStateBooks.data &&
+            useQueryStateResult.data &&
+            useQueryStateResult.data.status === 'in progress' ? (
               <BooksLeftContainer>
-                {stats.data.training.active.length}
+                {
+                  useQueryStateBooks.data.filter(
+                    book => book.status === 'in progress'
+                  ).length
+                }
               </BooksLeftContainer>
             ) : (
               <BooksLeftContainer>0</BooksLeftContainer>

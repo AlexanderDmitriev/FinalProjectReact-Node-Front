@@ -25,7 +25,8 @@ import {
 import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
 /* import MyGoals from 'components/Training/MyGoals/MyGoals'; */
 import BooksList from 'components/Training/BooksList/BooksList';
-import BookListInTraining from '../BookkListInTraining/BookkListInTraining';
+/* import BookListInTraining from '../BookkListInTraining/BookkListInTraining'; */
+import MetaThreePoints from '../../LibraryPage/Meta/MetaThree';
 import toast from 'react-hot-toast';
 
 export default function AddTraining() {
@@ -104,7 +105,7 @@ export default function AddTraining() {
 
   return (
     <>
-      {/* <MyGoals /> */}
+      <MetaThreePoints />
 
       <Section>
         <TrainingSection>
@@ -158,12 +159,11 @@ export default function AddTraining() {
             </SelectContainer>
           )}
         </TrainingSection>
-        {inProgressBooks.length === 0? <BooksList
+        <BooksList
           books={startBookList}
           onDeleteBtnClick={onDeleteBtnClick}
           addTrainingClick={addTrainingClick}
-        /> :
-        <BookListInTraining booksList={data} />}
+        />
       </Section>
     </>
   );
