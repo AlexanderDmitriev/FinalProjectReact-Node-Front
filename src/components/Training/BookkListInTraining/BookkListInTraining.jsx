@@ -17,11 +17,21 @@ import {
   HeaderAuthor,
   HeaderYear,
 } from './BookListInTraining.styled';
-import { useSelector } from 'react-redux';
-import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
+import { useFetchResultsQuery } from 'redux/results/resultsSlice';
+import { useState, useEffect } from 'react';
 
-export default function BookListInTraining() {
-  const books = useSelector(bookListSelectors.getBooksList);
+export default function BookListInTraining({booksList}) {
+  const { data, /*error, isLoading*/ } = useFetchResultsQuery();
+  const [books, setBooks] = useState(null);
+  
+  useEffect(() => {
+    if (data!==undefined) {
+      const id = data.training.active;
+      const booksArr = booksList.filter(({ _id }) => id.includes(_id));
+      setBooks(booksArr);
+    } 
+  },[booksList, data])
+
   return (
     <Section>
       <Wrapper>
