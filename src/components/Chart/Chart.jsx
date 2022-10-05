@@ -49,12 +49,6 @@ const convertPagesToArr = (pages) => {
   return pagesArr;
 }
 
-    
-    // const result = data.statistic;
-    // for (const page of result) {
-    //   pagesArr.push(Number(page.pages));
-    // }
-
 export default function Chart({ books }) {
   let width = 236;
   let height = 190;
@@ -107,13 +101,6 @@ export default function Chart({ books }) {
     }
   }, [books, data, error, isLoading, pages]);
  
-  
-  // console.log("trainingDays", trainingDays);
-  // console.log("trainingDaysArr", trainingDaysArr);
-  // console.log("mediumPagesArr", mediumPagesArr);
-  // console.log("pagesArr", pagesArr);
-  // console.log("data", data);
-
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -186,37 +173,3 @@ export default function Chart({ books }) {
     </Wrapper>
   );
 }
-
-// const { data, error, isLoading } = useFetchResultsQuery();
-//   const [pages, setPages] = useState(0);
-
-//   useEffect(() => {
-//     if (error) {
-//       return;
-//     }
-//     if (!isLoading) {
-//       const activeBooksArr = data.training.active;
-//       const booksArr = books.filter(({ _id }) => activeBooksArr.includes(_id));
-//       let totalPages = 0;
-//       booksArr.map(item => {
-//         return (totalPages += Number(item.pages));
-//       });
-//       setPages(totalPages);
-//     }
-//   }, [books, data, error, isLoading]);
- 
-//     const startDay = new Date(data.training.start);
-//     const finishDay = new Date(data.training.end);
-//     const timeDiff = Math.abs(finishDay.getTime() - startDay.getTime());
-//     const trainingDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-//     const trainingDaysArr = convertTrainingDaysToArr(trainingDays);
-//     const mediumPages = Math.round(pages / trainingDays);
-//     const mediumPagesArr = convertPlanTrainingDaysToArr(
-//       trainingDays,
-//       mediumPages
-//     );
-//     const pagesArr = [];
-//     const result = data.statistic;
-//     for (const page of result) {
-//       pagesArr.push(Number(page.pages));
-//     }

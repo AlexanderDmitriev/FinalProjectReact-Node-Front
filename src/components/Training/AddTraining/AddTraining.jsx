@@ -23,13 +23,18 @@ import {
   startDate,
 } from 'redux/trainingBookList/trainingBooksListAction';
 import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
-import MyGoals from 'components/Training/MyGoals/MyGoals';
+/* import MyGoals from 'components/Training/MyGoals/MyGoals'; */
 import BooksList from 'components/Training/BooksList/BooksList';
+import BookListInTraining from '../BookkListInTraining/BookkListInTraining';
+import toast from 'react-hot-toast';
 
 export default function AddTraining() {
   const location = useLocation();
   const path = location?.state?.from ?? '/';
   const { data, /* error, */ isLoading } = useGetBooksQuery();
+
+  const books = data ?? [];
+  const inProgressBooks = books.filter(book => book.status === 'in progress');
   const dispatch = useDispatch();
   const [updateTraining] = useUpdateTrainingMutation();
 
@@ -38,7 +43,7 @@ export default function AddTraining() {
   const startBookList = useSelector(bookListSelectors.getBooksList);
   const [selectedBookArr, setSelectedBookArr] = useState([]);
   const [selectedBook, setSelectedBook] = useState('');
-
+  
   useEffect(() => {
     if (!isLoading) {
       const booksArr = data.filter(({ _id }) => selectedBookArr.includes(_id));
@@ -63,6 +68,9 @@ export default function AddTraining() {
     if (double) {
       return;
     }
+    if (inProgressBooks.length !== 0) {
+      return toast.error('Є активне тренування');
+    }
     const booksArrInfo = data.filter(({ _id }) =>
       selectedBookArr.includes(_id)
     );
@@ -80,7 +88,7 @@ export default function AddTraining() {
 
   const addTrainingClick = async () => {
     if (!start.includes('-') || !finish.includes('-')) {
-      alert('Введіть дати');
+      return toast.error('Пропустили дату тренування');
     }
     try {
       const value = {
@@ -90,13 +98,13 @@ export default function AddTraining() {
       };
       await updateTraining(value);
     } catch (err) {
-      console.log(err);
+      toast.error('Щось пішло не так, спробуйте ще раз');
     }
   };
 
   return (
     <>
-      <MyGoals />
+      {/* <MyGoals /> */}
 
       <Section>
         <TrainingSection>
@@ -150,12 +158,12 @@ export default function AddTraining() {
             </SelectContainer>
           )}
         </TrainingSection>
-        <BooksList
+        {inProgressBooks.length === 0? <BooksList
           books={startBookList}
           onDeleteBtnClick={onDeleteBtnClick}
           addTrainingClick={addTrainingClick}
-        />
-        {/* <BookListInTraining /> */}
+        /> :
+        <BookListInTraining booksList={data} />}
       </Section>
     </>
   );
