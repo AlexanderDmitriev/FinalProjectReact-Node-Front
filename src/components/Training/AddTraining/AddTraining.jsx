@@ -10,17 +10,18 @@ import {
   SelectContainer,
   Svg,
   SvgContainer,
-} from './AddTraining.styled';
-import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { ReactComponent as IconBack } from '../../../images/iconback.svg';
-import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
-import { useUpdateTrainingMutation } from 'redux/results/resultsSlice';
+}from './AddTraining.styled';
+  import { useState, useEffect } from 'react';
+  import { NavLink, useLocation } from 'react-router-dom';
+  import { ReactComponent as IconBack } from '../../../images/iconback.svg';
+  import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
+  import { useUpdateTrainingMutation } from 'redux/results/resultsSlice';
 /* import MyGoals from 'components/Training/MyGoals/MyGoals'; */
 import BooksList from 'components/Training/BooksList/BooksList';
-/* import BookListInTraining from '../BookkListInTraining/BookkListInTraining'; */
+import BookListInTraining from '../BookkListInTraining/BookkListInTraining';
 import MetaThreePoints from '../../LibraryPage/Meta/MetaThree';
 import toast from 'react-hot-toast';
+/* import { useDispatch, useSelector } from 'react-redux/es/exports'; */
 
 export default function AddTraining() {
   const location = useLocation();
@@ -35,7 +36,7 @@ export default function AddTraining() {
   const [booksListArr, setBooksListArr] = useState([]);
   const [selectedBookArr, setSelectedBookArr] = useState([]);
   const [selectedBook, setSelectedBook] = useState('');
-  
+
   useEffect(() => {
     if (!isLoading) {
       const booksArr = data.filter(({ _id }) => selectedBookArr.includes(_id));
@@ -43,7 +44,7 @@ export default function AddTraining() {
     }
   }, [data, isLoading, selectedBookArr]);
 
-  const handleSelectChange = event => {
+   const handleSelectChange = event => {
     setSelectedBook(event.target.value);
   };
 
@@ -56,13 +57,6 @@ export default function AddTraining() {
   };
 
   const handleAddBook = () => {
-    const double = selectedBookArr.find(i => i === selectedBook);
-    if (double) {
-      return;
-    }
-    if (inProgressBooks.length !== 0) {
-      return toast.error('Є активне тренування');
-    }
     const booksArrInfo = data.filter(({ _id }) =>
       selectedBookArr.includes(_id)
     );
@@ -155,8 +149,9 @@ export default function AddTraining() {
           books={booksListArr}  //todo
           onDeleteBtnClick={onDeleteBtnClick}
           addTrainingClick={addTrainingClick}
-        />
-      </Section>
+        /> :
+        <BookListInTraining booksList={data} />}
+        </Section>
     </>
   );
 }

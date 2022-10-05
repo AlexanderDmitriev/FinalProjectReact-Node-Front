@@ -11,7 +11,7 @@ import {
   StarsField,
 } from './BookRating.styled';
 import StarRating from '../RatingStars/StarRating';
-import { useUpdateRatingMutation } from 'redux/rating/ratingSlice';
+import { useUpdateRatingMutation } from 'redux/booksApi/booksSlice';
 import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
 /* import { useUpdateRatingMutation } from 'redux/booksApi/booksSlice'; */
 

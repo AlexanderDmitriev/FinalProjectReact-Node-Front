@@ -14,7 +14,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import authSlice from 'redux/authAPI/auth-slice';
 import { booksApi } from './booksApi/booksSlice';
 import { resultsApi } from './results/resultsSlice';
-import { ratingApi } from './rating/ratingSlice';
+/* import { ratingApi } from './rating/ratingSlice'; */
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -24,7 +24,7 @@ const middleware = [
   }),
   resultsApi.middleware,
   booksApi.middleware,
-  ratingApi.middleware,
+  /* ratingApi.middleware, */
 ];
 
 const authPersistConfig = {
@@ -38,7 +38,7 @@ export const store = configureStore({
     [authSlice.name]: persistReducer(authPersistConfig, authSlice.reducer),
     [resultsApi.reducerPath]: resultsApi.reducer,
     [booksApi.reducerPath]: booksApi.reducer,
-    [ratingApi.reducerPath]: ratingApi.reducer,
+    /* [ratingApi.reducerPath]: ratingApi.reducer, */
   },
   middleware,
 });
