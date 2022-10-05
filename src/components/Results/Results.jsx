@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ResultTable from './ResultTable';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useNavigate /* , useLocation */ } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Section,
   Title,
