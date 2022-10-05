@@ -17,7 +17,7 @@ export default function Library() {
   const location = useLocation();
   /* const navigator = useNavigate(); */
   const path = location?.state?.from ?? '/';
-  const { data, isError, isLoading } = useGetBooksQuery();
+  const { data, /* isError, */ isLoading } = useGetBooksQuery();
 
   const books = data ?? [];
 

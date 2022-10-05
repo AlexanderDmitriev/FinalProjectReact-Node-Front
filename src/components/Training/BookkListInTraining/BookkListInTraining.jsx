@@ -7,24 +7,21 @@ import {
   BookDescription,
   Wrapper,
   Value,
-  IconBook,
+  BoxChecked,
+  CheckBox,
   TitleWrapper,
-  Btn,
-  StartTrainingBtn,
   Year,
   Pages,
   HeaderWrapper,
   HeaderTitle,
   HeaderAuthor,
   HeaderYear,
-} from './BooksList.styled';
-import deletedBtn from '../../../images/deletebtn.svg';
+} from './BookListInTraining.styled';
+import { useSelector } from 'react-redux';
+import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
 
-export default function BooksList({
-  books,
-  onDeleteBtnClick,
-  addTrainingClick,
-}) {
+export default function BookListInTraining() {
+  const books = useSelector(bookListSelectors.getBooksList);
   return (
     <Section>
       <Wrapper>
@@ -38,13 +35,10 @@ export default function BooksList({
           {books &&
             books.map(book => (
               <BookCard key={book._id}>
-                <Btn value={book._id} onClick={onDeleteBtnClick}>
-                  <img src={deletedBtn} alt="delete" />
-                </Btn>
                 <List>
                   <ListItem>
                     {' '}
-                    <IconBook />
+                    {book.status === 'finished' ? <BoxChecked /> : <CheckBox />}
                     <BookName>{book.title}</BookName>
                   </ListItem>
                   <ListItem>
@@ -69,13 +63,6 @@ export default function BooksList({
                 </List>
               </BookCard>
             ))}
-          <>
-            {books.length !== 0 && (
-              <StartTrainingBtn onClick={addTrainingClick}>
-                Почати тренування
-              </StartTrainingBtn>
-            )}
-          </>
         </>
       </Wrapper>
     </Section>

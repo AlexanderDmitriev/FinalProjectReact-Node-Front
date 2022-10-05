@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast'
 
 axios.defaults.baseURL = 'https://book-reader-43-back.herokuapp.com/api';
 const token = {
@@ -17,9 +18,10 @@ const register = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/signup', credentials);
       token.set(data.token);
+      toast.success(`Ви успішно зареєструвалися`);
       return data;
     } catch (error) {
-      alert(error.message);
+      toast.error(`На жаль, реєстрація була неуспішною`);
       return rejectWithValue(error.message);
     }
   }
@@ -31,9 +33,10 @@ const logIn = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/login', credentials);
       token.set(data.token);
+      toast.success(`Ласкаво просимо до BookReading`);
       return data;
     } catch (error) {
-      alert(error.message);
+      toast.error(`Увійти до системи не вдалося. Спробуйте трохи пізніше`);
       return rejectWithValue(error.message);
     }
   }
@@ -45,8 +48,9 @@ const logOut = createAsyncThunk(
     try {
       await axios.post('/users/logout');
       token.unset();
+      toast.success(`Ви успішно вийшли з профілю`);
     } catch (error) {
-      alert(error.message);
+      toast.error(`На жаль, вихід з профілю не був успішним. Спробуйте ще раз пізніше.`);
       return rejectWithValue(error.message);
     }
   }
@@ -67,6 +71,7 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
+      toast.error(`На жаль, не вдалося знайти такого користувача.`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

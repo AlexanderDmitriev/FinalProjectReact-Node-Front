@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -15,13 +16,28 @@ import {
   Value,
   TitleBox,
 } from './AlreadyRead.styled';
-
+/* import Star from 'components/RatingStars/Star'; */
+import Modal from 'components/Modal/Modal';
+import BookRating from 'components/BookRating/BookRating';
 import StarRatingBook from './StarRatingBook';
 
 export default function AlreadyRead({ books }) {
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
   const isNotebook = useMediaQuery({
     query: '(min-width: 1280px)',
+
+  const [id, setId] = useState('')
+  const [isModalOpen, setModalOpen] = useState(false)
+
+  const handleSubmit = (e) => {
+    setId(e.currentTarget.value)
+    setModalOpen(true)
+  }
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  }
+
+
   });
   const filterBook = books.filter(book => book.status === 'finished');
   return (
@@ -68,7 +84,7 @@ export default function AlreadyRead({ books }) {
             </TitleBox>
           )}
           {filterBook.map(book => (
-            <BookCard key={book.id}>
+            <BookCard key={book._id}>
               <List>
                 <ListItem>
                   {' '}
@@ -94,16 +110,20 @@ export default function AlreadyRead({ books }) {
                   <StarRatingBook rating={book.resume.rating} />
                 </ListItem>
                 <ResumeButton
+                  value={book._id}
                   disabled={false}
                   onClick={handleSubmit}
-                  type="submit"
+                  type="button"
                 >
                   Резюме
                 </ResumeButton>
               </List>
             </BookCard>
           ))}
-        </>
+        </> 
+       <Modal isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}>
+         <BookRating onClose={handleCloseModal} bookId={id} />
+       </Modal>
       </Wrapper>
     </Section>
   );

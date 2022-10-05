@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {theme} from '../../../helpers/theme';
 
 export const Section = styled.div`
     background: #F6F7FB;
@@ -23,8 +24,8 @@ export const MyGoalsBtn = styled.button`
     font-size: 20px;
     line-height: 24px;
     text-align: center;
-    color: #FFFFFF;
-    background: #B1B5C2;
+    color: ${theme.colors.backColor};
+    background: ${theme.colors.tableColor};
     width: 100%;
     margin-top: 32px;
     cursor: pointer;

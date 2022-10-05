@@ -12,3 +12,5 @@ Front-End repository
 5. Сшиваем фронт и бек
 6. Тестирование проекта
 7. Шлифуем проект.
+
+"homepage": "https://AlexanderDmitriev.github.io/FinalProjectReact-Node-Front/",

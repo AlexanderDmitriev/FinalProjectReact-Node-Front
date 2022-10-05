@@ -53,7 +53,6 @@ export const Label = styled.label`
   font-size: 11px;
   line-height: 1.18;
   color: ${theme.colors.bookDescriptionColor};
-  color: #898f9f;
 
   :first-child {
     margin-right: 10px;
