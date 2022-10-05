@@ -13,16 +13,9 @@ import {
 } from './AddTraining.styled';
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { ReactComponent as IconBack } from '../../../images/iconback.svg';
 import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
-import { useUpdateTrainingMutation } from 'redux/addTraining/addTrainingSlice';
-import {
-  bookList,
-  finishDate,
-  startDate,
-} from 'redux/trainingBookList/trainingBooksListAction';
-import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
+import { useUpdateTrainingMutation } from 'redux/results/resultsSlice';
 /* import MyGoals from 'components/Training/MyGoals/MyGoals'; */
 import BooksList from 'components/Training/BooksList/BooksList';
 /* import BookListInTraining from '../BookkListInTraining/BookkListInTraining'; */
@@ -33,35 +26,33 @@ export default function AddTraining() {
   const location = useLocation();
   const path = location?.state?.from ?? '/';
   const { data, /* error, */ isLoading } = useGetBooksQuery();
-
   const books = data ?? [];
   const inProgressBooks = books.filter(book => book.status === 'in progress');
-  const dispatch = useDispatch();
   const [updateTraining] = useUpdateTrainingMutation();
 
-  const start = useSelector(bookListSelectors.getStartDate);
-  const finish = useSelector(bookListSelectors.getFinishDate);
-  const startBookList = useSelector(bookListSelectors.getBooksList);
+  const [start, setStart] = useState('');
+  const [finish, setFinish] = useState('');
+  const [booksListArr, setBooksListArr] = useState([]);
   const [selectedBookArr, setSelectedBookArr] = useState([]);
   const [selectedBook, setSelectedBook] = useState('');
   
   useEffect(() => {
     if (!isLoading) {
       const booksArr = data.filter(({ _id }) => selectedBookArr.includes(_id));
-      dispatch(bookList(booksArr));
+      setBooksListArr(booksArr);
     }
-  }, [data, dispatch, isLoading, selectedBookArr]);
+  }, [data, isLoading, selectedBookArr]);
 
   const handleSelectChange = event => {
     setSelectedBook(event.target.value);
   };
 
   const handleChangeStartTime = e => {
-    dispatch(startDate(e.target.value));
+    setStart(e.target.value);
   };
 
   const handleChangeFinishTime = e => {
-    dispatch(finishDate(e.target.value));
+    setFinish(e.target.value);
   };
 
   const handleAddBook = () => {
@@ -75,7 +66,7 @@ export default function AddTraining() {
     const booksArrInfo = data.filter(({ _id }) =>
       selectedBookArr.includes(_id)
     );
-    dispatch(bookList(booksArrInfo));
+    setBooksListArr(booksArrInfo);
     setSelectedBookArr([selectedBook, ...selectedBookArr]);
   };
 
@@ -83,8 +74,8 @@ export default function AddTraining() {
     const bookId = e.currentTarget.value;
     const filteredBooks = selectedBookArr.filter(i => i !== bookId);
     setSelectedBookArr(filteredBooks);
-    const bookListSelected = startBookList.filter(i => i._id !== bookId);
-    dispatch(bookList(bookListSelected));
+    const bookListSelected = booksListArr.filter(i => i._id !== bookId);
+    setBooksListArr(bookListSelected);
   };
 
   const addTrainingClick = async () => {
@@ -98,8 +89,9 @@ export default function AddTraining() {
         book: selectedBookArr,
       };
       await updateTraining(value);
+      toast.success(`Тренування додано.`);
     } catch (err) {
-      toast.error('Щось пішло не так, спробуйте ще раз');
+      toast.error('На жаль, додавання тренування не було успішним');
     }
   };
 
@@ -159,8 +151,8 @@ export default function AddTraining() {
             </SelectContainer>
           )}
         </TrainingSection>
-        <BooksList
-          books={startBookList}
+        {inProgressBooks.length === 0? <BooksList
+          books={booksListArr}  //todo
           onDeleteBtnClick={onDeleteBtnClick}
           addTrainingClick={addTrainingClick}
         />

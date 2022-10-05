@@ -14,10 +14,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import authSlice from 'redux/authAPI/auth-slice';
 import { booksApi } from './booksApi/booksSlice';
 import { resultsApi } from './results/resultsSlice';
-import { addTrainingApi } from './addTraining/addTrainingSlice';
-import { trainingBooksListReducer } from './trainingBookList/trainingBookListReducer';
-import { startDateReducer } from './trainingBookList/startDateReducer';
-import { finishDateReducer } from './trainingBookList/finishDateReducer';
+import { ratingApi } from './rating/ratingSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -27,8 +24,7 @@ const middleware = [
   }),
   resultsApi.middleware,
   booksApi.middleware,
-
-  addTrainingApi.middleware,
+  ratingApi.middleware,
 ];
 
 const authPersistConfig = {
@@ -42,11 +38,7 @@ export const store = configureStore({
     [authSlice.name]: persistReducer(authPersistConfig, authSlice.reducer),
     [resultsApi.reducerPath]: resultsApi.reducer,
     [booksApi.reducerPath]: booksApi.reducer,
-
-    [addTrainingApi.reducerPath]: addTrainingApi.reducer,
-    bookList: trainingBooksListReducer,
-    startDate: startDateReducer,
-    finishDate: finishDateReducer,
+    [ratingApi.reducerPath]: ratingApi.reducer,
   },
   middleware,
 });
