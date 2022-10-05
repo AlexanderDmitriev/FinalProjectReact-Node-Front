@@ -19,8 +19,10 @@ import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
 export default function GoingToRead({ books }) {
-  const isTablet = useMediaQuery({
-    query: '(min-width: 768px)',
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+  const isNotebook = useMediaQuery({
+    query: '(min-width: 1280px)',
+
   });
   const filterBook = books.filter(book => book.status === 'plan');
   return (
@@ -39,6 +41,22 @@ export default function GoingToRead({ books }) {
               Рік:
             </BookTitleDescription>
             <BookTitleDescription style={{ width: 80 }}>
+              Стор:{' '}
+            </BookTitleDescription>
+          </TitleBox>
+        )}
+        {isNotebook && (
+          <TitleBox>
+            <BookTitleDescription style={{ width: 500 }}>
+              Назва книги:
+            </BookTitleDescription>
+            <BookTitleDescription style={{ width: 340 }}>
+              Автор:
+            </BookTitleDescription>
+            <BookTitleDescription style={{ width: 310 }}>
+              Рік:
+            </BookTitleDescription>
+            <BookTitleDescription style={{ width: 100 }}>
               Стор:{' '}
             </BookTitleDescription>
           </TitleBox>
@@ -70,15 +88,21 @@ export default function GoingToRead({ books }) {
         <NavLink to="/training" exact="true">
           <TrainingButton>Моє тренування</TrainingButton>
         </NavLink>
-        <AddBookButton>+</AddBookButton>
-        {/* <svg
-          width="32"
-          height="32"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 32 32"
+        <AddBookButton
+          onClick={console.log('ggg')}
+          type="submit"
+
+          // переместим в начало страницы
+
+          // window.scrollTo({
+          //   top: 0,
+          //   left: 0,
+          //   behavior: 'smooth',
+
+          // })
         >
-          <path d="M31.547 12a.848.848 0 00-.677-.577l-9.427-1.376-4.224-8.532a.847.847 0 00-1.516 0l-4.218 8.534-9.427 1.355a.847.847 0 00-.467 1.467l6.823 6.664-1.612 9.375a.847.847 0 001.23.893l8.428-4.434 8.432 4.432a.847.847 0 001.229-.894l-1.615-9.373 6.822-6.665a.845.845 0 00.214-.869z" />
-        </svg> */}
+          +
+        </AddBookButton>
       </Wrapper>
     </Section>
   );

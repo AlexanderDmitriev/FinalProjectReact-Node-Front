@@ -15,9 +15,10 @@ import {
 } from '../GoingToRead/GoingToRead.styled';
 import { nanoid } from 'nanoid';
 
-export default function ReadingNow({ books }) {
-  const isTablet = useMediaQuery({
-    query: '(min-width: 768px)',
+export default function GoingToRead({ books }) {
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+  const isNotebook = useMediaQuery({
+    query: '(min-width: 1280px)',
   });
   const filterBook = books.filter(book => book.status === 'in progress');
   return (
@@ -34,6 +35,22 @@ export default function ReadingNow({ books }) {
                 Автор:
               </BookTitleDescription>
               <BookTitleDescription style={{ width: 150 }}>
+                Рік:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 80 }}>
+                Стор:{' '}
+              </BookTitleDescription>
+            </TitleBox>
+          )}
+          {isNotebook && (
+            <TitleBox>
+              <BookTitleDescription style={{ width: 500 }}>
+                Назва книги:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 340 }}>
+                Автор:
+              </BookTitleDescription>
+              <BookTitleDescription style={{ width: 310 }}>
                 Рік:
               </BookTitleDescription>
               <BookTitleDescription style={{ width: 80 }}>
