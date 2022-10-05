@@ -2,7 +2,7 @@ import {
   MetaHeader,
   HeaderText,
   MetaBody,
-  MetaBlockNumber,
+  /* MetaBlockNumber, */
   MetaNumber,
   MetaBlockText,
   MetaText,

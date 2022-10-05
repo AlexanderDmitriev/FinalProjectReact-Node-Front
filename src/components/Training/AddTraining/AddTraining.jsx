@@ -25,7 +25,8 @@ import {
 import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
 /* import MyGoals from 'components/Training/MyGoals/MyGoals'; */
 import BooksList from 'components/Training/BooksList/BooksList';
-import BookListInTraining from '../BookkListInTraining/BookkListInTraining';
+/* import BookListInTraining from '../BookkListInTraining/BookkListInTraining'; */
+import MetaThreePoints from '../../LibraryPage/Meta/MetaThree';
 import toast from 'react-hot-toast';
 
 export default function AddTraining() {

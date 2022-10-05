@@ -4,7 +4,6 @@ import DatePicker from 'react-datepicker';
 // import { useDispatch } from 'react-redux';
 import { useNavigate /* , useLocation */ } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useNavigate } from 'react-router-dom';
 import {
   Section,
   Title,
@@ -28,18 +27,6 @@ import {
 import Modal from 'components/Modal/Modal';
 import sprite from '../../images/icons.svg';
 import { useCreateResultMutation } from 'redux/results/resultsSlice';
-import {
-  Wrapper,
-  SectionM,
-  TextBox,
-  Text,
-  ButtonBox,
-  ButtonM,
-  BackButton,
-  Icon,
-} from './Modal.styled';
-import Modal from 'components/Modal/Modal';
-import sprite from '../../images/icons.svg';
 
 export default function Results() {
   const [date, setDate] = useState(null);
