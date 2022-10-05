@@ -11,13 +11,13 @@ import { NavLink, /* useNavigate, */ useLocation } from 'react-router-dom';
 import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
 // import books from 'book.json';
 import sprite from '../images/icons.svg';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 export default function Library() {
   const location = useLocation();
   /* const navigator = useNavigate(); */
   const path = location?.state?.from ?? '/';
-  const { data, /* isError, */ isLoading } = useGetBooksQuery();
+  const { data, isError, isLoading } = useGetBooksQuery();
 
   const books = data ?? [];
 

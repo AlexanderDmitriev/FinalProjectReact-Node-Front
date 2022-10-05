@@ -24,7 +24,7 @@ import StarRatingBook from './StarRatingBook';
 export default function AlreadyRead({ books }) {
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
   const isNotebook = useMediaQuery({
-    query: '(min-width: 1280px)',
+    query: '(min-width: 1280px)', });
 
   const [id, setId] = useState('')
   const [isModalOpen, setModalOpen] = useState(false)
@@ -38,7 +38,7 @@ export default function AlreadyRead({ books }) {
   }
 
 
-  });
+ 
   const filterBook = books.filter(book => book.status === 'finished');
   return (
     <Section>

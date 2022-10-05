@@ -2,7 +2,7 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast'
 
 import { AddButton /* Wrapper */ } from './LibraryForm.styled';
 // import { NavLink } from 'react-router-dom';
