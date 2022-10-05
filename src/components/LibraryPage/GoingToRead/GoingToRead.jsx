@@ -19,7 +19,6 @@ import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
 export default function GoingToRead({ books }) {
-  console.log(books);
   const isTablet = useMediaQuery({
     query: '(min-width: 768px)',
   });

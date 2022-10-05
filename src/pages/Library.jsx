@@ -21,10 +21,9 @@ export default function Library() {
   const location = useLocation();
   /* const navigator = useNavigate(); */
   const path = location?.state?.from ?? '/';
-  const { data, isError, isLoading } = useGetBooksQuery();
+  const { data, /* isError, */ isLoading } = useGetBooksQuery();
 
   const books = data ?? [];
-  console.log(books);
 
   const planBooks = books.filter(book => book.status === 'plan');
   const inProgressBooks = books.filter(book => book.status === 'in progress');
