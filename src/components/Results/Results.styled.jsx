@@ -2,6 +2,12 @@ import styled from 'styled-components';
 import { theme } from '../../helpers/theme';
 
 export const Section = styled.section`
+@media screen and (min-width: 1279px) {
+  position: absolute;
+  bottom: 41px;
+  right: 16px;
+  }
+  
   width: 280px;
   padding: 20px;
   background-color: ${theme.colors.backColor};

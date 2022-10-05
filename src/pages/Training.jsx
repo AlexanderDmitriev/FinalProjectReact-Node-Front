@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from 'helpers/Container';
+import {TrainingPage} from '../components/TrainingPage';
 
 import Results from 'components/Results/Results';
 import AddTraining from 'components/Training/AddTraining/AddTraining';
@@ -10,10 +10,10 @@ export default function Training() {
   const { data, /* error, */ isLoading } = useGetBooksQuery();
 
   return (
-    <Container>
+    <TrainingPage>
       <AddTraining />
       {!isLoading && <Chart books={data} />}
       <Results />
-    </Container>
+    </TrainingPage>
   );
 }
