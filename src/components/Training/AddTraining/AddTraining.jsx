@@ -23,7 +23,7 @@ import {
   startDate,
 } from 'redux/trainingBookList/trainingBooksListAction';
 import bookListSelectors from '../../../redux/trainingBookList/bookListSelectors';
-import MyGoals from 'components/Training/MyGoals/MyGoals';
+/* import MyGoals from 'components/Training/MyGoals/MyGoals'; */
 import BooksList from 'components/Training/BooksList/BooksList';
 import BookListInTraining from '../BookkListInTraining/BookkListInTraining';
 import toast from 'react-hot-toast';
