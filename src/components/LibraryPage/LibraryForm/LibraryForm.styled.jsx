@@ -29,9 +29,11 @@ export const FormInput = styled.div`
   @media screen and (min-width: 1280px) {
     width: 1141px;
     height: 67px;
-    margin-top: 60px;
+    margin-top: 40px;
+    margin-bottom: 80px;
     display: flex;
-    align-items: end;
+    align-item: end;
+    // align-content: start;
   }
 `;
 
@@ -48,9 +50,10 @@ export const Input = styled.div`
   @media screen and (min-width: 1280px) {
     width: 1000px;
     height: 67px;
+    margin-top: 0px;
     margin-right: auto;
     margin-left: 16px;
-    align-items: center;
+    align-content: start;
     justify-content: space-between;
   }
 `;
@@ -73,6 +76,7 @@ export const InputItem = styled.div`
     width: 136px;
     margin-right: 0px;
     margin-left: 0px;
+    margin-bottom: 0px;
   }
 `;
 export const InputItemTitle = styled.div`
@@ -90,6 +94,7 @@ export const InputItemTitle = styled.div`
     width: 346px;
     margin-left: 0px;
     margin-right: 0px;
+    margin-bottom: 0px;
   }
 `;
 export const InputItemAuthor = styled.div`
@@ -107,6 +112,7 @@ export const InputItemAuthor = styled.div`
     width: 250px;
     margin-left: 0px;
     margin-right: 0px;
+    margin-bottom: 0px;
   }
 `;
 
@@ -132,7 +138,7 @@ export const FieldInput = styled(Field)`
   box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
   border: 1px solid #a6abb9;
   &:focus {
-    background-color: ${theme.colors.backColor};;
+    background-color: ${theme.colors.backColor};
   }
 `;
 
@@ -161,8 +167,8 @@ export const AddButton = styled.button`
     width: 181px;
     height: 42px;
 
-    margin-top: 0px;
-    margin-bottom: 20px;
+    margin-top: 28px;
+    // margin-bottom: 20px;
     margin-left: 48px;
   }
 `;

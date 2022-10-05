@@ -1,14 +1,17 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import axios from 'axios';
+import toast from 'react-hot-toast'
 
 const axiosBaseQuery =
   ({ baseUrl } = { baseUrl: '' }) =>
   async ({ url, method, data, params }) => {
     try {
       const result = await axios({ url: baseUrl + url, method, data, params });
+      toast.success(`Тренування додано.`);
       return { data: result.data };
     } catch (axiosError) {
       let err = axiosError;
+      toast.error(`На жаль, додавання тренування не було успішним`);
       return {
         error: {
           status: err.response?.status,

@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { Toaster } from 'react-hot-toast';
 import Container from '../helpers/Container';
 import { Spinner } from './Spinner';
 import authOperations from '../redux/authAPI/auth-operation';
@@ -27,66 +27,69 @@ export const App = () => {
 
   return (
     <>
-      <Container>
-        {isFetchingCurrentUser ? (
-          <Spinner />
-        ) : (
-          <Suspense fallback={<Spinner />}>
-            <Header />
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <PublicRoute path="/">
-                    <Home />
-                  </PublicRoute>
-                }
-              ></Route>
+      <Suspense fallback={<Spinner />}>
+        <Container>
+          {isFetchingCurrentUser ? (
+            <Spinner />
+          ) : (
+            <>
+              <Header />
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <PublicRoute path="/">
+                      <Home />
+                    </PublicRoute>
+                  }
+                ></Route>
 
-              <Route
-                path="/register"
-                element={
-                  <PublicRoute
-                    path="/register"
-                    redirectTo="/library"
-                    restricted
-                  >
-                    <Register />
-                  </PublicRoute>
-                }
-              ></Route>
+                <Route
+                  path="/register"
+                  element={
+                    <PublicRoute
+                      path="/register"
+                      redirectTo="/library"
+                      restricted
+                    >
+                      <Register />
+                    </PublicRoute>
+                  }
+                ></Route>
 
-              <Route
-                path="/login"
-                element={
-                  <PublicRoute path="/login" redirectTo="/library" restricted>
-                    <Login />
-                  </PublicRoute>
-                }
-              ></Route>
+                <Route
+                  path="/login"
+                  element={
+                    <PublicRoute path="/login" redirectTo="/library" restricted>
+                      <Login />
+                    </PublicRoute>
+                  }
+                ></Route>
 
-              <Route
-                path="/library"
-                element={
-                  <PrivateRoute path="/library" redirectTo="/login">
-                    <Library />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/training"
-                element={
-                  <PrivateRoute path="/training" redirectTo="/login">
-                    <Training />
-                  </PrivateRoute>
-                }
-              />
-              {/* <Statistics/>*/}
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </Suspense>
-        )}
-      </Container>
+                <Route
+                  path="/library"
+                  element={
+                    <PrivateRoute path="/library" redirectTo="/login">
+                      <Library />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/training"
+                  element={
+                    <PrivateRoute path="/training" redirectTo="/login">
+                      <Training />
+                    </PrivateRoute>
+                  }
+                />
+                {/* <Statistics/>*/}
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </>
+          )}
+        </Container>
+      </Suspense>
+      <Toaster position="top-right" reverseOrder={false} autoClose={3000} />
     </>
   );
 };

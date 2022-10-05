@@ -7,12 +7,11 @@ export const Section = styled.div`
   padding: 32px 20px 40px 20px;
   background-color: #f6f7fb;
 
-  @media screen and (min-width: 768px) {
-    padding: 32px 20px 40px 20px;
-  }
+  // @media screen and (min-width: 768px) {
+  // }
 
-  @media screen and (min-width: 1280px) {
-  }
+  // @media screen and (min-width: 1280px) {
+  // }
 `;
 
 export const Title = styled.h2`
@@ -86,12 +85,12 @@ export const BookDescription = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
+  color: ${theme.colors.bookDescriptionColor};
   margin-left: 40px;
 
-  color: ${theme.colors.bookDescriptionColor};
   @media screen and (min-width: 768px) {
     display: none;
-    // width-min: 100px;
+
     color: #000000;
   }
 `;
@@ -103,8 +102,6 @@ export const BookTitleDescription = styled.p`
   line-height: 20px;
   color: ${theme.colors.bookDescriptionColor};
   @media screen and (min-width: 768px) {
-    // display: none;
-    // width-min: 100px;
     color: #000000;
   }
 `;
@@ -119,16 +116,10 @@ export const Value = styled.span`
   alight-text: center:
   margin-right: auto;
   color: ${theme.colors.titleColor};
-  @media screen and (min-width: 768px) {
-    display: block;
-     max-width: 228px;
-    //  margin-left: 10px;
-    }
-       @media screen and (min-width: 1280px) {
-    // display: block;
-     max-width: 500px;
-  }
-  }
+  // @media screen and (min-width: 768px) {
+  //   display: block;
+  //    max-width: 228px;
+  // }
 `;
 
 export const ResumeButton = styled.button`
@@ -159,8 +150,9 @@ export const List = styled.ul`
   @media screen and (min-width: 768px) {
     width: 704px;
     display: flex;
-
-    padding: 14px 11px 14px 20px;
+    vertical-align: baseline;
+    padding: 14px 0px 14px 20px;
+    justify-content: space-between;
   }
 
   list-style: none;
@@ -182,14 +174,10 @@ export const ListItem = styled.li`
 
   @media screen and (min-width: 768px) {
     min-width: 100px;
-    // height: 50px;
-    margin: 0px;
+    align-content: center;
     :not(:last-child) {
       margin-bottom: 0px;
     }
-  }
-  @media screen and (min-width: 1280px) {
-    width: 200;
   }
 `;
 export const Wrapper = styled.div`

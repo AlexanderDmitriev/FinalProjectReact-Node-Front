@@ -21,6 +21,7 @@
     "react-chartjs-2": "^4.3.1",
     "react-datepicker": "^4.8.0",
     "react-dom": "^18.0.0",
+    "react-hot-toast": "^2.4.0",
     "react-icons": "^4.4.0",
     "react-media": "^1.10.0",
     "react-redux": "^8.0.4",
@@ -28,7 +29,6 @@
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.0",
     "react-table": "^7.8.0",
-    "react-toastify": "^9.0.8",
     "redux-persist": "^6.0.0",
     "spinners-react": "^1.0.7",
     "styled-components": "^5.3.5",
@@ -41,8 +41,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:js": "eslint src/**/*.{js,jsx}",
-    "predeploy":"npm run build",
-    "deploy":"netlify deploy -p"
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p"
   },
   "eslintConfig": {
     "extends": [
@@ -72,6 +72,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AlexanderDmitriev/FinalProjectReact-Node-Front/issues"
-  },
-  "devDependencies": {}
+  }
 }
