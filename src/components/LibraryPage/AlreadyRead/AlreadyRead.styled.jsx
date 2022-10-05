@@ -30,11 +30,12 @@ export const BookCard = styled.div`
   flex-direction: column;
   padding: 20px;
   background-color: ${theme.colors.backColor};
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
     padding: 0px;
+    margin-bottom: 8px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -77,6 +78,7 @@ export const BookName = styled.p`
   }
 
   @media screen and (min-width: 1280px) {
+    width: 400px;
   }
 `;
 
@@ -126,7 +128,7 @@ export const Value = styled.span`
     }
        @media screen and (min-width: 1280px) {
     // display: block;
-     max-width: 500px;
+     width: 450px;
   }
   }
 `;

@@ -2,6 +2,7 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import toast from 'react-hot-toast'
 
 import { AddButton /* Wrapper */ } from './LibraryForm.styled';
 // import { NavLink } from 'react-router-dom';
@@ -59,9 +60,9 @@ export default function LibraryForm() {
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
           // do your stuff
-          const handleSub = () => {
-            console.log(values.title);
-          };
+          // const handleSub = () => {
+          //   console.log(values.title);
+          // };
 
           const item = {
             id: nanoid(),
@@ -72,10 +73,11 @@ export default function LibraryForm() {
           };
           const handleAddContact = async () => {
             await AddBooks(item);
+            toast.info(`Books  ${values.title} added`);
           };
 
           handleAddContact();
-          handleSub();
+          // handleSub();
           resetForm();
         }}
         validationSchema={validateSchema}
@@ -166,7 +168,6 @@ export default function LibraryForm() {
                 </InputItem>
               </Input>
 
-       
               <AddButton
                 disabled={!isValid && !dirty}
                 onClick={handleSubmit}
@@ -174,7 +175,6 @@ export default function LibraryForm() {
               >
                 Додати
               </AddButton>
-      
             </FormInput>
           </Form>
           // {isLoading ? <Loader /> : 'Add contact'}

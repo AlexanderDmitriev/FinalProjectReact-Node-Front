@@ -5,23 +5,19 @@ import AlreadyRead from '../components/LibraryPage/AlreadyRead/AlreadyRead';
 import ReadingNow from '../components/LibraryPage/ReadingNow/ReadingNow';
 import GoingToRead from '../components/LibraryPage/GoingToRead/GoingToRead';
 // import WellDoneModal from '../components/LibraryPage/WellDoneModal/WellDoneModal';
-import {
-  Box,
-  /* BoxText, */ BackArrow,
-  /*TrainingButton|,*/
-} from '../components/LibraryPage/Library.styled';
+import { Box, BackArrow } from '../components/LibraryPage/Library.styled';
 import Container from 'helpers/Container';
 import { NavLink, /* useNavigate, */ useLocation } from 'react-router-dom';
 import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
 // import books from 'book.json';
 import sprite from '../images/icons.svg';
-// import { ToastContainer, toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 export default function Library() {
   const location = useLocation();
   /* const navigator = useNavigate(); */
   const path = location?.state?.from ?? '/';
-  const { data, /* isError, */ isLoading } = useGetBooksQuery();
+  const { data, isError, isLoading } = useGetBooksQuery();
 
   const books = data ?? [];
 
@@ -31,7 +27,7 @@ export default function Library() {
 
   return (
     <>
-      {/* {isError && toast.error(`Sorry try again`)} */}
+      {isError && toast.error(`Sorry try again`)}
       {isLoading && <h3> Loading...</h3>}
       <Container>
         <Box>
