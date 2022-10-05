@@ -19,8 +19,6 @@ import {
 import StarRatingBook from './StarRatingBook';
 
 export default function AlreadyRead({ books }) {
-  const handleSubmit = () => {};
-
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
   const isNotebook = useMediaQuery({
     query: '(min-width: 1280px)',
