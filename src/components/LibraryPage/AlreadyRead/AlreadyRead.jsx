@@ -22,23 +22,23 @@ import BookRating from 'components/BookRating/BookRating';
 import StarRatingBook from './StarRatingBook';
 
 export default function AlreadyRead({ books }) {
+  console.log(books);
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
   const isNotebook = useMediaQuery({
-    query: '(min-width: 1280px)', });
+    query: '(min-width: 1280px)',
+  });
 
-  const [id, setId] = useState('')
-  const [isModalOpen, setModalOpen] = useState(false)
+  const [id, setId] = useState('');
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  const handleSubmit = (e) => {
-    setId(e.currentTarget.value)
-    setModalOpen(true)
-  }
+  const handleSubmit = e => {
+    setId(e.currentTarget.value);
+    setModalOpen(true);
+  };
   const handleCloseModal = () => {
     setModalOpen(false);
-  }
+  };
 
-
- 
   const filterBook = books.filter(book => book.status === 'finished');
   return (
     <Section>
@@ -47,7 +47,7 @@ export default function AlreadyRead({ books }) {
         <>
           {isTablet && (
             <TitleBox>
-              <BookTitleDescription style={{ width: 300 }}>
+              <BookTitleDescription style={{ width: 180 }}>
                 Назва книги:
               </BookTitleDescription>
               <BookTitleDescription style={{ width: 100 }}>
@@ -120,10 +120,10 @@ export default function AlreadyRead({ books }) {
               </List>
             </BookCard>
           ))}
-        </> 
-       <Modal isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}>
-         <BookRating onClose={handleCloseModal} bookId={id} />
-       </Modal>
+        </>
+        <Modal isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}>
+          <BookRating onClose={handleCloseModal} bookId={id} />
+        </Modal>
       </Wrapper>
     </Section>
   );

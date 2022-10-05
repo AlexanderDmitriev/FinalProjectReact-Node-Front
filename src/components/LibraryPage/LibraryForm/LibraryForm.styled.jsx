@@ -154,8 +154,7 @@ export const AddButton = styled.button`
   margin: 0 auto;
   margin-top: 40px;
   display: block;
-  d &:hover,
-  &:focus {
+  &:hover {
     border: 1px solid ${theme.colors.buttonsBorder};
     cursor: pointer;
   }
@@ -168,7 +167,6 @@ export const AddButton = styled.button`
     height: 42px;
 
     margin-top: 28px;
-    // margin-bottom: 20px;
     margin-left: 48px;
   }
 `;

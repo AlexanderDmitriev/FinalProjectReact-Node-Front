@@ -117,7 +117,7 @@ export const Value = styled.span`
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  margin-left: 20px;
+  margin-left: 40px;
   alight-text: center:
   margin-right: auto;
   color: ${theme.colors.titleColor};

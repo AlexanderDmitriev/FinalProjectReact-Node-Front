@@ -13,6 +13,7 @@ import {
 import StarRating from '../RatingStars/StarRating';
 import { useUpdateRatingMutation } from 'redux/rating/ratingSlice';
 import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
+/* import { useUpdateRatingMutation } from 'redux/booksApi/booksSlice'; */
 
 export default function BookRating({ onClose, bookId }) {
   const [comment, setComment] = useState('');
