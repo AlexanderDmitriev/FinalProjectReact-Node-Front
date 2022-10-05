@@ -2,11 +2,12 @@ import {
   MetaHeader,
   HeaderText,
   MetaBody,
-  MetaBlock,
+  MetaBlockNumber,
   MetaNumber,
   MetaText,
   MetaBlockText,
   Flex,
+  MetaBlock,
 } from './MetaTwo.styled';
 
 const MetaTwoPoints = () => {
@@ -17,23 +18,23 @@ const MetaTwoPoints = () => {
           <HeaderText>Моя мета прочитати</HeaderText>
         </MetaHeader>
         <Flex>
-          <div>
-            <MetaBlock>
+          <MetaBlock>
+            <MetaBlockNumber>
               <MetaNumber>00</MetaNumber>
-            </MetaBlock>
+            </MetaBlockNumber>
             <MetaBlockText>
               <MetaText>Кількість книжок</MetaText>
             </MetaBlockText>
-          </div>
+          </MetaBlock>
 
-          <div>
-            <MetaBlock>
+          <MetaBlock>
+            <MetaBlockNumber>
               <MetaNumber>00</MetaNumber>
-            </MetaBlock>
+            </MetaBlockNumber>
             <MetaBlockText>
               <MetaText>Кількість днів</MetaText>
             </MetaBlockText>
-          </div>
+          </MetaBlock>
         </Flex>
       </MetaBody>
     </>

@@ -14,7 +14,6 @@ export const MetaHeader = styled.div`
     margin: 0;
     padding: 18px 27px 18px 28px;
   }
-
   @media screen and (min-width: 1280px) {
     width: 288px;
     margin-top: -48px;
@@ -47,7 +46,6 @@ export const MetaBody = styled.section`
     justify-content: space-between;
     align-items: center;
   }
-
   @media screen and (min-width: 1280px) {
     width: 288px;
     padding: 48px 34px 0 34px;
@@ -61,6 +59,20 @@ export const Flex = styled.div`
 `;
 
 export const MetaBlock = styled.div`
+  /* max-width: 320px; */
+  @media screen and (min-width: 768px) {
+    &:not(:last-child) {
+      margin-right: 40px;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    &:not(:last-child) {
+      margin-right: 0;
+    }
+  }
+`;
+
+export const MetaBlockNumber = styled.div`
   /* max-width: 320px; */
   height: 100px;
   width: 100px;
@@ -131,13 +143,5 @@ export const MetaText = styled.p`
     font-size: 14px;
     line-height: 17px;
     margin-bottom: 48px;
-  }
-`;
-
-export const test = styled.div`
-  /* max-width: 320px; */
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1280px) {
   }
 `;
