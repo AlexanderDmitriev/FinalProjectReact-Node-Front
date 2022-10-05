@@ -104,7 +104,7 @@ export default function AddTraining() {
 
   return (
     <>
-      {/* <MyGoals /> */}
+      <MetaThreePoints />
 
       <Section>
         <TrainingSection>
@@ -158,12 +158,11 @@ export default function AddTraining() {
             </SelectContainer>
           )}
         </TrainingSection>
-        {inProgressBooks.length === 0? <BooksList
+        <BooksList
           books={startBookList}
           onDeleteBtnClick={onDeleteBtnClick}
           addTrainingClick={addTrainingClick}
-        /> :
-        <BookListInTraining booksList={data} />}
+        />
       </Section>
     </>
   );

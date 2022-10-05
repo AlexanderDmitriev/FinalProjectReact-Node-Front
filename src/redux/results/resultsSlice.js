@@ -23,6 +23,7 @@ export const resultsApi = createApi({
   baseQuery: axiosBaseQuery({
     baseUrl: 'https://book-reader-43-back.herokuapp.com/api/',
   }),
+  refetchOnMountOrArgChange: true,
   tagTypes: ['Result'],
   endpoints: builder => ({
     fetchResults: builder.query({
