@@ -178,9 +178,8 @@ export default function Register() {
                   </Button>
 
                   <NavBox>
-                    <NavText>
-                      Вже з нами? <NavLogin to="/login">Увійти</NavLogin>
-                    </NavText>
+                    <NavText>Вже з нами?</NavText>
+                    <NavLogin to="/login">Увійти</NavLogin>
                   </NavBox>
                 </FormInput>
               </Form>

@@ -47,6 +47,9 @@ export const NavigationLink = styled(NavLink)`
   font-size: 20px;
   line-height: 1.35;
   text-decoration: none;
+  @media screen and (max-width: 767px) {
+    margin: 0 auto;
+  }
 `;
 
 export const ActiveLink = styled(NavLink)`

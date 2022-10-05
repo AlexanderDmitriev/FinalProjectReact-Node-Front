@@ -259,12 +259,12 @@ export const TextButton = styled.p`
 `;
 
 export const NavBox = styled.div`
-  display: block;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
 `;
 export const NavText = styled.p`
-  width: 135px;
+  padding-right: 5px;
   height: 16px;
   left: 317px;
   top: 677px;
@@ -284,7 +284,6 @@ export const NavLogin = styled(NavLink)`
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
-
   text-decoration-line: underline;
   text-align: center;
 
@@ -303,6 +302,11 @@ export const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (min-width: 767px) {
+    padding-bottom: 71px;
+  }
+  
 
   @media screen and (min-width: 1280px) {
     margin-left: 127px;
