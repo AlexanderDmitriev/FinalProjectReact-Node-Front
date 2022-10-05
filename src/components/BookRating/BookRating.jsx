@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Container,
   RatingCaption,
@@ -12,11 +12,20 @@ import {
 } from './BookRating.styled';
 import StarRating from '../RatingStars/StarRating';
 import { useUpdateRatingMutation } from 'redux/rating/ratingSlice';
+import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
 
 export default function BookRating({ onClose, bookId }) {
   const [comment, setComment] = useState('');
   const [starsRating, setStarsRating] = useState(1);
+  const [text, setText] = useState('...'); 
   const [updateRating] = useUpdateRatingMutation();
+  const { data, /* error, isLoading*/ } = useGetBooksQuery();
+  useEffect(() => {
+    const coincidence = data.find(i => i._id === bookId)
+    if ( coincidence) {
+      setText(coincidence.resume.comment)
+    }
+  }, [bookId, data]);
 
   const handleSaveComment = async () => {
     try {
@@ -51,7 +60,7 @@ export default function BookRating({ onClose, bookId }) {
         <StarsField>
           <StarRating
             numTotalStars="5"
-            initialRating="0"
+            initialRating='0'
             handleStarsRating={handleStarsRating}
           />
         </StarsField>
@@ -63,7 +72,7 @@ export default function BookRating({ onClose, bookId }) {
             name="comment"
             cols="40"
             rows="3"
-            placeholder="..."
+            placeholder={text}
             onChange={handleComment}
             value={comment}
           ></FormText>
