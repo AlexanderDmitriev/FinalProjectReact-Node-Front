@@ -51,6 +51,8 @@ export default function LibraryForm() {
 
   return (
     <>
+      {isLoading && <Spinner />}
+      {isError ? toast.success(`Книга  додана`) : toast.error(`Не можу додати`)}
       <Wrapper>
         <Formik
           initialValues={{
@@ -75,14 +77,6 @@ export default function LibraryForm() {
             };
 
             handleAddContact();
-            {
-              isLoading && <Spinner />;
-            }
-            {
-              isError
-                ? toast.success(`Книга  додана`)
-                : toast.error(`Не можу додати`);
-            }
 
             resetForm();
           }}
