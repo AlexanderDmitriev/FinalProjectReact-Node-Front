@@ -26,7 +26,7 @@ export default function AddTraining({ getFinishDate }) {
   const path = location?.state?.from ?? '/';
   const { data, isLoading } = useGetBooksQuery();
   const [inProgressBooks, setInProgressBooks] = useState([]);
-  useEffect(() => {
+  /* useEffect(() => {
     if (!isLoading) {
       const books = data.findIndex(book => book.status === 'in progress');
       if (books === -1) {
@@ -34,7 +34,7 @@ export default function AddTraining({ getFinishDate }) {
       }
       setInProgressBooks(books);
     }
-  }, [data, isLoading]);
+  }, [data, isLoading]); */
 
   const [updateTraining] = useUpdateTrainingMutation();
 
@@ -43,6 +43,18 @@ export default function AddTraining({ getFinishDate }) {
   const [booksListArr, setBooksListArr] = useState([]);
   const [selectedBookArr, setSelectedBookArr] = useState([]);
   const [selectedBook, setSelectedBook] = useState('');
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    if (!isLoading) {
+      const books = data.findIndex(book => book.status === 'in progress');
+      console.log(data);
+      if (books === -1) {
+        return setDisabled(false);
+      }
+      setInProgressBooks(books);
+    }
+  }, [data, isLoading]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -87,7 +99,7 @@ export default function AddTraining({ getFinishDate }) {
     setBooksListArr(bookListSelected);
   };
 
-  const addTrainingClick = async () => {
+  const addTrainingClick = async e => {
     if (!start.includes('-') || !finish.includes('-')) {
       return toast.error('Пропустили дату тренування');
     }
@@ -99,6 +111,7 @@ export default function AddTraining({ getFinishDate }) {
       };
       await updateTraining(value);
       toast.success(`Тренування додано.`);
+      setDisabled(true);
     } catch (err) {
       toast.error('На жаль, додавання тренування не було успішним');
     }
@@ -167,6 +180,7 @@ export default function AddTraining({ getFinishDate }) {
               books={booksListArr}
               onDeleteBtnClick={onDeleteBtnClick}
               addTrainingClick={addTrainingClick}
+              disabled={disabled}
             />
           </>
         ) : (
