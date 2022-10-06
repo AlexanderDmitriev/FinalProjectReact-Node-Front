@@ -6,16 +6,13 @@ import ReadingNow from '../components/LibraryPage/ReadingNow/ReadingNow';
 import GoingToRead from '../components/LibraryPage/GoingToRead/GoingToRead';
 import { Box, BackArrow } from '../components/LibraryPage/Library.styled';
 import Container from 'helpers/Container';
-import { NavLink, /* useNavigate, */ useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
-// import books from 'book.json';
 import sprite from '../images/icons.svg';
 import toast from 'react-hot-toast';
-/* import {AnchorButton} from '../components/LibraryPage/Library.styled'; */
 
 export default function Library() {
   const location = useLocation();
-  /* const navigator = useNavigate(); */
   const path = location?.state?.from ?? '/';
   const { data, isError, isLoading } = useGetBooksQuery();
 
@@ -47,7 +44,6 @@ export default function Library() {
           )}
           {planBooks.length === 0 ? <p></p> : <GoingToRead books={books} />}
         </Box>
-        {/* <AnchorButton href="#addBook"></AnchorButton> */}
       </Container>
     </>
   );
