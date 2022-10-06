@@ -15,9 +15,9 @@ export const Section = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    width: 888px;
+    width: 928px;
     margin-top: 23px;
-    margin-left: 20px;
+    margin-left: 16px;
   }
 `;
 

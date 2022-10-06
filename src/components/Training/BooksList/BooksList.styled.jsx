@@ -14,9 +14,9 @@ export const Section = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    width: 888px;
+    width: 928px;
     margin-top: 23px;
-    margin-left: 20px;
+    margin-left: 16px;
   }
 `;
 
@@ -38,7 +38,9 @@ export const Btn = styled.button`
     top: 12px;
   }
   @media screen and (min-width: 1280px) {
-    top: 12px;}
+    top: 12px;
+    right: 32px;
+  }
 `;
 
 export const BookCard = styled.div`

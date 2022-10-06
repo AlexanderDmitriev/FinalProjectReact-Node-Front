@@ -15,9 +15,10 @@ export const MetaHeader = styled.div`
     padding: 18px 27px 18px 28px;
   }
   @media screen and (min-width: 1280px) {
-    width: 288px;
+    width: 280px;
     margin-top: -80px;
     margin-left: -18px;
+    margin-bottom: 20px;
     padding: 18px 28px 18px 29px;
   }
 `;
@@ -29,30 +30,40 @@ export const HeaderText = styled.p`
   text-align: center;
   margin: 0;
   color: #ffffff;
+
+  @media screen and (min-width: 1280px) {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+  }
 `;
 
 export const MetaBody = styled.section`
-position: absolute;
-top: 86px;
-right: 16px;
+
   /* max-width: 320px; */
   text-align: center;
   width: 280px;
   padding: 32px 24px 0 29px;
   background: #ffffff;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-
+  margin-left: 20px;
   @media screen and (min-width: 768px) {
     width: 704px;
     padding: 0px 43px 0 42px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 32px;
   }
   @media screen and (min-width: 1280px) {
     width: 288px;
     padding: 80px 25px 0 18px;
     display: block;
+    position: absolute;
+    top: 40px;
+    right: 16px;
+    padding-right: 0;
+    max-width: 280px;
   }
 `;
 
@@ -63,11 +74,13 @@ export const Flex = styled.div`
 
 export const MetaBlock = styled.div`
   /* max-width: 320px; */
+  margin-top: 32px;
   &:not(:last-child) {
     margin-right: 12px;
   }
 
   @media screen and (min-width: 768px) {
+    margin-top: 20px;
   }
   @media screen and (min-width: 1280px) {
     &:not(:last-child) {

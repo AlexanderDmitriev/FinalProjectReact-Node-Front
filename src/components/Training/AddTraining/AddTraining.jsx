@@ -27,8 +27,16 @@ export default function AddTraining({getFinishDate}) {
   const location = useLocation();
   const path = location?.state?.from ?? '/';
   const { data, /* error, */ isLoading } = useGetBooksQuery();
-  const books = data ?? [];
-  const inProgressBooks = books.filter(book => book.status === 'in progress');
+
+  const [inProgressBooks, setInProgressBooks] = useState([]);
+  useEffect(() => {
+    if (!isLoading) {
+      const books = data.findIndex(book => book.status === 'in progress');
+      if(books === -1){return}
+      setInProgressBooks(books)
+    }
+  },[data, isLoading])
+  
   const [updateTraining] = useUpdateTrainingMutation();
 
   const [start, setStart] = useState('');
@@ -54,7 +62,6 @@ export default function AddTraining({getFinishDate}) {
 
   const handleChangeFinishTime = e => {
     setFinish(e.target.value);
-    console.log(e.target.value);
     getFinishDate(e.target.value);
   };
 
@@ -96,7 +103,9 @@ export default function AddTraining({getFinishDate}) {
       <MetaThreePoints />
 
       <Section>
-        <TrainingSection>
+
+
+        {inProgressBooks.length === 0 ? <><TrainingSection>
           <SvgContainer>
             <NavLink to={path} exact="true">
               <IconBack fill="#FF6B08" width="24" height="12" />
@@ -147,13 +156,83 @@ export default function AddTraining({getFinishDate}) {
             </SelectContainer>
           )}
         </TrainingSection>
-        {inProgressBooks.length === 0? <BooksList
-          books={booksListArr}  //todo
-          onDeleteBtnClick={onDeleteBtnClick}
-          addTrainingClick={addTrainingClick}
-        /> :
-        <BookListInTraining booksList={data} />}
-        </Section>
+
+          <BooksList
+            books={booksListArr}
+            onDeleteBtnClick={onDeleteBtnClick}
+            addTrainingClick={addTrainingClick} /></>
+          :
+          <BookListInTraining booksList={data} />}
+        
+      </Section>
     </>
   );
 }
+
+//  <>
+//       <MetaThreePoints />
+
+//       <Section>
+
+
+//           <TrainingSection>
+//             <SvgContainer>
+//               <NavLink to={path} exact="true">
+//                 <IconBack fill="#FF6B08" width="24" height="12" />
+//               </NavLink>
+//             </SvgContainer>
+//             <Svg>
+//               <use href="../../../images/icons.svg#icon-calendar-1" />
+//             </Svg>
+//             <TrainingTitle>Моє тренування</TrainingTitle>
+//             <InputContainer>
+//               <Input
+//                 type="text"
+//                 placeholder="Початок"
+//                 name="startTime"
+//                 onChange={handleChangeStartTime}
+//                 onFocus={e => (e.target.type = 'date')}
+//                 onBlur={e => (e.target.type = 'text')}
+//               />
+//               <Input
+//                 type="text"
+//                 placeholder="Завершение"
+//                 name="finishTime"
+//                 onChange={handleChangeFinishTime}
+//                 onFocus={e => (e.target.type = 'date')}
+//                 onBlur={e => (e.target.type = 'text')}
+//               />
+//             </InputContainer>
+
+//             {isLoading ? (
+//               <h2>loading</h2>
+//             ) : (
+//               <SelectContainer>
+//                 <Select value={selectedBook} onChange={handleSelectChange}>
+//                   <Option disabled={true} value="">
+//                     Обрати книги з бібліотеки
+//                   </Option>
+//                   {data.map(book => {
+//                     return (
+//                       <Option value={book._id} key={book._id}>
+//                         {book.title}
+//                       </Option>
+//                     );
+//                   })}
+//                 </Select>
+//                 <AddBtn type="submit" onClick={handleAddBook}>
+//                   Додати
+//                 </AddBtn>
+//               </SelectContainer>
+//             )}
+//           </TrainingSection>
+
+//             {inProgressBooks.length === 0? <BooksList
+//               books={booksListArr} 
+//               onDeleteBtnClick={onDeleteBtnClick}
+//               addTrainingClick={addTrainingClick}
+//         /> :
+//               <BookListInTraining booksList={data} />}
+        
+//       </Section>
+//     </>
