@@ -53,11 +53,17 @@ export default function ResultsTable() {
       </Media>
       <List>
         {data &&
+          data.statistic.length > 6 &&
           data.statistic
             .map(({ _id, date, time, pages }) => (
               <ResultTableRow key={_id} date={date} time={time} pages={pages} />
             ))
             .slice(data.statistic.length - 6, data.statistic.length)}
+        {data &&
+          data.statistic.length <= 6 &&
+          data.statistic.map(({ _id, date, time, pages }) => (
+            <ResultTableRow key={_id} date={date} time={time} pages={pages} />
+          ))}
       </List>
     </TableWrapper>
   );
