@@ -94,28 +94,22 @@ export const Navigation = styled.nav`
   align-items: center;
 `;
 
-// export const ActiveLink = styled(NavLink)`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 33px;
-//   height: 33px;
-//   margin-right: 5px;
-//   background-color: #f5f7fa;
-//   border-radius: 50%;
-//   background-color: transparent;
-// `;
+export const ActiveLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33px;
+  height: 33px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: transparent;
 
-// export const PassiveLink = styled(NavLink)`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 33px;
-//   height: 33px;
-//   margin-right: 5px;
-//   background-color: #f5f7fa;
-//   border-radius: 50%;
-// `;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #f5f7fa;
+  }
+`;
 
 export const Line = styled.div`
   display: block;
@@ -124,17 +118,31 @@ export const Line = styled.div`
   background-color: #e0e5eb;
 `;
 
-// export const ModalBox = styled.div`
-//   padding-bottom: 48px;
-//   padding-top: 48px;
-//   padding-left: 22px;
-//   padding-right: 22px;
-//   width: 280px;
-//   height: 222px;
+export const ModalBox = styled.div`
+  width: 280px;
+  position: fixed;
+  z-index: 2;
+  height: 222px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-//   background: #ffffff;
-//   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
-// `;
+  background: #ffffff;
+  box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
+
+  @media screen and (min-width: 768px) {
+    width: 394px;
+    height: 204px;
+  }
+`;
+
+export const Box = styled.div`
+  padding: 48px 34px;
+
+  @media screen and (min-width: 768px) {
+    padding: 48px 53px;
+  }
+`;
 
 export const ModalText = styled.p`
   font-weight: 500;
@@ -143,6 +151,36 @@ export const ModalText = styled.p`
   text-align: center;
   margin: 0 0 20px 0;
   color: #242a37;
+`;
+
+export const ModalButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ModalButton = styled.button`
+  width: 98px;
+  height: 40px;
+  color: #242a37;
+  background: #ffffff;
+
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  border: 1px solid #242a37;
+
+  @media screen and (min-width: 768px) {
+    width: 130px;
+  }
+
+  &:hover,
+  &:focus {
+    color: #ffffff;
+    background-color: #ff6b08;
+    border: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  }
 `;
 
 export const MobileLogo = styled.div`

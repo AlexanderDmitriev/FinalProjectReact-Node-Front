@@ -1,9 +1,6 @@
-import React /* , { useEffect, useState }  */ from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate /* , useLocation */ } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import s from './Header.module.css';
+import { useNavigate } from 'react-router-dom';
 import home from '../../images/iconhome.svg';
 import library from '../../images/Group.svg';
 import authSelectors from '../../redux/authAPI/auth-selectors';
@@ -14,24 +11,19 @@ import {
   NavigationLinkLogin,
   Block,
   Navigation,
+  ActiveLink,
   Line,
   Logo,
   MobileLogo,
   ExitButton,
   BlockUser,
   UserName,
-  // ModalBox,
+  ModalBox,
+  Box,
   ModalText,
+  ModalButtons,
+  ModalButton,
 } from './HeaderPage.styled';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 280,
-  bgcolor: 'background.paper',
-};
 
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -40,9 +32,10 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   const handleExit = () => {
     dispatch(authOperations.logOut());
     setOpen(false);
@@ -66,54 +59,38 @@ const Header = () => {
             </BlockUser>
 
             <Navigation>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? s.link : s.active_link
-                }
-                to="/library"
-              >
+              <ActiveLink to="/library">
                 <img src={library} alt="library" />
-              </NavLink>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? s.link : s.active_link
-                }
-                to="/training"
-              >
+              </ActiveLink>
+              <ActiveLink to="/training">
                 <img src={home} alt="home" />
-              </NavLink>
+              </ActiveLink>
             </Navigation>
             <Line />
             <MobileLogo>{userLogo}</MobileLogo>
-            <ExitButton type="button" onClick={handleOpen}>
+            <ExitButton type="submit" onClick={handleOpen}>
               Вихід
             </ExitButton>
           </Block>
         )}
       </HeaderSection>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        {/* <ModalBox > */}
-        <Box sx={style} className={s.modal}>
-          <ModalText>
-            Якщо Ви вийдете з програми незбережені дані будуть втрачені
-          </ModalText>
-          <div className={s.btn_modal}>
-            <button type="button" onClick={handleClose}>
-              Відміна
-            </button>
-            <button type="button" onClick={handleExit}>
-              Вийти
-            </button>
-          </div>
-        </Box>
-        {/* </ModalBox> */}
-      </Modal>
+      {open && (
+        <ModalBox isModalOpen={open} handleCloseModal={handleClose}>
+          <Box>
+            <ModalText>
+              Якщо Ви вийдете з програми незбережені дані будуть втрачені
+            </ModalText>
+            <ModalButtons>
+              <ModalButton type="button" onClick={handleClose}>
+                Відміна
+              </ModalButton>
+              <ModalButton type="button" onClick={handleExit}>
+                Вийти
+              </ModalButton>
+            </ModalButtons>
+          </Box>
+        </ModalBox>
+      )}
     </>
   );
 };
