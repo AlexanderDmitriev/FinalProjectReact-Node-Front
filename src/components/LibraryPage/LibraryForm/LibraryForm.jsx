@@ -44,7 +44,7 @@ export default function LibraryForm() {
       .typeError('Вкажіть рік'),
     pages: yup
       .string()
-      .matches(/^\d{1,4}$/, 'Невірний формат')
+      .matches(/^[^0\D]\d{0,3}$/, 'Невірний формат')
       .typeError('Потрібно число')
       .required("Поле обов'язкове"),
   });
