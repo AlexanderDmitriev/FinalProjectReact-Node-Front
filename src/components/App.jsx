@@ -8,6 +8,7 @@ import authOperations from '../redux/authAPI/auth-operation';
 import authSelectors from '../redux/authAPI/auth-selectors';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import GoogleLogin from '../components/GoogleLogin/GoogleLogin';
 
 const Header = lazy(() => import('./Header/Header'));
 const Home = lazy(() => import('../pages/Home'));
@@ -20,6 +21,8 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 export const App = () => {
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
   const dispatch = useDispatch();
+
+  GoogleLogin();
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());

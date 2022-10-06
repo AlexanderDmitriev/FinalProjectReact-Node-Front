@@ -1,7 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 import authSelectors from 'redux/authAPI/auth-selectors';
 import { useSelector } from 'react-redux';
-// import { NavLink } from 'react-router-dom';
 import { Nav } from 'components/Home.styled';
 
 import FirstPage from 'components/FirstPage/FirstPage';

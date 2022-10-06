@@ -108,10 +108,6 @@ export const FormInput = styled.div`
   flex-direction: column;
 `;
 
-export const NavGoogle = styled(NavLink)`
-  text-decoration: none;
-`;
-
 export const GoogleButton = styled.button`
   margin-top: 32px;
   margin-bottom: 28px;
