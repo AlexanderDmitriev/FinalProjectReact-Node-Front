@@ -47,7 +47,8 @@ export default function Register() {
     email: yup.string().email('Невірна адреса').required("Поле обов'язкове"),
     password: yup
       .string()
-      .min(6, 'Мінімум 6 символів')
+      .min(5, 'Мінімум 5 символів')
+      .max(30, 'Максимум 30 символів')
       .required("Поле обов'язкове"),
     repeat_password: yup
       .string()
@@ -93,7 +94,7 @@ export default function Register() {
                 <FormInput>
                   <Input>
                     <GoogleButton type="button">
-                      <NavGoogle to="http://localhost:3001/api/users/google">
+                      <NavGoogle to="https://book-reader-43-back.herokuapp.com/api/users/google">
                         <TextGoogleButton>Google</TextGoogleButton>
                       </NavGoogle>
                     </GoogleButton>

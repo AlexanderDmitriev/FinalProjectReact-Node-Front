@@ -130,10 +130,6 @@ export const GoogleButton = styled.button`
   background: #f5f7fa;
   box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
   border: none;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 export const TextGoogleButton = styled.p`
@@ -237,10 +233,6 @@ export const Button = styled.button`
     width: 320px;
     left: 115px;
     top: 539px;
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 
   background: #ff6b08;
