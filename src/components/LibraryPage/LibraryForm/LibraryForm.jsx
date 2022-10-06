@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import toast from 'react-hot-toast';
+import { AddBookButton } from '../Library.styled';
 
 import { AddButton /* Wrapper */ } from './LibraryForm.styled';
 // import { NavLink } from 'react-router-dom';
@@ -40,6 +41,7 @@ export default function LibraryForm() {
       .required("Поле обов'язкове"),
     year: yup
       .string()
+      // .required("Поле обов'язкове")
       .matches(/^[12]\d{3}$/, 'Невірний формат')
       .typeError('Вкажіть рік'),
     pages: yup
@@ -95,6 +97,7 @@ export default function LibraryForm() {
                 <InputItemTitle>
                   <Label htmlFor="title">Назва книги</Label>
                   <FieldInput
+                    id="input"
                     className="title"
                     value={values.title}
                     onChange={handleChange}

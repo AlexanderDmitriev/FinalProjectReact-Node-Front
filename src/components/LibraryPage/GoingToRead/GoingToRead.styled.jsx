@@ -2,16 +2,12 @@ import styled from 'styled-components';
 import { theme } from '../../../helpers/theme';
 import bookIcon from '../../../images/bookIcon.svg';
 import orangebookicon from '../../../images/orangebookicon.svg';
+// import { NavLink } from 'react-router-dom';
 
 export const Section = styled.div`
+  position: relative;
   padding: 32px 20px 40px 20px;
   background-color: #f6f7fb;
-
-  // @media screen and (min-width: 768px) {
-  // }
-
-  // @media screen and (min-width: 1280px) {
-  // }
 `;
 
 export const Title = styled.h2`
@@ -185,13 +181,9 @@ export const Wrapper = styled.div`
   // position: relative;
   // padding-bottom: 32px;
 `;
-export const AddBookButton = styled.button`
-  position: absolute;
-  margin-top: 50px;
-  top: 96%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 52px;
+export const AddBookButton = styled.a`
+  // position: absolute;
+  position: fixed;
   min-width: 52px;
   min-height: 52px;
   font-family: 'Montserrat';
@@ -199,17 +191,28 @@ export const AddBookButton = styled.button`
   font-size: 16px;
   line-height: 16px;
   text-align: center;
+  padding-top: 18px;
+  text-decoration: none;
+
   color: ${theme.colors.backColor};
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
+  display: inline-block;
+  bottom: 10px;
+  right: 20px;
+
   background-color: ${theme.colors.focusColor};
   box-shadow: 0px 2px 4px ${theme.colors.darkShadowColor};
   border-radius: 50%;
   border: none;
   &:hover,
-  &:focus {
+  &:active {
     border: 1px solid ${theme.colors.buttonsBorder};
+
+    cursor: pointer;
+  }
+  z-index: 1000;
+
+  @media screen and (min-width: 768px) {
+    display: none;
   }
 `;
 export const TitleBox = styled.div`
@@ -220,3 +223,6 @@ export const TitleBox = styled.div`
     width: 1248px;
   }
 `;
+// export const MyLink = styled(Navlink)`
+//   text-decoration: none;
+// `;

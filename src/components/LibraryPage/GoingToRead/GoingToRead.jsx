@@ -15,7 +15,8 @@ import {
   Value,
 } from '../GoingToRead/GoingToRead.styled';
 import { TrainingButton } from '../Library.styled';
-import { NavLink } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
 export default function GoingToRead({ books }) {
@@ -23,6 +24,11 @@ export default function GoingToRead({ books }) {
   const isNotebook = useMediaQuery({
     query: '(min-width: 1280px)',
   });
+  const navigate = useNavigate();
+  const handleTraining = () => {
+    navigate('/training', { replace: true });
+  };
+
   const filterBook = books.filter(book => book.status === 'plan');
   return (
     <Section>
@@ -84,16 +90,12 @@ export default function GoingToRead({ books }) {
           </BookCard>
         ))}
 
-        <NavLink to="/training" exact="true">
-          <TrainingButton>Моє тренування</TrainingButton>
-        </NavLink>
+        <TrainingButton type="button" onClick={handleTraining}>
+          Моє тренування
+        </TrainingButton>
+
         <AddBookButton
-          onClick={window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth',
-          })}
-          type="submit"
+          href=" #input"
 
           // переместим в начало страницы
         >
