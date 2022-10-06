@@ -42,7 +42,7 @@ export default function AlreadyRead({ books }) {
   const filterBook = books.filter(book => book.status === 'finished');
   return (
     <Section>
-      <Title>Вже прочитано</Title>
+      <Title>Прочитано</Title>
       <Wrapper>
         <>
           {isTablet && (
@@ -60,7 +60,7 @@ export default function AlreadyRead({ books }) {
                 Стор:{' '}
               </BookTitleDescription>
               <BookTitleDescription style={{ width: 80 }}>
-                Рейтинг:{' '}
+                Рейтинг книги:{' '}
               </BookTitleDescription>
             </TitleBox>
           )}
@@ -79,7 +79,7 @@ export default function AlreadyRead({ books }) {
                 Стор:{' '}
               </BookTitleDescription>
               <BookTitleDescription style={{ width: 100 }}>
-                Рейтинг:{' '}
+                Рейтинг книги:{' '}
               </BookTitleDescription>
             </TitleBox>
           )}
@@ -100,11 +100,11 @@ export default function AlreadyRead({ books }) {
                   <Value>{book.year}</Value>
                 </ListItem>
                 <ListItem>
-                  <BookDescription>Кількість сторінок: </BookDescription>
+                  <BookDescription>Стор.: </BookDescription>
                   <Value>{book.pages}</Value>
                 </ListItem>
                 <ListItem>
-                  <BookDescription>Рейтинг: </BookDescription>
+                  <BookDescription>Рейтинг книги: </BookDescription>
                   {/* <Value>{book.resume.rating}</Value> */}
 
                   <StarRatingBook rating={book.resume.rating} />

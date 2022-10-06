@@ -23,7 +23,7 @@ export default function GoingToRead({ books }) {
   const filterBook = books.filter(book => book.status === 'in progress');
   return (
     <Section>
-      <Title>Читаю зараз</Title>
+      <Title>Читаю</Title>
       <Wrapper>
         <>
           {isTablet && (

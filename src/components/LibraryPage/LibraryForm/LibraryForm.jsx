@@ -71,7 +71,7 @@ export default function LibraryForm() {
           };
           const handleAddContact = async () => {
             await AddBooks(item);
-            toast.info(`Books  ${values.title} added`);
+            toast.success(`Books  ${values.title} added`);
           };
 
           handleAddContact();

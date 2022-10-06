@@ -26,7 +26,7 @@ export default function GoingToRead({ books }) {
   const filterBook = books.filter(book => book.status === 'plan');
   return (
     <Section>
-      <Title>Буду читати</Title>
+      <Title>Маю намір прочитати</Title>
       <Wrapper>
         {isTablet && (
           <TitleBox>
