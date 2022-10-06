@@ -9,7 +9,8 @@ import Timers from 'components/Timers/Timers';
 
 export default function Training() {
   const { data, /* error, */ isLoading } = useGetBooksQuery();
-  const [finishDate, setFinishDate] = useState(new Date('Oct 09 2022 00:00:00').getTime());
+  // const [finishDate, setFinishDate] = useState(new Date('Oct 09 2022 00:00:00').getTime());
+  const [finishDate, setFinishDate] = useState(Date.now())
 
   const handleFinishDate = (date) => {setFinishDate(date)};
 
