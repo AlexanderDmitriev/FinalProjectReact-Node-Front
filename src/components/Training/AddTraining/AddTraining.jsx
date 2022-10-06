@@ -16,18 +16,15 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { ReactComponent as IconBack } from '../../../images/iconback.svg';
 import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
 import { useUpdateTrainingMutation } from 'redux/results/resultsSlice';
-/* import MyGoals from 'components/Training/MyGoals/MyGoals'; */
 import BooksList from 'components/Training/BooksList/BooksList';
 import BookListInTraining from '../BookkListInTraining/BookkListInTraining';
 import MetaThreePoints from '../../LibraryPage/Meta/MetaThree';
 import toast from 'react-hot-toast';
-/* import { useDispatch, useSelector } from 'react-redux/es/exports'; */
 
 export default function AddTraining({ getFinishDate }) {
   const location = useLocation();
   const path = location?.state?.from ?? '/';
-  const { data, /* error, */ isLoading } = useGetBooksQuery();
-
+  const { data, isLoading } = useGetBooksQuery();
   const [inProgressBooks, setInProgressBooks] = useState([]);
   useEffect(() => {
     if (!isLoading) {
@@ -63,6 +60,13 @@ export default function AddTraining({ getFinishDate }) {
   };
 
   const handleChangeFinishTime = e => {
+    const chosenDate = new Date(e.target.value);
+    const startDate = new Date(start);
+    if (startDate > chosenDate) {
+      return toast.error(
+        'Дата закінчення тренування повинна бути пізніше за початок'
+      );
+    }
     setFinish(e.target.value);
     getFinishDate(e.target.value);
   };

@@ -98,7 +98,7 @@ export const MetaBlockNumber = styled.div`
     width: 100px;
     padding-top: 11px;
     padding-bottom: 11px;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 0;
   }
 
