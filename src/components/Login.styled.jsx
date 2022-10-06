@@ -268,6 +268,10 @@ export const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    padding-bottom: 71px;
+  }
 
   @media screen and (min-width: 1280px) {
     margin-left: 167px;
@@ -282,6 +286,7 @@ export const Mark = styled.div`
   @media screen and (min-width: 768px) {
     width: 31px;
     height: 93px;
+    
   }
 
   background-image: url(${marks});
