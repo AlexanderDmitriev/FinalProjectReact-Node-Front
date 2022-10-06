@@ -7,13 +7,16 @@ import {
   ListItem,
   IconBook,
   BookName,
+  AddBookButton,
   BookDescription,
   Wrapper,
   TitleBox,
   BookTitleDescription,
-  Value, ToMyTrainings,
+  Value,
 } from '../GoingToRead/GoingToRead.styled';
 import { TrainingButton } from '../Library.styled';
+
+import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
 export default function GoingToRead({ books }) {
@@ -21,9 +24,14 @@ export default function GoingToRead({ books }) {
   const isNotebook = useMediaQuery({
     query: '(min-width: 1280px)',
   });
+  const navigate = useNavigate();
+  const handleTraining = () => {
+    navigate('/training', { replace: true });
+  };
+
   const filterBook = books.filter(book => book.status === 'plan');
   return (
-    <Section id="addBook">
+    <Section>
       <Title>Маю намір прочитати</Title>
       <Wrapper>
         {isTablet && (
@@ -82,9 +90,17 @@ export default function GoingToRead({ books }) {
           </BookCard>
         ))}
 
-        <ToMyTrainings to="/training" exact="true">
-          <TrainingButton>Моє тренування</TrainingButton>
-        </ToMyTrainings>
+        <TrainingButton type="button" onClick={handleTraining}>
+          Моє тренування
+        </TrainingButton>
+
+        <AddBookButton
+          href=" #input"
+
+          // переместим в начало страницы
+        >
+          +
+        </AddBookButton>
       </Wrapper>
     </Section>
   );

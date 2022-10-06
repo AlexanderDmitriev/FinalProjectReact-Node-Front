@@ -40,6 +40,7 @@ export default function LibraryForm() {
       .required("Поле обов'язкове"),
     year: yup
       .string()
+      // .required("Поле обов'язкове")
       .matches(/^[12]\d{3}$/, 'Невірний формат')
       .typeError('Вкажіть рік'),
     pages: yup
@@ -95,6 +96,7 @@ export default function LibraryForm() {
                 <InputItemTitle>
                   <Label htmlFor="title">Назва книги</Label>
                   <FieldInput
+                    id="input"
                     className="title"
                     value={values.title}
                     onChange={handleChange}

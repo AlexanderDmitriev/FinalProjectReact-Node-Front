@@ -16,7 +16,8 @@ export const booksApi = createApi({
       return headers;
     },
   }),
-  // refetchOnMountOrArgChange: true,
+  refetchOnMountOrArgChange: true,
+
   tagTypes: ['Books'],
 
   endpoints: builder => ({
