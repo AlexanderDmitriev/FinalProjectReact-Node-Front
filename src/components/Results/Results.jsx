@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ResultTable from './ResultTable';
 import DatePicker from 'react-datepicker';
+import toast, { Toaster } from 'react-hot-toast';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -26,11 +27,12 @@ import {
 import Modal from 'components/Modal/Modal';
 import sprite from '../../images/icons.svg';
 import { useCreateResultMutation } from 'redux/results/resultsSlice';
+import { resultsApi } from 'redux/results/resultsSlice';
 
 export default function Results() {
   const [date, setDate] = useState(null);
   const [pages, setPages] = useState('');
-
+  const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
   const [createResult] = useCreateResultMutation();
 
   const handleSubmit = e => {
@@ -74,7 +76,7 @@ export default function Results() {
     };
 
     createResult(result);
-
+    console.log(result);
     reset();
   };
 
@@ -89,7 +91,13 @@ export default function Results() {
   };
 
   const onclick = () => {
-    setModalOpen(true);
+    if (
+      useQueryStateResult.data &&
+      useQueryStateResult.data.status === 'done'
+    ) {
+      toast.error('Немає активних тренувань');
+      setModalOpen(true);
+    }
   };
   // const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -131,7 +139,14 @@ export default function Results() {
               />
             </Label>
           </DateWrapper>
-          <Button type="submit" onClick={onclick}>
+          <Button
+            disabled={
+              useQueryStateResult.data &&
+              useQueryStateResult.data.status === 'done'
+            }
+            type="submit"
+            onClick={onclick}
+          >
             Додати результат
           </Button>
         </Form>
@@ -162,6 +177,7 @@ export default function Results() {
           </Wrapper>
         </Modal>
       </Section>
+      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 }
