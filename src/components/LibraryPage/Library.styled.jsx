@@ -27,7 +27,7 @@ export const TrainingButton = styled.button`
   margin: 0 auto;
   margin-top: 40px;
   display: block;
-  d &:hover,
+  &:hover,
   &:focus {
     cursor: pointer;
   }

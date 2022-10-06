@@ -11,6 +11,7 @@ import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
 // import books from 'book.json';
 import sprite from '../images/icons.svg';
 import toast from 'react-hot-toast';
+import { Spinner } from 'components/Spinner';
 
 export default function Library() {
   const location = useLocation();
@@ -27,7 +28,7 @@ export default function Library() {
   return (
     <>
       {isError && toast.error(`Sorry try again`)}
-      {isLoading && <h3> Loading...</h3>}
+      {isLoading && <Spinner/>}
       <Container>
         <Box>
           <NavLink to={path} exact="true">

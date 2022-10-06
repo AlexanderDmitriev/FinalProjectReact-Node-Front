@@ -114,7 +114,7 @@ export const Value = styled.span`
   font-size: 12px;
   line-height: 15px;
   margin-left: 20px;
-  alight-text: center:
+  text-align: center;
   margin-right: auto;
   color: ${theme.colors.titleColor};
   // @media screen and (min-width: 768px) {
