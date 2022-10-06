@@ -77,7 +77,7 @@ export default function Register() {
                   repeat_password: values.repeat_password,
                 })
               );
-              resetForm();
+              /* resetForm(); */
             }}
           >
             {({
