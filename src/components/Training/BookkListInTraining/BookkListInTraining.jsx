@@ -31,7 +31,7 @@ export default function BookListInTraining({booksList}) {
       setBooks(booksArr);
     } 
   },[booksList, data])
-  console.log("books");
+  
   return (
     <Section>
       <Wrapper>

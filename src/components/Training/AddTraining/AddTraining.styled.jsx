@@ -9,9 +9,14 @@ export const TrainingSection = styled.div`
   display: flex;
   flex-direction: column;
   padding: 24px 20px 0 20px;
+  @media screen and (min-width: 768px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
   @media screen and (min-width: 1280px) {
-    max-width: 928px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 `;
 
@@ -35,10 +40,11 @@ export const TrainingTitle = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-top: 40px;
+    width: 704px;
   }
 
   @media screen and (min-width: 1280px) {
-    max-width: 928px;
+    width: 928px;
   } ;
 `;
 
@@ -53,11 +59,11 @@ export const Input = styled.input`
   padding: 12px;
 
   @media screen and (min-width: 768px) {
+    width: 250px;
     margin-right: 40px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 250px;
     margin-right: 44px;
   } ;
 `;
@@ -70,6 +76,8 @@ export const Select = styled.select`
   line-height: 17px;
   margin-top: 20px;
   padding: 12px;
+  height: 42px;
+  border: none;
 
   @media screen and (min-width: 768px) {
     width: 483px;
@@ -104,6 +112,11 @@ export const AddBtn = styled.button`
     margin-top: auto;
     margin-right: 0;
   } ;
+
+  @media screen and (min-width: 1280px) {
+    width: 181px;
+    margin-left: 32px;
+  } ;
 `;
 
 export const InputContainer = styled.div`
@@ -118,6 +131,9 @@ export const InputContainer = styled.div`
   @media screen and (min-width: 1280px) {
     justify-content: center;
   } ;
+  @media screen and (min-width: 1280px) {
+    width: 928px;
+  } ;
 `;
 
 export const SelectContainer = styled.div`
@@ -128,6 +144,9 @@ export const SelectContainer = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  } ;
+  @media screen and (min-width: 1280px) {
+    width: 928px;
   } ;
 `;
 
