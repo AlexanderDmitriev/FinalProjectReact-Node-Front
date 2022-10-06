@@ -10,18 +10,12 @@ import {
   Flex,
   MetaBlock,
 } from './MetaThree.styled';
-
-// import { useFetchResultsQuery } from 'redux/results/resultsSlice';
-// import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
 import { booksApi } from 'redux/booksApi/booksSlice';
 import { resultsApi } from 'redux/results/resultsSlice';
 
 const MetaThreePoints = () => {
   const useQueryStateBooks = booksApi.endpoints.getBooks.useQueryState();
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
-
-  console.log(useQueryStateResult.data);
-  // console.log(stats);
 
   const trainingDays = date => {
     const startDay = new Date();
