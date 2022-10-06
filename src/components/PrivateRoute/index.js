@@ -1,1 +1,1 @@
-export { default } from './PrivateRoute.js';
+export { default } from './PrivateRoute.jsx';

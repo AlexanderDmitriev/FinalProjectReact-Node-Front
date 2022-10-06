@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 
 import FirstPage from 'components/FirstPage/FirstPage';
-import Login from '../pages/Login';
+import Login from './Login';
 
 export default function Home() {
   const isTablet = useMediaQuery({

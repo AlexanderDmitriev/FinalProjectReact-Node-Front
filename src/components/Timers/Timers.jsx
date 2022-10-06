@@ -4,7 +4,7 @@ import { Container, TimerTitle, TimerList, TimerItem } from './Timers.styled';
 
 import TimerTable from './TimerTable';
 
-export default function Timers() {
+export default function Timers({finishDate}) {
   const [timerDays, setTimerDays] = useState('00');
   const [timerHours, setTimerHours] = useState('00');
   const [timerMinutes, setTimerMinutes] = useState('00');
@@ -20,8 +20,7 @@ export default function Timers() {
 
   const newYearDate = new Date('Jan 01 2023 00:00:00').getTime();
   const currentTime = Date.now();
-  const endTrainingDate = new Date('Oct 08 2022 00:00:00').getTime();
-
+  const endTrainingDate = new Date(finishDate);
   function padWithZeros(number, minlength) {
     const numberString = number.toString();
     if (numberString.length >= minlength) return numberString;

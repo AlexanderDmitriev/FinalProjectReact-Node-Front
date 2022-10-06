@@ -23,7 +23,7 @@ import MetaThreePoints from '../../LibraryPage/Meta/MetaThree';
 import toast from 'react-hot-toast';
 /* import { useDispatch, useSelector } from 'react-redux/es/exports'; */
 
-export default function AddTraining() {
+export default function AddTraining({getFinishDate}) {
   const location = useLocation();
   const path = location?.state?.from ?? '/';
   const { data, /* error, */ isLoading } = useGetBooksQuery();
@@ -54,6 +54,8 @@ export default function AddTraining() {
 
   const handleChangeFinishTime = e => {
     setFinish(e.target.value);
+    console.log(e.target.value);
+    getFinishDate(e.target.value);
   };
 
   const handleAddBook = () => {

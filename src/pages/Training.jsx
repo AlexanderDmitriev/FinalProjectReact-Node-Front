@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {TrainingPage} from '../components/TrainingPage';
 
 import Results from 'components/Results/Results';
@@ -9,11 +9,14 @@ import Timers from 'components/Timers/Timers';
 
 export default function Training() {
   const { data, /* error, */ isLoading } = useGetBooksQuery();
+  const [finishDate, setFinishDate] = useState(new Date('Oct 09 2022 00:00:00').getTime());
+
+  const handleFinishDate = (date) => {setFinishDate(date)};
 
   return (
     <TrainingPage>
-      <Timers/>
-      <AddTraining />
+      <Timers finishDate={finishDate}/>
+      <AddTraining getFinishDate={handleFinishDate}/>
       {!isLoading && <Chart books={data} />}
       <Results />
     </TrainingPage>
