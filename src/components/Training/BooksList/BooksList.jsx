@@ -24,8 +24,8 @@ export default function BooksList({
   books,
   onDeleteBtnClick,
   addTrainingClick,
-}) {
-  return (
+  disabled
+}){return (
     <Section>
       <Wrapper>
         <>
@@ -71,7 +71,10 @@ export default function BooksList({
             ))}
           <>
             {books.length !== 0 && (
-              <StartTrainingBtn onClick={addTrainingClick}>
+              <StartTrainingBtn
+                onClick={addTrainingClick}
+                disabled={disabled}
+              >
                 Почати тренування
               </StartTrainingBtn>
             )}
