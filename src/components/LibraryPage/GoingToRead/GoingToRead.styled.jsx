@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { theme } from '../../../helpers/theme';
 import bookIcon from '../../../images/bookIcon.svg';
 import orangebookicon from '../../../images/orangebookicon.svg';
-// import { NavLink } from 'react-router-dom';
 
 export const Section = styled.div`
   position: relative;
@@ -113,10 +112,6 @@ export const Value = styled.span`
   align-items: center;
   margin-right: auto;
   color: ${theme.colors.titleColor};
-  // @media screen and (min-width: 768px) {
-  //   display: block;
-  //    max-width: 228px;
-  // }
 `;
 
 export const ResumeButton = styled.button`
@@ -182,7 +177,6 @@ export const Wrapper = styled.div`
   // padding-bottom: 32px;
 `;
 export const AddBookButton = styled.a`
-  // position: absolute;
   position: fixed;
   min-width: 52px;
   min-height: 52px;
@@ -223,6 +217,3 @@ export const TitleBox = styled.div`
     width: 1248px;
   }
 `;
-// export const MyLink = styled(Navlink)`
-//   text-decoration: none;
-// `;

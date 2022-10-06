@@ -41,13 +41,13 @@ const convertPlanTrainingDaysToArr = (days, pages) => {
   return arr;
 };
 
-const convertPagesToArr = (pages) => {
+const convertPagesToArr = pages => {
   const pagesArr = [];
   for (const page of pages) {
-      pagesArr.push(Number(page.pages));
-  };
+    pagesArr.push(Number(page.pages));
+  }
   return pagesArr;
-}
+};
 
 export default function Chart({ books }) {
   let width = 236;
@@ -66,7 +66,9 @@ export default function Chart({ books }) {
   const { data, error, isLoading } = useFetchResultsQuery();
   const [pages, setPages] = useState(0);
   const [trainingDays, setTrainingDays] = useState();
-  const [trainingDaysArr, setTrainingDaysArr] = useState([1,2,3,4,5,6,7,8,9,10]);
+  const [trainingDaysArr, setTrainingDaysArr] = useState([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+  ]);
   const [mediumPagesArr, setMediumPagesArr] = useState([100]);
   const [pagesArr, setPagesArr] = useState([150]);
 
@@ -82,25 +84,22 @@ export default function Chart({ books }) {
         return (totalPages += Number(item.pages));
       });
       setPages(totalPages);
-      
+
       const startDay = new Date(data.training.start);
-    const finishDay = new Date(data.training.end);
-    const timeDiff = Math.abs(finishDay.getTime() - startDay.getTime());
+      const finishDay = new Date(data.training.end);
+      const timeDiff = Math.abs(finishDay.getTime() - startDay.getTime());
       const trainingD = Math.ceil(timeDiff / (1000 * 3600 * 24));
-      setTrainingDays(trainingD)
+      setTrainingDays(trainingD);
       const trainingDArr = convertTrainingDaysToArr(trainingD);
       setTrainingDaysArr(trainingDArr);
-    const mediumPages = Math.round(pages / trainingD);
-    const mediumPA = convertPlanTrainingDaysToArr(
-      trainingD,
-      mediumPages
-      );
-      setMediumPagesArr(mediumPA)
+      const mediumPages = Math.round(pages / trainingD);
+      const mediumPA = convertPlanTrainingDaysToArr(trainingD, mediumPages);
+      setMediumPagesArr(mediumPA);
       const pagesA = convertPagesToArr(data.statistic);
-      setPagesArr(pagesA)
+      setPagesArr(pagesA);
     }
   }, [books, data, error, isLoading, pages]);
- 
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,

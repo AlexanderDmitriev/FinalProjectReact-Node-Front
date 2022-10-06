@@ -4,7 +4,6 @@ import boxchecked from '../../../images/boxchecked.svg';
 import checkbox from '../../../images/checkbox.svg';
 
 export const Section = styled.div`
-  /* max-width: 320px; */
   margin: 20px;
   padding-top: 20px;
   background-color: #f6f7fb;

@@ -93,7 +93,6 @@ export const BookDescription = styled.p`
   color: ${theme.colors.bookDescriptionColor};
   @media screen and (min-width: 768px) {
     display: none;
-    // width-min: 100px;
     color: #000000;
   }
 `;
@@ -105,8 +104,6 @@ export const BookTitleDescription = styled.p`
   line-height: 20px;
   color: ${theme.colors.bookDescriptionColor};
   @media screen and (min-width: 768px) {
-    // display: none;
-    // width-min: 100px;
     color: #000000;
   }
 `;
@@ -123,12 +120,10 @@ export const Value = styled.span`
   color: ${theme.colors.titleColor};
   @media screen and (min-width: 768px) {
     display: block;
-     max-width: 228px;
-    //  margin-left: 10px;
-    }
-       @media screen and (min-width: 1280px) {
-    // display: block;
-     width: 450px;
+    max-width: 228px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 450px;
   }
 `;
 
@@ -176,8 +171,6 @@ export const ListItem = styled.li`
   line-height: 1.21;
   color: ${theme.colors.focusColor};
   display: flex;
-  // align-content: center;
-
   :not(:last-child) {
     margin-bottom: 14px;
   }
@@ -185,7 +178,6 @@ export const ListItem = styled.li`
   @media screen and (min-width: 768px) {
     min-width: 100px;
     padding-top: 10px;
-    // height: 50px;
     margin: 0px;
     :not(:last-child) {
       margin-bottom: 0px;

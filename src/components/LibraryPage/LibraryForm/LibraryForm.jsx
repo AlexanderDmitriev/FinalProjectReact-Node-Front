@@ -4,7 +4,7 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import toast from 'react-hot-toast';
 
-import { AddButton /* Wrapper */ } from './LibraryForm.styled';
+import { AddButton } from './LibraryForm.styled';
 import {
   FormInput,
   Input,
@@ -62,8 +62,6 @@ export default function LibraryForm() {
           }}
           validateOnBlur
           onSubmit={(values, { resetForm }) => {
-            // do your stuff
-
             const item = {
               id: nanoid(),
               title: values.title,
@@ -73,7 +71,9 @@ export default function LibraryForm() {
             };
             const handleAddContact = async () => {
               await AddBooks(item);
-              !isError ? toast.success(`Книга  додана`) : toast.error(`Не можу додати`);
+              !isError
+                ? toast.success(`Книга  додана`)
+                : toast.error(`Не можу додати`);
             };
 
             handleAddContact();
@@ -160,7 +160,6 @@ export default function LibraryForm() {
                       placeholder="..."
                     />
                     {touched.pages && errors.pages && (
-                      // <p className={'error'}>{errors.pages}</p>
                       <ErrorMessage name="pages">
                         {msg => <Error>{msg}</Error>}
                       </ErrorMessage>

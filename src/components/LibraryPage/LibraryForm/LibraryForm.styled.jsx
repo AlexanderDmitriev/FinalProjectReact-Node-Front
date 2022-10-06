@@ -33,7 +33,6 @@ export const FormInput = styled.div`
     margin-bottom: 80px;
     display: flex;
     align-item: end;
-    // align-content: start;
   }
 `;
 
@@ -176,7 +175,6 @@ export const Error = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 1.12;
-  color: red;
-  // color: ${theme.colors.titleColor};
+  color: ${theme.colors.focusColor};
   text-align: center;
 `;

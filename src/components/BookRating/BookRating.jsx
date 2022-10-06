@@ -13,18 +13,17 @@ import {
 import StarRating from '../RatingStars/StarRating';
 import { useUpdateRatingMutation } from 'redux/booksApi/booksSlice';
 import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
-/* import { useUpdateRatingMutation } from 'redux/booksApi/booksSlice'; */
 
 export default function BookRating({ onClose, bookId }) {
   const [comment, setComment] = useState('');
   const [starsRating, setStarsRating] = useState(1);
-  const [text, setText] = useState('...'); 
+  const [text, setText] = useState('...');
   const [updateRating] = useUpdateRatingMutation();
-  const { data, /* error, isLoading*/ } = useGetBooksQuery();
+  const { data } = useGetBooksQuery();
   useEffect(() => {
-    const coincidence = data.find(i => i._id === bookId)
-    if ( coincidence) {
-      setText(coincidence.resume.comment)
+    const coincidence = data.find(i => i._id === bookId);
+    if (coincidence) {
+      setText(coincidence.resume.comment);
     }
   }, [bookId, data]);
 
@@ -61,7 +60,7 @@ export default function BookRating({ onClose, bookId }) {
         <StarsField>
           <StarRating
             numTotalStars="5"
-            initialRating='0'
+            initialRating="0"
             handleStarsRating={handleStarsRating}
           />
         </StarsField>

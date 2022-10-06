@@ -21,7 +21,7 @@ import { useFetchResultsQuery } from 'redux/results/resultsSlice';
 import { useState, useEffect } from 'react';
 
 export default function BookListInTraining({booksList}) {
-  const { data, /*error, isLoading*/ } = useFetchResultsQuery();
+  const { data} = useFetchResultsQuery();
   const [books, setBooks] = useState(null);
   
   useEffect(() => {

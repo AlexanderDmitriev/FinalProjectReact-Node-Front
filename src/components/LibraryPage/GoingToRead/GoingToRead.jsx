@@ -94,13 +94,7 @@ export default function GoingToRead({ books }) {
           Моє тренування
         </TrainingButton>
 
-        <AddBookButton
-          href=" #input"
-
-          // переместим в начало страницы
-        >
-          +
-        </AddBookButton>
+        <AddBookButton href=" #input">+</AddBookButton>
       </Wrapper>
     </Section>
   );

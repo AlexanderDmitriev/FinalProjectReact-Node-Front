@@ -10,12 +10,12 @@ import {
   SelectContainer,
   Svg,
   SvgContainer,
-}from './AddTraining.styled';
-  import { useState, useEffect } from 'react';
-  import { NavLink, useLocation } from 'react-router-dom';
-  import { ReactComponent as IconBack } from '../../../images/iconback.svg';
-  import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
-  import { useUpdateTrainingMutation } from 'redux/results/resultsSlice';
+} from './AddTraining.styled';
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { ReactComponent as IconBack } from '../../../images/iconback.svg';
+import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
+import { useUpdateTrainingMutation } from 'redux/results/resultsSlice';
 /* import MyGoals from 'components/Training/MyGoals/MyGoals'; */
 import BooksList from 'components/Training/BooksList/BooksList';
 import BookListInTraining from '../BookkListInTraining/BookkListInTraining';
@@ -23,7 +23,7 @@ import MetaThreePoints from '../../LibraryPage/Meta/MetaThree';
 import toast from 'react-hot-toast';
 /* import { useDispatch, useSelector } from 'react-redux/es/exports'; */
 
-export default function AddTraining({getFinishDate}) {
+export default function AddTraining({ getFinishDate }) {
   const location = useLocation();
   const path = location?.state?.from ?? '/';
   const { data, /* error, */ isLoading } = useGetBooksQuery();
@@ -32,11 +32,13 @@ export default function AddTraining({getFinishDate}) {
   useEffect(() => {
     if (!isLoading) {
       const books = data.findIndex(book => book.status === 'in progress');
-      if(books === -1){return}
-      setInProgressBooks(books)
+      if (books === -1) {
+        return;
+      }
+      setInProgressBooks(books);
     }
-  },[data, isLoading])
-  
+  }, [data, isLoading]);
+
   const [updateTraining] = useUpdateTrainingMutation();
 
   const [start, setStart] = useState('');
@@ -52,7 +54,7 @@ export default function AddTraining({getFinishDate}) {
     }
   }, [data, isLoading, selectedBookArr]);
 
-   const handleSelectChange = event => {
+  const handleSelectChange = event => {
     setSelectedBook(event.target.value);
   };
 
@@ -103,136 +105,70 @@ export default function AddTraining({getFinishDate}) {
       <MetaThreePoints />
 
       <Section>
+        {inProgressBooks.length === 0 ? (
+          <>
+            <TrainingSection>
+              <SvgContainer>
+                <NavLink to={path} exact="true">
+                  <IconBack fill="#FF6B08" width="24" height="12" />
+                </NavLink>
+              </SvgContainer>
+              <Svg>
+                <use href="../../../images/icons.svg#icon-calendar-1" />
+              </Svg>
+              <TrainingTitle>Моє тренування</TrainingTitle>
+              <InputContainer>
+                <Input
+                  type="text"
+                  placeholder="Початок"
+                  name="startTime"
+                  onChange={handleChangeStartTime}
+                  onFocus={e => (e.target.type = 'date')}
+                  onBlur={e => (e.target.type = 'text')}
+                />
+                <Input
+                  type="text"
+                  placeholder="Кінець"
+                  name="finishTime"
+                  onChange={handleChangeFinishTime}
+                  onFocus={e => (e.target.type = 'date')}
+                  onBlur={e => (e.target.type = 'text')}
+                />
+              </InputContainer>
 
-
-        {inProgressBooks.length === 0 ? <><TrainingSection>
-          <SvgContainer>
-            <NavLink to={path} exact="true">
-              <IconBack fill="#FF6B08" width="24" height="12" />
-            </NavLink>
-          </SvgContainer>
-          <Svg>
-            <use href="../../../images/icons.svg#icon-calendar-1" />
-          </Svg>
-          <TrainingTitle>Моє тренування</TrainingTitle>
-          <InputContainer>
-            <Input
-              type="text"
-              placeholder="Початок"
-              name="startTime"
-              onChange={handleChangeStartTime}
-              onFocus={e => (e.target.type = 'date')}
-              onBlur={e => (e.target.type = 'text')}
-            />
-            <Input
-              type="text"
-              placeholder="Завершение"
-              name="finishTime"
-              onChange={handleChangeFinishTime}
-              onFocus={e => (e.target.type = 'date')}
-              onBlur={e => (e.target.type = 'text')}
-            />
-          </InputContainer>
-
-          {isLoading ? (
-            <h2>loading</h2>
-          ) : (
-            <SelectContainer>
-              <Select value={selectedBook} onChange={handleSelectChange}>
-                <Option disabled={true} value="">
-                  Обрати книги з бібліотеки
-                </Option>
-                {data.map(book => {
-                  return (
-                    <Option value={book._id} key={book._id}>
-                      {book.title}
+              {isLoading ? (
+                <h2>loading</h2>
+              ) : (
+                <SelectContainer>
+                  <Select value={selectedBook} onChange={handleSelectChange}>
+                    <Option disabled={true} value="">
+                      Обрати книги з бібліотеки
                     </Option>
-                  );
-                })}
-              </Select>
-              <AddBtn type="submit" onClick={handleAddBook}>
-                Додати
-              </AddBtn>
-            </SelectContainer>
-          )}
-        </TrainingSection>
+                    {data.map(book => {
+                      return (
+                        <Option value={book._id} key={book._id}>
+                          {book.title}
+                        </Option>
+                      );
+                    })}
+                  </Select>
+                  <AddBtn type="submit" onClick={handleAddBook}>
+                    Додати
+                  </AddBtn>
+                </SelectContainer>
+              )}
+            </TrainingSection>
 
-          <BooksList
-            books={booksListArr}
-            onDeleteBtnClick={onDeleteBtnClick}
-            addTrainingClick={addTrainingClick} /></>
-          :
-          <BookListInTraining booksList={data} />}
-        
+            <BooksList
+              books={booksListArr}
+              onDeleteBtnClick={onDeleteBtnClick}
+              addTrainingClick={addTrainingClick}
+            />
+          </>
+        ) : (
+          <BookListInTraining booksList={data} />
+        )}
       </Section>
     </>
   );
 }
-
-//  <>
-//       <MetaThreePoints />
-
-//       <Section>
-
-
-//           <TrainingSection>
-//             <SvgContainer>
-//               <NavLink to={path} exact="true">
-//                 <IconBack fill="#FF6B08" width="24" height="12" />
-//               </NavLink>
-//             </SvgContainer>
-//             <Svg>
-//               <use href="../../../images/icons.svg#icon-calendar-1" />
-//             </Svg>
-//             <TrainingTitle>Моє тренування</TrainingTitle>
-//             <InputContainer>
-//               <Input
-//                 type="text"
-//                 placeholder="Початок"
-//                 name="startTime"
-//                 onChange={handleChangeStartTime}
-//                 onFocus={e => (e.target.type = 'date')}
-//                 onBlur={e => (e.target.type = 'text')}
-//               />
-//               <Input
-//                 type="text"
-//                 placeholder="Завершение"
-//                 name="finishTime"
-//                 onChange={handleChangeFinishTime}
-//                 onFocus={e => (e.target.type = 'date')}
-//                 onBlur={e => (e.target.type = 'text')}
-//               />
-//             </InputContainer>
-
-//             {isLoading ? (
-//               <h2>loading</h2>
-//             ) : (
-//               <SelectContainer>
-//                 <Select value={selectedBook} onChange={handleSelectChange}>
-//                   <Option disabled={true} value="">
-//                     Обрати книги з бібліотеки
-//                   </Option>
-//                   {data.map(book => {
-//                     return (
-//                       <Option value={book._id} key={book._id}>
-//                         {book.title}
-//                       </Option>
-//                     );
-//                   })}
-//                 </Select>
-//                 <AddBtn type="submit" onClick={handleAddBook}>
-//                   Додати
-//                 </AddBtn>
-//               </SelectContainer>
-//             )}
-//           </TrainingSection>
-
-//             {inProgressBooks.length === 0? <BooksList
-//               books={booksListArr} 
-//               onDeleteBtnClick={onDeleteBtnClick}
-//               addTrainingClick={addTrainingClick}
-//         /> :
-//               <BookListInTraining booksList={data} />}
-        
-//       </Section>
-//     </>

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const MetaHeader = styled.div`
-  /* max-width: 320px; */
   width: 280px;
   height: 60px;
   margin-top: -44px;
@@ -32,7 +31,6 @@ export const HeaderText = styled.p`
 `;
 
 export const MetaBody = styled.section`
-  /* max-width: 320px; */
   text-align: center;
   width: 280px;
   padding: 44px 30px 0 30px;
@@ -59,7 +57,6 @@ export const Flex = styled.div`
 `;
 
 export const MetaBlock = styled.div`
-  /* max-width: 320px; */
   @media screen and (min-width: 768px) {
     &:not(:last-child) {
       margin-right: 40px;
@@ -73,7 +70,6 @@ export const MetaBlock = styled.div`
 `;
 
 export const MetaBlockNumber = styled.div`
-  /* max-width: 320px; */
   height: 100px;
   width: 100px;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
@@ -98,7 +94,6 @@ export const MetaBlockNumber = styled.div`
 `;
 
 export const MetaNumber = styled.div`
-  /* max-width: 320px; */
   font-weight: 700;
   font-size: 45px;
   line-height: 38px;
@@ -112,7 +107,6 @@ export const MetaNumber = styled.div`
 `;
 
 export const MetaBlockText = styled.div`
-  /* max-width: 320px; */
   margin-top: 14px;
   width: 66px;
   margin-left: auto;
@@ -128,7 +122,6 @@ export const MetaBlockText = styled.div`
 `;
 
 export const MetaText = styled.p`
-  /* max-width: 320px; */
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;

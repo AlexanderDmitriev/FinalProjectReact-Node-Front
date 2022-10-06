@@ -42,9 +42,6 @@ export const TrainingButton = styled.button`
   @media screen and (min-width: 1280px) {
     width: 200px;
     height: 40px;
-    // margin-top: 0px;
-    // margin-bottom: 20px;
-    // margin-left: 48px;
   }
 `;
 export const Box = styled.div`

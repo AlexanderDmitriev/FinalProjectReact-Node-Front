@@ -4,7 +4,6 @@ import {
   MetaHeader,
   HeaderText,
   MetaBody,
-  /* MetaBlockNumber, */
   MetaNumber,
   MetaBlockText,
   MetaText,
@@ -84,21 +83,6 @@ const MetaThreePoints = () => {
           </div>
 
           <div>
-            {/* <MetaBlock>
-              {useQueryStateBooks.data &&
-              useQueryStateResult.data &&
-              useQueryStateResult.data.status === 'in progress' ? (
-                <MetaNumberColor>
-                  {
-                    useQueryStateBooks.data.filter(
-                      book => book.status === 'in progress'
-                    ).length
-                  }
-                </MetaNumberColor>
-              ) : (
-                <MetaNumberColor>00</MetaNumberColor>
-              )}
-            </MetaBlock> */}
             <MetaBlock>
               {booksRemain === 0 &&
               useQueryStateResult.data &&

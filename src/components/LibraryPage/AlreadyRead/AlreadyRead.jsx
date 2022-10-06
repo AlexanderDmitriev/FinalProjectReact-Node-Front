@@ -16,7 +16,6 @@ import {
   Value,
   TitleBox,
 } from './AlreadyRead.styled';
-/* import Star from 'components/RatingStars/Star'; */
 import Modal from 'components/Modal/Modal';
 import BookRating from 'components/BookRating/BookRating';
 import StarRatingBook from './StarRatingBook';
@@ -104,8 +103,6 @@ export default function AlreadyRead({ books }) {
                 </ListItem>
                 <ListItem>
                   <BookDescription>Рейтинг книги: </BookDescription>
-                  {/* <Value>{book.resume.rating}</Value> */}
-
                   <StarRatingBook rating={book.resume.rating} />
                 </ListItem>
                 <ResumeButton

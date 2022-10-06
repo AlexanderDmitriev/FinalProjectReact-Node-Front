@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const MetaHeader = styled.div`
-  /* max-width: 320px; */
   width: 280px;
   height: 60px;
   margin-top: -32px;
@@ -18,7 +17,7 @@ export const MetaHeader = styled.div`
     width: 280px;
     margin-top: -80px;
     margin-left: -18px;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     padding: 18px 28px 18px 29px;
   }
 `;
@@ -39,8 +38,6 @@ export const HeaderText = styled.p`
 `;
 
 export const MetaBody = styled.section`
-
-  /* max-width: 320px; */
   text-align: center;
   width: 280px;
   padding: 32px 24px 0 29px;
@@ -73,7 +70,6 @@ export const Flex = styled.div`
 `;
 
 export const MetaBlock = styled.div`
-  /* max-width: 320px; */
   margin-top: 32px;
   &:not(:last-child) {
     margin-right: 12px;
@@ -90,7 +86,6 @@ export const MetaBlock = styled.div`
 `;
 
 export const MetaBlockNumber = styled.div`
-  /* max-width: 320px; */
   height: 63px;
   width: 63px;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
@@ -117,7 +112,6 @@ export const MetaBlockNumber = styled.div`
 `;
 
 export const MetaNumber = styled.div`
-  /* max-width: 320px; */
   font-weight: 700;
   font-size: 35px;
   line-height: 38px;
@@ -131,7 +125,6 @@ export const MetaNumber = styled.div`
 `;
 
 export const MetaNumberColor = styled.div`
-  /* max-width: 320px; */
   font-weight: 700;
   font-size: 35px;
   line-height: 38px;
@@ -145,7 +138,6 @@ export const MetaNumberColor = styled.div`
 `;
 
 export const MetaBlockText = styled.div`
-  /* max-width: 320px; */
   margin-top: 8px;
   width: 73px;
   margin-left: auto;
@@ -165,7 +157,6 @@ export const MetaBlockText = styled.div`
 `;
 
 export const MetaText = styled.p`
-  /* max-width: 320px; */
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
