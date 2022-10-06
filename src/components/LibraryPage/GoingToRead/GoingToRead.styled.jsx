@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { theme } from '../../../helpers/theme';
 import bookIcon from '../../../images/bookIcon.svg';
 import orangebookicon from '../../../images/orangebookicon.svg';
+import { NavLink } from 'react-router-dom';
+
+export const ToMyTrainings = styled(NavLink)`
+text-decoration: none;
+`;
 
 export const Section = styled.div`
   padding: 32px 20px 40px 20px;
@@ -185,10 +190,10 @@ export const Wrapper = styled.div`
   // position: relative;
   // padding-bottom: 32px;
 `;
-export const AddBookButton = styled.button`
-  position: absolute;
+export const AddBookButton = styled.a`
+  position: fixed;
   margin-top: 50px;
-  top: 96%;
+  bottom: 12px;
   left: 50%;
   transform: translate(-50%, -50%);
   min-width: 52px;
@@ -207,6 +212,9 @@ export const AddBookButton = styled.button`
   box-shadow: 0px 2px 4px ${theme.colors.darkShadowColor};
   border-radius: 50%;
   border: none;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
   &:hover,
   &:focus {
     border: 1px solid ${theme.colors.buttonsBorder};

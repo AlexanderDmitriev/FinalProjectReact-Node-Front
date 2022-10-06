@@ -7,15 +7,13 @@ import {
   ListItem,
   IconBook,
   BookName,
-  AddBookButton,
   BookDescription,
   Wrapper,
   TitleBox,
   BookTitleDescription,
-  Value,
+  Value, ToMyTrainings,
 } from '../GoingToRead/GoingToRead.styled';
 import { TrainingButton } from '../Library.styled';
-import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
 export default function GoingToRead({ books }) {
@@ -25,7 +23,7 @@ export default function GoingToRead({ books }) {
   });
   const filterBook = books.filter(book => book.status === 'plan');
   return (
-    <Section>
+    <Section id="addBook">
       <Title>Маю намір прочитати</Title>
       <Wrapper>
         {isTablet && (
@@ -84,21 +82,9 @@ export default function GoingToRead({ books }) {
           </BookCard>
         ))}
 
-        <NavLink to="/training" exact="true">
+        <ToMyTrainings to="/training" exact="true">
           <TrainingButton>Моє тренування</TrainingButton>
-        </NavLink>
-        <AddBookButton
-          onClick={window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth',
-          })}
-          type="submit"
-
-          // переместим в начало страницы
-        >
-          +
-        </AddBookButton>
+        </ToMyTrainings>
       </Wrapper>
     </Section>
   );

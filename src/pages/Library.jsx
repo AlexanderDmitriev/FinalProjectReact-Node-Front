@@ -11,6 +11,7 @@ import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
 // import books from 'book.json';
 import sprite from '../images/icons.svg';
 import toast from 'react-hot-toast';
+import {AnchorButton} from '../components/LibraryPage/Library.styled';
 
 export default function Library() {
   const location = useLocation();
@@ -31,7 +32,7 @@ export default function Library() {
       <Container>
         <Box>
           <NavLink to={path} exact="true">
-            <BackArrow width="24" height="12">
+            <BackArrow width="24" height="12" id="addBook">
               <use href={sprite + '#icon-back'}></use>
             </BackArrow>
           </NavLink>
@@ -46,6 +47,7 @@ export default function Library() {
           )}
           {planBooks.length === 0 ? <p></p> : <GoingToRead books={books} />}
         </Box>
+        <AnchorButton href="#addBook"></AnchorButton>
       </Container>
     </>
   );

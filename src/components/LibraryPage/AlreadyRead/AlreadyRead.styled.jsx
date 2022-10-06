@@ -118,7 +118,7 @@ export const Value = styled.span`
   font-size: 12px;
   line-height: 15px;
   margin-left: 40px;
-  alight-text: center:
+  align-items: center;
   margin-right: auto;
   color: ${theme.colors.titleColor};
   @media screen and (min-width: 768px) {
@@ -129,7 +129,6 @@ export const Value = styled.span`
        @media screen and (min-width: 1280px) {
     // display: block;
      width: 450px;
-  }
   }
 `;
 
