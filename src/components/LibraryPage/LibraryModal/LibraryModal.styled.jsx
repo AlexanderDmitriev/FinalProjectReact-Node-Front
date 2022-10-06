@@ -4,9 +4,9 @@ import { theme } from '../../../helpers/theme';
 export const Wrapper = styled.div`
   position: absolute;
   display: flex;
-  justify-content: center;
   margin-top: 40px;
   top: 157px;
+  left: 138px;
 
   @media screen and (min-width: 768px) {
     position: static;
@@ -121,7 +121,7 @@ export const Button = styled.button`
   color: ${theme.colors.backColor};
   background-color: #ff6b08;
   border: 1px solid #ff6b08;
-  box-shadow: 0px 2px 4px ${theme.colors.darkShadowColor};;
+  box-shadow: 0px 2px 4px ${theme.colors.darkShadowColor};
   &:hover,
   &:focus {
     background-color: #d15807;

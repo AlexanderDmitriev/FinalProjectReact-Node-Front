@@ -34,7 +34,7 @@ export default function Library() {
             </BackArrow>
           </NavLink>
           <LibraryForm />
-          {!books && <LibraryModal />}
+          {!books.length && <LibraryModal />}
 
           {finishedBooks.length === 0 ? <p></p> : <AlreadyRead books={books} />}
           {inProgressBooks.length === 0 ? (
