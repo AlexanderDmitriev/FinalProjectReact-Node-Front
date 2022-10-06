@@ -9,12 +9,22 @@ import {
   Flex,
   MetaBlock,
 } from './MetaTwo.styled';
+import { useEffect, useState } from 'react';
 import { resultsApi } from 'redux/results/resultsSlice';
 
 const MetaTwoPoints = () => {
+  const [booksTotal, setBooksTotal] = useState('00');
+
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
 
-  console.log(useQueryStateResult.data);
+  useEffect(() => {
+    if (
+      useQueryStateResult.data &&
+      useQueryStateResult.data.status === 'in progress'
+    ) {
+      setBooksTotal(useQueryStateResult.data.training.active.length);
+    }
+  }, [useQueryStateResult.data]);
 
   const trainingDays = date => {
     const startDay = new Date();
@@ -33,14 +43,7 @@ const MetaTwoPoints = () => {
         <Flex>
           <div>
             <MetaBlock>
-              {useQueryStateResult.data &&
-              useQueryStateResult.data.status === 'in progress' ? (
-                <MetaNumber>
-                  {useQueryStateResult.data.training.active.length}
-                </MetaNumber>
-              ) : (
-                <MetaNumber>00</MetaNumber>
-              )}
+              <MetaNumber>{booksTotal}</MetaNumber>
             </MetaBlock>
             <MetaBlockText>
               <MetaText>Кількість книжок</MetaText>

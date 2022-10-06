@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import {
   MetaHeader,
   HeaderText,
@@ -14,8 +16,33 @@ import { booksApi } from 'redux/booksApi/booksSlice';
 import { resultsApi } from 'redux/results/resultsSlice';
 
 const MetaThreePoints = () => {
+  const [booksRemain, setBooksRemain] = useState('00');
+  const [booksTotal, setBooksTotal] = useState('00');
+
   const useQueryStateBooks = booksApi.endpoints.getBooks.useQueryState();
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
+
+  useEffect(() => {
+    if (
+      useQueryStateBooks.data &&
+      useQueryStateResult.data &&
+      useQueryStateResult.data.status === 'in progress'
+    ) {
+      setBooksRemain(
+        useQueryStateBooks.data.filter(book => book.status === 'in progress')
+          .length
+      );
+    }
+  }, [useQueryStateBooks.data, useQueryStateResult.data]);
+
+  useEffect(() => {
+    if (
+      useQueryStateResult.data &&
+      useQueryStateResult.data.status === 'in progress'
+    ) {
+      setBooksTotal(useQueryStateResult.data.training.active.length);
+    }
+  }, [useQueryStateBooks.data, useQueryStateResult.data]);
 
   const trainingDays = date => {
     const startDay = new Date();
@@ -32,23 +59,15 @@ const MetaThreePoints = () => {
           <HeaderText>Моя мета прочитати</HeaderText>
         </MetaHeader>
         <Flex>
-          <MetaBlock>
+          <div>
             <MetaBlock>
-              {useQueryStateResult.data &&
-              useQueryStateResult.data.status === 'in progress' ? (
-                <MetaNumber>
-                  {useQueryStateResult.data.training.active.length}
-                </MetaNumber>
-              ) : (
-                <MetaNumber>00</MetaNumber>
-              )}
+              <MetaNumber>{booksTotal}</MetaNumber>
             </MetaBlock>
             <MetaBlockText>
               <MetaText>Кількість книжок</MetaText>
             </MetaBlockText>
-          </MetaBlock>
-
-          <MetaBlock>
+          </div>
+          <div>
             <MetaBlock>
               {useQueryStateResult.data &&
               useQueryStateResult.data.status === 'in progress' ? (
@@ -62,10 +81,10 @@ const MetaThreePoints = () => {
             <MetaBlockText>
               <MetaText>Кількість днів</MetaText>
             </MetaBlockText>
-          </MetaBlock>
+          </div>
 
-          <MetaBlock>
-            <MetaBlock>
+          <div>
+            {/* <MetaBlock>
               {useQueryStateBooks.data &&
               useQueryStateResult.data &&
               useQueryStateResult.data.status === 'in progress' ? (
@@ -79,11 +98,20 @@ const MetaThreePoints = () => {
               ) : (
                 <MetaNumberColor>00</MetaNumberColor>
               )}
+            </MetaBlock> */}
+            <MetaBlock>
+              {booksRemain === 0 &&
+              useQueryStateResult.data &&
+              useQueryStateResult.data.status === 'in progress' ? (
+                <MetaNumberColor>{booksTotal}</MetaNumberColor>
+              ) : (
+                <MetaNumberColor>{booksRemain}</MetaNumberColor>
+              )}
             </MetaBlock>
             <MetaBlockText>
               <MetaText>Залишилось книжок</MetaText>
             </MetaBlockText>
-          </MetaBlock>
+          </div>
         </Flex>
       </MetaBody>
     </>
