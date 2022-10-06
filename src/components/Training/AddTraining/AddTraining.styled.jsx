@@ -34,12 +34,10 @@ export const TrainingTitle = styled.div`
   color: ${theme.colors.backColor};
   background: ${theme.colors.tableColor};
   width: 100%;
-  margin-top: 32px;
   cursor: pointer;
   border: none;
 
   @media screen and (min-width: 768px) {
-    margin-top: 40px;
     width: 704px;
   }
 
@@ -159,5 +157,7 @@ export const Svg = styled.svg`
 export const SvgContainer = styled.div`
   @media screen and (min-width: 768px) {
     display: none;
+    margin-top: 24px;
+    margin-bottom: 32px;
   } ;
 `;

@@ -18,7 +18,7 @@ export const MetaHeader = styled.div`
     width: 280px;
     margin-top: -80px;
     margin-left: -18px;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     padding: 18px 28px 18px 29px;
   }
 `;
@@ -103,7 +103,7 @@ export const MetaBlockNumber = styled.div`
     width: 100px;
     padding-top: 11px;
     padding-bottom: 11px;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 0;
   }
 
