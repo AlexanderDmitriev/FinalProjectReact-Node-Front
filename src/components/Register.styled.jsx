@@ -108,10 +108,6 @@ export const FormInput = styled.div`
   flex-direction: column;
 `;
 
-export const NavGoogle = styled(NavLink)`
-  text-decoration: none;
-`;
-
 export const GoogleButton = styled.button`
   margin-top: 32px;
   margin-bottom: 28px;
@@ -298,7 +294,6 @@ export const TextBox = styled.div`
   @media screen and (min-width: 767px) {
     padding-bottom: 71px;
   }
-  
 
   @media screen and (min-width: 1280px) {
     margin-left: 127px;

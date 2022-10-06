@@ -121,10 +121,6 @@ export const GoogleButton = styled.button`
   border: none;
 `;
 
-export const NavGoogle = styled(NavLink)`
-  text-decoration: none;
-`;
-
 export const TextGoogleButton = styled.p`
   font-style: normal;
   font-weight: 700;
