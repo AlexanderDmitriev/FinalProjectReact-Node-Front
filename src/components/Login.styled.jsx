@@ -11,6 +11,7 @@ import google from '../images/googleicon.svg';
 
 import { Field } from 'formik';
 import { NavLink } from 'react-router-dom';
+/* import {theme} from '../helpers/theme'; */
 
 export const Box = styled.div`
   display: flex;
@@ -104,6 +105,10 @@ export const FormInput = styled.div`
 export const GoogleButton = styled.button`
   margin-top: 32px;
   margin-bottom: 28px;
+  border-radius: 2px;
+  :hover {
+    background-color: #ebf0f7;
+  }
 
   @media screen and (min-width: 768px) {
     margin-top: 40px;
@@ -176,6 +181,7 @@ export const Label = styled.label`
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
+  
 
   color: #ffffff;
   @media screen and (min-width: 768px) {
@@ -221,6 +227,9 @@ export const Button = styled.button`
   left: 20px;
   top: 334px;
   margin-bottom: 16px;
+  :hover {
+    background-color: #fd781f;
+  }
 
   @media screen and (min-width: 768px) {
     width: 320px;
