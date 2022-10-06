@@ -32,6 +32,9 @@ export const HeaderText = styled.p`
 `;
 
 export const MetaBody = styled.section`
+position: absolute;
+top: 86px;
+right: 16px;
   /* max-width: 320px; */
   text-align: center;
   width: 280px;
