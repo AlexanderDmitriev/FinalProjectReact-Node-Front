@@ -23,7 +23,7 @@ import {
   ButtonM,
   BackButton,
   Icon,
-  IconLike
+  IconLike,
 } from './Modal.styled';
 import Modal from 'components/Modal/Modal';
 import sprite from '../../images/icons.svg';
@@ -32,6 +32,8 @@ import { useCreateResultMutation } from 'redux/results/resultsSlice';
 export default function Results() {
   const [date, setDate] = useState(null);
   const [pages, setPages] = useState('');
+  let today = new Date();
+  let yesterday = new Date();
 
   const [createResult] = useCreateResultMutation();
 
@@ -119,6 +121,7 @@ export default function Results() {
                 type="date"
                 name="date"
                 required
+                minDate={yesterday.setDate(today.getDate() - 1)}
                 maxDate={new Date()}
               />
             </Label>
@@ -130,6 +133,9 @@ export default function Results() {
                 onChange={e => setPages(e.target.value)}
                 required
                 min={1}
+                max={999}
+                pattern={1 - 9}
+                type="number"
               />
             </Label>
           </DateWrapper>
@@ -167,9 +173,7 @@ export default function Results() {
                   <use href={sprite + '#icon-vector'}></use>
                 </IconLike>
                 <TextBox>
-                  <Text>
-                  Вітаю! Ще одна книга прочитана
-                  </Text>
+                  <Text>Вітаю! Ще одна книга прочитана</Text>
                 </TextBox>
                 <ButtonBox>
                   <ButtonM type="button" onClick={handleExit}>
