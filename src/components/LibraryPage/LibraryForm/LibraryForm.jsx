@@ -79,7 +79,7 @@ export default function LibraryForm() {
               isLoading && <Spinner />;
             }
             {
-              isError
+              !isError
                 ? toast.success(`Книга  додана`)
                 : toast.error(`Не можу додати`);
             }
