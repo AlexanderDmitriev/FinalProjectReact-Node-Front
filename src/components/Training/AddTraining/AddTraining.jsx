@@ -48,7 +48,6 @@ export default function AddTraining({ getFinishDate }) {
   useEffect(() => {
     if (!isLoading) {
       const books = data.findIndex(book => book.status === 'in progress');
-      console.log(data);
       if (books === -1) {
         return setDisabled(false);
       }
