@@ -30,6 +30,14 @@ export const Icon = styled.svg`
   // juctify-content: center;
   // margin-right: 12px;
 `;
+
+export const IconLike = styled.svg`
+margin-top: 44px;
+fill: #FF6B08;
+padding-left: 10px;
+// juctify-content: center;
+// margin-right: 12px;
+`;
 export const TextBox = styled.div`
   width: 237px;
   height: 88px;

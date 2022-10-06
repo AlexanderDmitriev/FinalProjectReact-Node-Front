@@ -23,6 +23,7 @@ import {
   ButtonM,
   BackButton,
   Icon,
+  IconLike
 } from './Modal.styled';
 import Modal from 'components/Modal/Modal';
 import sprite from '../../images/icons.svg';
@@ -157,6 +158,23 @@ export default function Results() {
                   <BackButton type="button" onClick={handleCloseModal}>
                     Назад
                   </BackButton>
+                </ButtonBox>
+              </SectionM>
+            )}
+            {isModalOpen && (
+              <SectionM>
+                <IconLike width="50" height="45">
+                  <use href={sprite + '#icon-vector'}></use>
+                </IconLike>
+                <TextBox>
+                  <Text>
+                  Вітаю! Ще одна книга прочитана
+                  </Text>
+                </TextBox>
+                <ButtonBox>
+                  <ButtonM type="button" onClick={handleExit}>
+                    Готово
+                  </ButtonM>
                 </ButtonBox>
               </SectionM>
             )}
