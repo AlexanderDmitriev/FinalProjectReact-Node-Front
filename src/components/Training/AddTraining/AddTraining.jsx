@@ -60,6 +60,11 @@ export default function AddTraining({getFinishDate}) {
   };
 
   const handleChangeFinishTime = e => {
+    const chosenDate = new Date(e.target.value);
+    const startDate = new Date(start);
+    if (startDate > chosenDate) {
+      return toast.error("Дата закінчення тренування повинна бути пізніше за початок")
+    };
     setFinish(e.target.value);
     getFinishDate(e.target.value);
   };
