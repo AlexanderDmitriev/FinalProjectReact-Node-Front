@@ -22,7 +22,7 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(authOperations.fetchCurrentUser());
+    dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
   return (
@@ -82,7 +82,6 @@ export const App = () => {
                     </PrivateRoute>
                   }
                 />
-                {/* <Statistics/>*/}
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </>

@@ -114,7 +114,8 @@ export const NavGoogle = styled(NavLink)`
 
 export const GoogleButton = styled.button`
   margin-top: 32px;
-  margin-bottom: 28px;border-radius: 2px;
+  margin-bottom: 28px;
+  border-radius: 2px;
   :hover {
     background-color: #ebf0f7;
   }
@@ -304,7 +305,6 @@ export const TextBox = styled.div`
   @media screen and (min-width: 767px) {
     padding-bottom: 71px;
   }
-  
 
   @media screen and (min-width: 1280px) {
     margin-left: 127px;

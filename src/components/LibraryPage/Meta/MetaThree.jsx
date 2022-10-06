@@ -10,7 +10,6 @@ import {
   MetaNumberColor,
   Flex,
   MetaBlock,
-  MetaBlockContainer,
 } from './MetaThree.styled';
 import { booksApi } from 'redux/booksApi/booksSlice';
 import { resultsApi } from 'redux/results/resultsSlice';
