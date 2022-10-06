@@ -25,6 +25,7 @@ const GoogleLogin = () => {
       dispatch(setGoogleData({ token, sid }));
       navigate('/library');
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 };
 
