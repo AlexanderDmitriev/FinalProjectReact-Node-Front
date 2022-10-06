@@ -161,7 +161,7 @@ export const List = styled.ul`
     width: 704px;
     display: flex;
 
-    padding: 14px 11px 14px 20px;
+    padding: 5px 11px 5px 20px;
   }
 
   list-style: none;
@@ -176,6 +176,7 @@ export const ListItem = styled.li`
   line-height: 1.21;
   color: ${theme.colors.focusColor};
   display: flex;
+  // align-content: center;
 
   :not(:last-child) {
     margin-bottom: 14px;
@@ -183,6 +184,7 @@ export const ListItem = styled.li`
 
   @media screen and (min-width: 768px) {
     min-width: 100px;
+    padding-top: 10px;
     // height: 50px;
     margin: 0px;
     :not(:last-child) {
