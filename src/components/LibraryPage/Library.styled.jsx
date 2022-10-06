@@ -28,7 +28,7 @@ export const TrainingButton = styled.button`
   margin-top: 40px;
   margin-bottom: 60px;
   display: block;
-  d &:hover,
+  &:hover,
   &:focus {
     cursor: pointer;
     background-color: #fd781f;

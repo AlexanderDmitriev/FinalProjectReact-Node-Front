@@ -6,7 +6,6 @@ import {
   Box,
   FormBox,
   FormInput,
-  NavGoogle,
   GoogleButton,
   TextGoogleButton,
   Input,
@@ -42,9 +41,14 @@ export default function Register() {
   const validationSchema = yup.object().shape({
     name: yup
       .string()
+      .min(3, 'Мінімум 3 символа')
       .max(15, 'Максимум 15 символів')
       .required("Поле обов'язкове"),
-    email: yup.string().email('Невірна адреса').required("Поле обов'язкове"),
+    email: yup
+      .string()
+      .min(2, 'Мінімум 2 символа')
+      .email('Невірна адреса')
+      .required("Поле обов'язкове"),
     password: yup
       .string()
       .min(5, 'Мінімум 5 символів')
@@ -94,9 +98,9 @@ export default function Register() {
                 <FormInput>
                   <Input>
                     <GoogleButton type="button">
-                      <NavGoogle to="https://book-reader-43-back.herokuapp.com/api/users/google">
+                      <a href="http://localhost:3002/api/users/google">
                         <TextGoogleButton>Google</TextGoogleButton>
-                      </NavGoogle>
+                      </a>
                     </GoogleButton>
                     <InputField>
                       <Label htmlFor="name">

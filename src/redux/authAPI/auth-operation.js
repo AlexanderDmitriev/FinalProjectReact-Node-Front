@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import toast from 'react-hot-toast'
+import toast from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://book-reader-43-back.herokuapp.com/api';
 const token = {
@@ -50,7 +50,9 @@ const logOut = createAsyncThunk(
       token.unset();
       toast.success(`Ви успішно вийшли з профілю`);
     } catch (error) {
-      toast.error(`На жаль, вихід з профілю не був успішним. Спробуйте ще раз пізніше.`);
+      toast.error(
+        `На жаль, вихід з профілю не був успішним. Спробуйте ще раз пізніше.`
+      );
       return rejectWithValue(error.message);
     }
   }
@@ -74,7 +76,6 @@ const fetchCurrentUser = createAsyncThunk(
       toast.error(`На жаль, не вдалося знайти такого користувача.`);
       return thunkAPI.rejectWithValue(error.message);
     }
-  
   }
 );
 
