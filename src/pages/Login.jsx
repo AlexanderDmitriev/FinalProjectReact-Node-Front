@@ -21,6 +21,7 @@ import {
   Border,
   Error,
   Star,
+  NavGoogle,
 } from '../components/Login.styled';
 
 import { useDispatch } from 'react-redux';
@@ -73,9 +74,9 @@ export default function Login() {
               <Form>
                 <FormInput>
                   <GoogleButton type="button">
-                    <a href="http://localhost:3002/api/users/google">
+                    <NavGoogle to="https://book-reader-43-back.herokuapp.com/api/users/google">
                       <TextGoogleButton>Google</TextGoogleButton>
-                    </a>
+                      </NavGoogle>
                   </GoogleButton>
                   <Input>
                     <InputEmail>
