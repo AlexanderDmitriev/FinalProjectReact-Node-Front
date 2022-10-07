@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import { resultsApi } from 'redux/results/resultsSlice';
 
 const MetaTwoPoints = () => {
-  const [booksTotal, setBooksTotal] = useState('00');
+  const [booksTotal, setBooksTotal] = useState('0');
 
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
 
@@ -42,13 +42,18 @@ const MetaTwoPoints = () => {
         <Flex>
           <div>
             <MetaBlock>
-              <MetaNumber>{booksTotal}</MetaNumber>
+              {booksTotal &&
+              useQueryStateResult.data &&
+              useQueryStateResult.data.status === 'in progress' ? (
+                <MetaNumber>{booksTotal}</MetaNumber>
+              ) : (
+                <MetaNumber>0</MetaNumber>
+              )}
             </MetaBlock>
             <MetaBlockText>
               <MetaText>Кількість книжок</MetaText>
             </MetaBlockText>
           </div>
-
           <div>
             <MetaBlock>
               {useQueryStateResult.data &&
@@ -57,7 +62,7 @@ const MetaTwoPoints = () => {
                   {trainingDays(useQueryStateResult.data.training.end)}
                 </MetaNumber>
               ) : (
-                <MetaNumber>00</MetaNumber>
+                <MetaNumber>0</MetaNumber>
               )}
             </MetaBlock>
             <MetaBlockText>

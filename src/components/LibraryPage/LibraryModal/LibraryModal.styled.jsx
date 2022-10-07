@@ -4,11 +4,12 @@ import { theme } from '../../../helpers/theme';
 export const Wrapper = styled.div`
   position: absolute;
   display: flex;
-  margin-top: 40px;
-  top: 157px;
-  left: 138px;
+
+  margin-top: 100px;
+  margin-left: 20px;
 
   @media screen and (min-width: 768px) {
+    margin: 0 auto;
     position: static;
     margin-top: 40px;
   }

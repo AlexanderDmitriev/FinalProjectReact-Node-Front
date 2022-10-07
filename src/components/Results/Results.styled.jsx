@@ -2,22 +2,23 @@ import styled from 'styled-components';
 import { theme } from '../../helpers/theme';
 
 export const Section = styled.section`
-@media screen and (min-width: 1279px) {
-  position: absolute;
-  bottom: 41px;
-  right: 16px;
-  }
-  
   width: 280px;
   padding: 20px;
   background-color: ${theme.colors.backColor};
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   text-align: center;
   color: ${theme.colors.titleColor};
+  margin: 0 auto;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 704px;
     padding: 28px 96px 32px;
+  }
+
+  @media screen and (min-width: 1279px) {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
   }
 `;
 

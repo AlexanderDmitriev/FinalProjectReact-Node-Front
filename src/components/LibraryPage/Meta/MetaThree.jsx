@@ -15,8 +15,8 @@ import { booksApi } from 'redux/booksApi/booksSlice';
 import { resultsApi } from 'redux/results/resultsSlice';
 
 const MetaThreePoints = () => {
-  const [booksRemain, setBooksRemain] = useState('00');
-  const [booksTotal, setBooksTotal] = useState('00');
+  const [booksRemain, setBooksRemain] = useState('0');
+  const [booksTotal, setBooksTotal] = useState('0');
 
   const useQueryStateBooks = booksApi.endpoints.getBooks.useQueryState();
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
@@ -60,7 +60,13 @@ const MetaThreePoints = () => {
         <Flex>
           <div>
             <MetaBlock>
-              <MetaNumber>{booksTotal}</MetaNumber>
+              {booksTotal &&
+              useQueryStateResult.data &&
+              useQueryStateResult.data.status === 'in progress' ? (
+                <MetaNumber>{booksTotal}</MetaNumber>
+              ) : (
+                <MetaNumber>0</MetaNumber>
+              )}
             </MetaBlock>
             <MetaBlockText>
               <MetaText>Кількість книжок</MetaText>
@@ -74,7 +80,7 @@ const MetaThreePoints = () => {
                   {trainingDays(useQueryStateResult.data.training.end)}
                 </MetaNumber>
               ) : (
-                <MetaNumber>00</MetaNumber>
+                <MetaNumber>0</MetaNumber>
               )}
             </MetaBlock>
             <MetaBlockText>
