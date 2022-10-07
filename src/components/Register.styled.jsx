@@ -22,7 +22,7 @@ export const Box = styled.div`
 `;
 
 export const FormBox = styled.div`
-  width: 320px;
+  /* width: 320px; */
   height: 648px;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@ export const FormBox = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    width: 768px;
+    /* width: 768px; */
     height: 797px;
     background-image: linear-gradient(
         rgba(9, 30, 63, 0.8),
@@ -65,7 +65,7 @@ export const FormBox = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    width: 549px;
+   /*  width: 549px; */
     height: 850px;
     background-image: linear-gradient(
         rgba(9, 30, 63, 0.8),
