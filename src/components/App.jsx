@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
-import Container from '../helpers/Container';
 import { Spinner } from './Spinner';
 import authOperations from '../redux/authAPI/auth-operation';
 import authSelectors from '../redux/authAPI/auth-selectors';
@@ -32,7 +31,6 @@ export const App = () => {
     <>
       <Suspense fallback={<Spinner />}>
       <Header />
-        <Container>
           {isFetchingCurrentUser ? (
             <Spinner />
           ) : (
@@ -90,7 +88,6 @@ export const App = () => {
               </Routes>
             </>
           )}
-        </Container>
       </Suspense>
       <Toaster position="top-right" reverseOrder={false} autoClose={3000} />
     </>
