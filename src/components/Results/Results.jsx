@@ -34,6 +34,8 @@ import { resultsApi } from 'redux/results/resultsSlice';
 export default function Results() {
   const [date, setDate] = useState(null);
   const [pages, setPages] = useState('');
+  let today = new Date();
+  let yesterday = new Date();
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
   const [createResult] = useCreateResultMutation();
 
@@ -78,7 +80,6 @@ export default function Results() {
     };
 
     createResult(result);
-    console.log(result);
     reset();
   };
 
@@ -127,6 +128,7 @@ export default function Results() {
                 type="date"
                 name="date"
                 required
+                minDate={yesterday.setDate(today.getDate() - 1)}
                 maxDate={new Date()}
               />
             </Label>
@@ -138,6 +140,9 @@ export default function Results() {
                 onChange={e => setPages(e.target.value)}
                 required
                 min={1}
+                max={999}
+                pattern={1 - 9}
+                type="number"
               />
             </Label>
           </DateWrapper>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TrainingPage } from '../components/TrainingPage';
-
+import { resultsApi } from 'redux/results/resultsSlice';
 import Results from 'components/Results/Results';
 import AddTraining from 'components/Training/AddTraining/AddTraining';
 import Chart from 'components/Chart/Chart';
@@ -10,7 +10,7 @@ import Timers from 'components/Timers/Timers';
 export default function Training() {
   const { data, isLoading } = useGetBooksQuery();
   const [finishDate, setFinishDate] = useState(Date.now());
-
+  const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
   const handleFinishDate = date => {
     setFinishDate(date);
   };
@@ -20,7 +20,8 @@ export default function Training() {
       <Timers finishDate={finishDate} />
       <AddTraining getFinishDate={handleFinishDate} />
       {!isLoading && <Chart books={data} />}
-      <Results />
+      {useQueryStateResult.data &&
+        useQueryStateResult.data.status === 'in progress' && <Results />}
     </TrainingPage>
   );
 }

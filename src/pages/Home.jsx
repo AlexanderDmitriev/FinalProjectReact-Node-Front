@@ -1,8 +1,7 @@
-import { useMediaQuery } from 'react-responsive';
 import authSelectors from 'redux/authAPI/auth-selectors';
 import { useSelector } from 'react-redux';
 import { Nav } from 'components/Home.styled';
-
+import { useMediaQuery } from 'react-responsive';
 import FirstPage from 'components/FirstPage/FirstPage';
 import Login from '../pages/Login';
 import Library from './Library';
@@ -12,6 +11,7 @@ export default function Home() {
   const isTablet = useMediaQuery({
     query: '(min-width: 768px)',
   });
+  console.log(isTablet);
 
   return (
     <>

@@ -31,7 +31,7 @@ const Header = () => {
   const userLogo = user ? user.slice(0, 1).toUpperCase() : '';
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
