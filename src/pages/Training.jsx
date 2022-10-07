@@ -11,9 +11,9 @@ export default function Training() {
   const { data, isLoading } = useGetBooksQuery();
   const [finishDate, setFinishDate] = useState(Date.now());
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
-  const [start, setStart] = useState('');
-  const [finish, setFinish] = useState('');
-  const [books, setBooks] = useState([]);
+  const [/*start,*/ setStart] = useState('');
+  const [/*finish,*/ setFinish] = useState('');
+  const [/*books,*/ setBooks] = useState([]);
   const handleFinishDate = date => {
     setFinishDate(date);
   };
