@@ -14,3 +14,6 @@ Front-End repository
 7. Шлифуем проект.
 
 "homepage": "https://AlexanderDmitriev.github.io/FinalProjectReact-Node-Front/",
+
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
