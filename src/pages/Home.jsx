@@ -11,7 +11,6 @@ export default function Home() {
   const isTablet = useMediaQuery({
     query: '(min-width: 768px)',
   });
-  console.log(isTablet);
 
   return (
     <>

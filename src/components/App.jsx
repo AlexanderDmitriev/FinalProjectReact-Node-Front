@@ -9,7 +9,6 @@ import authSelectors from '../redux/authAPI/auth-selectors';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import GoogleLogin from '../components/GoogleLogin/GoogleLogin';
-
 const Header = lazy(() => import('./Header/Header'));
 const Home = lazy(() => import('../pages/Home'));
 const Register = lazy(() => import('../pages/Register'));
@@ -32,17 +31,18 @@ export const App = () => {
   return (
     <>
       <Suspense fallback={<Spinner />}>
+      <Header />
         <Container>
           {isFetchingCurrentUser ? (
             <Spinner />
           ) : (
             <>
-              <Header />
+              
               <Routes>
                 <Route
                   path="/"
                   element={
-                    <PublicRoute path="/">
+                    <PublicRoute>
                       <Home/>
                     </PublicRoute>
                   }
