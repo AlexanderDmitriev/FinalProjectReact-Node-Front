@@ -20,21 +20,13 @@ import BooksList from 'components/Training/BooksList/BooksList';
 import BookListInTraining from '../BookkListInTraining/BookkListInTraining';
 import MetaThreePoints from '../../LibraryPage/Meta/MetaThree';
 import toast from 'react-hot-toast';
+import { resultsApi } from 'redux/results/resultsSlice';
 
-export default function AddTraining({ getFinishDate }) {
+export default function AddTraining({ getFinishDate, setDataStart, setDataFinish, setDataBooks }) {
   const location = useLocation();
   const path = location?.state?.from ?? '/';
   const { data, isLoading } = useGetBooksQuery();
-  const [inProgressBooks, setInProgressBooks] = useState([]);
-  /* useEffect(() => {
-    if (!isLoading) {
-      const books = data.findIndex(book => book.status === 'in progress');
-      if (books === -1) {
-        return;
-      }
-      setInProgressBooks(books);
-    }
-  }, [data, isLoading]); */
+  const [inProgressBooks, setInProgressBooks] = useState(true);
 
   const [updateTraining] = useUpdateTrainingMutation();
 
@@ -43,17 +35,30 @@ export default function AddTraining({ getFinishDate }) {
   const [booksListArr, setBooksListArr] = useState([]);
   const [selectedBookArr, setSelectedBookArr] = useState([]);
   const [selectedBook, setSelectedBook] = useState('');
-  const [disabled, setDisabled] = useState(false);
+  // const [disabled, setDisabled] = useState(false);
+  const [booksSelect, setBooksSelect] = useState([]);
+  const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
 
   useEffect(() => {
-    if (!isLoading) {
-      const books = data.findIndex(book => book.status === 'in progress');
-      if (books === -1) {
-        return setDisabled(false);
+    if(useQueryStateResult.data){
+      if (useQueryStateResult.data.status === 'in progress') {
+        return setInProgressBooks(false);
       }
-      setInProgressBooks(books);
-    }
-  }, [data, isLoading]);
+      setInProgressBooks(true)
+    } 
+  }, [data, useQueryStateResult.data])
+  
+  // useEffect(() => {
+  //   if (!isLoading) {
+  //     const books = data.findIndex(book => book.status === 'in progress');
+  //     if (books === -1) {
+  //       // setDisabled(false)
+  //       return
+  //     }
+  //     console.log(books);
+  //     setBooksSelect(books);
+  //   }
+  // }, [data, isLoading]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -62,12 +67,28 @@ export default function AddTraining({ getFinishDate }) {
     }
   }, [data, isLoading, selectedBookArr]);
 
+   useEffect(() => {
+    if (!isLoading) {
+      const booksSelect = data.filter(book => book.status === 'plan');
+      setBooksSelect(booksSelect);
+    }
+  }, [data, isLoading]);
+
+  //  useEffect(() => {
+  //   if (!isLoading) {
+  //     const inPlan = data.filter(i => i.status === 'plan')
+  //     const toSelect = inPlan.filter(({ _id }) => !selectedBookArr.includes(_id))
+  //     setBooksSelect(toSelect);
+  //   }
+  // }, [data, isLoading, selectedBookArr]);
+
   const handleSelectChange = event => {
     setSelectedBook(event.target.value);
   };
 
   const handleChangeStartTime = e => {
-    setStart(e.target.value);
+    setStart(e.target.value)
+    setDataStart(e.target.value)
   };
 
   const handleChangeFinishTime = e => {
@@ -80,14 +101,18 @@ export default function AddTraining({ getFinishDate }) {
     }
     setFinish(e.target.value);
     getFinishDate(e.target.value);
+    setDataFinish(e.target.value)
   };
 
   const handleAddBook = () => {
     const booksArrInfo = data.filter(({ _id }) =>
       selectedBookArr.includes(_id)
     );
+
     setBooksListArr(booksArrInfo);
     setSelectedBookArr([selectedBook, ...selectedBookArr]);
+
+    setDataBooks([selectedBook, ...selectedBookArr])
   };
 
   const onDeleteBtnClick = e => {
@@ -96,6 +121,7 @@ export default function AddTraining({ getFinishDate }) {
     setSelectedBookArr(filteredBooks);
     const bookListSelected = booksListArr.filter(i => i._id !== bookId);
     setBooksListArr(bookListSelected);
+    setDataBooks(filteredBooks)
   };
 
   const addTrainingClick = async e => {
@@ -108,20 +134,26 @@ export default function AddTraining({ getFinishDate }) {
         end: finish,
         book: selectedBookArr,
       };
-      await updateTraining(value);
-      toast.success(`Тренування додано.`);
-      setDisabled(true);
+      await updateTraining(value)
+      // setDisabled(true)
+      setBooksListArr([])
+      const inPlan = data.filter(i => i.status === 'plan')
+      const toSelect = inPlan.filter(({ _id }) => !selectedBookArr.includes(_id))
+      setBooksSelect(toSelect);
+      setSelectedBook("")
+      setSelectedBookArr([])
+      setStart('')
+      setFinish('')
     } catch (err) {
       toast.error('На жаль, додавання тренування не було успішним');
-    }
+    } 
   };
-
   return (
     <>
       <MetaThreePoints />
 
       <Section>
-        {inProgressBooks.length === 0 ? (
+        {inProgressBooks ? (
           <>
             <TrainingSection>
               <SvgContainer>
@@ -160,7 +192,7 @@ export default function AddTraining({ getFinishDate }) {
                     <Option disabled={true} value="">
                       Обрати книги з бібліотеки
                     </Option>
-                    {data.map(book => {
+                    {booksSelect.map(book => {
                       return (
                         <Option value={book._id} key={book._id}>
                           {book.title}
@@ -179,7 +211,7 @@ export default function AddTraining({ getFinishDate }) {
               books={booksListArr}
               onDeleteBtnClick={onDeleteBtnClick}
               addTrainingClick={addTrainingClick}
-              disabled={disabled}
+              // disabled={disabled}
             />
           </>
         ) : (
