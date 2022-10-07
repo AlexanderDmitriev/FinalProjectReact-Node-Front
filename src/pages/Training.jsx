@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TrainingPage } from '../components/TrainingPage';
 import { resultsApi } from 'redux/results/resultsSlice';
 import Results from 'components/Results/Results';
