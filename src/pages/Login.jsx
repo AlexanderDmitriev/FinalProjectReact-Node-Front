@@ -43,7 +43,7 @@ export default function Login() {
   });
 
   return (
-    <>
+    <div>
       <Box>
         <FormBox>
           <Formik
@@ -140,6 +140,6 @@ export default function Login() {
           <Author>Бекон Ф.</Author>
         </TextBox>
       </Box>
-    </>
+    </div>
   );
 }
