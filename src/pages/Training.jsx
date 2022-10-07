@@ -9,16 +9,16 @@ import Timers from 'components/Timers/Timers';
 
 export default function Training() {
   const { data, isLoading } = useGetBooksQuery();
-  const [finishDate, setFinishDate] = useState(Date.now());
+  // const [finishDate, setFinishDate] = useState(Date.now());
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
-  const handleFinishDate = date => {
-    setFinishDate(date);
-  };
-
+  // const handleFinishDate = date => {
+  //   setFinishDate(date);
+  // };
   return (
     <TrainingPage>
-      <Timers finishDate={finishDate} />
-      <AddTraining getFinishDate={handleFinishDate} />
+      {useQueryStateResult.data &&
+        useQueryStateResult.data.status === 'in progress' && <Timers />}
+      <AddTraining /*getFinishDate={handleFinishDate}*/ />
       {!isLoading && <Chart books={data} />}
       {useQueryStateResult.data &&
         useQueryStateResult.data.status === 'in progress' && <Results />}

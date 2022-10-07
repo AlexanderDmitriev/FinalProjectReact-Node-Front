@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Container, TimerTitle, TimerList, TimerItem } from './Timers.styled';
 
 import TimerTable from './TimerTable';
+import { resultsApi } from 'redux/results/resultsSlice';
 
 export default function Timers({finishDate}) {
   const [timerDays, setTimerDays] = useState('00');
@@ -18,9 +19,21 @@ export default function Timers({finishDate}) {
   let interval = useRef();
   let secInterval = useRef();
 
+  let endTrainingDate = useRef();
+
+  const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
+  
+
   const newYearDate = new Date('Jan 01 2023 00:00:00').getTime();
-  const currentTime = Date.now();
-  const endTrainingDate = new Date(finishDate);
+  const currentTime = Date.now(); 
+
+useEffect(() => {
+  endTrainingDate = Date.now();
+  if(useQueryStateResult.data) {
+    endTrainingDate = new Date(useQueryStateResult.data.training.end).getTime();
+  }
+})
+
   function padWithZeros(number, minlength) {
     const numberString = number.toString();
     if (numberString.length >= minlength) return numberString;

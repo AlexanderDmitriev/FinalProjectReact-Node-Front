@@ -79,7 +79,7 @@ export default function AddTraining({ getFinishDate }) {
       );
     }
     setFinish(e.target.value);
-    getFinishDate(e.target.value);
+    // getFinishDate(e.target.value);
   };
 
   const handleAddBook = () => {
