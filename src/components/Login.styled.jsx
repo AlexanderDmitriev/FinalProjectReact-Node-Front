@@ -22,7 +22,7 @@ export const Box = styled.div`
 `;
 
 export const FormBox = styled.div`
-  width: 320px;
+  /* width: 320px; */
   height: 458px;
   background-image: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
     url(${mobile});
@@ -38,7 +38,7 @@ export const FormBox = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    width: 768px;
+    /* width: 768px; */
     height: 619px;
     background-image: linear-gradient(
         rgba(9, 30, 63, 0.8),
