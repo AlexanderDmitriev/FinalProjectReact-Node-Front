@@ -200,7 +200,7 @@ export default function Results() {
                 </ButtonBox>
               </SectionM>
             )}
-            {isModalOpen && (
+            {(isModalOpen&useQueryStateResult.data.status === 'done') && (
               <SectionM>
                 <IconLike width="50" height="45">
                   <use href={sprite + '#icon-vector'}></use>

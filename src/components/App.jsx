@@ -70,7 +70,7 @@ export const App = () => {
                 <Route
                   path="/library"
                   element={
-                    <PrivateRoute path="/library" redirectTo="/">
+                    <PrivateRoute path="/library" redirectTo="/login">
                       <Library />
                     </PrivateRoute>
                   }
