@@ -28,6 +28,7 @@ export default function Timers({finishDate}) {
   const currentTime = Date.now(); 
 
 useEffect(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   endTrainingDate = Date.now();
   if(useQueryStateResult.data) {
     endTrainingDate = new Date(useQueryStateResult.data.training.end).getTime();
