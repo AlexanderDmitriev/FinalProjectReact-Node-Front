@@ -17,7 +17,7 @@ export default function Home() {
     <>
       {isTablet ? <Login /> : <FirstPage />}
 
-      {isLoggedIn ? (
+      {/* {isLoggedIn ? (
         <Nav to="/library">
           <Library variant="contained" />
         </Nav>
@@ -25,7 +25,7 @@ export default function Home() {
         <Nav to="/login">
           <Login variant="contained" />
         </Nav>
-      )}
+      )} */}
     </>
   );
 }

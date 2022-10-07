@@ -28,7 +28,6 @@ export const App = () => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
-  
   return (
     <>
       <Suspense fallback={<Spinner />}>
@@ -43,7 +42,7 @@ export const App = () => {
                   path="/"
                   element={
                     <PublicRoute path="/">
-                      <Home/>
+                      <Home />
                     </PublicRoute>
                   }
                 ></Route>
@@ -64,7 +63,7 @@ export const App = () => {
                 <Route
                   path="/login"
                   element={
-                    <PublicRoute path="/login" redirectTo="/library" restricted>
+                    <PublicRoute redirectTo="/library" restricted>
                       <Login />
                     </PublicRoute>
                   }
@@ -73,7 +72,7 @@ export const App = () => {
                 <Route
                   path="/library"
                   element={
-                    <PrivateRoute path="/library" redirectTo="/login">
+                    <PrivateRoute path="/library" redirectTo="/">
                       <Library />
                     </PrivateRoute>
                   }
