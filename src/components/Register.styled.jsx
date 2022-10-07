@@ -120,6 +120,8 @@ export const GoogleButton = styled.button`
     margin-top: 40px;
   }
 
+  
+
   width: 150px;
   height: 40px;
   left: 310px;
@@ -132,6 +134,9 @@ export const GoogleButton = styled.button`
   border: none;
 `;
 
+export const NavGoogle = styled(NavLink)`
+  text-decoration: none;
+`;
 export const TextGoogleButton = styled.p`
   font-style: normal;
   font-weight: 700;

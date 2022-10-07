@@ -81,6 +81,9 @@ export const FormBox = styled.div`
   background-size: cover;
 `;
 
+export const NavGoogle = styled(NavLink)`
+  text-decoration: none;
+`;
 export const FormInput = styled.div`
   height: 450px;
 
