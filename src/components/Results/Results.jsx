@@ -24,7 +24,7 @@ import {
   ButtonM,
   BackButton,
   Icon,
-  IconLike
+  IconLike,
 } from './Modal.styled';
 import Modal from 'components/Modal/Modal';
 import sprite from '../../images/icons.svg';
@@ -98,8 +98,27 @@ export default function Results() {
       useQueryStateResult.data &&
       useQueryStateResult.data.status === 'done'
     ) {
-      toast.error('Немає активних тренувань');
       setModalOpen(true);
+    }
+  };
+
+  const onChangePages = e => {
+    setPages(e.target.value);
+    if (
+      useQueryStateResult.data &&
+      useQueryStateResult.data.status === 'done'
+    ) {
+      toast.error('Немає активних тренувань');
+    }
+  };
+
+  const onChangeDate = date => {
+    setDate(date);
+    if (
+      useQueryStateResult.data &&
+      useQueryStateResult.data.status === 'done'
+    ) {
+      toast.error('Немає активних тренувань');
     }
   };
   // const dispatch = useDispatch();
@@ -123,7 +142,7 @@ export default function Results() {
                 timeFormat="HH:mm"
                 timeIntervals={15}
                 selected={date}
-                onChange={date => setDate(date)}
+                onChange={onChangeDate}
                 dateFormat="dd.MM.yyyy HH:mm"
                 type="date"
                 name="date"
@@ -137,7 +156,7 @@ export default function Results() {
               <Input
                 name="pages"
                 value={pages}
-                onChange={e => setPages(e.target.value)}
+                onChange={onChangePages}
                 required
                 min={1}
                 max={999}
@@ -187,9 +206,7 @@ export default function Results() {
                   <use href={sprite + '#icon-vector'}></use>
                 </IconLike>
                 <TextBox>
-                  <Text>
-                  Вітаю! Ще одна книга прочитана
-                  </Text>
+                  <Text>Вітаю! Ще одна книга прочитана</Text>
                 </TextBox>
                 <ButtonBox>
                   <ButtonM type="button" onClick={handleExit}>

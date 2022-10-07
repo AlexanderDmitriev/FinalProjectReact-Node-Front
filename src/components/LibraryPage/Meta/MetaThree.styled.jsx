@@ -14,9 +14,9 @@ export const MetaHeader = styled.div`
     padding: 18px 27px 18px 28px;
   }
   @media screen and (min-width: 1280px) {
-    width: 280px;
-    margin-top: -80px;
-    margin-left: -18px;
+    width: 288px;
+    margin-top: -82px;
+    margin-left: 0px;
     margin-bottom: 60px;
     padding: 18px 28px 18px 29px;
   }
@@ -53,36 +53,36 @@ export const MetaBody = styled.section`
     margin-left: 32px;
   }
   @media screen and (min-width: 1280px) {
-    width: 288px;
-    padding: 80px 25px 0 18px;
+    max-width: 288px;
+    padding: 54px 0px 0 0px;
     display: block;
     position: absolute;
     top: 40px;
     right: 16px;
     padding-right: 0;
-    max-width: 280px;
   }
 `;
 
 export const Flex = styled.div`
   display: flex;
-  justify-content: space-between;
+  column-gap: 12px;
+  justify-content: center;
+
+  @media screen and (min-width: 1280px) {
+    column-gap: 20px;
 `;
 
 export const MetaBlock = styled.div`
   margin-top: 32px;
-  &:not(:last-child) {
-    margin-right: 12px;
-  }
 
   @media screen and (min-width: 768px) {
-    margin-top: 20px;
+    margin-top: 0;
   }
-  @media screen and (min-width: 1280px) {
-    &:not(:last-child) {
-      margin-right: 20;
-    }
-  }
+  // @media screen and (min-width: 1280px) {
+  //   &:not(:last-child) {
+  //     margin-right: 20;
+  //   }
+  // }
 `;
 
 export const MetaBlockNumber = styled.div`
@@ -116,6 +116,10 @@ export const MetaNumber = styled.div`
   font-size: 35px;
   line-height: 38px;
   color: #091e3f;
+  background: #f5f7fa;
+  padding: 14px 23px;
+  box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+
   @media screen and (min-width: 768px) {
     font-size: 40px;
   }
@@ -129,6 +133,10 @@ export const MetaNumberColor = styled.div`
   font-size: 35px;
   line-height: 38px;
   color: #ff6b08;
+  background: #f5f7fa;
+  padding: 14px 23px;
+  box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+
   @media screen and (min-width: 768px) {
     font-size: 40px;
   }
@@ -152,7 +160,7 @@ export const MetaBlockText = styled.div`
   @media screen and (min-width: 1280px) {
     margin-top: 14px;
     width: 66px;
-    margin-bottom: 79px;
+    margin-bottom: 60px;
   }
 `;
 
