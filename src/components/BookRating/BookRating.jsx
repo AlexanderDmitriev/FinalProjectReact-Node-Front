@@ -33,7 +33,7 @@ export default function BookRating({ onClose, bookId }) {
   // console.log(starsRating);
   // console.log(text);
   // console.log(ing);
-  let y = ing;
+  /* let y = ing; */
   // console.log(y);
   const handleSaveComment = async () => {
     try {
