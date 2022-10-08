@@ -86,24 +86,21 @@ export default function AddTraining({
 
   const handleChangeStartTime = e => {
     const today = new Date();
-    const chosen = new Date(e.target.value)
+    const chosen = new Date(e.target.value);
     const finishDate = new Date(finish);
     if (today < chosen) {
-      setStart('')
-      toast.error('Краще почати тренування сьогодні :)')
-      return
+      setStart('');
+      toast.error('Краще почати тренування сьогодні :)');
+      return;
     }
     if (today > finishDate) {
-    toast.error(
-      'Дата закінчення тренування повинна бути пізніше за початок'
-      );
-    setFinish('')
-    return
+      toast.error('Дата закінчення тренування повинна бути пізніше за початок');
+      setFinish('');
+      return;
     }
     setStart(e.target.value);
     setDataStart(e.target.value);
   };
-
   const handleChangeFinishTime = e => {
     const chosenDate = new Date(e.target.value);
     const startDate = new Date(start);
@@ -114,13 +111,13 @@ export default function AddTraining({
     }
     setFinish(e.target.value);
     /* getFinishDate(e.target.value);*/
-    // setDataFinish(e.target.value) 
+    // setDataFinish(e.target.value)
   };
 
   const handleAddBook = () => {
-    // if (selectedBook.length === 0) {
-    //   return;
-    // }
+    if (selectedBook.length === 0) {
+      return;
+    }
     const booksArrInfo = data.filter(({ _id }) =>
       selectedBookArr.includes(_id)
     );
@@ -128,6 +125,7 @@ export default function AddTraining({
     setSelectedBookArr([selectedBook, ...selectedBookArr]);
 
     setDataBooks([selectedBook, ...selectedBookArr]);
+    setSelectedBook('');
   };
 
   const onDeleteBtnClick = e => {
