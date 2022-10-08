@@ -10,6 +10,10 @@ import {
 } from './MetaTwo.styled';
 
 const MetaTwoPoints = ({ start, finish, books }) => {
+  const uniqueBooks = [...new Set(books)];
+
+  console.log(uniqueBooks);
+
   const trainingDays = (start, finish) => {
     const startDay = new Date(start);
     const finishDay = new Date(finish);
@@ -27,7 +31,7 @@ const MetaTwoPoints = ({ start, finish, books }) => {
         <Flex>
           <div>
             <MetaBlockNumber>
-              <MetaNumber>{books.length}</MetaNumber>
+              <MetaNumber>{uniqueBooks.length}</MetaNumber>
             </MetaBlockNumber>
             <MetaBlockText>
               <MetaText>Кількість книжок</MetaText>
