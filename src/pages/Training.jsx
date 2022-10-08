@@ -11,14 +11,31 @@ export default function Training() {
   const { data, isLoading } = useGetBooksQuery();
   const [finishDate, setFinishDate] = useState(Date.now());
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
+  const [/*start,*/ setStart] = useState('');
+  const [/*finish,*/ setFinish] = useState('');
+  const [/*books,*/ setBooks] = useState([]);
   const handleFinishDate = date => {
     setFinishDate(date);
   };
 
+  const setDataStart = (start) => {
+    setStart(start)
+  }
+   const setDataFinish = (finish) => {
+    setFinish(finish)
+  }
+   const setDataBooks = (books) => {
+    setBooks(books)
+  }
+
   return (
     <TrainingPage>
       <Timers finishDate={finishDate} />
-      <AddTraining getFinishDate={handleFinishDate} />
+      <AddTraining
+        getFinishDate={handleFinishDate}
+        setDataStart={setDataStart}
+        setDataFinish={setDataFinish}
+        setDataBooks={setDataBooks} />
       {!isLoading && <Chart books={data} />}
       {useQueryStateResult.data &&
         useQueryStateResult.data.status === 'in progress' && <Results />}
