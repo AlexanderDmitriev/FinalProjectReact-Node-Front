@@ -3,13 +3,13 @@ import {theme} from '../../../helpers/theme';
 
 export const Section = styled.div`
     background: #F6F7FB;
+    margin: 0 auto;
 `
 
 export const MyGoalsSection = styled.div`
     display: flex;
     flex-direction: column;
     padding: 24px 20px 0 20px;
-   
 
     @media screen and (min-width: 1280px) {
         max-width: 928px;
@@ -44,7 +44,7 @@ export const MyGoalsContainer = styled.div`
     flex-direction: row;
     padding: 32px;
     justify-content: space-between;
-    
+
 
     // @media screen and (min-width: 1280px) {
     //     max-width: 928px;

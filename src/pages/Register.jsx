@@ -25,7 +25,6 @@ import {
   ListItem,
   Error,
   Star,
-  NavGoogle,
 } from '../components/Register.styled';
 
 import { useDispatch } from 'react-redux';
@@ -99,9 +98,10 @@ export default function Register() {
                 <FormInput>
                   <Input>
                     <GoogleButton type="button">
-                    <NavGoogle to="https://book-reader-43-back.herokuapp.com/api/users/google">
+                      <a href="https://book-reader-43-back.herokuapp.com/api/users/google">
                         <TextGoogleButton>Google</TextGoogleButton>
-                      </NavGoogle>
+                        {/* </NavGoogle> */}
+                      </a>
                     </GoogleButton>
                     <InputField>
                       <Label htmlFor="name">

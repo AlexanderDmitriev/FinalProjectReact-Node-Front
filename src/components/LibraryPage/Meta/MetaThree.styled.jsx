@@ -43,14 +43,14 @@ export const MetaBody = styled.section`
   padding: 32px 24px 0 29px;
   background: #ffffff;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-  margin-left: 20px;
+  margin: 0 auto;
   @media screen and (min-width: 768px) {
     width: 704px;
     padding: 0px 43px 0 42px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 32px;
+    margin: 0 auto;
   }
   @media screen and (min-width: 1280px) {
     max-width: 288px;
@@ -70,6 +70,7 @@ export const Flex = styled.div`
 
   @media screen and (min-width: 1280px) {
     column-gap: 20px;
+  }
 `;
 
 export const MetaBlock = styled.div`
