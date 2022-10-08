@@ -13,7 +13,7 @@ import {
 } from './MetaThree.styled';
 import { booksApi } from 'redux/booksApi/booksSlice';
 import { resultsApi } from 'redux/results/resultsSlice';
-import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
+/* import { useGetBooksQuery } from 'redux/booksApi/booksSlice' */;
 // import {
 //   useUpdateTrainingMutation,
 //   useFetchResultsQuery,
@@ -26,7 +26,7 @@ const MetaThreePoints = () => {
   const useQueryStateBooks = booksApi.endpoints.getBooks.useQueryState();
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
 
-  const { data, isLoading } = resultsApi.useFetchResultsQuery();
+  const { data, /* isLoading */ } = resultsApi.useFetchResultsQuery();
 
   console.log(data);
 
