@@ -5,29 +5,18 @@ import {
   MetaNumber,
   MetaText,
   MetaBlockText,
+  MetaBlockNumber,
   Flex,
-  MetaBlock,
 } from './MetaTwo.styled';
-import { useEffect, useState } from 'react';
-import { resultsApi } from 'redux/results/resultsSlice';
 
-const MetaTwoPoints = () => {
-  const [booksTotal, setBooksTotal] = useState('0');
+const MetaTwoPoints = ({ start, finish, books }) => {
+  const uniqueBooks = [...new Set(books)];
 
-  const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
+  console.log(uniqueBooks);
 
-  useEffect(() => {
-    if (
-      useQueryStateResult.data &&
-      useQueryStateResult.data.status === 'in progress'
-    ) {
-      setBooksTotal(useQueryStateResult.data.training.active.length);
-    }
-  }, [useQueryStateResult.data]);
-
-  const trainingDays = date => {
-    const startDay = new Date();
-    const finishDay = new Date(date);
+  const trainingDays = (start, finish) => {
+    const startDay = new Date(start);
+    const finishDay = new Date(finish);
     const timeDiff = Math.abs(finishDay.getTime() - startDay.getTime());
     const trainingDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     return trainingDays;
@@ -41,30 +30,21 @@ const MetaTwoPoints = () => {
         </MetaHeader>
         <Flex>
           <div>
-            <MetaBlock>
-              {booksTotal &&
-              useQueryStateResult.data &&
-              useQueryStateResult.data.status === 'in progress' ? (
-                <MetaNumber>{booksTotal}</MetaNumber>
-              ) : (
-                <MetaNumber>0</MetaNumber>
-              )}
-            </MetaBlock>
+            <MetaBlockNumber>
+              <MetaNumber>{uniqueBooks.length}</MetaNumber>
+            </MetaBlockNumber>
             <MetaBlockText>
               <MetaText>Кількість книжок</MetaText>
             </MetaBlockText>
           </div>
           <div>
-            <MetaBlock>
-              {useQueryStateResult.data &&
-              useQueryStateResult.data.status === 'in progress' ? (
-                <MetaNumber>
-                  {trainingDays(useQueryStateResult.data.training.end)}
-                </MetaNumber>
+            <MetaBlockNumber>
+              {start && finish ? (
+                <MetaNumber>{trainingDays(start, finish)}</MetaNumber>
               ) : (
                 <MetaNumber>0</MetaNumber>
               )}
-            </MetaBlock>
+            </MetaBlockNumber>
             <MetaBlockText>
               <MetaText>Кількість днів</MetaText>
             </MetaBlockText>
