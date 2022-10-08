@@ -66,11 +66,23 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
   };
 
   const handleChangeStartTime = e => {
-    setStart(e.target.value)
-    // setDataStart(e.target.value)
     const today = new Date();
     const chosen = new Date(e.target.value)
-    console.log(today < chosen);
+    const finishDate = new Date(finish);
+    if (today < chosen) {
+      setStart('')
+      toast.error('Краще почати тренування сьогодні :)')
+      return
+    }
+    if (today > finishDate) {
+    toast.error(
+      'Дата закінчення тренування повинна бути пізніше за початок'
+      );
+    setFinish('')
+    return
+    }
+    setStart(e.target.value)
+    // setDataStart(e.target.value)
   };
 
   const handleChangeFinishTime = e => {
@@ -150,6 +162,7 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
                   type="text"
                   placeholder="Початок"
                   name="startTime"
+                  value={start}
                   onChange={handleChangeStartTime}
                   onFocus={e => (e.target.type = 'date')}
                   onBlur={e => (e.target.type = 'text')}
@@ -158,6 +171,7 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
                   type="text"
                   placeholder="Кінець"
                   name="finishTime"
+                  value={finish}
                   onChange={handleChangeFinishTime}
                   onFocus={e => (e.target.type = 'date')}
                   onBlur={e => (e.target.type = 'text')}
