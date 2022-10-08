@@ -14,6 +14,7 @@ import { Line } from 'react-chartjs-2';
 import { Wrapper, TitleWrapper, CounterTitle, Counter } from './Chart.styled';
 import { useFetchResultsQuery } from 'redux/results/resultsSlice';
 import { useState, useEffect } from 'react';
+import { resultsApi } from 'redux/results/resultsSlice';
 
 ChartJS.register(
   CategoryScale,
@@ -71,6 +72,18 @@ export default function Chart({ books }) {
   ]);
   const [mediumPagesArr, setMediumPagesArr] = useState([100]);
   const [pagesArr, setPagesArr] = useState([150]);
+  const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
+
+  useEffect(() => {
+    if (useQueryStateResult.data) {
+      // console.log(useQueryStateResult.data);
+      if (useQueryStateResult.data.status !== 'in progress') {
+        setTrainingDaysArr([ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]);
+        setMediumPagesArr([100]);
+        setPagesArr([150])
+      }
+    } 
+  }, [useQueryStateResult])
 
   useEffect(() => {
     if (error) {

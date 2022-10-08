@@ -25,7 +25,7 @@ export default function BookListInTraining({booksList}) {
   const [books, setBooks] = useState(null);
   
   useEffect(() => {
-    if (data!==undefined) {
+    if (data!==undefined && booksList !== undefined) {
       const id = data.training.active;
       const booksArr = booksList.filter(({ _id }) => id.includes(_id));
       setBooks(booksArr);
@@ -48,7 +48,7 @@ export default function BookListInTraining({booksList}) {
                 <List>
                   <ListItem>
                     {' '}
-                    {book.status === 'finished' ? <BoxChecked /> : <CheckBox />}
+                    {book.status !== 'finished' ? <CheckBox /> : <BoxChecked /> }
                     <BookName>{book.title}</BookName>
                   </ListItem>
                   <ListItem>
