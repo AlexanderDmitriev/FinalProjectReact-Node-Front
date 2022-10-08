@@ -100,8 +100,8 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
       );
     }
     setFinish(e.target.value);
-    getFinishDate(e.target.value);
-    setDataFinish(e.target.value)
+    /* getFinishDate(e.target.value);
+    setDataFinish(e.target.value) */
   };
 
   const handleAddBook = () => {
