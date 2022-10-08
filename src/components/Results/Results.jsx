@@ -147,7 +147,8 @@ export default function Results() {
                 type="date"
                 name="date"
                 required
-                minDate={yesterday.setDate(today.getDate() - 1)}
+                minDate={new Date(useQueryStateResult.data.training.start)}
+                // minDate={yesterday.setDate(today.getDate() - 1)}
                 maxDate={new Date()}
               />
             </Label>
