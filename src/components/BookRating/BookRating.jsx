@@ -16,17 +16,25 @@ import { useGetBooksQuery } from 'redux/booksApi/booksSlice';
 
 export default function BookRating({ onClose, bookId }) {
   const [comment, setComment] = useState('');
-  const [starsRating, setStarsRating] = useState(1);
+  const [starsRating, setStarsRating] = useState(0);
+  const [ing, setIng] = useState(0);
   const [text, setText] = useState('...');
   const [updateRating] = useUpdateRatingMutation();
   const { data } = useGetBooksQuery();
+
   useEffect(() => {
     const coincidence = data.find(i => i._id === bookId);
     if (coincidence) {
       setText(coincidence.resume.comment);
+      setIng(coincidence.resume.rating);
+      // console.log(coincidence.resume.comment);
     }
   }, [bookId, data]);
-
+  // console.log(starsRating);
+  // console.log(text);
+  // console.log(ing);
+  /* let y = ing; */
+  // console.log(y);
   const handleSaveComment = async () => {
     try {
       const value = {
@@ -60,7 +68,7 @@ export default function BookRating({ onClose, bookId }) {
         <StarsField>
           <StarRating
             numTotalStars="5"
-            initialRating="0"
+            initialRating={ing}
             handleStarsRating={handleStarsRating}
           />
         </StarsField>
