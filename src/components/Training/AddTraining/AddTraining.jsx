@@ -68,6 +68,9 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
   const handleChangeStartTime = e => {
     setStart(e.target.value)
     // setDataStart(e.target.value)
+    const today = new Date();
+    const chosen = new Date(e.target.value)
+    console.log(today < chosen);
   };
 
   const handleChangeFinishTime = e => {
@@ -84,6 +87,7 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
   };
 
   const handleAddBook = () => {
+    if (selectedBook.length === 0) { return };
     const booksArrInfo = data.filter(({ _id }) =>
       selectedBookArr.includes(_id)
     );
