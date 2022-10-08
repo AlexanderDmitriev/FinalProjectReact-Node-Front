@@ -25,7 +25,6 @@ import {
   ListItem,
   Error,
   Star,
-  NavGoogle,
 } from '../components/Register.styled';
 
 import { useDispatch } from 'react-redux';
