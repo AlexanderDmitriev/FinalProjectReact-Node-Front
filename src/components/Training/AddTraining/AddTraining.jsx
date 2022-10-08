@@ -35,7 +35,6 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
   const [booksListArr, setBooksListArr] = useState([]);
   const [selectedBookArr, setSelectedBookArr] = useState([]);
   const [selectedBook, setSelectedBook] = useState('');
-  // const [disabled, setDisabled] = useState(false);
   const [booksSelect, setBooksSelect] = useState([]);
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
 
@@ -47,18 +46,6 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
       setInProgressBooks(true)
     } 
   }, [data, useQueryStateResult.data])
-  
-  // useEffect(() => {
-  //   if (!isLoading) {
-  //     const books = data.findIndex(book => book.status === 'in progress');
-  //     if (books === -1) {
-  //       // setDisabled(false)
-  //       return
-  //     }
-  //     console.log(books);
-  //     setBooksSelect(books);
-  //   }
-  // }, [data, isLoading]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -73,14 +60,6 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
       setBooksSelect(booksSelect);
     }
   }, [data, isLoading]);
-
-  //  useEffect(() => {
-  //   if (!isLoading) {
-  //     const inPlan = data.filter(i => i.status === 'plan')
-  //     const toSelect = inPlan.filter(({ _id }) => !selectedBookArr.includes(_id))
-  //     setBooksSelect(toSelect);
-  //   }
-  // }, [data, isLoading, selectedBookArr]);
 
   const handleSelectChange = event => {
     setSelectedBook(event.target.value);
@@ -100,18 +79,16 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
       );
     }
     setFinish(e.target.value);
-    /* getFinishDate(e.target.value);
-    setDataFinish(e.target.value) */
+    /* getFinishDate(e.target.value);*/
+    setDataFinish(e.target.value) 
   };
 
   const handleAddBook = () => {
     const booksArrInfo = data.filter(({ _id }) =>
       selectedBookArr.includes(_id)
     );
-
     setBooksListArr(booksArrInfo);
     setSelectedBookArr([selectedBook, ...selectedBookArr]);
-
     setDataBooks([selectedBook, ...selectedBookArr])
   };
 
@@ -121,7 +98,7 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
     setSelectedBookArr(filteredBooks);
     const bookListSelected = booksListArr.filter(i => i._id !== bookId);
     setBooksListArr(bookListSelected);
-    setDataBooks(filteredBooks)
+    setDataBooks(bookListSelected)
   };
 
   const addTrainingClick = async e => {
@@ -135,10 +112,8 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
         book: selectedBookArr,
       };
       await updateTraining(value)
-      // setDisabled(true)
       setBooksListArr([])
-      const inPlan = data.filter(i => i.status === 'plan')
-      const toSelect = inPlan.filter(({ _id }) => !selectedBookArr.includes(_id))
+      const toSelect = booksSelect.filter(({ _id }) => !selectedBookArr.includes(_id))
       setBooksSelect(toSelect);
       setSelectedBook("")
       setSelectedBookArr([])
@@ -211,7 +186,6 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
               books={booksListArr}
               onDeleteBtnClick={onDeleteBtnClick}
               addTrainingClick={addTrainingClick}
-              // disabled={disabled}
             />
           </>
         ) : (
