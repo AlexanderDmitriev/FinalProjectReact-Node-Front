@@ -94,6 +94,7 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
     setBooksListArr(booksArrInfo);
     setSelectedBookArr([selectedBook, ...selectedBookArr]);
     // setDataBooks([selectedBook, ...selectedBookArr])
+    setSelectedBook('')
   };
 
   const onDeleteBtnClick = e => {

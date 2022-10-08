@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { theme } from '../../../helpers/theme';
 
 export const Section = styled.div`
-  background: #f6f7fb;
+  background: #F6F7FB;
+  @media screen and (min-width: 1280px) {
+    width: 928px;
+  }
 `;
 
 export const TrainingSection = styled.div`
