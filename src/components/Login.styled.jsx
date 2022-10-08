@@ -58,7 +58,7 @@ export const FormBox = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    /* width: 549px; */
+    width: 549px; 
     height: 850px;
     background-image: linear-gradient(
         rgba(9, 30, 63, 0.8),
@@ -98,7 +98,7 @@ export const FormInput = styled.div`
   @media screen and (min-width: 1280px) {
     left: 75px;
     top: 150px;
-    margin-top: 90px;
+    margin-top: 185px;
   }
 
   display: flex;
