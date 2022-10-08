@@ -9,14 +9,28 @@ import {
   BackButton,
   Icon,
 } from './WellDoneModal.styled';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import sprite from '../../../images/icons.svg';
 
 export default function WellDoneModal() {
   const [isModalOpen, setIsModalOpen] = useState(true);
 
+  const navigate = useNavigate();
+  const onRedirect = () => {
+    // onClose();
+    navigate('/training');
+  };
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     console.log('ggg');
+  //     setIsModalOpen(true);
+  //   }, 10000);
+  //   return () => clearTimeout(timer);
+  // }, []);
+
   const onClose = e => {
-    e.preventDefault();
+    // e.preventDefault();
     setIsModalOpen(false);
   };
 
@@ -34,10 +48,11 @@ export default function WellDoneModal() {
             </Text>
           </TextBox>
           <ButtonBox>
-            <NavLink to="/training">
-              <Button type="button">Нове тренування</Button>
-            </NavLink>
-            <BackButton type="button" onClick={onClose}>
+            <Button type="submit" onClick={onClose}>
+              Нове тренування
+            </Button>
+
+            <BackButton type="submit" onClick={onClose}>
               Назад
             </BackButton>
           </ButtonBox>

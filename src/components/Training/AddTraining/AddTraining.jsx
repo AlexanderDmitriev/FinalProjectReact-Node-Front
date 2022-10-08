@@ -20,12 +20,15 @@ import BooksList from 'components/Training/BooksList/BooksList';
 import BookListInTraining from '../BookkListInTraining/BookkListInTraining';
 import MetaThreePoints from '../../LibraryPage/Meta/MetaThree';
 import toast from 'react-hot-toast';
+import WellDoneModal from 'components/LibraryPage/WellDoneModal/WellDoneModal';
+import Modal from 'components/Modal/Modal';
 
 export default function AddTraining({ getFinishDate }) {
   const location = useLocation();
   const path = location?.state?.from ?? '/';
   const { data, isLoading } = useGetBooksQuery();
   const [inProgressBooks, setInProgressBooks] = useState([]);
+
   /* useEffect(() => {
     if (!isLoading) {
       const books = data.findIndex(book => book.status === 'in progress');
@@ -54,6 +57,8 @@ export default function AddTraining({ getFinishDate }) {
       setInProgressBooks(books);
     }
   }, [data, isLoading]);
+
+  // return <div>Hello, World</div>;
 
   useEffect(() => {
     if (!isLoading) {
@@ -118,6 +123,7 @@ export default function AddTraining({ getFinishDate }) {
 
   return (
     <>
+      {/* {open ? <WellDoneModal /> : <MetaThreePoints />} */}
       <MetaThreePoints />
 
       <Section>

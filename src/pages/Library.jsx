@@ -26,7 +26,7 @@ export default function Library() {
   return (
     <>
       {isError && toast.error(`Sorry try again`)}
-      {isLoading && <Spinner/>}
+      {isLoading && <Spinner />}
       <Container>
         <Box>
           <NavLink to={path} exact="true">
