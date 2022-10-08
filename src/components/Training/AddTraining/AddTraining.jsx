@@ -67,7 +67,7 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
 
   const handleChangeStartTime = e => {
     setStart(e.target.value)
-    setDataStart(e.target.value)
+    // setDataStart(e.target.value)
   };
 
   const handleChangeFinishTime = e => {
@@ -80,7 +80,7 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
     }
     setFinish(e.target.value);
     /* getFinishDate(e.target.value);*/
-    setDataFinish(e.target.value) 
+    // setDataFinish(e.target.value) 
   };
 
   const handleAddBook = () => {
@@ -89,7 +89,7 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
     );
     setBooksListArr(booksArrInfo);
     setSelectedBookArr([selectedBook, ...selectedBookArr]);
-    setDataBooks([selectedBook, ...selectedBookArr])
+    // setDataBooks([selectedBook, ...selectedBookArr])
   };
 
   const onDeleteBtnClick = e => {
@@ -98,7 +98,7 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
     setSelectedBookArr(filteredBooks);
     const bookListSelected = booksListArr.filter(i => i._id !== bookId);
     setBooksListArr(bookListSelected);
-    setDataBooks(bookListSelected)
+    // setDataBooks(bookListSelected)
   };
 
   const addTrainingClick = async e => {
