@@ -34,8 +34,6 @@ import { resultsApi } from 'redux/results/resultsSlice';
 export default function Results() {
   const [date, setDate] = useState(null);
   const [pages, setPages] = useState('');
-  let today = new Date();
-  let yesterday = new Date();
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
   const [createResult] = useCreateResultMutation();
 
@@ -147,7 +145,7 @@ export default function Results() {
                 type="date"
                 name="date"
                 required
-                minDate={yesterday.setDate(today.getDate() - 1)}
+                minDate={new Date(useQueryStateResult.data.training.start)}
                 maxDate={new Date()}
               />
             </Label>
@@ -200,7 +198,7 @@ export default function Results() {
                 </ButtonBox>
               </SectionM>
             )}
-            {(isModalOpen&useQueryStateResult.data.status === 'done') && (
+            {isModalOpen & (useQueryStateResult.data.status === 'done') && (
               <SectionM>
                 <IconLike width="50" height="45">
                   <use href={sprite + '#icon-vector'}></use>

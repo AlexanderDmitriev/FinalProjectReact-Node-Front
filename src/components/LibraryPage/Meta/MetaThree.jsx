@@ -47,7 +47,7 @@ const MetaThreePoints = () => {
     const startDay = new Date();
     const finishDay = new Date(date);
     const timeDiff = Math.abs(finishDay.getTime() - startDay.getTime());
-    const trainingDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    const trainingDays = Math.ceil(timeDiff / (1000 * 3600 * 24) - 1);
     return trainingDays;
   };
 
