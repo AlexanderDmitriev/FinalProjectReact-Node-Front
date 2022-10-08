@@ -21,6 +21,10 @@ export const TimerList = styled.ul`
     align-items: center;
     justify-content: center;
   }
+
+  @media screen and (min-width: 1280px) {
+    width: 970px;
+  }
 `;
 
 export const TimerItem = styled.li`
@@ -56,6 +60,7 @@ export const TimerTableContainer = styled.div`
   width: 280px;
   height: 60px;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+  margin: 0 auto;
 
   @media screen and (min-width: 768px) {
     width: 290px;
