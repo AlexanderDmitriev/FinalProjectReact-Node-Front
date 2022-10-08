@@ -18,7 +18,8 @@ export default function Training() {
     <TrainingPage>
       {useQueryStateResult.data &&
         useQueryStateResult.data.status === 'in progress' && <Timers />}
-      <AddTraining /*getFinishDate={handleFinishDate}*/ />
+      <AddTraining /*getFinishDate={handleFinishDate}*/
+      />
       {!isLoading && <Chart books={data} />}
       {useQueryStateResult.data &&
         useQueryStateResult.data.status === 'in progress' && <Results />}

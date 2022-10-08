@@ -66,24 +66,26 @@ export default function Chart({ books }) {
 
   const { data, error, isLoading } = useFetchResultsQuery();
   const [pages, setPages] = useState(0);
-  const [trainingDays, setTrainingDays] = useState();
   const [trainingDaysArr, setTrainingDaysArr] = useState([
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
   ]);
   const [mediumPagesArr, setMediumPagesArr] = useState([100]);
   const [pagesArr, setPagesArr] = useState([150]);
+  const [chartPages, setChartPages]= useState(0)
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
-
+// console.log(useQueryStateResult.data);
   useEffect(() => {
     if (useQueryStateResult.data) {
-      // console.log(useQueryStateResult.data);
       if (useQueryStateResult.data.status !== 'in progress') {
         setTrainingDaysArr([ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]);
         setMediumPagesArr([100]);
         setPagesArr([150])
+        setChartPages(0)
+        console.log('retro');
       }
+      // console.log(useQueryStateResult.data.status !== 'in progress');
     } 
-  }, [useQueryStateResult])
+  }, [useQueryStateResult.data])
 
   useEffect(() => {
     if (error) {
@@ -102,16 +104,17 @@ export default function Chart({ books }) {
       const finishDay = new Date(data.training.end);
       const timeDiff = Math.abs(finishDay.getTime() - startDay.getTime());
       const trainingD = Math.ceil(timeDiff / (1000 * 3600 * 24));
-      setTrainingDays(trainingD);
       const trainingDArr = convertTrainingDaysToArr(trainingD);
       setTrainingDaysArr(trainingDArr);
       const mediumPages = Math.round(pages / trainingD);
+      setChartPages(mediumPages)
+      
       const mediumPA = convertPlanTrainingDaysToArr(trainingD, mediumPages);
       setMediumPagesArr(mediumPA);
       const pagesA = convertPagesToArr(data.statistic);
       setPagesArr(pagesA);
     }
-  }, [books, data, error, isLoading, pages]);
+  }, [books, chartPages, data, error, isLoading, pages]);
 
   const options = {
     responsive: true,
@@ -123,7 +126,7 @@ export default function Chart({ books }) {
       },
       title: {
         display: false,
-        text: `Кількість сторінок / день ${trainingDays}`,
+        text: `Кількість сторінок / день ${chartPages}`,
         responsive: true,
       },
     },
@@ -172,7 +175,7 @@ export default function Chart({ books }) {
     <Wrapper>
       <TitleWrapper>
         <CounterTitle>Кількість сторінок / день</CounterTitle>
-        <Counter>{trainingDays}</Counter>
+        <Counter>{chartPages}</Counter>
       </TitleWrapper>
       <div
         style={{
