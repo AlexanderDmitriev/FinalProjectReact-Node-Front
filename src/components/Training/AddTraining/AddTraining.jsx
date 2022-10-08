@@ -19,10 +19,16 @@ import { useUpdateTrainingMutation } from 'redux/results/resultsSlice';
 import BooksList from 'components/Training/BooksList/BooksList';
 import BookListInTraining from '../BookkListInTraining/BookkListInTraining';
 import MetaThreePoints from '../../LibraryPage/Meta/MetaThree';
+import MetaTwoPoints from '../../LibraryPage/Meta/MetaTwo';
 import toast from 'react-hot-toast';
 import { resultsApi } from 'redux/results/resultsSlice';
 
-export default function AddTraining({ getFinishDate, setDataStart, setDataFinish, setDataBooks }) {
+export default function AddTraining({
+  getFinishDate,
+  setDataStart,
+  setDataFinish,
+  setDataBooks,
+}) {
   const location = useLocation();
   const path = location?.state?.from ?? '/';
   const { data, isLoading } = useGetBooksQuery();
@@ -34,18 +40,31 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
   const [finish, setFinish] = useState('');
   const [booksListArr, setBooksListArr] = useState([]);
   const [selectedBookArr, setSelectedBookArr] = useState([]);
-  const [selectedBook, setSelectedBook] = useState('');
+  const [selectedBook, setSelectedBook] = useState([]);
+  // const [disabled, setDisabled] = useState(false);
   const [booksSelect, setBooksSelect] = useState([]);
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
 
   useEffect(() => {
-    if(useQueryStateResult.data){
+    if (useQueryStateResult.data) {
       if (useQueryStateResult.data.status === 'in progress') {
         return setInProgressBooks(false);
       }
-      setInProgressBooks(true)
-    } 
-  }, [data, useQueryStateResult.data])
+      setInProgressBooks(true);
+    }
+  }, [data, useQueryStateResult.data]);
+
+  // useEffect(() => {
+  //   if (!isLoading) {
+  //     const books = data.findIndex(book => book.status === 'in progress');
+  //     if (books === -1) {
+  //       // setDisabled(false)
+  //       return
+  //     }
+  //     console.log(books);
+  //     setBooksSelect(books);
+  //   }
+  // }, [data, isLoading]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -54,7 +73,7 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
     }
   }, [data, isLoading, selectedBookArr]);
 
-   useEffect(() => {
+  useEffect(() => {
     if (!isLoading) {
       const booksSelect = data.filter(book => book.status === 'plan');
       setBooksSelect(booksSelect);
@@ -81,8 +100,8 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
     setFinish('')
     return
     }
-    setStart(e.target.value)
-    // setDataStart(e.target.value)
+    setStart(e.target.value);
+    setDataStart(e.target.value);
   };
 
   const handleChangeFinishTime = e => {
@@ -99,14 +118,16 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
   };
 
   const handleAddBook = () => {
-    if (selectedBook.length === 0) { return };
+    // if (selectedBook.length === 0) {
+    //   return;
+    // }
     const booksArrInfo = data.filter(({ _id }) =>
       selectedBookArr.includes(_id)
     );
     setBooksListArr(booksArrInfo);
     setSelectedBookArr([selectedBook, ...selectedBookArr]);
-    // setDataBooks([selectedBook, ...selectedBookArr])
-    setSelectedBook('')
+
+    setDataBooks([selectedBook, ...selectedBookArr]);
   };
 
   const onDeleteBtnClick = e => {
@@ -115,7 +136,7 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
     setSelectedBookArr(filteredBooks);
     const bookListSelected = booksListArr.filter(i => i._id !== bookId);
     setBooksListArr(bookListSelected);
-    // setDataBooks(bookListSelected)
+    setDataBooks(filteredBooks);
   };
 
   const addTrainingClick = async e => {
@@ -128,21 +149,30 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
         end: finish,
         book: selectedBookArr,
       };
-      await updateTraining(value)
-      setBooksListArr([])
-      const toSelect = booksSelect.filter(({ _id }) => !selectedBookArr.includes(_id))
+      await updateTraining(value);
+      // setDisabled(true)
+      setBooksListArr([]);
+      const inPlan = data.filter(i => i.status === 'plan');
+      const toSelect = inPlan.filter(
+        ({ _id }) => !selectedBookArr.includes(_id)
+      );
       setBooksSelect(toSelect);
-      setSelectedBook("")
-      setSelectedBookArr([])
-      setStart('')
-      setFinish('')
+      setSelectedBook('');
+      setSelectedBookArr([]);
+      setStart('');
+      setFinish('');
     } catch (err) {
       toast.error('На жаль, додавання тренування не було успішним');
-    } 
+    }
   };
   return (
     <>
-      <MetaThreePoints />
+      {useQueryStateResult.data &&
+      useQueryStateResult.data.status === 'in progress' ? (
+        <MetaThreePoints />
+      ) : (
+        <MetaTwoPoints start={start} finish={finish} books={selectedBookArr} />
+      )}
 
       <Section>
         {inProgressBooks ? (
