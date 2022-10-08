@@ -83,8 +83,6 @@ export default function AddTraining({ getFinishDate, setDataStart, setDataFinish
     }
     setStart(e.target.value)
     // setDataStart(e.target.value)
-    const today = new Date();
-    const chosen = new Date(e.target.value)
   };
 
   const handleChangeFinishTime = e => {
