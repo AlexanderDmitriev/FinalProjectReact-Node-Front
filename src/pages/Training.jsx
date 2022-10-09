@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { TrainingPage } from '../components/TrainingPage';
-import { resultsApi } from 'redux/results/resultsSlice';
+import { resultsApi, useFetchResultsQuery } from 'redux/results/resultsSlice';
 import Results from 'components/Results/Results';
 import AddTraining from 'components/Training/AddTraining/AddTraining';
 import Chart from 'components/Chart/Chart';
@@ -19,15 +19,17 @@ import {
 } from '../components/Results/Modal.styled';
 import sprite from '../images/icons.svg';
 import { useNavigate /* , useLocation */ } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function Training() {
   const { data, isLoading } = useGetBooksQuery();
+  const { data: res } = useFetchResultsQuery();
   // const [finishDate, setFinishDate] = useState(Date.now());
-  const [/* start */, setStart] = useState('');
-  const [/* finish */, setFinish] = useState('');
-  const [/* books */, setBooks] = useState([]);
+  const [, /* start */ setStart] = useState('');
+  const [, /* finish */ setFinish] = useState('');
+  const [, /* books */ setBooks] = useState([]);
 
-  const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
+  const queryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
   // const handleFinishDate = date => {
   //   setFinishDate(date);
   // };
@@ -42,9 +44,14 @@ export default function Training() {
     setBooks(books);
   };
 
-
   /********************************************** */
   const [isModalOpen, setModalOpen] = useState(false);
+  useEffect(() => {
+    if (res?.status === 'done') {
+      setModalOpen(true);
+    }
+  }, [res]);
+
   const handleCloseModal = () => {
     setModalOpen(false);
   };
@@ -54,25 +61,22 @@ export default function Training() {
     navigate('/library', { replace: true });
   };
 
-  const queryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
-  const isDone =queryStateResult?.data?.status === 'done';
   //**************************************** */
   return (
     <TrainingPage>
-      {useQueryStateResult.data &&
-        useQueryStateResult.data.status === 'in progress' && <Timers />}
+      {queryStateResult.data &&
+        queryStateResult.data.status === 'in progress' && <Timers />}
       <AddTraining /*getFinishDate={handleFinishDate}*/
         setDataStart={setDataStart}
         setDataFinish={setDataFinish}
         setDataBooks={setDataBooks}
       />
       {!isLoading && <Chart books={data} />}
-      {useQueryStateResult.data &&
-        useQueryStateResult.data.status === 'in progress' && <Results />}
+      {queryStateResult.data &&
+        queryStateResult.data.status === 'in progress' && <Results />}
 
       <Modal isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}>
         <Wrapper>
-          {isDone && (
             <SectionM>
               <IconLike width="50" height="45">
                 <use href={sprite + '#icon-vector'}></use>
@@ -86,7 +90,6 @@ export default function Training() {
                 </ButtonM>
               </ButtonBox>
             </SectionM>
-          )}
         </Wrapper>
       </Modal>
     </TrainingPage>
