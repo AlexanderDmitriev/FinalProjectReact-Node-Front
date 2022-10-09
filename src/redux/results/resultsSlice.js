@@ -32,6 +32,10 @@ export const resultsApi = createApi({
       }),
       providesTags: ['Result'],
     }),
+    getBooks: builder.query({
+      query: () => 'books',
+      providesTags: ['Books'],
+    }),
     createResult: builder.mutation({
       query: result => ({
         url: 'training/stats',

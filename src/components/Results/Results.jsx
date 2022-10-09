@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ResultTable from './ResultTable';
 import DatePicker from 'react-datepicker';
 // import { useDispatch } from 'react-redux';
@@ -34,7 +34,7 @@ import { resultsApi } from 'redux/results/resultsSlice';
 export default function Results() {
   const [date, setDate] = useState(null);
   const [pages, setPages] = useState('');
-  const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
+  const queryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
   const [createResult] = useCreateResultMutation();
 
   const handleSubmit = e => {
@@ -81,59 +81,65 @@ export default function Results() {
     reset();
   };
 
-  /////////**************HELP******************* */
-  let endTrainingDate = useRef();
-  endTrainingDate = new Date(useQueryStateResult.data.training.end);
+  
 
-  const [isFinished, setIsFinished] = useState(false);
-  /* let isFinished = false; */
-  useEffect(() => {
-    if (endTrainingDate < Date.now()){setIsFinished(true)};
-
-  }, [endTrainingDate]);
-
-  const isTooLate =
-    isFinished && useQueryStateResult.data.status === 'in progress';
-///////////******************************************************* */
-  const reset = () => {
-    setDate(null);
-    setPages('');
-  };
-
+  /* let endTrainingDate = useRef(); */
+ /*  endTrainingDate = new Date(queryStateResult.data.training.end); */
   const [isModalOpen, setModalOpen] = useState(false);
   const handleCloseModal = () => {
     setModalOpen(false);
   };
 
+  const[open, setOpen] = useState(false)
+  useEffect(() => {
+    if (queryStateResult.data) {
+    const end = new Date(queryStateResult.data.training.end) 
+    const now = new Date();
+      if (now > end) {
+     setOpen(true);
+     setModalOpen(true);
+   }
+    }
+  },[queryStateResult.data, queryStateResult.data.training.end])
+
+ /*  const [isFinished, setIsFinished] = useState(false);
+  useEffect(() => {
+    if (endTrainingDate > Date.now()) {
+      setIsFinished(true);
+    }
+  }, [endTrainingDate]); */
+
+  const isTooLate =
+  open && queryStateResult.data.status === 'in progress';
+
+  const isDone =queryStateResult.data.status === 'done';
+  ///////////******************************************************* */
+  const reset = () => {
+    setDate(null);
+    setPages('');
+  };
+
+
+
   const onclick = () => {
-    if (
-      useQueryStateResult.data &&
-      useQueryStateResult.data.status === 'done'
-    ) {
+    if (queryStateResult.data && queryStateResult.data.status === 'done') {
       setModalOpen(true);
     }
   };
 
   const onChangePages = e => {
     setPages(e.target.value);
-    if (
-      useQueryStateResult.data &&
-      useQueryStateResult.data.status === 'done'
-    ) {
+    if (queryStateResult.data && queryStateResult.data.status === 'done') {
       toast.error('Немає активних тренувань');
     }
   };
 
   const onChangeDate = date => {
     setDate(date);
-    if (
-      useQueryStateResult.data &&
-      useQueryStateResult.data.status === 'done'
-    ) {
+    if (queryStateResult.data && queryStateResult.data.status === 'done') {
       toast.error('Немає активних тренувань');
     }
   };
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleExit = () => {
@@ -159,7 +165,7 @@ export default function Results() {
                 type="date"
                 name="date"
                 required
-                minDate={new Date(useQueryStateResult.data.training.start)}
+                minDate={new Date(queryStateResult.data.training.start)}
                 maxDate={new Date()}
               />
             </Label>
@@ -179,8 +185,7 @@ export default function Results() {
           </DateWrapper>
           <Button
             disabled={
-              useQueryStateResult.data &&
-              useQueryStateResult.data.status === 'done'
+              queryStateResult.data && queryStateResult.data.status === 'done'
             }
             type="submit"
             onClick={onclick}
@@ -189,10 +194,9 @@ export default function Results() {
           </Button>
         </Form>
         <ResultTable />
-        {/* Тут наша модалка */}
         <Modal isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}>
           <Wrapper>
-            {isModalOpen && isTooLate && (
+            {isTooLate && (
               <SectionM>
                 <Icon width="50" height="45">
                   <use href={sprite + '#icon-vector'}></use>
@@ -213,13 +217,13 @@ export default function Results() {
                 </ButtonBox>
               </SectionM>
             )}
-            {isModalOpen && useQueryStateResult.data.status === 'done' && (
+            {isDone && (
               <SectionM>
                 <IconLike width="50" height="45">
                   <use href={sprite + '#icon-vector'}></use>
                 </IconLike>
                 <TextBox>
-                  <Text>Вітаю! Ще одна книга прочитана</Text>
+                  <Text>Вітаю! Тренування успішно закінчено!</Text>
                 </TextBox>
                 <ButtonBox>
                   <ButtonM type="button" onClick={handleExit}>

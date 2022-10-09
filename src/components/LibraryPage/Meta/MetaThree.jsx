@@ -28,8 +28,6 @@ const MetaThreePoints = () => {
 
   const { data, /* isLoading */ } = resultsApi.useFetchResultsQuery();
 
-  console.log(data);
-
   useEffect(() => {
     if (
       useQueryStateBooks.data &&

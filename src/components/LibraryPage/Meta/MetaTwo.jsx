@@ -12,8 +12,6 @@ import {
 const MetaTwoPoints = ({ start, finish, books }) => {
   const uniqueBooks = [...new Set(books)];
 
-  console.log(uniqueBooks);
-
   const trainingDays = (start, finish) => {
     const startDay = new Date(start);
     const finishDay = new Date(finish);
