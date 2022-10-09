@@ -26,7 +26,7 @@ const MetaThreePoints = () => {
   const useQueryStateBooks = booksApi.endpoints.getBooks.useQueryState();
   const useQueryStateResult = resultsApi.endpoints.fetchResults.useQueryState();
 
-  const { data, /* isLoading */ } = resultsApi.useFetchResultsQuery();
+  /* const { data, /* isLoading  } = resultsApi.useFetchResultsQuery(); */
 
   useEffect(() => {
     if (
