@@ -46,10 +46,13 @@ export default function Training() {
 
   /********************************************** */
   const [isModalOpen, setModalOpen] = useState(false);
+  const [firstRender,setFirstRender]=useState(true);
   useEffect(() => {
-    if (res?.status === 'done') {
+    if (res?.status === 'done'&&!firstRender) {
       setModalOpen(true);
     }
+    setFirstRender(false)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [res]);
 
   const handleCloseModal = () => {

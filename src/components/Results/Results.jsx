@@ -24,7 +24,7 @@ import {
   ButtonM,
   BackButton,
   Icon,
-  IconLike,
+  /* IconLike, */
 } from './Modal.styled';
 import Modal from 'components/Modal/Modal';
 import sprite from '../../images/icons.svg';
@@ -81,7 +81,7 @@ export default function Results() {
     reset();
   };
 
-  
+
 
   /* let endTrainingDate = useRef(); */
  /*  endTrainingDate = new Date(queryStateResult.data.training.end); */
@@ -112,7 +112,7 @@ export default function Results() {
   const isTooLate =
   open && queryStateResult.data.status === 'in progress';
 
-  const isDone =queryStateResult.data.status === 'done';
+  /* const isDone =queryStateResult.data.status === 'done'; */
   ///////////******************************************************* */
   const reset = () => {
     setDate(null);
@@ -217,7 +217,7 @@ export default function Results() {
                 </ButtonBox>
               </SectionM>
             )}
-            {isDone && (
+           {/*  {isDone && (
               <SectionM>
                 <IconLike width="50" height="45">
                   <use href={sprite + '#icon-vector'}></use>
@@ -231,7 +231,7 @@ export default function Results() {
                   </ButtonM>
                 </ButtonBox>
               </SectionM>
-            )}
+            )} */}
           </Wrapper>
         </Modal>
       </Section>
