@@ -189,6 +189,7 @@ export default function Results() {
           </Button>
         </Form>
         <ResultTable />
+        {/* Тут наша модалка */}
         <Modal isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}>
           <Wrapper>
             {isModalOpen && isTooLate && (
