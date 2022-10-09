@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ResultTable from './ResultTable';
 import DatePicker from 'react-datepicker';
 // import { useDispatch } from 'react-redux';
@@ -81,6 +81,20 @@ export default function Results() {
     reset();
   };
 
+  /////////**************HELP******************* */
+  let endTrainingDate = useRef();
+  endTrainingDate = new Date(useQueryStateResult.data.training.end);
+
+  const [isFinished, setIsFinished] = useState(false);
+  /* let isFinished = false; */
+  useEffect(() => {
+    if (endTrainingDate < Date.now()){setIsFinished(true)};
+
+  }, [endTrainingDate]);
+
+  const isTooLate =
+    isFinished && useQueryStateResult.data.status === 'in progress';
+///////////******************************************************* */
   const reset = () => {
     setDate(null);
     setPages('');
@@ -177,7 +191,7 @@ export default function Results() {
         <ResultTable />
         <Modal isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}>
           <Wrapper>
-            {isModalOpen && (
+            {isModalOpen && isTooLate && (
               <SectionM>
                 <Icon width="50" height="45">
                   <use href={sprite + '#icon-vector'}></use>
@@ -198,7 +212,7 @@ export default function Results() {
                 </ButtonBox>
               </SectionM>
             )}
-            {isModalOpen & (useQueryStateResult.data.status === 'done') && (
+            {isModalOpen && useQueryStateResult.data.status === 'done' && (
               <SectionM>
                 <IconLike width="50" height="45">
                   <use href={sprite + '#icon-vector'}></use>
