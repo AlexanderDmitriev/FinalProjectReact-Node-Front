@@ -7,8 +7,6 @@ import {
   BookDescription,
   Wrapper,
   Value,
-  BoxChecked,
-  CheckBox,
   TitleWrapper,
   Year,
   Pages,
@@ -16,6 +14,7 @@ import {
   HeaderTitle,
   HeaderAuthor,
   HeaderYear,
+  IconBook
 } from './BookListInTraining.styled';
 import { useFetchResultsQuery } from 'redux/results/resultsSlice';
 import { useState, useEffect } from 'react';
@@ -23,7 +22,6 @@ import { useState, useEffect } from 'react';
 export default function BookListInTraining({booksList}) {
   const { data} = useFetchResultsQuery();
   const [books, setBooks] = useState(null);
-  
   useEffect(() => {
     if (data!==undefined && booksList !== undefined) {
       const id = data.training.active;
@@ -48,7 +46,8 @@ export default function BookListInTraining({booksList}) {
                 <List>
                   <ListItem>
                     {' '}
-                    {book.status !== 'finished' ? <CheckBox /> : <BoxChecked /> }
+                    {/* {book.status !== 'finished' ? <CheckBox /> : <BoxChecked /> } */}
+                    <IconBook />
                     <BookName>{book.title}</BookName>
                   </ListItem>
                   <ListItem>

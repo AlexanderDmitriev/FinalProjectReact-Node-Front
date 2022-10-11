@@ -13,11 +13,12 @@ export const MetaHeader = styled.div`
     padding: 18px 27px 18px 28px;
   }
   @media screen and (min-width: 1280px) {
-    width: 288px;
+    max-width: 288px;
     margin-top: -87px;
     margin-left: 0px;
     margin-bottom: 60px;
-    padding: 18px 28px 18px 29px;
+    padding: 18px 8px 18px 8px;
+
   }
 `;
 
@@ -54,12 +55,12 @@ export const MetaBody = styled.section`
   }
   @media screen and (min-width: 1280px) {
     max-width: 288px;
-    padding: 54px 0px 0 0px;
+    padding: 54px 0px 0px 0px;
     display: block;
+    padding-right: 0;
     position: absolute;
     top: 40px;
-    right: 16px;
-    padding-right: 0;
+    right: 50px;
   }
 `;
 

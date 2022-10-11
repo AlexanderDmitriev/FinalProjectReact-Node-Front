@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { theme } from '../../../helpers/theme';
 import boxchecked from '../../../images/boxchecked.svg';
 import checkbox from '../../../images/checkbox.svg';
+import flat from '../../../images/iconflat.svg';
 
 export const Section = styled.div`
   margin: 20px;
@@ -237,4 +238,21 @@ export const HeaderAuthor = styled.span`
 `;
 export const HeaderYear = styled.span`
   margin-right: 102px;
+`;
+
+export const IconBook = styled.i`
+  min-width: 22px;
+  height: 18px;
+  background-image: url(${flat});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-right: 12px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 18px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 16px;
+  }
 `;

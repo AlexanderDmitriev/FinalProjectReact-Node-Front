@@ -73,7 +73,7 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      toast.error(`На жаль, не вдалося знайти такого користувача.`);
+      /* toast.error(`На жаль, не вдалося знайти такого користувача.`); */
       return thunkAPI.rejectWithValue(error.message);
     }
   }

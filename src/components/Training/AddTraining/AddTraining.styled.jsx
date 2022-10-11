@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme } from '../../../helpers/theme';
 
 export const Section = styled.div`
-  background: #F6F7FB;
+  background-color: #F6F7FB;
   @media screen and (min-width: 1280px) {
     width: 928px;
   }
@@ -11,7 +11,7 @@ export const Section = styled.div`
 export const TrainingSection = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 24px 20px 0 20px;
+  padding: 15px 20px 0 20px;
   @media screen and (min-width: 768px) {
     padding-left: 32px;
     padding-right: 32px;
@@ -41,7 +41,7 @@ export const TrainingTitle = styled.div`
   border: none;
 
   @media screen and (min-width: 768px) {
-    width: 704px;
+    /* width: 704px; */
   }
 
   @media screen and (min-width: 1280px) {
