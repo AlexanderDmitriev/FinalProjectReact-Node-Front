@@ -54,17 +54,6 @@ export default function AddTraining({
     }
   }, [data, useQueryStateResult.data]);
 
-  // useEffect(() => {
-  //   if (!isLoading) {
-  //     const books = data.findIndex(book => book.status === 'in progress');
-  //     if (books === -1) {
-  //       // setDisabled(false)
-  //       return
-  //     }
-  //     console.log(books);
-  //     setBooksSelect(books);
-  //   }
-  // }, [data, isLoading]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -126,8 +115,8 @@ export default function AddTraining({
 
     setDataBooks([selectedBook, ...selectedBookArr]);
     setSelectedBook('');
+    setBooksSelect(booksSelect.filter(i=>i._id!==selectedBook))
   };
-
   const onDeleteBtnClick = e => {
     const bookId = e.currentTarget.value;
     const filteredBooks = selectedBookArr.filter(i => i !== bookId);
@@ -135,6 +124,9 @@ export default function AddTraining({
     const bookListSelected = booksListArr.filter(i => i._id !== bookId);
     setBooksListArr(bookListSelected);
     setDataBooks(filteredBooks);
+    
+    const bookToReturn = data.filter(i => i._id === e.currentTarget.value);
+    setBooksSelect([...booksSelect, ...bookToReturn]);
   };
 
   const addTrainingClick = async e => {
@@ -210,8 +202,8 @@ export default function AddTraining({
                 <h2>loading</h2>
               ) : (
                 <SelectContainer>
-                  <Select value={selectedBook} onChange={handleSelectChange}>
-                    <Option disabled={true} value="">
+                    <Select options={selectedBook} name={selectedBook} onChange={handleSelectChange} >
+                    <Option value="" defaultValue>
                       Обрати книги з бібліотеки
                     </Option>
                     {booksSelect.map(book => {

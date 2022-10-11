@@ -11,7 +11,7 @@ export const Section = styled.div`
 export const TrainingSection = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 24px 20px 0 20px;
+  padding: 15px 20px 0 20px;
   @media screen and (min-width: 768px) {
     padding-left: 32px;
     padding-right: 32px;
