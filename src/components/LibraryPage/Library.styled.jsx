@@ -52,11 +52,11 @@ export const Box = styled.div`
   width: 100%;
   background-color: #f6f7fb;
   @media screen and (min-width: 768px) {
-    width: 768px;
+    min-width: 768px;
     height: 1025px;
   }
   @media screen and (min-width: 1280px) {
-    width: 1280px;
+    min-width: 1280px;
     height: 850px;
   }
 `;

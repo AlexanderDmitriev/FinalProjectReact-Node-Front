@@ -27,14 +27,16 @@ export default function Library() {
     <>
       {isError && toast.error(`Sorry try again`)}
       {isLoading && <Spinner/>}
-      <Container>
         <Box>
+        <Container>
           <NavLink to={path} exact="true">
             <BackArrow width="24" height="12" id="addBook">
               <use href={sprite + '#icon-back'}></use>
             </BackArrow>
           </NavLink>
+          
           <LibraryForm />
+          
           {books.length === 0 && <LibraryModal />}
 
           {finishedBooks.length === 0 ? <p></p> : <AlreadyRead books={books} />}
@@ -44,8 +46,8 @@ export default function Library() {
             <ReadingNow books={books} />
           )}
           {planBooks.length === 0 ? <p></p> : <GoingToRead books={books} />}
+          </Container>
         </Box>
-      </Container>
     </>
   );
 }
